@@ -39,21 +39,21 @@
                     <label for="inputEmail3" class="col-sm-1 control-label">Marca</label>
                     <div class="col-sm-3">
                         <select class="form-control  " name="brands" id="first-choice" >
-                            <option selected disabled>Seleccione Una Marca</option>
                            <?php
                             foreach ($brands as $brand)
                            {
-                             echo "<option value='".$brand->ID."  ' >".$brand->Brand."</option>";
+                             echo "<option value='".$brand->ID."'>".$brand->Brand."</option>";
                            }
                            ?>
                        </select>  
-                    </div>	  	
+                    </div>	  
+                    
 	  	</div>
                 <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-1 control-label">Modelo</label>
                     <div class="col-sm-3">
                         <select class="form-control  "  name="model" id="second-choice">
-                          <option selected disabled>Seleccione Un Modelo</option>
+                          
                           
                        </select>  
                     </div>	  	

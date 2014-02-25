@@ -42,7 +42,8 @@ class Ad_controller extends Main_Controller {
         {
               
             $models = $this->car_model->getModelsByBrand($brandID); 
-             foreach ($models as $model)
+            echo "<option selected disabled>Seleccione Una Marca</option>";
+            foreach ($models as $model)
                   {
                              echo "<option value='".$model->ID."' >".$model->Model."</option>";
                   }    
