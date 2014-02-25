@@ -1,4 +1,8 @@
- 
+ <div id="header">
+      
+
+    
+        <div class="container col-sm-offset-1">
     
     <h2>¿Qué Andas Buscando?</h2>
     
@@ -15,9 +19,10 @@
            
                  <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-1 control-label">Ciudad</label>
-                    <div class="col-sm-2">
-                        <select class="form-control  ">   
-                           <?php
+                    <div class="col-sm-3">
+                        <select class="form-control"  name="city">   
+                           <option selected disabled>Seleccione Una Ciudad</option>
+                            <?php
                            echo $thisFile; 
                             foreach ($cities as $city)
                            {
@@ -26,16 +31,19 @@
                            ?>
                        </select>  
                     </div>	  	
-	  	</div>
-               
+	 	</div>
+           
+                 
+                 
                 <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-1 control-label">Marca</label>
-                    <div class="col-sm-2">
-                        <select class="form-control  " name="brands" id="first-choice">
+                    <div class="col-sm-3">
+                        <select class="form-control  " name="brands" id="first-choice" >
+                            <option selected disabled>Seleccione Una Marca</option>
                            <?php
                             foreach ($brands as $brand)
                            {
-                             echo "<option value='".$brand->ID."' >".$brand->Brand."</option>";
+                             echo "<option value='".$brand->ID."  ' >".$brand->Brand."</option>";
                            }
                            ?>
                        </select>  
@@ -43,9 +51,9 @@
 	  	</div>
                 <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-1 control-label">Modelo</label>
-                    <div class="col-sm-2">
-                        <select class="form-control  " id="second-choice">
-                          
+                    <div class="col-sm-3">
+                        <select class="form-control  "  name="model" id="second-choice">
+                          <option selected disabled>Seleccione Un Modelo</option>
                           
                        </select>  
                     </div>	  	
@@ -54,8 +62,9 @@
                 
                 <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-1 control-label">Tipo</label>
-                    <div class="col-sm-2">
-                        <select class="form-control  ">
+                    <div class="col-sm-3">
+                        <select class="form-control"  name="type">
+                             <option selected disabled>Seleccione Un Tipo</option>
                             <option value="volvo">Coupe</option>
                             <option value="saab">Sedan</option>
                             <option value="fiat">Jeep</option>
@@ -65,16 +74,18 @@
                  
                   <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-1 control-label">Precio</label>
-                    <div class="col-sm-1">
-                        <select class="form-control  ">
+                    <div class="col-sm-2" id="pepe">
+                        <select class="form-control "  name="lowPrice">
+                             <option selected disabled>Mínimo</option>
                             <option value="volvo">100,000</option>
                             <option value="saab">200,000</option>
                             <option value="fiat">300,000</option>
                             <option value="audi">400,000</option>
                        </select>  
                         </div>
-                        <div class="col-sm-1">
-                        <select class="form-control  ">
+                        <div class="col-sm-2" id="pepe">
+                        <select class="form-control  " name="highPrice">
+                             <option selected disabled>Máximo</option>
                             <option value="volvo">100,000</option>
                             <option value="saab">200,000</option>
                             <option value="fiat">300,000</option>
@@ -86,8 +97,10 @@
                  
                 <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-1 control-label">Año</label>
-                    <div class="col-sm-1">
-                        <select class="form-control  ">
+                   <div class="col-sm-2" id="pepe">
+                        <select class="form-control"  name="lowYear">
+                             <option selected disabled>Desde</option>
+                           
                            <?php
                             foreach ($years as $year)
                            {
@@ -96,8 +109,10 @@
                            ?>
                        </select>  
                         </div>
-                        <div class="col-sm-1">
-                        <select class="form-control  ">
+                        <div class="col-sm-2" id="pepe">
+                        <select class="form-control  "  name="highYear">
+                             <option selected disabled>Hasta</option>
+
                             <?php
                             foreach ($years as $year)
                            {
@@ -120,8 +135,33 @@
 	  	<?php
                  // echo $var;
                     echo validation_errors();              
-                ?>
-                
+                ?>  
     </form>
     
+ 
 </div>
+</div>
+<script type="text/javascript">
+   $(document).ready(function()
+{
+	$("#second-choice").attr('enabled', 'false'); 
+	$("#first-choice").change(function() 
+	{
+            
+           // $.Ajax('/index.php?/ad_controller/showModelsFromABrand/'+ $("#first-choice").val(), 
+           // {
+           //  onComplete: function(response) 
+            // {
+             //   if (200 == response.status)
+           // }
+           // });
+            
+		$("#second-choice").load("index.php?/ad_controller/showModelsFromABrand/" + $("#first-choice").val()); 
+		$("#second-choice").attr('enabled', 'true'); 
+	});
+});
+    
+ </script>
+ 
+
+   

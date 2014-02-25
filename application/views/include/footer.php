@@ -1,6 +1,8 @@
+<div id="footer">    
 <footer class="text-center">
-        <p>&copy; Auto Expero 2013-2014</p>
+        <p>&copy; Auto Experto 2013-2014</p>
       </footer>
+    </div>
      <!-- /container -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -10,3 +12,5 @@
    <script src="<?php echo base_url('assets/js/custom.js') ?>"></script>
    </body>
 </html>
+
+	

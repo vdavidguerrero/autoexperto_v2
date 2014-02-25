@@ -9,10 +9,14 @@ class user_controller extends Main_Controller {
         {
             parent::__construct();
             $this->load->model("user_model");
+            $this->load->model("ad_model");
+            $this->load->model("car_model");
             $this->load->library('form_validation');
             $this->load->helper('form');
             $this->load->library('session');
-            //$this->load->helper('url');
+            $this->load->helper('url');
+            //Arreglar esto con el redirect...
+            
         }  
         function index ()
 	{
@@ -28,14 +32,18 @@ class user_controller extends Main_Controller {
         public function showUserForm($flag)
         {
            //if $flag == 0, we're creating an Taller. if it's 1 then is a dealer
+            $dataPass["cities"] = $this->ad_model->getAdCities();
             $dataPass["var"] = " ";
             $dataPass["flagValue"] = $flag;
             $this->load->view('include/header'); 
             $this->load->view('user/create_user_view',$dataPass);  
             $this->load->view('include/footer'); 
         }
+        
         public function createUser()
 	{
+            //Se desea Quitar en un futurp
+            
             //Recives the user creation form, validate it, an create an user. 
             $this->form_validation->set_rules('name'        , 'Name.'    , 'required');
             $this->form_validation->set_rules('password'    , 'Password.', 'min_length[6]|required');
@@ -48,6 +56,7 @@ class user_controller extends Main_Controller {
             $this->form_validation->set_message('required', ' ');
             $this->form_validation->set_message('valid_email', 'Digite un correo Valido.');
          
+            $dataPass["cities"] = $this->ad_model->getAdCities();
             $dataPass["flagValue"] = $this->input->post('flag');
             
             if($this->form_validation->run() === FALSE) 
@@ -70,14 +79,15 @@ class user_controller extends Main_Controller {
             {
                 $now = date("Y-m-d H:i:s");
                 $password = $this->input->post('password');
-                $data = array(  "name"     => $this->input->post('name'),
-                                "address"  => $this->input->post('address'),
-                                "ID "      => $this->input->post('cedula_rnc'),
-                                "phone"    => $this->input->post('phone'),
-                                "flag"     => $this->input->post('flag'),
-			        "email"    => $this->input->post('email'),
-			        "date"    => $now,
-                                "password" => MD5($password));
+                $data = array(  "name"          => $this->input->post('name'),
+                                "address"       => $this->input->post('address'),
+                                "ID "           => $this->input->post('cedula_rnc'),
+                                "phone"         => $this->input->post('phone'),
+                                "flag"          => $this->input->post('flag'),
+                                "DR_City_ID"    => $this->input->post('city'),
+			        "email"         => $this->input->post('email'),
+			        "date"          => $now,
+                                "password"      => MD5($password));
                 $this->user_model->insertUser($data);
                 $dataPass["var"] = "Usuario insertado Correctamente";
                 $this->load->view('include/header'); 
@@ -103,7 +113,10 @@ class user_controller extends Main_Controller {
         }
         
         public function userLogin()
-        {      
+        {    
+            $dataPass["brands"] = $this->car_model->getCarBrands();
+            $dataPass["cities"] = $this->ad_model->getAdcities();  
+            $dataPass["years"]  = $this->car_model->getCarYears();
             $this->form_validation->set_rules('cedula_rnc'  , 'ID'      , 'required|exact_length[11]|integer');
             $this->form_validation->set_rules('password'  , 'Password'      , 'required');
             $this->form_validation->set_message('exact_length', 'Introduzca un RNC o Cedula Valida. EX 00119045615');
@@ -127,10 +140,11 @@ class user_controller extends Main_Controller {
                 
                   $sess_array = array( 'id'       => $user->ID);
                   $this->session->set_userdata('logged_in', $sess_array);
-                    
-                    $this->load->view('include/header'); 
-                    $this->load->view('ad/search_ad_view',$dataPass);  
-                    $this->load->view('include/footer'); 
+                 
+                  //redirect('', 'refresh');
+                  $this->load->view('include/header'); 
+                  $this->load->view('ad/search_ad_view',$dataPass);  
+                  $this->load->view('include/footer');
                 }
                 else
                 {
@@ -146,8 +160,13 @@ class user_controller extends Main_Controller {
         
         public function userLogOff()
         {
-             $dataPass["var"] = " ";
+            $dataPass["brands"] = $this->car_model->getCarBrands();
+            $dataPass["cities"] = $this->ad_model->getAdcities();  
+            $dataPass["years"]  = $this->car_model->getCarYears();
+            $dataPass["var"] = " ";
             $this->session->sess_destroy();
+            
+            //redirect('/index.php/ad_controller', 'refresh');
             $this->load->view('include/header'); 
             $this->load->view('ad/search_ad_view',$dataPass);  
             $this->load->view('include/footer');
