@@ -26,20 +26,14 @@ class car_model extends CI_Model {
      * Unique_Car; Represents an Unique Car by its VIN 
      
      ************************************************************************/
-    
-    public function checkUniqueCar($VIN)
-    {
-        $query = $this->db->get_where('unique_cars', array('ID'=> $VIN));
-         return $query->num_rows();
-    }
-    
+      
     public function getUniqueCar()
     {
         $query = $this->db->get_where('unique_cars', array('ID'=> $VIN));
-         return $query->result();
+        return $query->result();
     }
     
-     public function instertUniqueCar($VIN)
+     public function insertUniqueCar($VIN)
     {
         $this->db->insert('unique_cars',$VIN);     
     }
@@ -111,7 +105,7 @@ class car_model extends CI_Model {
     
      public function getModelsByBrandID($brandID)
     {
-        $this->db->select('Model,ID');
+        $this->db->select('*');
         $this->db->from('car_models');
         $this->db->where('Brand_ID',$brand);
         $query = $this->db->get();
@@ -138,9 +132,9 @@ class car_model extends CI_Model {
      
      ************************************************************************/
     
-    public function instertCarPart($part)
+    public function instertCarPart($carPartData)
     {
-        $this->db->insert('car_parts',$part); 
+        $this->db->insert('car_parts',$carPartData); 
     }
     
     /***********************************************************************
@@ -150,11 +144,18 @@ class car_model extends CI_Model {
      ***********************************************************************/
     
     
-    public function insertManufacturerCountry($country)
+    public function insertManufacturerCountry($ManufacturerCountryData)
     {
-        $this->db->insert('manufacturer_countries',$country); 
+        $this->db->insert('manufacturer_countries',$ManufacturerCountryData); 
     }
-    
+    public function getManufacturerCountryByName($ManufacturerCountryData)
+    {
+        $this->db->select('*');
+        $this->db->from('manufacturer_countries');
+        $this->db->where('Country',$ManufacturerCountryData);
+        $query = $this->db->get();
+        return $query->row();
+    }
    
     /************************************************************************
      

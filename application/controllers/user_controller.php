@@ -79,7 +79,7 @@ class user_controller extends Main_Controller {
             {
                 $now = date("Y-m-d H:i:s");
                 $password = $this->input->post('password');
-                $data = array(  "name"          => $this->input->post('name'),
+                $newUserdata = array(  "name"          => $this->input->post('name'),
                                 "address"       => $this->input->post('address'),
                                 "ID "           => $this->input->post('cedula_rnc'),
                                 "phone"         => $this->input->post('phone'),
@@ -88,7 +88,7 @@ class user_controller extends Main_Controller {
 			        "email"         => $this->input->post('email'),
 			        "date"          => $now,
                                 "password"      => MD5($password));
-                $this->user_model->insertUser($data);
+                $this->user_model->insertUser($newUserdata);
                 $dataPass["var"] = "Usuario insertado Correctamente";
                 $this->load->view('include/header'); 
                 $this->load->view('user/succesful_user_view',$dataPass);  
@@ -114,7 +114,7 @@ class user_controller extends Main_Controller {
         
         public function userLogin()
 
-                {    
+        {    
             $dataPass["brands"] = $this->car_model->getCarBrands();
             $dataPass["cities"] = $this->ad_model->getAdcities();  
             $dataPass["years"]  = $this->car_model->getCarYears();

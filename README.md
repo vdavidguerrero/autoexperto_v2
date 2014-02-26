@@ -15,4 +15,5 @@ Los metodos de los modelos están de la siguiente manera:
 
 
 
- // Editar el Método del controlador carro para crear el usuario; línea 98.
+ Crear un metodo que reciba el request del WebService, si este valor no es un carro único que lo cree, si el módelo no es
+un modelo existente, que lo cree por igual. 

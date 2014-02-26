@@ -5,26 +5,26 @@
                 
     </div>
 	   		
-    <form class="form-horizontal " role="form" method="post" action="index.php?/car_controller/createUniqueModel">
+    <form class="form-horizontal " role="form" method="post" action="index.php?/car_controller/createUniqueCar">
 		
 		<div class="form-group ">
-	    	<label for="inputEmail3" class="col-sm-1 control-label">Año</label>
+	    	<label for="inputEmail3" class="col-sm-1 control-label">VIN</label>
 	    	<div class="col-sm-4">
 	      	<input type="text" class="form-control"  name="valor1" value="<?php echo set_value('valor1');?>"  >
 	  	    </div>	  	
 	  	</div>
         
                 <div class="form-group ">
-	    	<label for="inputEmail3" class="col-sm-1 control-label">Marca</label>
+	    	<label for="inputEmail3" class="col-sm-1 control-label">Pais</label>
 	    	<div class="col-sm-4">
-	      	<input type="text" class="form-control"  name="valor7" value="<?php echo set_value('valor7');?>"  >
+	      	<input type="text" class="form-control"  name="valor2" value="<?php echo set_value('valor7');?>"  >
 	  	    </div>	  	
 	  	</div>
                 
 	  	<div class="form-group ">
 	    	<label for="inputEmail3" class="col-sm-1 control-label">Modelo</label>
 	    	<div class="col-sm-4">
-	      	<input type="text" class="form-control"  name="valor2" >
+	      	<input type="text" class="form-control"  name="valor3" >
 	  	    </div>	  	
 	  	</div>
                 
@@ -32,27 +32,34 @@
 	  	<div class="form-group ">
 	    	<label for="inputEmail3" class="col-sm-1 control-label">Trim</label>
 	    	<div class="col-sm-4">
-	      	<input type="text" class="form-control"  name="valor3" value="<?php echo set_value('valor3');?>" >
+	      	<input type="text" class="form-control"  name="valor7" value="<?php echo set_value('valor3');?>" >
 	  	    </div>	  	
 	  	</div>
             
 
                 <div class="form-group ">
-	    	<label for="inputEmail3" class="col-sm-1 control-label">Body Style</label>
+	    	<label for="inputEmail3" class="col-sm-1 control-label">Country</label>
 	    	<div class="col-sm-4">
 	      	<input type="text" class="form-control"  name="valor4" value="<?php echo set_value('valor4');?>" >
 	  	    </div>	  	
 	  	</div>
                    
 	  	<div class="form-group ">
-	    	<label for="inputEmail3" class="col-sm-1 control-label">Engine Type</label>
+	    	<label for="inputEmail3" class="col-sm-1 control-label">Brand</label>
 	    	<div class="col-sm-4">
 	      	<input type="text" class="form-control"  name="valor5" value="<?php echo set_value('valor5');?>" >
 	  	    </div>	  	
 	  	</div>
+        
+                <div class="form-group ">
+	    	<label for="inputEmail3" class="col-sm-1 control-label">Country</label>
+	    	<div class="col-sm-4">
+	      	<input type="text" class="form-control"  name="valor8" value="<?php echo set_value('valor5');?>" >
+	  	    </div>	  	
+	  	</div>
 
 	  	<div class="form-group ">
-	    	<label for="inputEmail3" class="col-sm-1 control-label">Transmision</label>
+	    	<label for="inputEmail3" class="col-sm-1 control-label">VIN</label>
 	    	<div class="col-sm-4">
 	      	<input type="text" class="form-control"  name="valor6" value="<?php echo set_value('valor6');?>" >
 	  	    </div>	  	
