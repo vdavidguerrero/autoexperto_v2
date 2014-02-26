@@ -30,7 +30,9 @@ class Ad_controller extends Main_Controller {
             $dataPass["years"]  = $this->car_model->getCarYears();
             
             $this->load->view('include/header'); 
-            $this->load->view('ad/search_ad_view',$dataPass);  
+             $this->load->view('car/test_view',$dataPass);  
+            
+            // $this->load->view('ad/search_ad_view',$dataPass);  
             $this->load->view('include/footer');  
         
             //  $this->load->view('user/succesful_user_view',$dataPass);  

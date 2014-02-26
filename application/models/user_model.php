@@ -14,13 +14,6 @@ class user_model extends CI_Model {
         $this->db->insert('users',$userData); 
     }
     
-    public function checkUser($RNC)
-    {
-        //Return 0 if  the user doesn't exists in the DataBase.
-        $query = $this->db->get_where('users', array('ID'=> $RNC));
-         return $query->num_rows(); 
-    }
-    
     public function deleteUser($RNC)
     {
         // delete a user from the daba base bu its RNC or Cedula.

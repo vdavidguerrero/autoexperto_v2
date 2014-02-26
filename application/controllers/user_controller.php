@@ -67,7 +67,7 @@ class user_controller extends Main_Controller {
                 $this->load->view('include/footer'); 
             }
             
-            else if($this->user_model->checkUser($this->input->post('cedula_rnc')) > 0)
+            else if($this->user_model->getUserByRnc($this->input->post('cedula_rnc')))
             {
                 $dataPass["var"] = "El RNC o Cedula Ya Existe";
                 $this->load->view('include/header'); 
@@ -113,7 +113,8 @@ class user_controller extends Main_Controller {
         }
         
         public function userLogin()
-        {    
+
+                {    
             $dataPass["brands"] = $this->car_model->getCarBrands();
             $dataPass["cities"] = $this->ad_model->getAdcities();  
             $dataPass["years"]  = $this->car_model->getCarYears();

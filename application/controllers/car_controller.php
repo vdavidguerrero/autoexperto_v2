@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) die();
 
 
-class user_controller extends Main_Controller {
+class car_controller extends Main_Controller {
 
     
     //Falta buscar la forma de llamar a ad_controller->index() desde aquí.;
@@ -17,14 +17,10 @@ class user_controller extends Main_Controller {
             
         }  
         function index ()
-	{
-         $this->getModelFormData(1);
-            // if $flag == 0, we're creating an Taller. if it's 1 then is a dealer
-           // $dataPass["var"] = " ";
-           // $dataPass["flagValue"] = $flag;
-           // $this->load->view('include/header'); 
-           // $this->load->view('user/login_user_view',$dataPass);  
-           // $this->load->view('include/footer');   
+	{   $dataPass["pepito"] = array();
+            $this->load->view('include/header'); 
+            $this->load->view('car/test_view',$dataPass);  
+            $this->load->view('include/footer');   
 	}
         
          public function getModelFormData($VIN)
@@ -76,4 +72,68 @@ class user_controller extends Main_Controller {
              
              
         }
+        
+        function createUniqueModel()
+        {
+            /*
+                ALL CAR DATA REQUIRE; BRAND,MODEL,TRIM,YEAR AT LEAST.
+             * 
+             * There isn't any data validation in this code!!!!
+            */
+            
+            $modelName = $this->input->post("valor2");
+            $brandName = $this->input->post("valor7");
+            
+            
+            $modelObject  = $this->car_model->getModelByModelName($modelName);
+            
+            if(!$modelObject)
+            {
+                
+                $brandObject   = $this->car_model->getBrandbyBrandName($brandName);
+                if(!$brandObject)
+                {
+                    $newBrandData = array( 'Brand' => $brandName);
+                    $this->car_model->instertCarBrand($newBrandData);    
+                    $brandObject = $this->car_model->getBrandbyBrandName($brandName);
+                }
+                // ACABAR DE VALIDAR EL MODELO
+                    //$newCarModelData = array( );
+            }
+            
+            
+            if($modelObject)
+            {
+                $year           = $this->input->post("valor1");
+                $modelID        = $modelObject->ID; 
+                $trim           = $this->input->post("valor3");
+                $bodyStyle      = $this->input->post("valor4");
+                $engineType     = $this->input->post("valor5");
+                $transmission   = $this->input->post("valor6");
+
+
+                $uniqueModelData    = array(
+                                                'Year'          => $year,
+                                                'Car_Model_ID'      => $modelID,
+                                                'Trim'          => $trim,
+                                                'Body_Style'    => $bodyStyle,
+                                                'Engine_Type'   => $engineType,
+                                                'Transmission'  => $transmission
+                                             );
+
+                // Data de revisión;
+                $dataPass["pepito"] = $uniqueModelData;
+                $this->car_model->insertUniqueModel($uniqueModelData);
+             }
+             else
+             {
+                $dataPass["pepito"] = array('ahja' => "Eh.. Que te digo.");
+             }
+                $this->load->view('include/header'); 
+                $this->load->view('car/test_view',$dataPass);  
+                $this->load->view('include/footer'); 
+               
+        }
+        
+        
 }
