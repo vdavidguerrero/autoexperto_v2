@@ -15,5 +15,10 @@ Los metodos de los modelos están de la siguiente manera:
 
 
 
- Crear un metodo que reciba el request del WebService, si este valor no es un carro único que lo cree, si el módelo no es
-un modelo existente, que lo cree por igual. 
+Hasta ahora se puede devuelve un carro conociedno el VIN, si el carro no existe lo crea.
+
+Hay que hacer la conexión con VinQuery para esto. 
+
+- Hay trabajar el controlador del Anuncion. 
+
+Sería bueno empezar a hacer pruebas con JSON.
