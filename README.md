@@ -21,4 +21,5 @@ Hay que hacer la conexión con VinQuery para esto.
 
 - Hay trabajar el controlador del Anuncion. 
 
-Sería bueno empezar a hacer pruebas con JSON.
+Proxima Función a trabajar: ad_controller->showad()
+                            ad_controller->createAd()

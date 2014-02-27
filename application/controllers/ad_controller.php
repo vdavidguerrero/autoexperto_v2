@@ -40,7 +40,7 @@ class Ad_controller extends Main_Controller {
             
         }
                 
-        function showModelsFromABrand($brandID)
+        function showAd()
         {
               
             $models = $this->car_model->getModelsByBrand($brandID); 
@@ -49,6 +49,8 @@ class Ad_controller extends Main_Controller {
                   {
                              echo "<option value='".$model->ID."' >".$model->Model."</option>";
                   }    
+                  
+            // Revisa si existe un caro      
             //$this->load->view('include/header'); 
             //$this->load->view('user/succesful_user_view',$dataPass);  
            // $this->load->view('include/footer'); 

@@ -48,11 +48,7 @@ class car_controller extends Main_Controller {
               /*Who's Car? */
              
              return $car; 
-             //$dataPass["pepito"] = $car;
-             //$this->load->view('include/header'); 
-             //$this->load->view('car/test_view',$dataPass);  
-             //$this->load->view('include/footer');  
-             
+            
              
             /*
              * Retorna los datos necesarios para llenar el formulario del carro. 
@@ -91,10 +87,10 @@ class car_controller extends Main_Controller {
             $brandName              = $newUniqueModelDataObject->Brand;
             $year                   = $newUniqueModelDataObject->Year;
             $trim                   = $newUniqueModelDataObject->Trim;
-          //  $bodyStyle              = $$newUniqueModelDataObject->varlor5;
+          //$bodyStyle              = $$newUniqueModelDataObject->varlor5;
           //  $engineType             = $$newUniqueModelDataObject->varlor6;
           //  $transmission           = $$newUniqueModelDataObject->varlor7;
-            //Data Capture
+          //Data Capture
             
             $modelObject  = $this->car_model->getModelByModelName($modelName);
             
