@@ -23,10 +23,37 @@ class car_controller extends Main_Controller {
             $this->load->view('include/footer');   
 	}
         
-         public function getModelFormData($VIN)
-        {
+         public function carQuery()
+        {//Paramatrer: $VIN
+             // Checks if there's any Unique car associate with the $VIN, if there's no it creates 1.
+
+             $VIN = $this->input->post("VIN");
+             $car  = $this->car_model->getCar($VIN);
+             if(!$car)
+             {
+                    $newCarDataObject = $this->queryCarData($VIN); 
+                    $trim  =                   $newCarDataObject->Trim;
+                    $model =                   $newCarDataObject->Model;
+                    $year  =                   $newCarDataObject->Year;
+                    $manufacturerCountry =     $newCarDataObject->Country;
+
+                    $newCarUniqueModelID =     $this->car_model->getUniqueModel($trim,$model,$year);
+                    if(!$newCarUniqueModelID)
+                    {
+                         $this->createUniqueModel($newCarDataObject); 
+                         $newCarUniqueModelID = $this->car_model->getUniqueModel($trim,$model,$year);
+                    }
+                    $this->createUniqueCar($VIN,$manufacturerCountry,$newCarUniqueModelID->ID);   
+             }
+              /*Who's Car? */
              
-             $vin = $this->input->post("VIN");
+             return $car; 
+             //$dataPass["pepito"] = $car;
+             //$this->load->view('include/header'); 
+             //$this->load->view('car/test_view',$dataPass);  
+             //$this->load->view('include/footer');  
+             
+             
             /*
              * Retorna los datos necesarios para llenar el formulario del carro. 
              * 
@@ -50,40 +77,29 @@ class car_controller extends Main_Controller {
              * 
              * Se en envía los datos de la información del modelo que está en la tabla Unique_Model.          
              */
-             
-       
-             
-             /*
-              * 
-              *  Hacer una funcion checkCar(); en el módelo.
-              *  
-              * 
-              */
-   
         }
         
-        function createUniqueModel()
-        {//Parameter: $data; an array with all the data! 
+        function createUniqueModel($newUniqueModelDataObject)
+        {//Parameter: $data; an array with all the data! which should be the JSON Object 
             /*
                 ALL CAR DATA REQUIRE; BRAND,MODEL,TRIM,YEAR AT LEAST.
              * 
              * There isn't any data validation in this code!!!!
             */
             //Data Capture 
-            $modelName              = $this->input->post("valor2");
-            $brandName              = $this->input->post("valor7");
-            $year                   = $this->input->post("valor1");
-            $trim                   = $this->input->post("valor3");
-            $bodyStyle              = $this->input->post("valor4");
-            $engineType             = $this->input->post("valor5");
-            $transmission           = $this->input->post("valor6");
+            $modelName              = $newUniqueModelDataObject->Model;
+            $brandName              = $newUniqueModelDataObject->Brand;
+            $year                   = $newUniqueModelDataObject->Year;
+            $trim                   = $newUniqueModelDataObject->Trim;
+          //  $bodyStyle              = $$newUniqueModelDataObject->varlor5;
+          //  $engineType             = $$newUniqueModelDataObject->varlor6;
+          //  $transmission           = $$newUniqueModelDataObject->varlor7;
             //Data Capture
             
             $modelObject  = $this->car_model->getModelByModelName($modelName);
             
             if(!$modelObject)
             {
-                
                 $brandObject   = $this->car_model->getBrandbyBrandName($brandName);
                 if(!$brandObject)
                 {
@@ -100,34 +116,23 @@ class car_controller extends Main_Controller {
            $modelID        = $modelObject->ID; 
             /*Here Goes all the model data...*/
             
-            $uniqueModelData    = array(
+           $uniqueModelData    = array(
                                             'Year'          => $year,
                                             'Car_Model_ID'  => $modelID,
-                                            'Trim'          => $trim,
-                                            'Body_Style'    => $bodyStyle,
-                                            'Engine_Type'   => $engineType,
-                                            'Transmission'  => $transmission
-                                        );
+                                            'Trim'          => $trim
+                                        //    'Body_Style'    => $bodyStyle,
+                                        //    'Engine_Type'   => $engineType,
+                                        //   'Transmission'  => $transmission
+                                       );
                 // Data de revisión;
                 
-                $this->car_model->insertUniqueModel($uniqueModelData);
-                $dataPass["pepito"] = $uniqueModelData;
-             
-                $this->load->view('include/header'); 
-                $this->load->view('car/test_view',$dataPass);  
-                $this->load->view('include/footer'); 
-             
+           $this->car_model->insertUniqueModel($uniqueModelData);
         }
         
-        function createUniqueCar()
-        {//paramater: $VIN, ManufacturarCountryID, $uniqueModel
+        function createUniqueCar($VIN,$manufacturerCountry, $uniqueCarModelID)
+        {//paramater: $VIN, $ManufacturarCountry, $uniqueCarModel
            
-            //Data Capture
-            $VIN                       = $this->input->post("valor1");
-            $manufacturerCountry       = $this->input->post("valor2");
-            $uniqueModelID             = $this->input->post("valor3");
             $now = date("Y-m-d H:i:s");
-            //Data Capture
             
             $manufacturerCountryObject = $this->car_model->getManufacturerCountryByName($manufacturerCountry); 
             if(!$manufacturerCountryObject)
@@ -139,19 +144,27 @@ class car_controller extends Main_Controller {
             $manufacturerCountryID = $manufacturerCountryObject->ID;
             
             $newUniqueCarData = array(
-                                            'VIN'                        => $VIN,
+                                            'VIN'                       => $VIN,
                                             'Manufacturer_Country_ID'   => $manufacturerCountryID,
                                             'Date'                      => $now,
-                                            'Unique_Model'              => $uniqueModelID
+                                            'Unique_Model'              => $uniqueCarModelID
                                         );
-            $this->car_model->insertUniqueCar($newUniqueCarData);
-        
-            $dataPass["pepito"] = $newUniqueCarData;
-             
-            $this->load->view('include/header'); 
-            $this->load->view('car/test_view',$dataPass);  
-            $this->load->view('include/footer'); 
+            $this->car_model->insertUniqueCar($newUniqueCarData); 
           }
         
+        function queryCarData($VIN)
+        {
+            // Sacar esta info de VIN Query
+            $pepe = (object) array(
+                                    'Country'       => 'Japan', 
+                                    'Trim'          => 'klk',
+                                    'Year'          => '2012', 
+                                    'Model'         => 'NSX2',
+                                    'Brand'         => 'Honda'
+                                 );
+           
+            return $pepe; 
+        }
+         
         
 }

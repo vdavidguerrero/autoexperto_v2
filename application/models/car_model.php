@@ -19,6 +19,22 @@ class car_model extends CI_Model {
      * Car_Years
      * 
      */
+     /************************************************************************
+     
+     * Car; Represents an Entire Car by its VIN 
+     
+     ************************************************************************/
+      
+     public function getCar($carVIN)
+     {
+       $this->db->select('*');
+        $this->db->from('unique_models');
+        $this->db->join('unique_cars', 'unique_models.ID = unique_cars.Unique_Model','inner');
+        $this->db->where('unique_cars.VIN'    ,$carVIN);
+        $query = $this->db->get();
+        return $query->row();   
+     }
+        
     
     
     /************************************************************************
@@ -29,7 +45,7 @@ class car_model extends CI_Model {
       
     public function getUniqueCar()
     {
-        $query = $this->db->get_where('unique_cars', array('ID'=> $VIN));
+        $query = $this->db->get_where('unique_cars', array('VIN'=> $VIN));
         return $query->result();
     }
     
@@ -47,17 +63,15 @@ class car_model extends CI_Model {
      ************************************************************************/
     
     
-     public function getUniqueModel($trim, $modelID,  $year)
+     public function getUniqueModel($trim, $model,  $year)
     {
-        
-       // hacer un join de carBrands, carModels, uniqueModel
-       //  Traeme la tabla CarModels, donde uniqueModel.Brand_ID = $brandID, Model.ID
-       //uniqueModel.Model_ID = $brandID
         $this->db->select('*');
         $this->db->from('car_models');
-        $this->db->where('Year'    ,$trim);
-        $this->db->where('Model_ID',$modelID);
-        $this->db->where('Trim'    ,$year);
+        $this->db->join('unique_models', 'unique_models.Car_Model_ID = car_models.ID','inner');  
+        $this->db->where('unique_models.Year'    ,$year);
+        $this->db->where('unique_models.Trim'    ,$trim);
+        $this->db->where('car_models.Model'      ,$model);
+
         $query = $this->db->get();
         return $query->row();   
     }

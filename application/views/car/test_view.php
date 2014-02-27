@@ -5,12 +5,12 @@
                 
     </div>
 	   		
-    <form class="form-horizontal " role="form" method="post" action="index.php?/car_controller/createUniqueCar">
+    <form class="form-horizontal " role="form" method="post" action="index.php?/car_controller/carQuery">
 		
 		<div class="form-group ">
 	    	<label for="inputEmail3" class="col-sm-1 control-label">VIN</label>
 	    	<div class="col-sm-4">
-	      	<input type="text" class="form-control"  name="valor1" value="<?php echo set_value('valor1');?>"  >
+	      	<input type="text" class="form-control"  name="VIN" value="<?php echo set_value('valor1');?>"  >
 	  	    </div>	  	
 	  	</div>
         
