@@ -19,6 +19,7 @@ class car_model extends CI_Model {
      * Car_Years
      * 
      */
+    
      /************************************************************************
      
      * Car; Represents an Entire Car by its VIN 
@@ -34,9 +35,18 @@ class car_model extends CI_Model {
         $query = $this->db->get();
         return $query->row();   
      }
-        
-    
-    
+     
+      public function getCarByValues($carBrand, $carModel, $userCity, $carType )
+     {
+       $this->db->select('*');
+        $this->db->from('unique_models');
+        $this->db->join('unique_cars', 'unique_models.ID = unique_cars.Unique_Model','inner');
+        $this->db->where('unique_cars.VIN'    ,$carVIN);
+        $query = $this->db->get();
+        return $query->row();   
+     }
+     
+     
     /************************************************************************
      
      * Unique_Car; Represents an Unique Car by its VIN 
@@ -53,9 +63,7 @@ class car_model extends CI_Model {
     {
         $this->db->insert('unique_cars',$VIN);     
     }
- 
-    
-    
+
     /************************************************************************
      
      * Unique_Model; Represents an Unique Model by its Year,Model and Trim 
@@ -80,14 +88,12 @@ class car_model extends CI_Model {
     {
         $this->db->insert('unique_models',$uniqueModelData); 
     }
-    
-    
+     
     /************************************************************************
      
      * Car_Brand; Represents 1 of all the registred car brands.
      
-     ************************************************************************/
-    
+     ************************************************************************/    
     
     public function getCarBrands() 
     {  
@@ -102,7 +108,6 @@ class car_model extends CI_Model {
         $this->db->where('Brand',$brandName);
         $query = $this->db->get();
         return $query->row();
-        
     }
     
      public function instertCarBrand($brand)
@@ -121,7 +126,7 @@ class car_model extends CI_Model {
     {
         $this->db->select('*');
         $this->db->from('car_models');
-        $this->db->where('Brand_ID',$brand);
+        $this->db->where('Brand_ID',$brandID);
         $query = $this->db->get();
         return $query->result();
     }

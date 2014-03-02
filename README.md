@@ -1,4 +1,4 @@
-Documentación
+    Documentación
 
 Los nombres de las tablas, vista, modelos y controladores estan escritos en Plural y minuscula. EX "trouble_codes".
 
@@ -15,7 +15,9 @@ Los metodos de los modelos están de la siguiente manera:
 
 
 
-Hasta ahora se puede devuelve un carro conociedno el VIN, si el carro no existe lo crea.
+** se debe implementar el controlador carro como una clase, donde los atributos sean los datos del carro único y modelo único. 
+** y todo los metodos ya implementados se pondran ahí.
+Puedo usar un modelo en un library
 
 Hay que hacer la conexión con VinQuery para esto. 
 

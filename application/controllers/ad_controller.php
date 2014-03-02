@@ -30,26 +30,33 @@ class Ad_controller extends Main_Controller {
             $dataPass["years"]  = $this->car_model->getCarYears();
             
             $this->load->view('include/header'); 
-             $this->load->view('car/test_view',$dataPass);  
-            
-            // $this->load->view('ad/search_ad_view',$dataPass);  
+           
+            $this->load->view('ad/search_ad_view',$dataPass);  
             $this->load->view('include/footer');  
         
-            //  $this->load->view('user/succesful_user_view',$dataPass);  
-          
             
         }
-                
-        function showAd()
+             
+        
+        
+        public function showAdModels($brandID)
         {
-              
-            $models = $this->car_model->getModelsByBrand($brandID); 
+            $models = $this->car_model->getModelsByBrandID($brandID); 
             echo "<option selected disabled>Seleccione Una Marca</option>";
             foreach ($models as $model)
                   {
                              echo "<option value='".$model->ID."' >".$model->Model."</option>";
                   }    
                   
+        }
+        
+        
+        public function showAd()
+        {
+              
+            
+            
+            
             // Revisa si existe un caro      
             //$this->load->view('include/header'); 
             //$this->load->view('user/succesful_user_view',$dataPass);  

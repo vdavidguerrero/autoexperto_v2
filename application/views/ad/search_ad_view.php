@@ -39,7 +39,8 @@
                     <label for="inputEmail3" class="col-sm-1 control-label">Marca</label>
                     <div class="col-sm-3">
                         <select class="form-control  " name="brands" id="first-choice" >
-                           <?php
+                           <option selected disabled>Seleccione Una Marca</option>
+                            <?php
                             foreach ($brands as $brand)
                            {
                              echo "<option value='".$brand->ID."'>".$brand->Brand."</option>";
@@ -147,16 +148,8 @@
 	$("#second-choice").attr('enabled', 'false'); 
 	$("#first-choice").change(function() 
 	{
-            
-           // $.Ajax('/index.php?/ad_controller/showModelsFromABrand/'+ $("#first-choice").val(), 
-           // {
-           //  onComplete: function(response) 
-            // {
-             //   if (200 == response.status)
-           // }
-           // });
-            
-		$("#second-choice").load("index.php?/ad_controller/showModelsFromABrand/" + $("#first-choice").val()); 
+             
+		$("#second-choice").load("index.php?/ad_controller/showAdModels/" + $("#first-choice").val()); 
 		$("#second-choice").attr('enabled', 'true'); 
 	});
 });

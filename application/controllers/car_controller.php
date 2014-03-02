@@ -17,15 +17,13 @@ class car_controller extends Main_Controller {
             
         }  
         function index ()
-	{   $dataPass["pepito"] = array();
-            $this->load->view('include/header'); 
-            $this->load->view('car/test_view',$dataPass);  
-            $this->load->view('include/footer');   
+	{   
 	}
         
          public function carQuery()
         {//Paramatrer: $VIN
-             // Checks if there's any Unique car associate with the $VIN, if there's no it creates 1.
+             // Checks if there's any Unique car associate with the $VIN, if there's no it creates 1
+             // and the return the new value.
 
              $VIN = $this->input->post("VIN");
              $car  = $this->car_model->getCar($VIN);
@@ -45,8 +43,6 @@ class car_controller extends Main_Controller {
                     }
                     $this->createUniqueCar($VIN,$manufacturerCountry,$newCarUniqueModelID->ID);   
              }
-              /*Who's Car? */
-             
              return $car; 
             
              
@@ -76,21 +72,20 @@ class car_controller extends Main_Controller {
         }
         
         function createUniqueModel($newUniqueModelDataObject)
-        {//Parameter: $data; an array with all the data! which should be the JSON Object 
+        {  
             /*
-                ALL CAR DATA REQUIRE; BRAND,MODEL,TRIM,YEAR AT LEAST.
-             * 
-             * There isn't any data validation in this code!!!!
+                BRAND,MODEL,TRIM,YEAR are the basic parameters
             */
+            
             //Data Capture 
             $modelName              = $newUniqueModelDataObject->Model;
             $brandName              = $newUniqueModelDataObject->Brand;
             $year                   = $newUniqueModelDataObject->Year;
             $trim                   = $newUniqueModelDataObject->Trim;
-          //$bodyStyle              = $$newUniqueModelDataObject->varlor5;
-          //  $engineType             = $$newUniqueModelDataObject->varlor6;
-          //  $transmission           = $$newUniqueModelDataObject->varlor7;
-          //Data Capture
+            $bodyStyle              = $$newUniqueModelDataObject->varlor5;
+            $engineType             = $$newUniqueModelDataObject->varlor6;
+            $transmission           = $$newUniqueModelDataObject->varlor7;
+            //Data Capture
             
             $modelObject  = $this->car_model->getModelByModelName($modelName);
             
@@ -115,10 +110,10 @@ class car_controller extends Main_Controller {
            $uniqueModelData    = array(
                                             'Year'          => $year,
                                             'Car_Model_ID'  => $modelID,
-                                            'Trim'          => $trim
-                                        //    'Body_Style'    => $bodyStyle,
-                                        //    'Engine_Type'   => $engineType,
-                                        //   'Transmission'  => $transmission
+                                            'Trim'          => $trim,
+                                            'Body_Style'    => $bodyStyle,
+                                            'Engine_Type'   => $engineType,
+                                            'Transmission'  => $transmission
                                        );
                 // Data de revisión;
                 
@@ -144,7 +139,7 @@ class car_controller extends Main_Controller {
                                             'Manufacturer_Country_ID'   => $manufacturerCountryID,
                                             'Date'                      => $now,
                                             'Unique_Model'              => $uniqueCarModelID
-                                        );
+                                      );
             $this->car_model->insertUniqueCar($newUniqueCarData); 
           }
         
@@ -156,7 +151,10 @@ class car_controller extends Main_Controller {
                                     'Trim'          => 'klk',
                                     'Year'          => '2012', 
                                     'Model'         => 'NSX2',
-                                    'Brand'         => 'Honda'
+                                    'Brand'         => 'Honda',
+                                    'Body_Style'    => 'Sedan',
+                                    'Engine_Type'   => 'SI DOHC',
+                                    'Transmission'  => 'Manual'
                                  );
            
             return $pepe; 
