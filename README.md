@@ -34,29 +34,31 @@ Flujo de la aplicación:
   - Se envía un Request al WebService con el VIN del vehículo. 
   - El webservice retorna un objeto tipo carro con los siguientes datos:
  
-    Year
-    Modelo
-    Trim    
-    Manufacturer_Country
-    Body_Style
-    Engine_Type
-    Transmission
-    Gallons
-    Fuel_Economy_City
-    Fuel_Economy_Highway
-    Seating
-    ABS_Brake
-    Driver_Airbag
-    Front_Side_AirBag
-    AC
-    Cruise_Control
-    Convertible_Top
-    Radio
-    CD_Player
-    Subwoofer
-    Leather_Seats
-    Power_Windows
-    Wheels
+    Modelo 
+
+        Year
+        Modelo
+        Trim    
+        Manufacturer_Country
+        Body_Style
+        Engine_Type
+        Transmission
+        Gallons
+        Fuel_Economy_City
+        Fuel_Economy_Highway
+        Seating
+        ABS_Brake
+        Driver_Airbag
+        Front_Side_AirBag
+        AC
+        Cruise_Control
+        Convertible_Top
+        Radio
+        CD_Player
+        Subwoofer
+        Leather_Seats
+        Power_Windows
+        Wheels
 
   - La aplicación móvil mostrará los datos recibidos al vendedor de forma informativa. 
   - La aplicación movil desplegará un formulario a ser llenado con lo siguiente: 
