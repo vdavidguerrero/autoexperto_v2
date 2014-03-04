@@ -115,16 +115,19 @@ a.navbar-brand:hover {
 
 #header {	
 	background-color: #444;
-	background: url(../img/main-bg.jpg) no-repeat center top;
+	background: url(../img/main-bg.jpg) no-repeat center top fixed; 
 	margin-top: -20px;
 	padding-top: 150px;
-	background-attachment: relative;
+//	background-attachment: relative;
 	background-position:  right;
-	min-height: 755px;
+	background-size: auto 100%;
+        background-attachment: fixed;
+        min-height: 755px;
 	width: 100%;
         color: #F0F0F0   ;
-	 
-        -webkit-background-size: 100%;
+	   position: absolute;
+        
+           -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
     background-size: 100%;
@@ -132,6 +135,9 @@ a.navbar-brand:hover {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    
+    
+    
 
    
     

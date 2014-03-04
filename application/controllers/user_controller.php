@@ -21,18 +21,13 @@ class user_controller extends Main_Controller {
         function index ()
 	{
            $this->showUserForm(1);
-            // if $flag == 0, we're creating an Taller. if it's 1 then is a dealer
-           // $dataPass["var"] = " ";
-           // $dataPass["flagValue"] = $flag;
-           // $this->load->view('include/header'); 
-           // $this->load->view('user/login_user_view',$dataPass);  
-           // $this->load->view('include/footer');   
+          
 	}
 
         public function showUserForm($flag)
         {
            //if $flag == 0, we're creating an Taller. if it's 1 then is a dealer
-            $dataPass["cities"] = $this->ad_model->getAdCities();
+            $dataPass["cities"] = $this->user_model->getUserCities();
             $dataPass["var"] = " ";
             $dataPass["flagValue"] = $flag;
             $this->load->view('include/header'); 
@@ -56,7 +51,7 @@ class user_controller extends Main_Controller {
             $this->form_validation->set_message('required', ' ');
             $this->form_validation->set_message('valid_email', 'Digite un correo Valido.');
          
-            $dataPass["cities"] = $this->ad_model->getAdCities();
+            $dataPass["cities"] = $this->user_model->getUserCities();
             $dataPass["flagValue"] = $this->input->post('flag');
             
             if($this->form_validation->run() === FALSE) 
@@ -116,7 +111,7 @@ class user_controller extends Main_Controller {
 
         {    
             $dataPass["brands"] = $this->car_model->getCarBrands();
-            $dataPass["cities"] = $this->ad_model->getAdcities();  
+            $dataPass["cities"] = $this->user_model->getUsercities();  
             $dataPass["years"]  = $this->car_model->getCarYears();
             $this->form_validation->set_rules('cedula_rnc'  , 'ID'      , 'required|exact_length[11]|integer');
             $this->form_validation->set_rules('password'  , 'Password'      , 'required');
@@ -162,7 +157,7 @@ class user_controller extends Main_Controller {
         public function userLogOff()
         {
             $dataPass["brands"] = $this->car_model->getCarBrands();
-            $dataPass["cities"] = $this->ad_model->getAdcities();  
+            $dataPass["cities"] = $this->user_model->getUsercities();  
             $dataPass["years"]  = $this->car_model->getCarYears();
             $dataPass["var"] = " ";
             $this->session->sess_destroy();

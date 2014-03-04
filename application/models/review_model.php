@@ -10,7 +10,7 @@ class Ad_model extends CI_Model {
 	$this->load->database(); 
     }
     
-    public function insertReview()
+    public function insertCarReview()
     {
          $this->db->insert('car_reviews',$part); 
     }

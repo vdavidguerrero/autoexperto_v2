@@ -38,4 +38,10 @@ class user_model extends CI_Model {
          $query = $this->db->get_where('users', array('ID'=> $rnc_cedula,'password' => $password));
          return $query->row();
     }
+    
+    public function getUserCities() 
+    {  
+      $query = $this->db->get("dominican_republic_cities");
+      return $query->result();
+    }
 }

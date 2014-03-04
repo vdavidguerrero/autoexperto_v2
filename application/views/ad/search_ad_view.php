@@ -1,7 +1,5 @@
  <div id="header">
-      
 
-    
         <div class="container col-sm-offset-1">
     
     <h2>¿Qué Andas Buscando?</h2>
@@ -14,7 +12,7 @@
   		
     </div>
 	
-    <form class="form-horizontal  " role="form" method="post" action="index.php?/ad_controller">
+    <form class="form-horizontal  " role="form" method="post" action="index.php?/ad_controller/showSearchResults">
 		 <br>
            
                  <div class="form-group ">

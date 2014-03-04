@@ -18,6 +18,7 @@ class car_controller extends Main_Controller {
         }  
         function index ()
 	{   
+            
 	}
         
          public function carQuery()
