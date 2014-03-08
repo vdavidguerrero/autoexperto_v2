@@ -16,77 +16,52 @@ class car_controller extends Main_Controller {
             //Arreglar esto con el redirect...
             
         }  
-        function index ()
-	{   
-            
-	}
         
          public function carQuery()
-        {//Paramatrer: $VIN
+        {
              // Checks if there's any Unique car associate with the $VIN, if there's no it creates 1
              // and the return the new value.
 
-             $VIN = $this->input->post("VIN");
+             $VIN  =  $this->input->get('VIN');
              $car  = $this->car_model->getCar($VIN);
              if(!$car)
              {
-                    $newCarDataObject = $this->queryCarData($VIN); 
-                    $trim  =                   $newCarDataObject->Trim;
-                    $model =                   $newCarDataObject->Model;
-                    $year  =                   $newCarDataObject->Year;
-                    $manufacturerCountry =     $newCarDataObject->Country;
+                    $UniqueCarDataArray = $this->queryCarData($VIN); 
+                    $trim  =                   $UniqueCarDataArray["Trim"];
+                    $model =                   $UniqueCarDataArray["Car_Model_ID"];
+                    $year  =                   $UniqueCarDataArray["Year"];
+                    $manufacturerCountry =     $UniqueCarDataArray["Manufacturer_Country"];
 
-                    $newCarUniqueModelID =     $this->car_model->getUniqueModel($trim,$model,$year);
-                    if(!$newCarUniqueModelID)
+                    $newCarUniqueModelObject =     $this->car_model->getUniqueModel($trim,$model,$year);
+                    if(!$newCarUniqueModelObject)
                     {
-                         $this->createUniqueModel($newCarDataObject); 
-                         $newCarUniqueModelID = $this->car_model->getUniqueModel($trim,$model,$year);
+                         $this->createUniqueModel($UniqueCarDataArray); 
+                         $newCarUniqueModelObject = $this->car_model->getUniqueModel($trim,$model,$year);
                     }
-                    $this->createUniqueCar($VIN,$manufacturerCountry,$newCarUniqueModelID->ID);   
+                    $this->createUniqueCar($VIN,$manufacturerCountry,$newCarUniqueModelObject->ID);   
+                    $car  = $this->car_model->getCar($VIN);
              }
-             return $car; 
-            
-             
-            /*
-             * Retorna los datos necesarios para llenar el formulario del carro. 
-             * 
-             * Primer Parte: Gestion del carro.
-             * 
-             * 1)Revisa si ya exisiste un carro único con el VIN. Si exsite se retorna el formulario
-             * 
-             * 
-             * 2) Si el no existe el carro entonces Realiza un request a vinquery.com y trae los datos del VIN. 
-             * 
-             * 
-             * 3) Con el TRIM, Modelo, Año y marca,y revisa si Existe un módelo único con esas descripciones.
-             *  Si existe trae el ID. 
-             * 
-             * Si no existe , pues se procede a crear un Modelo_único con los datos de vinQuery. Y retorna el ID
-             *  
-             * 
-             * Luego que se tiene el ID del modelo_Unico, se crea el carro único y se retorna el formulario.
-             * 
-             * Segunda Parte: Envío de la data. 
-             * 
-             * Se en envía los datos de la información del modelo que está en la tabla Unique_Model.          
-             */
+            header('Content-type: application/json');
+            echo json_encode($car);
         }
         
-        function createUniqueModel($newUniqueModelDataObject)
+        function createUniqueModel($newUniqueModelDataArray)
         {  
             /*
                 BRAND,MODEL,TRIM,YEAR are the basic parameters
             */
             
             //Data Capture 
-            $modelName              = $newUniqueModelDataObject->Model;
-            $brandName              = $newUniqueModelDataObject->Brand;
-            $year                   = $newUniqueModelDataObject->Year;
-            $trim                   = $newUniqueModelDataObject->Trim;
-            $bodyStyle              = $$newUniqueModelDataObject->varlor5;
-            $engineType             = $$newUniqueModelDataObject->varlor6;
-            $transmission           = $$newUniqueModelDataObject->varlor7;
+            $modelName              = $newUniqueModelDataArray["Car_Model_ID"];
+            $brandName              = $newUniqueModelDataArray["Brand"];
             //Data Capture
+            
+            
+            // Even tough these are car's values, they aren't define on  UniqueCar table, 
+            // We need to unset.
+            unset($newUniqueModelDataArray['Brand']);    
+            unset($newUniqueModelDataArray['Manufacturer_Country']);
+            
             
             $modelObject  = $this->car_model->getModelByModelName($modelName);
             
@@ -105,8 +80,9 @@ class car_controller extends Main_Controller {
                     $modelObject = $this->car_model->getModelByModelName($modelName);
             }
  
-           $modelID        = $modelObject->ID; 
-            /*Here Goes all the model data...*/
+           $newUniqueModelDataArray["Car_Model_ID"]  = $modelObject->ID; 
+           $this->car_model->insertUniqueModel($newUniqueModelDataArray);
+            /*Here Goes all the model data...
             
            $uniqueModelData    = array(
                                             'Year'          => $year,
@@ -117,11 +93,11 @@ class car_controller extends Main_Controller {
                                             'Transmission'  => $transmission
                                        );
                 // Data de revisión;
-                
-           $this->car_model->insertUniqueModel($uniqueModelData);
+            */    
+           
         }
         
-        function createUniqueCar($VIN,$manufacturerCountry, $uniqueCarModelID)
+        function createUniqueCar($VIN, $manufacturerCountry, $uniqueCarModelID)
         {//paramater: $VIN, $ManufacturarCountry, $uniqueCarModel
            
             $now = date("Y-m-d H:i:s");
@@ -147,19 +123,64 @@ class car_controller extends Main_Controller {
         function queryCarData($VIN)
         {
             // Sacar esta info de VIN Query
-            $pepe = (object) array(
-                                    'Country'       => 'Japan', 
-                                    'Trim'          => 'klk',
-                                    'Year'          => '2012', 
-                                    'Model'         => 'NSX2',
-                                    'Brand'         => 'Honda',
-                                    'Body_Style'    => 'Sedan',
-                                    'Engine_Type'   => 'SI DOHC',
-                                    'Transmission'  => 'Manual'
-                                 );
+           $carData = array(
+                                    'Manufacturer_Country'  => 'Venezuela', // Datos Del Carro único
+                                    'Brand'                 => 'Mitsubishi',// Datos Del Carro único We must Unset them
+                                    'Year'                  => '1997', 
+                                    'Car_Model_ID'          => 'Lancer',
+                                    'Trim'                  => 'LE Full',
+                                    'Body_Style'            => 'Coupe',
+                                    'Engine_Type'           => '2.0 SOHC',
+                                    'Transmission'          => 'Secuencial',
+                                    'Gallons'               => '12',
+                                    'Fuel_Economy_City'     => '25', 
+                                    'Fuel_Economy_Highway'  => '27',
+                                    'Seating'               => 'Lether', 
+                                    'ABS_Brake'             => 'Yes',
+                                    'Driver_Airbag'         => 'Yes',
+                                    'Front_Side_AirBag'     => 'NO',
+                                    'AC'                    => 'YES',
+                                    'Cruise_Control'        => 'YES',
+                                    'Convertible_Top'       => 'NO',
+                                    'Radio'                 => 'YES',
+                                    'CD_Player'             => 'DVD',
+                                    'Subwoofer'             => 'YES 18',
+                                    'Leather_Seats'         => 'NO',
+                                    'Power_Windows'         => 'YES',
+                                    'Wheels'                => 'ALLOY'
+                           );
            
-            return $pepe; 
+            return $carData; 
+            
+                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+            
         }
          
+   
+        
         
 }

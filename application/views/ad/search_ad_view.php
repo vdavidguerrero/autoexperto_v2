@@ -24,12 +24,12 @@
                            echo $thisFile; 
                             foreach ($cities as $city)
                            {
-                             echo "<option value='volvo'>".$city->City."</option>";
+                             echo "<option value='".$city->iD."'>".$city->City."</option>";
                            }
                            ?>
                        </select>  
                     </div>	  	
-	 	</div>
+	 	</div> 
            
                  
                  
@@ -64,9 +64,9 @@
                     <div class="col-sm-3">
                         <select class="form-control"  name="type">
                              <option selected disabled>Seleccione Un Tipo</option>
-                            <option value="volvo">Coupe</option>
-                            <option value="saab">Sedan</option>
-                            <option value="fiat">Jeep</option>
+                            <option value="Coupe">Coupe</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="Jeep">Jeep</option>
                        </select>  
                     </div>	  	
 	  	</div>
@@ -76,19 +76,19 @@
                     <div class="col-sm-2" id="pepe">
                         <select class="form-control "  name="lowPrice">
                              <option selected disabled>Mínimo</option>
-                            <option value="volvo">100,000</option>
-                            <option value="saab">200,000</option>
-                            <option value="fiat">300,000</option>
-                            <option value="audi">400,000</option>
+                            <option value="100K">100,000</option>
+                            <option value="200K">200,000</option>
+                            <option value="300K">300,000</option>
+                            <option value="400K">400,000</option>
                        </select>  
                         </div>
                         <div class="col-sm-2" id="pepe">
                         <select class="form-control  " name="highPrice">
                              <option selected disabled>Máximo</option>
-                            <option value="volvo">100,000</option>
-                            <option value="saab">200,000</option>
-                            <option value="fiat">300,000</option>
-                            <option value="audi">400,000</option>
+                            <option value="100K">100,000</option>
+                            <option value="200K">200,000</option>
+                            <option value="300K">300,000</option>
+                            <option value="400K">400,000</option>
                        </select>  
                     </div>  	
 	  	</div>
@@ -103,7 +103,7 @@
                            <?php
                             foreach ($years as $year)
                            {
-                             echo "<option value='volvo'>".$year."</option>";
+                             echo "<option value='".$year."'>".$year."</option>";
                            }
                            ?>
                        </select>  
@@ -115,7 +115,7 @@
                             <?php
                             foreach ($years as $year)
                            {
-                             echo "<option value='volvo'>".$year."</option>";
+                             echo "<option value='".$year."'>".$year."</option>";
                            }
                            ?>
                        </select>  
@@ -138,6 +138,8 @@
     </form>
     
  
+
+    
 </div>
 </div>
 <script type="text/javascript">

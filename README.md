@@ -1,5 +1,7 @@
     Documentación
 
+-----Descripción del Código------------------------------------------------------------
+
 Los nombres de las tablas, vista, modelos y controladores estan escritos en Plural y minuscula. EX "trouble_codes".
 
 Los campos  de las tablas están escritos en con la primera letra en Mayuscula, y en singular. EX "Trouble_Code"
@@ -15,9 +17,6 @@ Los metodos de los modelos están de la siguiente manera:
 
 
 
-** se debe implementar el controlador carro como una clase, donde los atributos sean los datos del carro único y modelo único. 
-** y todo los metodos ya implementados se pondran ahí.
-Puedo usar un modelo en un library
 
 Hay que hacer la conexión con VinQuery para esto. 
 
@@ -26,9 +25,18 @@ Hay que hacer la conexión con VinQuery para esto.
 Proxima Función a trabajar: ad_controller->showad()
                             ad_controller->createAd()
                             ad_controller->showSearchResults()
+------WebService-----------------------------------------------------------------------
+Recibe como parametro un VIN, si no existe pero es un VIN valido lo busca en 
+la base de dato del suplido, lo creo y lo retorna. Si ya existe simplemente lo 
+retorna en JSON. 
+
+http://127.0.0.1/index.php/car_controller/carQuery?VIN=
 
 
-Flujo de la aplicación: 
+
+
+
+------Flujo de la aplicación------------------------------------------------------------
 
   - Se toma el VIN y los Trouble Codes del vehículos a través del OBD II Reader en la aplicación Android.
   - Se envía un Request al WebService con el VIN del vehículo. 
@@ -124,9 +132,9 @@ Flujo de la aplicación:
         
 
 
----------------
 
- Lista de trouble Codes
+
+ -----------Lista de trouble Codes---------------------------------------------------------------
 
     P0001 Fuel Volume Regulator Control Circuit/Open 
     P0002 Fuel Volume Regulator Control Circuit Range/Performance 

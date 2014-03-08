@@ -33,7 +33,7 @@ class car_model extends CI_Model {
         $this->db->join('unique_cars', 'unique_models.ID = unique_cars.Unique_Model','inner');
         $this->db->where('unique_cars.VIN'    ,$carVIN);
         $query = $this->db->get();
-        return $query->row();   
+        return $query->row_array();   
      }
      
       public function getCarByValues($carBrand, $carModel, $userCity, $carType )

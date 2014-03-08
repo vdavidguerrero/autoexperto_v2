@@ -17,10 +17,10 @@ class Ad_model extends CI_Model {
      
     ************************************************************************/
     
-    public function insertTroubleCode($troubleCode)
+    public function relateAdAndTroubleCode($relationshipData)
     {
      
-         $this->db->insert('unique_cars',$troubleCode);     
+         $this->db->insert('trouble_code_N_ad',$relationshipData);     
     }
     
     public function getTroubleCode($troubleCode)
@@ -38,12 +38,33 @@ class Ad_model extends CI_Model {
      
     ************************************************************************/
        
-    public function getAdsByVIN()
+    public function getPendingAdByVIN($carVIN)
     {
-        
+        $this->db->select('*');
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars', 'car_ads.Unique_Car_ID = unique_cars.ID','inner');
+        $this->db->where('unique_cars.VIN'    ,$carVIN);
+        $this->db->where('car_ads.Flag', 0);
+        $query = $this->db->get();
+        return $query->row();   
     }
     
-    public function insertCarAd()
+    public function insertCarPartReview($carPartReviewData)
+    {
+         $this->db->insert('car_part_review',$carPartReviewData); 
+    }
+    
+     public function getActiveAdByVIN($carVIN)
+    {
+        $this->db->select('*');
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars', 'car_ads.Unique_Car_ID = unique_cars.ID','inner');
+        $this->db->where('unique_cars.VIN'    ,$carVIN);
+        $this->db->where('car_ads.Flag', 1);
+        $query = $this->db->get();
+        return $query->row();   
+    }
+    public function getAdsBySearch()
     {
         
     }
