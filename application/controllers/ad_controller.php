@@ -31,7 +31,7 @@ class Ad_controller extends Main_Controller {
            $dataPass["years"]  = $this->car_model->getCarYears();
             
            $this->load->view('include/header'); 
-           $this->load->view('ad/test_view',$dataPass);  
+           $this->load->view('ad/search_ad_view',$dataPass);  
            $this->load->view('include/footer');  
 
         }
@@ -61,57 +61,50 @@ class Ad_controller extends Main_Controller {
               
           )  ;
             
-            
-            if("" == trim())
-            {
-                
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+   
           //$this->load->view('include/header'); 
           //$this->load->view('user/succesful_user_view',$dataPass);  
           // $this->load->view('include/footer'); 
         }
        
-        public function createAd($partsArray, $troubleCodes, $precio ,$idUser, $vin,$papers)
+        public function createAd()
         {
-           
-            
-            
-            if($this->ad_model->getActiveAdByVIN($vin))
-            {
+             $json = file_get_contents('php://input');
+             $obj = json_decode($json,true);
+             $VIN = $obj["VIN"];
+             
+            if($VIN)           
                 return "Ya existe un anuncio activo de este carro";
-            }
             
             else 
             {
-                //Array
-                $carPartsReview = $partsArray; 
-                $carTroubleCodes = $troubleCodes;
-                //
-
-                //Data Capture
-                $carPaperStatus = $papers;
-                $adPrice = $precio; 
+             
+                foreach ($obj['troubleCodes'] as $k =>$val)
+                     $carTroubleCodes[$k] =  $val['Trouble'];
+                 
+             
+                 foreach ($obj['carParts'] as $val)
+                 {
+                     $carPartsReview["carPartID"]     =  $val['ID'];
+                     $carPartsReview["carPartReview"] =  $val['Review'];
+                 }
+                 
+                
+               
+             
+                $idUser = $obj["ID_user"];
+                $carPaperStatus = $obj["papers"];
+                $adPrice = $obj["adPrice"];
+                $userID = $obj["userID"];
+                $carReview = $this->generateCarReview($carPartsReview);
                 $flag = 0;
                 $adPublishDate = date("Y-m-d H:i:s");
                 $adExpirationDate = date("Y-m-d H:i:s");
-                $sellerID = $idUser;
-                $VIN = $vin; 
-                $carReview = $this->generateCarReview();
                 $uniqueCarObject = $this->car_model->getUniqueCar($VIN);
                 $uniqueCarID = $uniqueCarObject->ID;
-                 // creating the ad
+                
                  $newCarAdData = array(
-                                        'Seller_ID'         => $sellerID,
+                                        'Seller_ID'         => $userID,
                                         'Expiration_Date'   => $adExpirationDate,
                                         'Publish_Date'      => $adPublishDate,
                                         'Price'             => $adPrice,
@@ -127,12 +120,12 @@ class Ad_controller extends Main_Controller {
 
                 // Part relate to the review
 
-                 foreach ($carPartsReview as $carPartID => $carPartReview)
+                 foreach ($carPartsReview as $carPartReview)
                 {
                     $carPartReviewData = array(
                                                 'Car_Ad_ID'     => $carAdID,
-                                                'Car_Part_ID'   => $carPartID,
-                                                'Seller_Review' => $carPartReview,
+                                                'Car_Part_ID'   => $carPartReview["carPartID"],
+                                                'Seller_Review' => $carPartReview["carPartReview"],
                                                 'Seller_Date'   => $adPublishDate
                                              );
                     $this->ad_model->insertCarPartReview($carPartReviewData);
@@ -184,9 +177,15 @@ class Ad_controller extends Main_Controller {
         }
     
         
-        public function generateCarReview()
+        public function generateCarReview($carPartsReview)
         {
-            return 4; 
+            $review = 0; 
+            
+            foreach($carPartsReview as $values)
+                $review += $values; 
+            
+            
+            return review/(44);
         }
         
         

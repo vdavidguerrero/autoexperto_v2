@@ -2,9 +2,7 @@
 
 
 class car_controller extends Main_Controller {
-
-    
-    //Falta buscar la forma de llamar a ad_controller->index() desde aquí.;
+   
         public function __construct()
         {
             parent::__construct();
@@ -16,24 +14,37 @@ class car_controller extends Main_Controller {
             //Arreglar esto con el redirect...
             
         }  
+       
         public function index()
         {
             
-            foreach($car as $carrito)
-            {
-                echo $carrito;
-                echo " ";
-            }
-            //username: 'The Reddest'
-            
+             $json = file_get_contents('php://input');
+             $obj = json_decode($json,true);
+             
+            // echo  $obj['piezas'][0]['ID'];
+             //echo  $obj['piezas'][1]['ID'];
+             $exp = array();
+             foreach ($obj['carParts'] as $val)
+             {
+                 echo  $val['ID'];
+                 echo " ";
+                 echo  $val['Review'];
+                    
+             }
+           
+             
+            // echo  $obj['Trouble'][0]['Trouble'];
+            //echo  $obj['Trouble'][1]['Trouble'];
+            //  echo $charlie[0];
+            //  echo $charlie[1];
+           
         }
-        
         public function carQuery()
         {
              
              $json = file_get_contents('php://input');
-             $obj = json_decode($json);
-             $VIN  =  $obj->{'VIN'};
+             $obj = json_decode($json,true);
+             $VIN  =  $obj['VIN'];
            
              
              if(strlen($VIN) == 17)

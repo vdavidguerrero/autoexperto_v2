@@ -34,11 +34,11 @@ Arreglar el documento de VISIO, de la base de datos.
 
 ------WebService-----------------------------------------------------------------------
 
-Recibe como parametro un VIN, si no existe pero es un VIN valido lo busca en 
-la base de dato del suplido, lo creo y lo retorna. Si ya existe simplemente lo 
+Recibe un JSON con un campo VIN y busca el VIN en la base de datos, si no existe pero es un VIN valido lo busca en 
+la base de dato del suplidor, lo creo y lo retorna. Si ya existe simplemente lo 
 retorna en JSON. 
 
-http://54.200.195.186/index.php/car_controller/carQuery?VIN=VIN_VALIDO_17_CARACTERES
+http://54.200.195.186/index.php/car_controller/carQuery
 
 
 
@@ -80,7 +80,7 @@ http://54.200.195.186/index.php/car_controller/carQuery?VIN=VIN_VALIDO_17_CARACT
     Precio
     Estado_Papeles_DGII
 
-    Carrocería
+    Carrocería ID: 1-16
         
         Bonnet
         Bumper
@@ -99,7 +99,7 @@ http://54.200.195.186/index.php/car_controller/carQuery?VIN=VIN_VALIDO_17_CARACT
         Side_Panel
         Guard
 
-    Interior
+    Interior ID: 17-31
 
         Door_FR_Panel
         Door_FL_Panel
@@ -117,7 +117,7 @@ http://54.200.195.186/index.php/car_controller/carQuery?VIN=VIN_VALIDO_17_CARACT
         Rear_View_Mirror
         Trunk
 
-    Mecánico. 
+    Mecánico. ID: 32-44
 
         Motor
         Transmision
