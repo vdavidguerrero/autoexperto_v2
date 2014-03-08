@@ -18,18 +18,23 @@ class car_controller extends Main_Controller {
         }  
         public function index()
         {
-            $json = file_get_contents('php://input');
-            $obj = json_decode($json);
+            
+            foreach($car as $carrito)
+            {
+                echo $carrito;
+                echo " ";
+            }
+            //username: 'The Reddest'
             
         }
         
-         public function carQuery()
+        public function carQuery()
         {
-             // Checks if there's any Unique car associate with the $VIN, if there's no it creates 1
-             // and the return the new value.
-
-             $VIN  =  $this->input->get('VIN');
              
+             $json = file_get_contents('php://input');
+             $obj = json_decode($json);
+             $VIN  =  $obj->{'VIN'};
+           
              
              if(strlen($VIN) == 17)
              {
@@ -55,12 +60,11 @@ class car_controller extends Main_Controller {
              }
              else
                   $car = "VIN INVALIDO";
-                  
-                  header('Content-type: application/json');
-                  echo json_encode($car);
+               header('Content-type: application/json');
+               echo json_encode($car);
         }
         
-        function createUniqueModel($newUniqueModelDataArray)
+        public function createUniqueModel($newUniqueModelDataArray)
         {  
             /*
                 BRAND,MODEL,TRIM,YEAR are the basic parameters
@@ -112,7 +116,7 @@ class car_controller extends Main_Controller {
            
         }
         
-        function createUniqueCar($VIN, $manufacturerCountry, $uniqueCarModelID)
+        public function createUniqueCar($VIN, $manufacturerCountry, $uniqueCarModelID)
         {//paramater: $VIN, $ManufacturarCountry, $uniqueCarModel
            
             $now = date("Y-m-d H:i:s");
