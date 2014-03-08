@@ -31,7 +31,7 @@ class car_controller extends Main_Controller {
              $VIN  =  $this->input->get('VIN');
              
              
-             if(strlen($VIN) != 17)
+             if(strlen($VIN) == 17)
              {
                 $car  = $this->car_model->getCar($VIN);
                 if(!$car)
