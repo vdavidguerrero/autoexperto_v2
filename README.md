@@ -25,12 +25,20 @@ Hay que hacer la conexión con VinQuery para esto.
 Proxima Función a trabajar: ad_controller->showad()
                             ad_controller->createAd()
                             ad_controller->showSearchResults()
+
+------Pendiente-----------------------------------------------------------------------
+
+Arreglar el documento de VISIO, de la base de datos. 
+
+
+
 ------WebService-----------------------------------------------------------------------
+
 Recibe como parametro un VIN, si no existe pero es un VIN valido lo busca en 
 la base de dato del suplido, lo creo y lo retorna. Si ya existe simplemente lo 
 retorna en JSON. 
 
-http://54.200.195.186/index.php/car_controller/carQuery?VIN=
+http://54.200.195.186/index.php/car_controller/carQuery?VIN=VIN_VALIDO_17_CARACTERES
 
 
 

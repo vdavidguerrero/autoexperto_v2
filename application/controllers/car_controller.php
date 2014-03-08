@@ -16,6 +16,12 @@ class car_controller extends Main_Controller {
             //Arreglar esto con el redirect...
             
         }  
+        public function index()
+        {
+            $json = file_get_contents('php://input');
+            $obj = json_decode($json);
+            
+        }
         
          public function carQuery()
         {
@@ -47,7 +53,7 @@ class car_controller extends Main_Controller {
                 }
                
              }
-              else
+             else
                   $car = "VIN INVALIDO";
                   
                   header('Content-type: application/json');
