@@ -23,26 +23,35 @@ class car_controller extends Main_Controller {
              // and the return the new value.
 
              $VIN  =  $this->input->get('VIN');
-             $car  = $this->car_model->getCar($VIN);
-             if(!$car)
+             
+             
+             if(!strlen($VIN) != 17)
              {
-                    $UniqueCarDataArray = $this->queryCarData($VIN); 
-                    $trim  =                   $UniqueCarDataArray["Trim"];
-                    $model =                   $UniqueCarDataArray["Car_Model_ID"];
-                    $year  =                   $UniqueCarDataArray["Year"];
-                    $manufacturerCountry =     $UniqueCarDataArray["Manufacturer_Country"];
+                $car  = $this->car_model->getCar($VIN);
+                if(!$car)
+                {
+                       $UniqueCarDataArray = $this->queryCarData($VIN); 
+                       $trim  =                   $UniqueCarDataArray["Trim"];
+                       $model =                   $UniqueCarDataArray["Car_Model_ID"];
+                       $year  =                   $UniqueCarDataArray["Year"];
+                       $manufacturerCountry =     $UniqueCarDataArray["Manufacturer_Country"];
 
-                    $newCarUniqueModelObject =     $this->car_model->getUniqueModel($trim,$model,$year);
-                    if(!$newCarUniqueModelObject)
-                    {
-                         $this->createUniqueModel($UniqueCarDataArray); 
-                         $newCarUniqueModelObject = $this->car_model->getUniqueModel($trim,$model,$year);
-                    }
-                    $this->createUniqueCar($VIN,$manufacturerCountry,$newCarUniqueModelObject->ID);   
-                    $car  = $this->car_model->getCar($VIN);
+                       $newCarUniqueModelObject =     $this->car_model->getUniqueModel($trim,$model,$year);
+                       if(!$newCarUniqueModelObject)
+                       {
+                            $this->createUniqueModel($UniqueCarDataArray); 
+                            $newCarUniqueModelObject = $this->car_model->getUniqueModel($trim,$model,$year);
+                       }
+                       $this->createUniqueCar($VIN,$manufacturerCountry,$newCarUniqueModelObject->ID);   
+                       $car  = $this->car_model->getCar($VIN);
+                }
+               
              }
-            header('Content-type: application/json');
-            echo json_encode($car);
+              else
+                  $car = "VIN INVALIDO";
+                  
+                  header('Content-type: application/json');
+                  echo json_encode($car);
         }
         
         function createUniqueModel($newUniqueModelDataArray)

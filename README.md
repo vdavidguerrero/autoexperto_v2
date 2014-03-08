@@ -30,9 +30,7 @@ Recibe como parametro un VIN, si no existe pero es un VIN valido lo busca en
 la base de dato del suplido, lo creo y lo retorna. Si ya existe simplemente lo 
 retorna en JSON. 
 
-http://127.0.0.1/index.php/car_controller/carQuery?VIN=
-
-
+http://54.200.195.186/index.php/car_controller/carQuery?VIN=
 
 
 
