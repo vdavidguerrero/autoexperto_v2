@@ -7,37 +7,18 @@ class car_controller extends Main_Controller {
         {
             parent::__construct();
             $this->load->model("car_model");
+            $this->load->model("ad_model");
             $this->load->library('form_validation');
             $this->load->helper('form');
             $this->load->library('session');
             $this->load->helper('url');
-            //Arreglar esto con el redirect...
-            
+
         }  
        
         public function index()
-        {
-            
-             $json = file_get_contents('php://input');
-             $obj = json_decode($json,true);
-             
-            // echo  $obj['piezas'][0]['ID'];
-             //echo  $obj['piezas'][1]['ID'];
-             $exp = array();
-             foreach ($obj['carParts'] as $val)
-             {
-                 echo  $val['ID'];
-                 echo " ";
-                 echo  $val['Review'];
-                    
-             }
-           
-             
-            // echo  $obj['Trouble'][0]['Trouble'];
-            //echo  $obj['Trouble'][1]['Trouble'];
-            //  echo $charlie[0];
-            //  echo $charlie[1];
-           
+        {  
+              $troubleCodeObject =  $this->ad_model->getTroubleCode("P0002");
+              echo $troubleCodeObject->ID;
         }
         public function carQuery()
         {
@@ -45,8 +26,7 @@ class car_controller extends Main_Controller {
              $json = file_get_contents('php://input');
              $obj = json_decode($json,true);
              $VIN  =  $obj['VIN'];
-           
-             
+  
              if(strlen($VIN) == 17)
              {
                 $car  = $this->car_model->getCar($VIN);
@@ -70,28 +50,21 @@ class car_controller extends Main_Controller {
                
              }
              else
-                  $car = "VIN INVALIDO";
+              $car = "VIN INVALIDO";
                header('Content-type: application/json');
                echo json_encode($car);
         }
         
         public function createUniqueModel($newUniqueModelDataArray)
         {  
-            /*
-                BRAND,MODEL,TRIM,YEAR are the basic parameters
-            */
-            
-            //Data Capture 
+          
             $modelName              = $newUniqueModelDataArray["Car_Model_ID"];
             $brandName              = $newUniqueModelDataArray["Brand"];
-            //Data Capture
-            
             
             // Even tough these are car's values, they aren't define on  UniqueCar table, 
             // We need to unset.
             unset($newUniqueModelDataArray['Brand']);    
             unset($newUniqueModelDataArray['Manufacturer_Country']);
-            
             
             $modelObject  = $this->car_model->getModelByModelName($modelName);
             
@@ -111,20 +84,7 @@ class car_controller extends Main_Controller {
             }
  
            $newUniqueModelDataArray["Car_Model_ID"]  = $modelObject->ID; 
-           $this->car_model->insertUniqueModel($newUniqueModelDataArray);
-            /*Here Goes all the model data...
-            
-           $uniqueModelData    = array(
-                                            'Year'          => $year,
-                                            'Car_Model_ID'  => $modelID,
-                                            'Trim'          => $trim,
-                                            'Body_Style'    => $bodyStyle,
-                                            'Engine_Type'   => $engineType,
-                                            'Transmission'  => $transmission
-                                       );
-                // Data de revisión;
-            */    
-           
+           $this->car_model->insertUniqueModel($newUniqueModelDataArray);   
         }
         
         public function createUniqueCar($VIN, $manufacturerCountry, $uniqueCarModelID)
@@ -182,35 +142,7 @@ class car_controller extends Main_Controller {
            
             return $carData; 
             
-                
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-                
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        
-            
+                  
         }
-         
-   
-        
-        
+    
 }

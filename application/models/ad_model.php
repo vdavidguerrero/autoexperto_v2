@@ -29,7 +29,7 @@ class Ad_model extends CI_Model {
         $this->db->from('trouble_codes');
         $this->db->where('Trouble_Code'    ,$troubleCode);
         $query = $this->db->get();
-        return $query->result();  
+        return $query->row();  
     }
     
     /************************************************************************
@@ -40,13 +40,18 @@ class Ad_model extends CI_Model {
        
     public function getPendingAdByVIN($carVIN)
     {
-        $this->db->select('*');
+        $this->db->select('car_ads.ID');
         $this->db->from('car_ads');
         $this->db->join('unique_cars', 'car_ads.Unique_Car_ID = unique_cars.ID','inner');
         $this->db->where('unique_cars.VIN'    ,$carVIN);
         $this->db->where('car_ads.Flag', 0);
         $query = $this->db->get();
         return $query->row();   
+    }
+    
+    public function insertCarAd($newCarAdData)
+    {
+          $this->db->insert('car_ads',$newCarAdData);
     }
     
     public function insertCarPartReview($carPartReviewData)

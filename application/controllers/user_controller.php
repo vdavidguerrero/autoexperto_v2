@@ -110,9 +110,8 @@ class user_controller extends Main_Controller {
         public function userLogin()
 
         {    
-            $dataPass["brands"] = $this->car_model->getCarBrands();
-            $dataPass["cities"] = $this->user_model->getUsercities();  
-            $dataPass["years"]  = $this->car_model->getCarYears();
+          
+            
             $this->form_validation->set_rules('cedula_rnc'  , 'ID'      , 'required|exact_length[11]|integer');
             $this->form_validation->set_rules('password'  , 'Password'      , 'required');
             $this->form_validation->set_message('exact_length', 'Introduzca un RNC o Cedula Valida. EX 00119045615');
@@ -138,6 +137,9 @@ class user_controller extends Main_Controller {
                   $this->session->set_userdata('logged_in', $sess_array);
                  
                   //redirect('', 'refresh');
+                  $dataPass["brands"] = $this->car_model->getCarBrands();
+                  $dataPass["cities"] = $this->user_model->getUsercities();  
+                  $dataPass["years"]  = $this->car_model->getCarYears();
                   $this->load->view('include/header'); 
                   $this->load->view('ad/search_ad_view',$dataPass);  
                   $this->load->view('include/footer');
@@ -166,6 +168,27 @@ class user_controller extends Main_Controller {
             $this->load->view('include/header'); 
             $this->load->view('ad/search_ad_view',$dataPass);  
             $this->load->view('include/footer');
+        }
+        
+        public function remoteUserLogin()
+        {    
+            $json = file_get_contents('php://input');
+            $obj = json_decode($json,true);
+            $userID  =  $obj['userID'];
+            $password  =  MD5($obj['password']);
+            
+            $check =  $this->user_model->checkUserLogin($userID,$password);
+           
+            
+            
+            if($check)
+                $response = array("Response" => "OK");
+            else
+                $response = array("Response" => "NO");
+                    
+             header('Content-type: application/json');
+             echo json_encode($response);        
+                 
         }
     
 } 

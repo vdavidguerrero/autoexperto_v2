@@ -21,8 +21,22 @@ class Ad_controller extends Main_Controller {
     
         function index ()
 	{
-            $this->showAdForm();
-	}
+            //$this->showAdForm();
+            
+             $json = file_get_contents('php://input');
+             $obj = json_decode($json,true);
+             echo  $obj["VIN"];
+             
+           
+             
+                 foreach ($obj['carParts'] as  $val)
+                 {
+                     $carPartsReview["carPartID"]     +=  $val['ID'];
+                     $carPartsReview["carPartReview"] +=  $val['Review'];
+                 }
+                 
+                
+        }
         
         public function showAdForm()
         {
@@ -69,12 +83,14 @@ class Ad_controller extends Main_Controller {
        
         public function createAd()
         {
+            
+            
              $json = file_get_contents('php://input');
              $obj = json_decode($json,true);
              $VIN = $obj["VIN"];
              
-            if($VIN)           
-                return "Ya existe un anuncio activo de este carro";
+            if($this->ad_model->getPendingAdByVIN($VIN)) // se debe cambiar a activo.          
+               echo "Ya existe un anuncio para este Vehículo.";
             
             else 
             {
@@ -83,16 +99,13 @@ class Ad_controller extends Main_Controller {
                      $carTroubleCodes[$k] =  $val['Trouble'];
                  
              
-                 foreach ($obj['carParts'] as $val)
+                 foreach ($obj['carParts'] as $k => $val)
                  {
-                     $carPartsReview["carPartID"]     =  $val['ID'];
-                     $carPartsReview["carPartReview"] =  $val['Review'];
+                     $carPartsReview[$k] =  $val['Review'];
+                     $carPartsID[$k] =  $val['ID'];
                  }
                  
                 
-               
-             
-                $idUser = $obj["ID_user"];
                 $carPaperStatus = $obj["papers"];
                 $adPrice = $obj["adPrice"];
                 $userID = $obj["userID"];
@@ -115,35 +128,35 @@ class Ad_controller extends Main_Controller {
                                      );
                 $this->ad_model->insertCarAd($newCarAdData);
 
-                $carAdObject = $this->car_model->getPendingAdByVIN($VIN);
+                $carAdObject = $this->ad_model->getPendingAdByVIN($VIN);
                 $carAdID = $carAdObject->ID;
 
-                // Part relate to the review
+               
 
-                 foreach ($carPartsReview as $carPartReview)
+                 foreach ($carPartsReview as $k => $carPartReview)
                 {
                     $carPartReviewData = array(
                                                 'Car_Ad_ID'     => $carAdID,
-                                                'Car_Part_ID'   => $carPartReview["carPartID"],
-                                                'Seller_Review' => $carPartReview["carPartReview"],
+                                                'Car_Part_ID'   => $carPartsID[$k],
+                                                'Seller_Review' => $carPartsReview[$k],
                                                 'Seller_Date'   => $adPublishDate
                                              );
                     $this->ad_model->insertCarPartReview($carPartReviewData);
                 }
 
-                foreach ($carTroubleCodes as $carTroubleCode)
+                foreach ($carTroubleCodes as $k => $carTroubleCode)
                 {
-                   $troubleCodeObject =  $this->ad_model->getTroubleCode($carTroubleCode);
+                   $troubleCodeObject =  $this->ad_model->getTroubleCode($carTroubleCodes[$k]);
                    $troubleCodeID = $troubleCodeObject->ID; 
                    $troubleCodeNAdData  = array(
                                                     'Car_Ad_ID'         => $carAdID,
                                                     'Trouble_Code_ID'   => $troubleCodeID
                                                );
-                   $this->ad_model->relateAdAndTroubleCode($troubleCodeNAdData);
-
+                  $this->ad_model->relateAdAndTroubleCode($troubleCodeNAdData);
+                    
                 }
 
-                }
+              }
   
         }
         
@@ -185,7 +198,7 @@ class Ad_controller extends Main_Controller {
                 $review += $values; 
             
             
-            return review/(44);
+            return $review/(44);
         }
         
         

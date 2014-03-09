@@ -53,10 +53,13 @@ class car_model extends CI_Model {
      
      ************************************************************************/
       
-    public function getUniqueCar()
+    public function getUniqueCar($carVIN)
     {
-        $query = $this->db->get_where('unique_cars', array('VIN'=> $VIN));
-        return $query->result();
+        $this->db->select('*');
+        $this->db->from('unique_cars');
+        $this->db->where('VIN',$carVIN);
+        $query = $this->db->get();
+        return $query->row();   
     }
     
      public function insertUniqueCar($VIN)

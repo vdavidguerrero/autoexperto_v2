@@ -34,12 +34,59 @@ Arreglar el documento de VISIO, de la base de datos.
 
 ------WebService-----------------------------------------------------------------------
 
+Obtener información del carro: http://54.200.195.186/index.php/car_controller/carQuery
+
 Recibe un JSON con un campo VIN y busca el VIN en la base de datos, si no existe pero es un VIN valido lo busca en 
 la base de dato del suplidor, lo creo y lo retorna. Si ya existe simplemente lo 
 retorna en JSON. 
 
-http://54.200.195.186/index.php/car_controller/carQuery
 
+Crear un anuncio: http://54.200.195.186/index.php/ad_controller/createAd
+
+Recibe un JSON con lo siguiente:
+JSON = {
+            userID: 119045622,
+            VIN: "12345678912345678",
+            adPrice: "5000",
+            papers: "OK",
+            carParts: 
+                  [
+                    {Review:"1",ID:1} ,{Review:"4",ID:2} ,{Review:"2",ID:3} ,{Review:"3",ID:4} ,
+                    {Review:"2",ID:5} ,{Review:"5",ID:6} ,{Review:"3",ID:7} ,{Review:"1",ID:8} ,
+                    {Review:"3",ID:9} ,{Review:"2",ID:10},{Review:"5",ID:11},{Review:"2",ID:12},
+                    {Review:"4",ID:13},{Review:"1",ID:14},{Review:"1",ID:15},{Review:"3",ID:16},
+                    {Review:"5",ID:17},{Review:"3",ID:18},{Review:"2",ID:19},{Review:"4",ID:20},
+                    {Review:"2",ID:21},{Review:"2",ID:22},{Review:"4",ID:23},{Review:"2",ID:24},
+                    {Review:"1",ID:25},{Review:"4",ID:26},{Review:"2",ID:27},{Review:"3",ID:28},
+                    {Review:"4",ID:29},{Review:"2",ID:30},{Review:"1",ID:31},{Review:"1",ID:32},
+                    {Review:"2",ID:33},{Review:"3",ID:34},{Review:"4",ID:35},{Review:"4",ID:36},
+                    {Review:"3",ID:37},{Review:"6",ID:38},{Review:"3",ID:39},{Review:"2",ID:40},
+                    {Review:"4",ID:41},{Review:"2",ID:42},{Review:"1",ID:43},{Review:"2",ID:44}
+                 ],
+
+            troubleCodes:[{Trouble:"P0001"},{Trouble:"P0002"},{Trouble:"P0003"},{Trouble:"P0004"}]
+        };
+
+Como se puede ver este tiene valores por defecto. Esto creara un anuncio siempre y cuando se asuma 
+que el VIN es carro que fue solicitado por el metodo anterior; existe en la base de datos. 
+ 
+
+Login remoto: http://54.200.195.186/user_controller/remoteUserLogin
+
+Recibe un JSON con lo siguiente:
+JSON = {    
+            userID: 119045622,
+            password: "porche"
+       };
+
+Retorna un JSON con lo siguiente: 
+
+JSON = {
+            Response:OK ; si está bien
+            Response:NO ; si no está bien
+       };
+
+De esta manera se puede validar la sesión en el aplicación movil. 
 
 
 ------Flujo de la aplicación------------------------------------------------------------
