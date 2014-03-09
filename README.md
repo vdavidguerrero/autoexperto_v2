@@ -44,7 +44,7 @@ retorna en JSON.
 Crear un anuncio: http://54.200.195.186/index.php/ad_controller/createAd
 
 Recibe un JSON con lo siguiente:
-JSON = {
+    JSON
             userID:119045622,
             VIN:"12345678912345678",
             adPrice:"5000",
