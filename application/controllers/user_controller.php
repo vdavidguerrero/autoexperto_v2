@@ -20,16 +20,14 @@ class user_controller extends Main_Controller {
         }  
         function index ()
 	{
-           $this->showUserForm(1);
-          
+          $this->showUserForm();
 	}
 
-        public function showUserForm($flag)
+        public function showUserForm()
         {
            //if $flag == 0, we're creating an Taller. if it's 1 then is a dealer
             $dataPass["cities"] = $this->user_model->getUserCities();
             $dataPass["var"] = " ";
-            $dataPass["flagValue"] = $flag;
             $this->load->view('include/header'); 
             $this->load->view('user/create_user_view',$dataPass);  
             $this->load->view('include/footer'); 
@@ -45,6 +43,8 @@ class user_controller extends Main_Controller {
             $this->form_validation->set_rules('cedula_rnc'  , 'ID.'      , 'required|exact_length[11]|integer');
             $this->form_validation->set_rules('address'     , 'Address.' , 'required');
             $this->form_validation->set_rules('phone'       , 'Phone.'   , 'required');
+            $this->form_validation->set_rules('city'        , 'City.'    , 'required');
+            $this->form_validation->set_rules('flag'        , 'Flag.'    , 'required');
             $this->form_validation->set_rules('email'       , 'Email.'   , 'required|valid_email');
             $this->form_validation->set_message('exact_length', 'Introduzca una Cedula o RNC Valido.EX 00119045615');
             $this->form_validation->set_message('min_length', 'La contraseña debe tener al menos 6 Caracteres.');
@@ -52,7 +52,6 @@ class user_controller extends Main_Controller {
             $this->form_validation->set_message('valid_email', 'Digite un correo Valido.');
          
             $dataPass["cities"] = $this->user_model->getUserCities();
-            $dataPass["flagValue"] = $this->input->post('flag');
             
             if($this->form_validation->run() === FALSE) 
             {
@@ -73,8 +72,8 @@ class user_controller extends Main_Controller {
             else  
             {
                 $now = date("Y-m-d H:i:s");
-                $password = $this->input->post('password');
-                $newUserdata = array(  "name"          => $this->input->post('name'),
+                $newUserdata = array(  
+                                "name"   => $this->input->post('name'),
                                 "address"       => $this->input->post('address'),
                                 "ID "           => $this->input->post('cedula_rnc'),
                                 "phone"         => $this->input->post('phone'),
@@ -82,11 +81,19 @@ class user_controller extends Main_Controller {
                                 "DR_City_ID"    => $this->input->post('city'),
 			        "email"         => $this->input->post('email'),
 			        "date"          => $now,
-                                "password"      => MD5($password));
+                                "password"      => MD5($this->input->post('password'))
+                                    );
                 $this->user_model->insertUser($newUserdata);
-                $dataPass["var"] = "Usuario insertado Correctamente";
+                
+                $user =  $this->user_model->checkUserLogin($this->input->post("cedula_rnc"),MD5($this->input->post('password'))); 
+                
+                $sess_array = array( 'id'    => $user->ID);
+                $this->session->set_userdata('logged_in', $sess_array);
+                $dataPass["brands"] = $this->car_model->getCarBrands();
+                $dataPass["cities"] = $this->user_model->getUsercities();  
+                $dataPass["years"]  = $this->car_model->getCarYears();
                 $this->load->view('include/header'); 
-                $this->load->view('user/succesful_user_view',$dataPass);  
+                $this->load->view('ad/search_ad_view',$dataPass);  
                 $this->load->view('include/footer'); 
             }
                
@@ -178,8 +185,7 @@ class user_controller extends Main_Controller {
             $password  =  MD5($obj['password']);
             
             $check =  $this->user_model->checkUserLogin($userID,$password);
-           
-            
+   
             
             if($check)
                 $response = array("Response" => "OK");

@@ -41,6 +41,7 @@
                     <label for="inputEmail3" class="col-sm-1 control-label">Ciudad</label>
                     <div class="col-sm-4">
                         <select class="form-control"  name="city">   
+                           <option selected disabled>Seleccione Una Ciudad</option>
                            <?php
                            echo $thisFile; 
                             foreach ($cities as $city)
@@ -67,8 +68,19 @@
 	  	</div>
                 <?php echo form_error('email'); ?>
 
-               
-                <input type="hidden"  name="flag" value=<?php echo $flagValue;?> >
+                 <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-1 control-label">Ciudad</label>
+                    <div class="col-sm-4">
+                        <select class="form-control"  name="flag">   
+                           <option selected disabled>Seleccione un tipo</option>
+                           <?php
+                             echo "<option value=0>Vendedor</option>
+                                   <option value=1>Mecanico</option>";
+                           ?>
+                       </select>  
+                    </div>	  	
+	  	</div>
+              
 
 	  	<div class="form-group">
     		<div class="col-sm-offset-4 col-sm-10">

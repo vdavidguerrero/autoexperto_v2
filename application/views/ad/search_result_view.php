@@ -5,6 +5,7 @@
             <tr>
                 <th>Marca</th>
                 <th>Modelo</th>
+                <th>Ano</th>
                 <th>Precio</th>
                 <th>Millaje</th>
             </tr>
@@ -18,6 +19,7 @@
                     <tr>
                         <td>".$var2->Brand."</td>
                         <td>".$var2->Model." ".$var2->Body_Style." ".$var2->Trim. "</td>
+                        <td>".$var2->Year."</td>
                         <td>".$var2->Price."</td>
                         <td>".$var2->Mileage."</td>
                     </tr>
