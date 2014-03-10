@@ -24,14 +24,12 @@
                            echo $thisFile; 
                             foreach ($cities as $city)
                            {
-                             echo "<option value='".$city->iD."'>".$city->City."</option>";
+                             echo "<option value='".$city->ID."'>".$city->City."</option>";
                            }
                            ?>
                        </select>  
                     </div>	  	
 	 	</div> 
-           
-                 
                  
                 <div class="form-group ">
                     <label for="inputEmail3" class="col-sm-1 control-label">Marca</label>
@@ -76,19 +74,19 @@
                     <div class="col-sm-2" id="pepe">
                         <select class="form-control "  name="lowPrice">
                              <option selected disabled>Mínimo</option>
-                            <option value="100K">100,000</option>
-                            <option value="200K">200,000</option>
-                            <option value="300K">300,000</option>
-                            <option value="400K">400,000</option>
+                            <option value="100000">100,000</option>
+                            <option value="200000">200,000</option>
+                            <option value="300000">300,000</option>
+                            <option value="400000">400,000</option>
                        </select>  
                         </div>
                         <div class="col-sm-2" id="pepe">
                         <select class="form-control  " name="highPrice">
                              <option selected disabled>Máximo</option>
-                            <option value="100K">100,000</option>
-                            <option value="200K">200,000</option>
-                            <option value="300K">300,000</option>
-                            <option value="400K">400,000</option>
+                            <option value="100000">100,000</option>
+                            <option value="200000">200,000</option>
+                            <option value="300000">300,000</option>
+                            <option value="400000">400,000</option>
                        </select>  
                     </div>  	
 	  	</div>

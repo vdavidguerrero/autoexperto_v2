@@ -69,8 +69,19 @@ class Ad_model extends CI_Model {
         $query = $this->db->get();
         return $query->row();   
     }
-    public function getAdsBySearch()
+    public function getAdsBySearch($searchData)
     {
-        
+        $this->db->select('*, car_ads.ID as adID',false);
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID'         ,'inner');
+        $this->db->join('unique_models'               , 'unique_cars.Unique_Model = unique_models.ID'    ,'inner');
+        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'     ,'inner');
+        $this->db->join('car_brands'                  , 'car_models.Brand_ID = car_brands.ID'            ,'inner');
+        $this->db->join('users'                       , 'car_ads.Seller_ID = users.ID'                   ,'inner');
+        $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID','inner');
+        $this->db->where($searchData);
+        $query = $this->db->get();    
+        return $query->result();
+
     }
 }

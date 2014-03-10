@@ -22,19 +22,7 @@ class Ad_controller extends Main_Controller {
         function index ()
 	{
             //$this->showAdForm();
-            
-             $json = file_get_contents('php://input');
-             $obj = json_decode($json,true);
-             echo  $obj["VIN"];
-             
-           
-             
-                 foreach ($obj['carParts'] as  $val)
-                 {
-                     $carPartsReview["carPartID"]     +=  $val['ID'];
-                     $carPartsReview["carPartReview"] +=  $val['Review'];
-                 }
-                 
+            $this->showAdForm();
                 
         }
         
@@ -54,31 +42,36 @@ class Ad_controller extends Main_Controller {
         {
             $models = $this->car_model->getModelsByBrandID($brandID); 
             echo "<option selected disabled>Seleccione Una Marca</option>";
+            
             foreach ($models as $model)
-                  {
-                             echo "<option value='".$model->ID."' >".$model->Model."</option>";
-                  }    
+                echo "<option value='".$model->ID."' >".$model->Model."</option>";
+                   
                   
         }
  
-        public function showAdSearchResults()
+        public function showSearchResults()
         {
+        
           $searchData = array (
-                          'users.DR_City_ID'    => $this->input->post('city'), 
-                          'car_models.Brand_ID' =>  $this->input->post('brands'),
-                          'car_models.ID' => $this->input->post('model'),
-                          'users.DR_City_ID' =>  $this->input->post('type'),
-                          'users.DR_City_ID' =>  $this->input->post('lowPrice'), 
-                          'users.DR_City_ID' =>  $this->input->post('highPrice'), 
-                          'users.DR_City_ID' =>  $this->input->post('lowYear'),
-                           'users.DR_City_ID' => $this->input->post('highYear') 
-              
-          )  ;
-            
-   
-          //$this->load->view('include/header'); 
-          //$this->load->view('user/succesful_user_view',$dataPass);  
-          // $this->load->view('include/footer'); 
+                                 'users.DR_City_ID'         => $this->input->post('city'), 
+                                 'car_models.Brand_ID'      => $this->input->post('brands'),
+                                 'car_models.ID'            => $this->input->post('model'),
+                                 'unique_models.Body_Style'  => $this->input->post('type'),
+                                 'unique_models.Year <'     => $this->input->post('highPrice'),
+                                 'unique_models.Year >'     => $this->input->post('lowYear'),
+                                 'car_ads.Price < '         => $this->input->post('highYear'),
+                                 'car_ads.Price > '         => $this->input->post('lowPrice')  
+                               );
+          
+          foreach ($searchData as $k => $data)
+              if(strlen($data) == 0)
+                  unset($searchData[$k]);
+
+          $dataPass["var"] = $this->ad_model->getAdsBySearch($searchData);
+         
+          $this->load->view('include/header'); 
+          $this->load->view('ad/search_result_view',$dataPass);  
+          $this->load->view('include/footer'); 
         }
        
         public function createAd()
@@ -105,7 +98,7 @@ class Ad_controller extends Main_Controller {
                      $carPartsID[$k] =  $val['ID'];
                  }
                  
-                
+                $carMileage = $obj["mileage"];
                 $carPaperStatus = $obj["papers"];
                 $adPrice = $obj["adPrice"];
                 $userID = $obj["userID"];
@@ -124,6 +117,7 @@ class Ad_controller extends Main_Controller {
                                         'Flag'              => $flag,         
                                         'Paper_status'      => $carPaperStatus,
                                         'Car_Review'        => $carReview,
+                                        'Mileage'           => $carMileage,
                                         'Unique_Car_ID'     => $uniqueCarID  
                                      );
                 $this->ad_model->insertCarAd($newCarAdData);
@@ -195,7 +189,7 @@ class Ad_controller extends Main_Controller {
             $review = 0; 
             
             foreach($carPartsReview as $values)
-                $review += $values; 
+                $review += $values["Review"]; 
             
             
             return $review/(44);

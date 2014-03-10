@@ -114,13 +114,13 @@ class car_controller extends Main_Controller {
         {
             // Sacar esta info de VIN Query
            $carData = array(
-                                    'Manufacturer_Country'  => 'Venezuela', // Datos Del Carro único
-                                    'Brand'                 => 'Mitsubishi',// Datos Del Carro único We must Unset them
-                                    'Year'                  => '1997', 
-                                    'Car_Model_ID'          => 'Lancer',
-                                    'Trim'                  => 'LE Full',
-                                    'Body_Style'            => 'Coupe',
-                                    'Engine_Type'           => '2.0 SOHC',
+                                    'Manufacturer_Country'  => 'USA', // Datos Del Carro único
+                                    'Brand'                 => 'Toyota',// Datos Del Carro único We must Unset them
+                                    'Year'                  => '2002', 
+                                    'Car_Model_ID'          => 'Corolla',
+                                    'Trim'                  => 'LX Sencillo',
+                                    'Body_Style'            => 'Sedan',
+                                    'Engine_Type'           => '1.7 DOHC',
                                     'Transmission'          => 'Secuencial',
                                     'Gallons'               => '12',
                                     'Fuel_Economy_City'     => '25', 

@@ -44,22 +44,26 @@ retorna en JSON.
 Crear un anuncio: http://54.200.195.186/index.php/ad_controller/createAd
 
 Recibe un JSON con lo siguiente:
-    JSON
-            userID:119045622,
-            VIN:"12345678912345678",
-            adPrice:"5000",
-            papers:"OK",
-            carParts:[  {Review:"1",ID:1} ,{Review:"4",ID:2} ,{Review:"2",ID:3} ,{Review:"3",ID:4} ,
-                        {Review:"2",ID:5} ,{Review:"5",ID:6} ,{Review:"3",ID:7} ,{Review:"1",ID:8} ,
-                        {Review:"3",ID:9} ,{Review:"2",ID:10},{Review:"5",ID:11},{Review:"2",ID:12},
-                        {Review:"4",ID:13},{Review:"1",ID:14},{Review:"1",ID:15},{Review:"3",ID:16},
-                        {Review:"5",ID:17},{Review:"3",ID:18},{Review:"2",ID:19},{Review:"4",ID:20},
-                        {Review:"2",ID:21},{Review:"2",ID:22},{Review:"4",ID:23},{Review:"2",ID:24},
-                        {Review:"1",ID:25},{Review:"4",ID:26},{Review:"2",ID:27},{Review:"3",ID:28},
-                        {Review:"4",ID:29},{Review:"2",ID:30},{Review:"1",ID:31},{Review:"1",ID:32},
-                        {Review:"2",ID:33},{Review:"3",ID:34},{Review:"4",ID:35},{Review:"4",ID:36},
-                        {Review:"3",ID:37},{Review:"6",ID:38},{Review:"3",ID:39},{Review:"2",ID:40},
-                        {Review:"4",ID:41},{Review:"2",ID:42},{Review:"1",ID:43},{Review:"2",ID:44}],
+JSON = {
+            userID: 119045622,
+            VIN: "12345678912345678",
+            adPrice: "5000",
+            mileage: "135000",
+            papers: "OK",
+            carParts: 
+                  [
+                    {Review:"1",ID:1} ,{Review:"4",ID:2} ,{Review:"2",ID:3} ,{Review:"3",ID:4} ,
+                    {Review:"2",ID:5} ,{Review:"5",ID:6} ,{Review:"3",ID:7} ,{Review:"1",ID:8} ,
+                    {Review:"3",ID:9} ,{Review:"2",ID:10},{Review:"5",ID:11},{Review:"2",ID:12},
+                    {Review:"4",ID:13},{Review:"1",ID:14},{Review:"1",ID:15},{Review:"3",ID:16},
+                    {Review:"5",ID:17},{Review:"3",ID:18},{Review:"2",ID:19},{Review:"4",ID:20},
+                    {Review:"2",ID:21},{Review:"2",ID:22},{Review:"4",ID:23},{Review:"2",ID:24},
+                    {Review:"1",ID:25},{Review:"4",ID:26},{Review:"2",ID:27},{Review:"3",ID:28},
+                    {Review:"4",ID:29},{Review:"2",ID:30},{Review:"1",ID:31},{Review:"1",ID:32},
+                    {Review:"2",ID:33},{Review:"3",ID:34},{Review:"4",ID:35},{Review:"4",ID:36},
+                    {Review:"3",ID:37},{Review:"6",ID:38},{Review:"3",ID:39},{Review:"2",ID:40},
+                    {Review:"4",ID:41},{Review:"2",ID:42},{Review:"1",ID:43},{Review:"2",ID:44}
+                 ],
 
             troubleCodes:[{Trouble:"P0001"},{Trouble:"P0002"},{Trouble:"P0003"},{Trouble:"P0004"}]
         };
@@ -311,11 +315,44 @@ De esta manera se puede validar la sesión en el aplicación movil.
 
     
 
-        
+        SELECT *
+
+FROM car_ads
+    
+	INNER JOIN unique_cars
+        ON car_ads.Unique_Car_ID = unique_cars.ID
+   
+        INNER JOIN unique_models
+        ON unique_cars.Unique_Model = unique_models.ID
+
+        INNER JOIN car_models
+        ON unique_models.Car_Model_ID = car_models.ID
+
+	INNER JOIN car_brands
+        ON car_models.Brand_ID = car_brands.ID
+
+	INNER JOIN users
+        ON car_ads.Seller_ID = users.ID
+
+	INNER JOIN dominican_republic_cities
+        ON users.DR_City_ID = dominican_republic_cities.ID
 
         
+        $this->db->select('*');
+        $this->db->from('car_ads');
+       
+        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID              ','inner');
+        $this->db->join('unique_models'               , 'unique_cars.Unique_Model = unique_models.ID         ','inner');
+        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID          ','inner');
+        $this->db->join('car_brands'                  , '   car_models.Brand_ID = car_brands.ID                 ','inner');
+        $this->db->join('users'                       , '   ccar_ads.Seller_ID = users.ID                       ','inner');
+        $this->db->join('dominican_republic_cities'   , '   users.DR_City_ID = dominican_republic_cities.ID     ','inner');
+        $query = $this->db->get();
+        return $query->row();   
         
-        
+Carros Creados: 
 
-    
-    
+12345678912345680
+12345678912345672
+12345678912345676 
+12345678912345678
