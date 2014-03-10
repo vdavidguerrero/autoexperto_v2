@@ -182,7 +182,7 @@ De esta manera se puede validar la sesión en el aplicación movil.
         Frenos
 
   - La aplicación envía la data recolectada al webService para publicar el anuncio. Aparte de la data
-    recolectada se envía los Trouble Codes tomados al principio, el VIN y el ID del usuario.
+    recolectada se envía los Trouble Codes tomados al principio, el VIN, Millaje y el ID del usuario.
         
 
 
@@ -310,49 +310,3 @@ De esta manera se puede validar la sesión en el aplicación movil.
     P0123 Throttle Position Sensor/Switch A Circuit High Input 
     P0124 Throttle Position Sensor/Switch A Circuit Intermittent
 
-
-
-
-    
-
-        SELECT *
-
-FROM car_ads
-    
-	INNER JOIN unique_cars
-        ON car_ads.Unique_Car_ID = unique_cars.ID
-   
-        INNER JOIN unique_models
-        ON unique_cars.Unique_Model = unique_models.ID
-
-        INNER JOIN car_models
-        ON unique_models.Car_Model_ID = car_models.ID
-
-	INNER JOIN car_brands
-        ON car_models.Brand_ID = car_brands.ID
-
-	INNER JOIN users
-        ON car_ads.Seller_ID = users.ID
-
-	INNER JOIN dominican_republic_cities
-        ON users.DR_City_ID = dominican_republic_cities.ID
-
-        
-        $this->db->select('*');
-        $this->db->from('car_ads');
-       
-        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID              ','inner');
-        $this->db->join('unique_models'               , 'unique_cars.Unique_Model = unique_models.ID         ','inner');
-        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID          ','inner');
-        $this->db->join('car_brands'                  , '   car_models.Brand_ID = car_brands.ID                 ','inner');
-        $this->db->join('users'                       , '   ccar_ads.Seller_ID = users.ID                       ','inner');
-        $this->db->join('dominican_republic_cities'   , '   users.DR_City_ID = dominican_republic_cities.ID     ','inner');
-        $query = $this->db->get();
-        return $query->row();   
-        
-Carros Creados: 
-
-12345678912345680
-12345678912345672
-12345678912345676 
-12345678912345678
