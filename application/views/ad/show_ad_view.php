@@ -25,7 +25,7 @@
                         <td>".$user->Address.", ".$user->City."</td>  
                         <td>".$user->Phone."</td> 
                         <td>".$user->Email."</td> 
-                        <td>".$ad->Price."</td> 
+                        <td>".number_format($ad->Price)."</td> 
                         <td>".$ad->Publish_Date."</td>
                     </tr>
                      ";
@@ -55,7 +55,7 @@
                   echo "
                     <tr>
                         <td>".$ad->Car_Review."</td>
-                        <td>".$ad->Mileage."</td>
+                        <td>".number_format($ad->Mileage)."</td>
                         <td>".$ad->Paper_Status."</td>
                     </tr>
                      ";
