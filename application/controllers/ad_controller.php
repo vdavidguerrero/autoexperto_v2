@@ -56,7 +56,7 @@ class Ad_controller extends Main_Controller {
                                  'users.DR_City_ID'         => $this->input->post('city'), 
                                  'car_models.Brand_ID'      => $this->input->post('brands'),
                                  'car_models.ID'            => $this->input->post('model'),
-                                 'unique_models.Body_Style'  => $this->input->post('type'),
+                                 'unique_models.Body_Style' => $this->input->post('type'),
                                  'unique_models.Year <'     => $this->input->post('highYear'),
                                  'unique_models.Year >'     => $this->input->post('lowYear'),
                                  'car_ads.Price < '         => $this->input->post('highPrice'),
@@ -81,6 +81,7 @@ class Ad_controller extends Main_Controller {
           $dataPass["ad"]  = $this->ad_model->getAd($adID);
           $dataPass["car"] = $this->car_model->getCar($VIN);
           $dataPass["user"] = $this->user_model->getUserByRnc($userID);
+          $dataPass["parts"] = $this->ad_model->getCarPartsReviewByAd($adID);
           $this->load->view('include/header'); 
           $this->load->view('ad/show_ad_view',$dataPass);  
           $this->load->view('include/footer'); 

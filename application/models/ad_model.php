@@ -59,7 +59,18 @@ class Ad_model extends CI_Model {
          $this->db->insert('car_part_review',$carPartReviewData); 
     }
     
-     public function getActiveAdByVIN($carVIN)
+    public function getCarPartsReviewByAd($adID)
+    {
+        $this->db->select('car_part_review.Seller_Review, car_parts.Part ');
+        $this->db->from('car_part_review');
+        $this->db->join('car_parts', 'car_part_review.Car_Part_ID = car_parts.ID','inner');
+        $this->db->where('car_part_review.Car_Ad_ID'    ,$adID); 
+        $query = $this->db->get();
+        return $query->result();   
+    }
+
+
+    public function getActiveAdByVIN($carVIN)
     {
         $this->db->select('*');
         $this->db->from('car_ads');
@@ -72,16 +83,16 @@ class Ad_model extends CI_Model {
     
     public function getAd($adID)
     {
-       $this->db->select('Price, Mileage, Publish_Date, Review, Paper_stats');
+       $this->db->select('*');
        $this->db->from('car_ads');
        $this->db->where('ID', $adID);
        $query = $this->db->get();
-       return $query->row;
+       return $query->row();
     }
    
     public function getAdsBySearch($searchData)
     {
-        $this->db->select('*, car_ads.ID as adID, user.ID as userID',false);
+        $this->db->select('*, car_ads.ID as adID, users.ID as userID',false);
         $this->db->from('car_ads');
         $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID'         ,'inner');
         $this->db->join('unique_models'               , 'unique_cars.Unique_Model = unique_models.ID'    ,'inner');

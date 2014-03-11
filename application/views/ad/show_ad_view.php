@@ -1,5 +1,5 @@
    <div class="container">
-    
+    <br><br><br><br>
        <h1> Detalles Vendedor</h1>
        
        <br><br><br>  
@@ -20,7 +20,7 @@
                echo "
                     <tr>
                         <td>".$user->Name."</td>  
-                        <td>".$user->Address." ".$var2->DR_City_ID."</td>  
+                        <td>".$user->Address.", ".$user->City."</td>  
                         <td>".$user->Phone."</td> 
                         <td>".$user->Email."</td> 
                         <td>".$ad->Price."</td> 
@@ -52,8 +52,8 @@
              
                   echo "
                     <tr>
-                        <td>".$ad->Review."</td>
-                        <td>".$ad->Mileage." ".$var2->DR_City_ID."</td>
+                        <td>".$ad->Car_Review."</td>
+                        <td>".$ad->Mileage."</td>
                         <td>".$ad->Paper_Status."</td>
                     </tr>
                      ";
@@ -87,6 +87,35 @@
                     <tr>
                         <td>".$k."</td>
                         <td>".$carrito."</td>
+                    </tr>
+                     ";
+                
+            ?>
+           
+        </tbody>
+    </table>
+       
+        <h1> Review Del Carro</h1>
+       
+       <br><br><br>  
+	  <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pieza</th>
+                <th>Review del Vendedor</th>
+                <th>Review del Mecanico</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <?php
+              foreach($parts as $carrito)
+                  echo "
+                    <tr>
+                        <td>".$carrito->Part."</td>
+                        <td>".$carrito->Seller_Review."</td>
+                        <td>".$carrito->Seller_Review."</td>
                     </tr>
                      ";
                 
