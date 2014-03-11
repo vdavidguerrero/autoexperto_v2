@@ -73,6 +73,19 @@ class Ad_controller extends Main_Controller {
           $this->load->view('ad/search_result_view',$dataPass);  
           $this->load->view('include/footer'); 
         }
+        
+        public function showAd($adID,$VIN, $userID)
+        {
+              
+
+          $dataPass["ad"]  = $this->ad_model->getAd($adID);
+          $dataPass["car"] = $this->car_model->getCar($VIN);
+          $dataPass["user"] = $this->user_model->getUserByRnc($userID);
+          $this->load->view('include/header'); 
+          $this->load->view('ad/show_ad_view',$dataPass);  
+          $this->load->view('include/footer'); 
+            
+        }
        
         public function createAd()
         {

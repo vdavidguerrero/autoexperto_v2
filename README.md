@@ -1,3 +1,7 @@
+-- Revisar el proceso para mostrar un anuncio, casi listo... 
+
+
+
     Documentación
 
 -----Descripción del Código------------------------------------------------------------

@@ -69,7 +69,7 @@
                 <?php echo form_error('email'); ?>
 
                  <div class="form-group ">
-                    <label for="inputEmail3" class="col-sm-1 control-label">Ciudad</label>
+                    <label for="inputEmail3" class="col-sm-1 control-label">Tipo</label>
                     <div class="col-sm-4">
                         <select class="form-control"  name="flag">   
                            <option selected disabled>Seleccione un tipo</option>

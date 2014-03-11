@@ -22,7 +22,7 @@
                 
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-10">
-      			<button type="submit" class="btn btn-default">Create</button>
+      			<button type="submit" class="btn btn-default">Login</button>
                     </div>
                 </div>    
                
