@@ -34,10 +34,7 @@ class user_controller extends Main_Controller {
         }
         
         public function createUser()
-	{
-            //Se desea Quitar en un futurp
-            
-            //Recives the user creation form, validate it, an create an user. 
+	{ 
             $this->form_validation->set_rules('name'        , 'Name.'    , 'required');
             $this->form_validation->set_rules('password'    , 'Password.', 'min_length[6]|required');
             $this->form_validation->set_rules('cedula_rnc'  , 'ID.'      , 'required|exact_length[11]|integer');
@@ -107,8 +104,11 @@ class user_controller extends Main_Controller {
         
         public function showUser($ID)
         {
+            $search = array("users.ID" => $ID);
             $cedula = $this->input->post('cedula_rnc');
-            $dataPass["var"] = $this->user_model->getUserByRnc($ID);
+            $dataPass["user"] = $this->user_model->getUserByRnc($ID);
+            $dataPass["var"] =  $this->ad_model->getAdsBySearch($search);
+           
             $this->load->view('include/header'); 
             $this->load->view('user/user_information_view',$dataPass);  
             $this->load->view('include/footer');    
