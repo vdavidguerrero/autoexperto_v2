@@ -33,7 +33,12 @@ class user_model extends CI_Model {
         $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID','inner');
         $this->db->where('users.ID',$RNC );
         $query = $this->db->get();
-        return $query->row();
+        
+        if ($query->num_rows() > 0)
+               return $query->row();
+       
+        else return false;
+        
     }
     
     public function checkUserLogin($rnc_cedula,$password)
