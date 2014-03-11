@@ -57,8 +57,8 @@ class Ad_controller extends Main_Controller {
                                  'car_models.Brand_ID'      => $this->input->post('brands'),
                                  'car_models.ID'            => $this->input->post('model'),
                                  'unique_models.Body_Style' => $this->input->post('type'),
-                                 'unique_models.Year <'     => $this->input->post('highYear'),
-                                 'unique_models.Year >'     => $this->input->post('lowYear'),
+                                 'unique_models.Year <='     => $this->input->post('highYear'),
+                                 'unique_models.Year >='     => $this->input->post('lowYear'),
                                  'car_ads.Price < '         => $this->input->post('highPrice'),
                                  'car_ads.Price > '         => $this->input->post('lowPrice')  
                                );

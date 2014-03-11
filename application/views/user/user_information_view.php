@@ -37,6 +37,7 @@
                 <th>Ano</th>
                 <th>Precio</th>
                 <th>Millaje</th>
+                <th>Ciudad</th>
             </tr>
         </thead>
         <tbody>
@@ -55,6 +56,7 @@
                         <td>".$var2->Year."</td>
                         <td>".number_format($var2->Price)."</td>
                         <td>".number_format($var2->Mileage)."</td>
+                        <td>".$var2->City."</td>   
                     </tr>
                      
                      ";
