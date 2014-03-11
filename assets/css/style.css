@@ -118,14 +118,14 @@ a.navbar-brand:hover {
 	background: url(../img/main-bg.jpg) no-repeat center top fixed; 
 	margin-top: -20px;
 	padding-top: 150px;
-//	background-attachment: relative;
+
 	background-position:  right;
 	background-size: auto 100%;
         background-attachment: fixed;
-        min-height: 755px;
+        min-height: 750px;
 	width: 100%;
         color: #F0F0F0   ;
-	   position: absolute;
+	 
         
            -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -146,13 +146,17 @@ a.navbar-brand:hover {
 	background: #181818  ;
         color: #909090      ;
 	padding: 20px 0 5px;
-        position: absolute;
-        bottom: 0;
+          
+
         width: 100%;
 }
 #pepe{
-    
+  
     width: 12.5%;
+}
+#pepe2{
+  min-height: 730px;
+  
 }
 
 /* slide 

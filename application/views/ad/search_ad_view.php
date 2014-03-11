@@ -8,9 +8,7 @@
  
 <div class="container">
   
-<div class="text-center">
-  		
-    </div>
+
 	
     <form class="form-horizontal  " role="form" method="post" action="index.php?/ad_controller/showSearchResults">
 		 <br>
@@ -138,7 +136,7 @@
  
 
     
-</div>
+    </div>
 </div>
 <script type="text/javascript">
    $(document).ready(function()

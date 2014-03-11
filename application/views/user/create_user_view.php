@@ -1,4 +1,4 @@
-
+<div id="pepe2">
 <div class="container">
     <div class="page-header">
   		<h2>Ingrese Sus Datos</h2><br>
@@ -93,5 +93,7 @@
                 ?>
                 
     </form>
+    
+</div>
     
 </div>

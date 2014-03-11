@@ -1,3 +1,4 @@
+<div id="pepe2">
 <div class="container">
     <br><br><br>
  <h1>Información</h1>
@@ -63,3 +64,4 @@
         </tbody>
     </table>
 </div>
+    </div>

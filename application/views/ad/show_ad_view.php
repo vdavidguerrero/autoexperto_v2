@@ -1,4 +1,6 @@
-   <div class="container">
+<div id="pepe2">
+
+<div class="container">
     <br><br><br><br>
        <h1> Detalles Vendedor</h1>
        
@@ -124,3 +126,4 @@
         </tbody>
     </table>
     </div>
+    </div> 
