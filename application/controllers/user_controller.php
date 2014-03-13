@@ -123,7 +123,7 @@ class user_controller extends Main_Controller {
             $this->form_validation->set_rules('password'  , 'Password'      , 'required');
             $this->form_validation->set_message('exact_length', 'Introduzca un RNC o Cedula Valida. EX 00119045615');
             $this->form_validation->set_message('required', 'Todos Los Campos Son requeridos');
-             $dataPass["var"] = " ";
+            $dataPass["var"] = " ";
             
             if($this->form_validation->run() === FALSE)
             {

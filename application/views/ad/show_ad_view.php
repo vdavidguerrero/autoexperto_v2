@@ -1,23 +1,23 @@
-<div id="pepe2">
 
-<div class="container">
-    <br><br><br><br>
-       <h1> Detalles Vendedor</h1>
-       
-       <br><br><br>  
-	  <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Vendedor</th>
-                <th>Dirección</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>Precio</th>
-                <th>Publicado:</th>
-            </tr>
-        </thead>
-        <tbody>
-            
+    
+    <div class="container">
+        
+        <h2> Detalles Vendedor</h2>
+           
+        <br><br><br>  
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Vendedor</th>
+                    <th>Dirección</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Precio</th>
+                    <th>Publicado:</th>
+                </tr>
+            </thead>
+            <tbody>
+                
             <?php
                echo "
                     <tr>
@@ -29,29 +29,29 @@
                         <td>".$ad->Publish_Date."</td>
                     </tr>
                      ";
-             
+                         
             ?>
+                
+            </tbody>
+        </table>
+        
+        
+        
+        <h2> Detalles Carro</h2>
            
-        </tbody>
-    </table>
-       
-       
-       
-       <h1> Detalles Carro</h1>
-       
-       <br><br><br>  
-	  <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Review</th>
-                <th>Mileage</th>
-                <th>Estado DGII</th>
-            </tr>
-        </thead>
-        <tbody>
-            
+        <br><br><br>  
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Review</th>
+                    <th>Mileage</th>
+                    <th>Estado DGII</th>
+                </tr>
+            </thead>
+            <tbody>
+                
             <?php
-             
+                
                   echo "
                     <tr>
                         <td>".$ad->Car_Review."</td>
@@ -59,30 +59,30 @@
                         <td>".$ad->Paper_Status."</td>
                     </tr>
                      ";
-               
+                         
             ?>
-           
-        </tbody>
-    </table>
-       
-       
-       </table>
-       
-       
-       
-       <h1> Detalles Modelo</h1>
-       
-       <br><br><br>  
-	  <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Pieza</th>
-                <th>Descripcion</th>
                 
-            </tr>
-        </thead>
-        <tbody>
-            
+            </tbody>
+        </table>
+        
+        
+        </table>
+           
+           
+           
+        <h2> Detalles Modelo</h2>
+           
+        <br><br><br>  
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Pieza</th>
+                    <th>Descripcion</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
             <?php
               foreach($car as $k => $carrito)
                   echo "
@@ -91,26 +91,26 @@
                         <td>".$carrito."</td>
                     </tr>
                      ";
-                
+                         
             ?>
-           
-        </tbody>
-    </table>
-       
-        <h1> Review Del Carro</h1>
-       
-       <br><br><br>  
-	  <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Pieza</th>
-                <th>Review del Vendedor</th>
-                <th>Review del Mecanico</th>
                 
-            </tr>
-        </thead>
-        <tbody>
+            </tbody>
+        </table>
+        
+        <h2> Review Del Carro</h2>
             
+        <br><br><br>  
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Pieza</th>
+                    <th>Review del Vendedor</th>
+                    <th>Review del Mecanico</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
             <?php
               foreach($parts as $carrito)
                   echo "
@@ -120,10 +120,9 @@
                         <td>".$carrito->Seller_Review."</td>
                     </tr>
                      ";
-                
+                         
             ?>
-           
-        </tbody>
-    </table>
+                
+            </tbody>
+        </table>
     </div>
-    </div> 

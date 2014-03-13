@@ -12,16 +12,16 @@
     <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/font-awesome.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/custom.css') ?>" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-
-     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/slate-bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
    
     </head>
     <body>
  
        
           
-         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" >    
+         <div class="navbar navbar-inverse navbar-fixed-top " role="navigation" >    
            
                 <div class="navbar-header">
                   
@@ -34,9 +34,6 @@
         {
             $sessionInfo = $this->session->userdata('logged_in');
             $id = $sessionInfo['id'];
-            // <li><a href='index.php?/user_controller/showUser/$id'>Mi Panel</a></li>
-                    //    <li><a href='index.php?/user_controller/userLogOff'>Salir de sesión</a></li>
-                    //"<?php echo site_url('cuff/navigate');
             echo "
                 
                     
@@ -44,41 +41,21 @@
                     <ul class='nav navbar-nav navbar-right' > 
                         <li><a href='index.php?/user_controller/showUser/$id'>Mi Panel</a></li>
                         <li><a href='index.php?/user_controller/userLogOff'>Salir de sesión</a></li>
+                        <li> <span> -- </span></li>
                     </ul>";  
         }
         else
         {
-            
-          
-         
-            
-            
-            
-            
             echo "
                      <ul class='nav navbar-nav navbar-right' '> 
                         <li><a href='index.php?/user_controller/userLogin'>Iniciar Sesión</a></li>
                         <li><a href='index.php?/user_controller'>Crear Cuenta</a></li>
+                         <li> <span> -- </span></li>
                     </ul>
 
                  
                     
-                    "  ; 
-            
-                    /*"
-                     
-
-                    <form class='navbar-form navbar-right' role='form' method='post' action='index.php?/user_controller/userLogin'>
-                        <div class='form-group'>
-                            <input type='text' placeholder='RNC o Cedula'  name='cedula_rnc' class='form-control'>
-                        </div>
-                        <div class='form-group'>
-                            <input type='password' placeholder='Contraseña'  name='password' class='form-control'>
-                        </div>
-                        <button type='submit' class='btn btn-success'>Iniciar Sesión</button>
-                    </form>
-                    
-                    "*/
+                    "  ;     
         }
         
         ?>
