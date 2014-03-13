@@ -33,7 +33,7 @@ class Ad_controller extends Main_Controller {
            $dataPass["brands"] = $this->car_model->getCarBrands();
            $dataPass["cities"] = $this->user_model->getUserCities();  
            $dataPass["years"]  = $this->car_model->getCarYears();
-               
+           $dataPass["vaar"] = 1; 
            $this->load->view('include/header'); 
            $this->load->view('ad/search_ad_view',$dataPass);  
            $this->load->view('include/footer');  
@@ -71,9 +71,14 @@ class Ad_controller extends Main_Controller {
                       
           $dataPass["var"] = $this->ad_model->getAdsBySearch($searchData);
               
-          $this->load->view('include/header'); 
-          $this->load->view('ad/search_result_view',$dataPass);  
-          $this->load->view('include/footer'); 
+           $dataPass["brands"] = $this->car_model->getCarBrands();
+           $dataPass["cities"] = $this->user_model->getUserCities();  
+           $dataPass["years"]  = $this->car_model->getCarYears();
+           $dataPass["vaar"] = 0; 
+               
+           $this->load->view('include/header'); 
+           $this->load->view('ad/search_ad_view',$dataPass);  
+           $this->load->view('include/footer');  
         }
             
         public function showAd($adID,$VIN, $userID)

@@ -89,6 +89,7 @@ class user_controller extends Main_Controller {
                 $dataPass["brands"] = $this->car_model->getCarBrands();
                 $dataPass["cities"] = $this->user_model->getUsercities();  
                 $dataPass["years"]  = $this->car_model->getCarYears();
+                 $dataPass["vaar"] = 1; 
                 $this->load->view('include/header'); 
                 $this->load->view('ad/search_ad_view',$dataPass);  
                 $this->load->view('include/footer'); 
@@ -147,6 +148,7 @@ class user_controller extends Main_Controller {
                   $dataPass["brands"] = $this->car_model->getCarBrands();
                   $dataPass["cities"] = $this->user_model->getUsercities();  
                   $dataPass["years"]  = $this->car_model->getCarYears();
+                   $dataPass["vaar"] = 1; 
                   $this->load->view('include/header'); 
                   $this->load->view('ad/search_ad_view',$dataPass);  
                   $this->load->view('include/footer');
@@ -168,6 +170,7 @@ class user_controller extends Main_Controller {
             $dataPass["brands"] = $this->car_model->getCarBrands();
             $dataPass["cities"] = $this->user_model->getUsercities();  
             $dataPass["years"]  = $this->car_model->getCarYears();
+             $dataPass["vaar"] = 1; 
             $dataPass["var"] = " ";
             $this->session->sess_destroy();
             
