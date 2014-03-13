@@ -17,11 +17,11 @@
             </div>
                     
             <div class="form-group ">
-                <label  class="col-sm-1 control-label">Contraseña</label>
+                <label  class="col-sm-1 control-label ">Contraseña</label>
                 <div class="col-sm-3 ">
-                    <input type="password" class="form-control"  name="password" >
+                    <input type="password" class="form-control  "  name="password" >
                 </div>	  	
-                <div class="colores"><?php echo form_error('password'); ?></div>
+                <div class="text-danger"><?php echo form_error('password'); ?></div>
             </div>
                 
 
@@ -33,7 +33,7 @@
                 <div class="col-sm-3">
                     <input type="text" class="form-control"  name="cedula_rnc" value="<?php echo set_value('cedula_rnc');?>" >
                 </div>	  
-                 <div class="colores"><?php echo form_error('cedula_rnc'); ?></div>
+                 <div class="text-danger"><?php echo form_error('cedula_rnc'); ?></div>
             </div>
                
                     
@@ -72,7 +72,7 @@
                 <div class="col-sm-3">
                     <input type="text" class="form-control"  name="email" value="<?php echo set_value('email');?>" >
                 </div>	  	
-               <div class="colores"><?php echo form_error('email'); ?></div>
+               <div class="text-danger"><?php echo form_error('email'); ?></div>
             </div>
                 
                     
@@ -97,7 +97,7 @@
                    
         </form>
                 
-                <div class="col-sm-offset-2 colores">
+                <div class="col-sm-offset-2 text-danger">
 	  	 <?php
                     echo "<b>".$var."</b>";               
                 ?>

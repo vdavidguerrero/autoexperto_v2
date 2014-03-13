@@ -11,19 +11,25 @@
     width: 12.5%;
 }
 
+
 .container{
     
     min-height: 650px;
+   
 }
 
-.colores{
-    color: #FF0000;
-}
+
 body{
-    background: #f8f8f8  ;
+   background: #F0F0F0     ;
     margin-top: 70px;
-      
+    //background-image:  url('/assets/img/ahjaa.jpeg');
+    //width: 100%;
+
+    //background-repeat: no-repeat;
+     //background-size: 100%; //propotional resize
 }
+
+
 
 li{
     font-size: 15px;

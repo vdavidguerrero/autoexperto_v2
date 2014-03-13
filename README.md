@@ -1,5 +1,8 @@
-Puyar Bootstrap...
-Hacer el login con angular... 
+Puyar Bootstrap..
+
+ -- Acabar la parte de los mecanicos. 
+ -- Mostrar las fotos.
+ -- Configurar las fotos
 
 
 

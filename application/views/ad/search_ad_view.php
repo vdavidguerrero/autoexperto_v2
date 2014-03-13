@@ -8,14 +8,14 @@
     <div class="col-sm-4">
         
         
-        <h2>¿Qué Andas Buscando?</h2>
+        <h3>¿Qué Andas Buscando?</h3>
         
         <form class="form-horizontal " role="form" method="post" action="index.php?/ad_controller/showSearchResults">
             <br>
             
             <div class="form-group ">
-                <label  class="col-sm-2">Ciudad</label>
-                <div class="col-sm-10">
+                <label  class="col-md-2">Ciudad</label>
+                <div class="col-md-10">
                     <select class="form-control"  name="city">   
                         <option selected disabled>Seleccione Una Ciudad</option>
                             <?php
@@ -30,8 +30,8 @@
             </div> 
             
             <div class="form-group ">
-                <label class="col-sm-2 control-label">Marca</label>
-                <div class="col-sm-10">
+                <label class="col-md-2 control-label">Marca</label>
+                <div class="col-md-10">
                     <select class="form-control  " name="brands" id="first-choice" >
                         <option selected disabled>Seleccione Una Marca</option>
                             <?php
@@ -45,8 +45,8 @@
                 
             </div>
             <div class="form-group ">
-                <label  class="col-sm-2 control-label">Modelo</label>
-                <div class="col-sm-10">
+                <label  class="col-md-2 control-label">Modelo</label>
+                <div class="col-md-10">
                     <select class="form-control  "  name="model" id="second-choice">
                         
                         
@@ -56,8 +56,8 @@
             
             
             <div class="form-group ">
-                <label  class="col-sm-2 control-label">Tipo</label>
-                <div class="col-sm-10">
+                <label  class="col-md-2 control-label">Tipo</label>
+                <div class="col-md-10">
                     <select class="form-control"  name="type">
                         <option selected disabled>Seleccione Un Tipo</option>
                         <option value="Coupe">Coupe</option>
@@ -68,8 +68,8 @@
             </div>
             
             <div class="form-group ">
-                <label  class="col-sm-2 control-label">Precio</label>
-                <div class="col-sm-5" id="pepe">
+                <label  class="col-md-2 control-label">Precio</label>
+                <div class="col-md-5" id="pepe">
                     <select class="form-control "  name="lowPrice">
                         <option selected disabled>Mínimo</option>
                         <option value="100000">100,000</option>
@@ -78,7 +78,7 @@
                         <option value="400000">400,000</option>
                     </select>  
                 </div>
-                <div class="col-sm-5" >
+                <div class="col-md-5" >
                     
                     <select class="form-control "  name="highPrice">
                         <option selected disabled>Máximo</option>
@@ -93,8 +93,8 @@
             
             
             <div class="form-group ">
-                <label class="col-sm-2 control-label">Año</label>
-                <div class="col-sm-5" ">
+                <label class="col-md-2 control-label">Año</label>
+                <div class="col-md-5" ">
                     <select class="form-control"  name="lowYear">
                         <option selected disabled>Desde</option>
                         
@@ -106,7 +106,7 @@
                            ?>
                     </select>  
                 </div>
-                <div class="col-sm-5" >
+                <div class="col-md-5" >
                     <select class="form-control  "  name="highYear">
                         <option selected disabled>Hasta</option>
                         
@@ -124,8 +124,8 @@
             
             
             <div class="form-group">
-                <div class=" col-sm-8 col-sm-offset-8">
-                    <button type="submit" class="btn btn-default">Search</button>
+                <div class="  col-md-offset-9">
+                    <button type="submit" class="btn btn-primary" > Search </button>
                 </div>
             </div> 
             

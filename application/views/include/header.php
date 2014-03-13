@@ -16,6 +16,11 @@
     <link href="assets/css/style.css" rel="stylesheet">
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
    
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+   <script src="<?php echo base_url('assets/js/app.js') ?>" 		   type="text/javascript"></script> 
+   <script src="<?php echo base_url('assets/js/maincontroller.js') ?>"    type="text/javascript"></script> 
+   
     </head>
     <body>
  
