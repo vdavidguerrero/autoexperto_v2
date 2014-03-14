@@ -39,7 +39,7 @@
         <h2>Anuncios Activos</h2>
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class='info'>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Ano</th>
@@ -58,7 +58,7 @@
               { 
                   echo "
                       
-                    <tr>
+                    <tr class='active'>
                         <td> <a href='index.php?/ad_controller/showAd/".$var2->adID."/".$var2->VIN."/".$var2->userID."'>".$var2->Brand." </a></td>
                         <td>".$var2->Model." ".$var2->Body_Style." ".$var2->Trim. "</td>
                         <td>".$var2->Year."</td>
@@ -79,7 +79,7 @@
         <h2>Anuncios Pasado</h2>
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class='warning'>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Ano</th>
@@ -98,7 +98,7 @@
               { 
                   echo "
                       
-                    <tr>
+                    <tr class='active'>
                         <td> <a href='index.php?/ad_controller/showAd/".$var2->adID."/".$var2->VIN."/".$var2->userID."'>".$var2->Brand." </a></td>
                         <td>".$var2->Model." ".$var2->Body_Style." ".$var2->Trim. "</td>
                         <td>".$var2->Year."</td>

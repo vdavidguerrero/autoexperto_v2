@@ -94,7 +94,7 @@
             
             <div class="form-group ">
                 <label class="col-md-2 control-label">Año</label>
-                <div class="col-md-5" ">
+                <div class="col-md-5" >
                     <select class="form-control"  name="lowYear">
                         <option selected disabled>Desde</option>
                         
@@ -149,7 +149,7 @@
          
         <table class='table table-striped table-hover'>
             <thead>
-                <tr>
+                <tr class='info'>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Ano</th>
@@ -162,7 +162,7 @@
                 foreach ($var as $var2)
                     { 
                        echo "
-                    <tr>
+                    <tr class='active'>
                         <td> <a href='index.php?/ad_controller/showAd/".$var2->adID."/".$var2->VIN."/".$var2->userID."'>".$var2->Brand." </a></td>
                         <td>".$var2->Model." ".$var2->Body_Style." ".$var2->Trim. "</td>
                         <td>".$var2->Year."</td>
