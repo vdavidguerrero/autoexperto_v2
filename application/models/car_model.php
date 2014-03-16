@@ -8,32 +8,31 @@ class car_model extends CI_Model {
 	$this->load->database(); 
     }
     
-    /*
-     * 
-     * Unique_Cars
-     * Unique_Models
-     * Car_Brand
-     * Car_Model
-     * Car_Part
-     * Car_Manufacturer
-     * Car_Years
-     * 
-     */
     
-     /************************************************************************
-     
-     * Car; Represents an Entire Car by its VIN 
-     
-     ************************************************************************/
+     /**
+      * Get a car by its VIN
+      * 
+      * @param integer $carVIN - The vin to look for
+      * @return array - Array with all the found rows
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Check performance
+      * @see getCarByValues
+      */
       
      public function getCar($carVIN)
      {
-        $this->db->select('*');
+       
+        $this->db->select('*, Country as Manufacturer_Country');
         $this->db->from('unique_models');
         $this->db->join('unique_cars', 'unique_models.ID = unique_cars.Unique_Model','inner');
+        $this->db->join('car_models', 'unique_models.Car_Model_ID = car_models.ID' );
+        $this->db->join('car_brands','car_models.Brand_ID = car_brands.ID' );
+        $this->db->join('manufacturer_countries', 'unique_cars.Manufacturer_Country_ID = manufacturer_countries.ID');
         $this->db->where('unique_cars.VIN'    ,$carVIN);
         $query = $this->db->get();
         return $query->row_array();   
+        
+        
      }
      
       public function getCarByValues($carBrand, $carModel, $userCity, $carType )
@@ -63,9 +62,17 @@ class car_model extends CI_Model {
         return $query->row();   
     }
     
-     public function insertUniqueCar($VIN)
+     public function insertUniqueCar($VIN, $Manufacturer_Country, $trim, $year, $model)
     {
-        $this->db->insert('unique_cars',$VIN);     
+        $manufacturerCountryRow = $this->getManufacturerCountry($Manufacturer_Country);
+        $uniqueModelRow = $this->getUniqueModel($trim, $model,$year);
+        $insertObject = (object) array(
+                                'VIN'                       => $this->VIN,
+                                'Manufacturer_Country_ID'   => $manufacturerCountryRow->ID,
+                                'Date'                      => date("Y-m-d H:i:s"),
+                                'Unique_Model'              => $uniqueModelRow->ID
+                            );
+        $this->db->insert('unique_cars',$insertObject);
     }
 
     /************************************************************************
@@ -88,9 +95,18 @@ class car_model extends CI_Model {
         return $query->row();   
     }
     
-    public function insertUniqueModel($uniqueModelData)
+    public function insertUniqueModel($uniqueModelObject)
     {
-        $this->db->insert('unique_models',$uniqueModelData); 
+       
+        
+        $modelObject =  $this->getModelByModelName($uniqueModelObject->Model);
+        $uniqueModelObject->Car_Model_ID = $modelObject->ID;
+        unset($uniqueModelObject->Brand);
+        unset($uniqueModelObject->Manufacturer_Country);
+        unset($uniqueModelObject->Model);        
+        unset($uniqueModelObject->VIN);  
+        $this->db->insert('unique_models',$uniqueModelObject); 
+        
     }
      
     /************************************************************************
@@ -105,11 +121,12 @@ class car_model extends CI_Model {
       return $query->result();
     }
     
-     public function getBrandbyBrandName($brandName)
+     public function getBrand($brandName)
     {
+        $searchObject =  array("Brand" =>$brandName);
         $this->db->select('*');
         $this->db->from('car_brands');
-        $this->db->where('Brand',$brandName);
+        $this->db->where($searchObject);
         $query = $this->db->get();
         return $query->row();
     }
@@ -144,9 +161,15 @@ class car_model extends CI_Model {
         return $query->row();   
     }
     
-      public function instertCarModel($carModelData)
+      public function instertCarModel($Model, $brand)
     {
-        $this->db->insert('car_models',$carModelData); 
+        $BrandRow =  $this->getBrand($brand);  
+        $instertObject = (object) array(
+                                "Model"    => $Model, 
+                                "Brand_ID" => $BrandRow->ID
+                         );
+        
+        $this->db->insert('car_models',$instertObject); 
     }
     
     /************************************************************************
@@ -167,15 +190,20 @@ class car_model extends CI_Model {
      ***********************************************************************/
     
     
-    public function insertManufacturerCountry($ManufacturerCountryData)
+    public function insertManufacturerCountry($manufacturerCountry)
     {
-        $this->db->insert('manufacturer_countries',$ManufacturerCountryData); 
+        $instertObject = (object) array("Country" => $manufacturerCountry);
+        
+        $this->db->insert('manufacturer_countries',$instertObject);
+        
     }
-    public function getManufacturerCountryByName($ManufacturerCountryData)
+    public function getManufacturerCountry($manufacturerCountry)
     {
+        $searchArray = array("Country" => $manufacturerCountry);
+        
         $this->db->select('*');
         $this->db->from('manufacturer_countries');
-        $this->db->where('Country',$ManufacturerCountryData);
+        $this->db->where($searchArray);
         $query = $this->db->get();
         return $query->row();
     }
@@ -188,9 +216,11 @@ class car_model extends CI_Model {
     
     public function getCarYears()
     {
-        for ($i = 1990; $i<2015; $i++)
-                        $years[$i] = $i; 
-        return $years;
+        for ($i = 1990; $i<= date("Y"); $i++)
+        {
+            $years[$i] = $i; 
+        }
+            return $years;
     }
     
     

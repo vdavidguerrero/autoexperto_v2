@@ -7,6 +7,7 @@ class user_controller extends Main_Controller {
     //Falta buscar la forma de llamar a ad_controller->index() desde aquí.;
         public function __construct()
         {
+            
             parent::__construct();
             $this->load->model("user_model");
             $this->load->model("ad_model");
@@ -16,6 +17,7 @@ class user_controller extends Main_Controller {
             $this->load->library('session');
             $this->load->helper('url');
             //Arreglar esto con el redirect...
+            
             
         }  
         function index ()
@@ -84,15 +86,10 @@ class user_controller extends Main_Controller {
                 
                 $user =  $this->user_model->checkUserLogin($this->input->post("cedula_rnc"),MD5($this->input->post('password'))); 
                 
-                $sess_array = array( 'id'    => $user->ID);
+                $sess_array = array( 'id'    => $user->ID, 'flag' => $user->Flag);
                 $this->session->set_userdata('logged_in', $sess_array);
-                $dataPass["brands"] = $this->car_model->getCarBrands();
-                $dataPass["cities"] = $this->user_model->getUsercities();  
-                $dataPass["years"]  = $this->car_model->getCarYears();
-                 $dataPass["vaar"] = 1; 
-                $this->load->view('include/header'); 
-                $this->load->view('ad/search_ad_view',$dataPass);  
-                $this->load->view('include/footer'); 
+                
+                redirect("/ad_controller");
             }
                
 	}
@@ -141,17 +138,10 @@ class user_controller extends Main_Controller {
                 if($user)
                 { 
                 
-                  $sess_array = array( 'id'       => $user->ID);
+                  $sess_array = array( 'id'       => $user->ID, 'flag' => $user->Flag);
                   $this->session->set_userdata('logged_in', $sess_array);
-                 
-                  //redirect('', 'refresh');
-                  $dataPass["brands"] = $this->car_model->getCarBrands();
-                  $dataPass["cities"] = $this->user_model->getUsercities();  
-                  $dataPass["years"]  = $this->car_model->getCarYears();
-                   $dataPass["vaar"] = 1; 
-                  $this->load->view('include/header'); 
-                  $this->load->view('ad/search_ad_view',$dataPass);  
-                  $this->load->view('include/footer');
+                  
+                   redirect("/ad_controller");
                 }
                 else
                 {
@@ -166,18 +156,11 @@ class user_controller extends Main_Controller {
         }
         
         public function userLogOff()
-        {
-            $dataPass["brands"] = $this->car_model->getCarBrands();
-            $dataPass["cities"] = $this->user_model->getUsercities();  
-            $dataPass["years"]  = $this->car_model->getCarYears();
-             $dataPass["vaar"] = 1; 
+        { 
             $dataPass["var"] = " ";
             $this->session->sess_destroy();
             
-            //redirect('/index.php/ad_controller', 'refresh');
-            $this->load->view('include/header'); 
-            $this->load->view('ad/search_ad_view',$dataPass);  
-            $this->load->view('include/footer');
+            redirect("/ad_controller");
         }
         
         public function remoteUserLogin()

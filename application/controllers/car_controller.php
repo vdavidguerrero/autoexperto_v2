@@ -1,8 +1,39 @@
 <?php if (!defined('BASEPATH')) die();
 
 
+
 class car_controller extends Main_Controller {
    
+    
+        var $VIN;
+        var $Manufacturer_Country;
+        var $Brand;                
+        var $Year;               
+        var $Model;         
+        var $Trim;         
+        var $Body_Style;         
+        var $Engine_Type;        
+        var $Transmission;         
+        var $Gallons;              
+        var $Fuel_Economy_City;    
+        var $Fuel_Economy_Highway;  
+        var $Seating;              
+        var $ABS_Brake;            
+        var $Driver_Airbag;        
+        var $Front_Side_AirBag;     
+        var $AC;                   
+        var $Cruise_Control;      
+        var $Convertible_Top;       
+        var $Radio;                
+        var $CD_Player;           
+        var $Subwoofer;            
+        var $Leather_Seats;         
+        var $Power_Windows;         
+        var $Wheels;                
+
+        
+    
+    
         public function __construct()
         {
             parent::__construct();
@@ -12,113 +43,78 @@ class car_controller extends Main_Controller {
             $this->load->helper('form');
             $this->load->library('session');
             $this->load->helper('url');
-
         }  
        
-        public function index()
-        {  
-              $troubleCodeObject =  $this->ad_model->getTroubleCode("P0002");
-              echo $troubleCodeObject->ID;
-        }
+       
         public function carQuery()
-        {
-             
+        { 
              $json = file_get_contents('php://input');
-             $obj = json_decode($json,true);
-             $VIN  =  $obj['VIN'];
-  
-             if(strlen($VIN) == 17)
+             $jsonObject = json_decode($json,true);
+             $this->VIN  =  $jsonObject['VIN'];
+             
+             if(strlen($this->VIN) === 17)
              {
-                $car  = $this->car_model->getCar($VIN);
-                if(!$car)
-                {
-                       $UniqueCarDataArray = $this->queryCarData($VIN); 
-                       $trim  =                   $UniqueCarDataArray["Trim"];
-                       $model =                   $UniqueCarDataArray["Car_Model_ID"];
-                       $year  =                   $UniqueCarDataArray["Year"];
-                       $manufacturerCountry =     $UniqueCarDataArray["Manufacturer_Country"];
-
-                       $newCarUniqueModelObject =     $this->car_model->getUniqueModel($trim,$model,$year);
-                       if(!$newCarUniqueModelObject)
+                $thisCarData = $this->car_model->getCar($this->VIN);
+                if(!$thisCarData)
+                { 
+                       $thisCarData = $this->queryCarData($this->VIN); 
+                       $this->instanceCar($thisCarData);
+                       
+                       if(!$this->car_model->getUniqueModel($this->Trim, $this->Model,$this->Year))
                        {
-                            $this->createUniqueModel($UniqueCarDataArray); 
-                            $newCarUniqueModelObject = $this->car_model->getUniqueModel($trim,$model,$year);
+                          
+                            $this->createUniqueModel($this->getThisObjectOnly()); 
                        }
-                       $this->createUniqueCar($VIN,$manufacturerCountry,$newCarUniqueModelObject->ID);   
-                       $car  = $this->car_model->getCar($VIN);
+                       $this->createUniqueCar();   
                 }
-               
-             }
-             else
-              $car = "VIN INVALIDO";
-               header('Content-type: application/json');
-               echo json_encode($car);
-        }
-        
-        public function createUniqueModel($newUniqueModelDataArray)
-        {  
-          
-            $modelName              = $newUniqueModelDataArray["Car_Model_ID"];
-            $brandName              = $newUniqueModelDataArray["Brand"];
-            
-            // Even tough these are car's values, they aren't define on  UniqueCar table, 
-            // We need to unset.
-            unset($newUniqueModelDataArray['Brand']);    
-            unset($newUniqueModelDataArray['Manufacturer_Country']);
-            
-            $modelObject  = $this->car_model->getModelByModelName($modelName);
-            
-            if(!$modelObject)
-            {
-                $brandObject   = $this->car_model->getBrandbyBrandName($brandName);
-                if(!$brandObject)
+                else
                 {
-                    $newCarBrandData = array('Brand' => $brandName);
-                    $this->car_model->instertCarBrand($newCarBrandData);    
-                    $brandObject = $this->car_model->getBrandbyBrandName($newCarBrandData);
+                    $this->instanceCar($thisCarData);
+                }   
+             }
+             else 
+             {
+                  header('Content-type: application/json');
+                  echo json_encode("Vin Invalido");
+                  return;
+             }
+             header('Content-type: application/json');
+            echo json_encode($this->getThisObjectOnly());
+          
+             }
+        
+        public function createUniqueModel()
+        {  
+            if(!$this->car_model->getModelByModelName($this->Model))
+            {
+                if(!$this->car_model->getBrand($this->Brand))
+                {
+                    $this->car_model->instertCarBrand($this->Brand); 
                 }
-               
-                    $newCarModelData = array( 'Model' => $modelName,'Brand_ID' => $brandObject->ID);
-                    $this->car_model->instertCarModel($newCarModelData);
-                    $modelObject = $this->car_model->getModelByModelName($modelName);
+               $this->car_model->instertCarModel($this->Model, $this->Brand);
             }
- 
-           $newUniqueModelDataArray["Car_Model_ID"]  = $modelObject->ID; 
-           $this->car_model->insertUniqueModel($newUniqueModelDataArray);   
+          $this->car_model->insertUniqueModel($this->getThisObjectOnly());   
         }
         
-        public function createUniqueCar($VIN, $manufacturerCountry, $uniqueCarModelID)
-        {//paramater: $VIN, $ManufacturarCountry, $uniqueCarModel
-           
-            $now = date("Y-m-d H:i:s");
-            
-            $manufacturerCountryObject = $this->car_model->getManufacturerCountryByName($manufacturerCountry); 
-            if(!$manufacturerCountryObject)
+        public function createUniqueCar()
+        {  
+            if(!$this->car_model->getManufacturerCountry($this->Manufacturer_Country))
             {
-                $newManufacturerCountryData = array('Country' => $manufacturerCountry);
-                $this->car_model->insertManufacturerCountry($newManufacturerCountryData); 
-                $manufacturerCountryObject = $this->car_model->getManufacturerCountryByName($manufacturerCountry); 
+                $this->car_model->insertManufacturerCountry($this->Manufacturer_Country); 
             }
-            $manufacturerCountryID = $manufacturerCountryObject->ID;
-            
-            $newUniqueCarData = array(
-                                            'VIN'                       => $VIN,
-                                            'Manufacturer_Country_ID'   => $manufacturerCountryID,
-                                            'Date'                      => $now,
-                                            'Unique_Model'              => $uniqueCarModelID
-                                      );
-            $this->car_model->insertUniqueCar($newUniqueCarData); 
+            $this->car_model->insertUniqueCar($this->VIN,$this->Manufacturer_Country,$this->Trim, $this->Year, $this->Model); 
           }
         
         function queryCarData($VIN)
         {
             // Sacar esta info de VIN Query
            $carData = array(
-                                    'Manufacturer_Country'  => 'USA', // Datos Del Carro único
-                                    'Brand'                 => 'Toyota',// Datos Del Carro único We must Unset them
-                                    'Year'                  => '2002', 
-                                    'Car_Model_ID'          => 'Corolla',
-                                    'Trim'                  => 'LX Sencillo',
+                                    
+                                    'Manufacturer_Country'  => 'USA', 
+                                    'Brand'                 => 'Honda',
+                                    'Year'                  => '2007', 
+                                    'Model'                 => 'Accord',
+                                    'Trim'                  => 'EX',
                                     'Body_Style'            => 'Sedan',
                                     'Engine_Type'           => '1.7 DOHC',
                                     'Transmission'          => 'Secuencial',
@@ -128,7 +124,7 @@ class car_controller extends Main_Controller {
                                     'Seating'               => 'Lether', 
                                     'ABS_Brake'             => 'Yes',
                                     'Driver_Airbag'         => 'Yes',
-                                    'Front_Side_AirBag'     => 'NO',
+                                    'Front_Side_Airbag'     => 'NO',
                                     'AC'                    => 'YES',
                                     'Cruise_Control'        => 'YES',
                                     'Convertible_Top'       => 'NO',
@@ -140,9 +136,56 @@ class car_controller extends Main_Controller {
                                     'Wheels'                => 'ALLOY'
                            );
            
-            return $carData; 
+           return $carData;
+           
             
-                  
+           
+        }
+        
+        function instanceCar($data)
+        {
+            
+            $this->AC                       = $data['AC'];
+            $this->Year                     = $data['Year'];    
+            $this->Trim                     = $data['Trim'];         
+            $this->Brand                    = $data['Brand'];
+            $this->Radio                    = $data['Radio']; 
+            $this->Wheels                   = $data['Wheels']; 
+            $this->Seating                  = $data['Seating'];  
+            $this->Gallons                  = $data['Gallons'];   
+            $this->Model                    = $data['Model'];         
+            $this->ABS_Brake                = $data['ABS_Brake'];  
+            $this->CD_Player                = $data['CD_Player'];           
+            $this->Subwoofer                = $data['Subwoofer'];
+            $this->Body_Style               = $data['Body_Style'];         
+            $this->Engine_Type              = $data['Engine_Type'];        
+            $this->Transmission             = $data['Transmission'];  
+            $this->Leather_Seats            = $data['Leather_Seats'];         
+            $this->Power_Windows            = $data['Power_Windows'];   
+            $this->Driver_Airbag            = $data['Driver_Airbag'];   
+            $this->Cruise_Control           = $data['Cruise_Control'];      
+            $this->Convertible_Top          = $data['Convertible_Top'];   
+            $this->Front_Side_AirBag        = $data['Front_Side_Airbag'];     
+            $this->Fuel_Economy_City        = $data['Fuel_Economy_City']; 
+            $this->Manufacturer_Country     = $data['Manufacturer_Country'];
+            $this->Fuel_Economy_Highway     = $data['Fuel_Economy_Highway'];  
+            
+        }
+      
+        function getThisObjectOnly()
+        {
+           $child = (object) array();
+             $i=0; 
+             foreach($this as $property => $propertyValue)
+             {
+                 if($i>24)
+                 {
+                     break;
+                 }
+                 $i++;
+                 $child->$property = $propertyValue;
+             }
+             return $child; 
         }
     
 }

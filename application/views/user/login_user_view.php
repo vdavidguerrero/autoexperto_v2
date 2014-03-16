@@ -5,7 +5,7 @@
         <h2>Login</h2><br>
         
     </div>
-    <form class=" form-horizontal col-sm-offset-1" role="form" method="post" action="index.php?/user_controller/userLogin">
+    <form class=" form-horizontal col-sm-offset-1" role="form" method="post" action="/user_controller/userLogin">
         <div ng-app='demo' ng-controller='formController'>
             <div ng-repeat='label in loginForm'>
                 <div class="form-group " >

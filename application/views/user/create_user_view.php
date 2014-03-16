@@ -7,7 +7,7 @@
         </div>
            
         
-            <form class="form-horizontal col-sm-offset-1 " role="form" method="post" action="index.php?/user_controller/CreateUser">
+            <form class="form-horizontal col-sm-offset-1 " role="form" method="post" action="/user_controller/CreateUser">
         
             <div class="form-group ">
                 <label  class="col-sm-1 control-label">Nombre</label>

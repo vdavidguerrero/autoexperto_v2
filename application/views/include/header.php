@@ -13,7 +13,7 @@
     <link href="<?php echo base_url('assets/css/font-awesome.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/custom.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/slate-bootstrap.min.css') ?>" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
    
@@ -30,8 +30,7 @@
            
                 <div class="navbar-header">
                   
-                    <a class="navbar-brand" href="<?php echo base_url();?>">Auto Experto</a>
-                </div>
+                 
         
         <?php 
         session_start();
@@ -39,27 +38,38 @@
         {
             $sessionInfo = $this->session->userdata('logged_in');
             $id = $sessionInfo['id'];
-            echo "
-                
+            $flagValue = $sessionInfo['flag'];
+             
+            echo "<a class='navbar-brand' href='";
+           
+             echo base_url();
+           echo "'>  Auto Experto ";       
+                        
+                         if($flagValue)
+                           echo " - Vendedor";
+                       else
+                           echo " - Mecanico";
                     
+                    echo " </a></div>
 
                     <ul class='nav navbar-nav navbar-right' > 
-                        <li><a href='index.php?/user_controller/showUser/$id'>Mi Panel</a></li>
-                        <li><a href='index.php?/user_controller/userLogOff'>Salir de sesión</a></li>
+                        <li><a href='/user_controller/showUser/$id'>Mi Panel</a></li>
+                        <li><a href='/user_controller/userLogOff'>Salir de sesión</a></li>
                         <li> <span> -- </span></li>
                     </ul>";  
         }
         else
         {
-            echo "
+            echo "<a class='navbar-brand' href='";
+            echo base_url();
+            echo "'>  Auto Experto   </a></div>
+                
+            
                      <ul class='nav navbar-nav navbar-right' '> 
-                        <li><a href='index.php?/user_controller/userLogin'>Iniciar Sesión</a></li>
-                        <li><a href='index.php?/user_controller'>Crear Cuenta</a></li>
+                        <li><a href='/user_controller/userLogin'>Iniciar Sesión</a></li>
+                        <li><a href='/user_controller'>Crear Cuenta</a></li>
                          <li> <span> -- </span></li>
                     </ul>
-
-                 
-                    
                     "  ;     
         }
         

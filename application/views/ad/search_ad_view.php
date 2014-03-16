@@ -10,7 +10,7 @@
         
         <h3>¿Qué Andas Buscando?</h3>
         
-        <form class="form-horizontal " role="form" method="post" action="index.php?/ad_controller/showSearchResults">
+        <form class="form-horizontal " role="form" method="post" action="/ad_controller/showSearchResults">
             <br>
             
             <div class="form-group ">
@@ -34,9 +34,22 @@
                 <div class="col-md-10">
                     <select class="form-control  " name="brands" id="first-choice" >
                         <option selected disabled>Seleccione Una Marca</option>
-                            <?php
+                        
+                            <script>
+                            var x = <?php echo json_encode($brands);?>; 
+                            var j;
+                            for (j in x)
+                            {
+                                console.log(x[j].ID);
+                            }
+                            
+     
+                            </script>
+   
+                         <?php
                             foreach ($brands as $brand)
                            {
+                                
                              echo "<option value='".$brand->ID."'>".$brand->Brand."</option>";
                            }
                            ?>
@@ -141,7 +154,7 @@
     
 <div class="col-sm-6 col-sm-offset-1">
    <?php
-            if($vaar == 0)
+            if(isset($var))
                 {
         echo "       
     
@@ -163,7 +176,7 @@
                     { 
                        echo "
                     <tr class='active'>
-                        <td> <a href='index.php?/ad_controller/showAd/".$var2->adID."/".$var2->VIN."/".$var2->userID."'>".$var2->Brand." </a></td>
+                        <td> <a href='/ad_controller/showAd/".$var2->adID."/".$var2->VIN."/".$var2->userID."'>".$var2->Brand." </a></td>
                         <td>".$var2->Model." ".$var2->Body_Style." ".$var2->Trim. "</td>
                         <td>".$var2->Year."</td>
                         <td>".number_format($var2->Price)."</td>
@@ -192,7 +205,7 @@
         $("#first-choice").change(function() 
         {
             
-            $("#second-choice").load("index.php?/ad_controller/showAdModels/" + $("#first-choice").val()); 
+            $("#second-choice").load("/ad_controller/showAdModels/" + $("#first-choice").val()); 
             $("#second-choice").attr('enabled', 'true'); 
         });
     });
