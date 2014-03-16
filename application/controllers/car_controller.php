@@ -79,7 +79,7 @@ class car_controller extends Main_Controller {
                   return;
              }
              header('Content-type: application/json');
-            echo json_encode($this->getThisObjectOnly());
+             echo json_encode($this->getThisObjectOnly());
           
              }
         

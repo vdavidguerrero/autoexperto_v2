@@ -35,7 +35,7 @@ troubleCodes:
 };
 
 var user2 = {
-  VIN: 12345678912345678
+  VIN: 12345678912345672
   };
 
 var userString = JSON.stringify(user2);
@@ -50,7 +50,7 @@ var options = {
   host: 'localhost',
   port: 80,
  // path: '/index.php/ad_controller/createAd',
-  path: '/index.php/car_controller/carQuery',
+  path: '/index.php?/car_controller/carQuery',
   method: 'POST',
   headers: headers
 };
