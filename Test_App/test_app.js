@@ -35,7 +35,7 @@ troubleCodes:
 };
 
 var user2 = {
-  VIN: 12345678912345672
+  VIN: "12345678912341333"
   };
 
 var userString = JSON.stringify(user2);
@@ -57,6 +57,8 @@ var options = {
 
 // Setup the request.  The options parameter is
 // the object we defined above.
+
+
 var req = http.request(options, function(res) {
   res.setEncoding('utf-8');
 
@@ -64,7 +66,6 @@ var req = http.request(options, function(res) {
 
   res.on('data', function(data) {
     responseString += data;
-    
   });
 
   res.on('end', function() {

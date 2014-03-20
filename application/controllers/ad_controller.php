@@ -3,9 +3,22 @@
 
 class Ad_controller extends Main_Controller {
     
+         var $Seller_ID;
+         var $Mechanic_ID;
+         var $Expiration_Date; 
+         var $Publish_Date;     
+         var $Price;           
+         var $Flag;                    
+         var $Paper_status;     
+         var $Car_Review;        
+         var $Mileage;         
+         var $Unique_Car_ID;
+         var $Trouble_Codes;
+         var $Part_Reviews;
+         
+         
         public function __construct()
-        {
-            
+        {  
             parent::__construct();
             $this->load->model("ad_model");
             $this->load->model("car_model");
@@ -13,15 +26,12 @@ class Ad_controller extends Main_Controller {
             $this->load->library('form_validation');
             $this->load->helper('form');
             $this->load->library('session');
-            $this->load->helper('url');
-            
+            $this->load->helper('url');  
         }  
             
         function index ()
 	{
-           
           $this->showAdForm();
-              
         }
             
         public function showAdForm()
@@ -32,43 +42,35 @@ class Ad_controller extends Main_Controller {
            $this->load->view('include/header'); 
            $this->load->view('ad/search_ad_view',$dataPass);  
            $this->load->view('include/footer');  
-          
-           
         }
             
-        public function showAdModels($brandID)
+        public function showAdModels($brand)
         {
-            $models = $this->car_model->getModelsByBrandID($brandID); 
-            echo "<option selected disabled>Seleccione Una Marca</option>";
-                
+            $models = $this->car_model->getModelsByBrand($brand); 
             foreach ($models as $model)
-                echo "<option value='".$model->ID."' >".$model->Model."</option>";
-                    
-                    
+                echo "<li><a>".$model->Model."</a></li>";      
         }
             
         public function showSearchResults()
         {
             
-            $searchData = array (
-                                 'users.DR_City_ID'         => $this->input->post('city'), 
-                                 'car_models.Brand_ID'      => $this->input->post('brands'),
-                                 'car_models.ID'            => $this->input->post('model'),
-                                 'unique_models.Body_Style' => $this->input->post('type'),
-                                 'unique_models.Year <='     => $this->input->post('highYear'),
-                                 'unique_models.Year >='     => $this->input->post('lowYear'),
-                                 'car_ads.Price < '         => $this->input->post('highPrice'),
-                                 'car_ads.Price > '         => $this->input->post('lowPrice')  
+           $searchData = array (
+                                 'dominican_republic_cities.City'   => $this->input->post('city'), 
+                                 'car_brands.Brand'                 => $this->input->post('brands'),
+                                 'car_models.Model'                 => $this->input->post('model'),
+                                 'unique_models.Body_Style'         => $this->input->post('type'),
+                                 'unique_models.Year <='            => $this->input->post('highYear'),
+                                 'unique_models.Year >='            => $this->input->post('lowYear'),
+                                 'car_ads.Price <= '                => $this->input->post('highPrice'),
+                                 'car_ads.Price >= '                => $this->input->post('lowPrice')  
                                );
                                    
           foreach ($searchData as $k => $data)
               if(strlen($data) == 0)
                   unset($searchData[$k]);
                       
-           $dataPass["var"] = $this->ad_model->getAdsBySearch($searchData);
-           $dataPass["brands"] = $this->car_model->getCarBrands();
-           $dataPass["cities"] = $this->user_model->getUserCities();  
-           $dataPass["years"]  = $this->car_model->getCarYears();
+           $dataPass["adsPreviewData"]    = $this->ad_model->getAdsBySearch($searchData);
+           
                
            $this->load->view('include/header'); 
            $this->load->view('ad/search_ad_view',$dataPass);  
@@ -77,8 +79,6 @@ class Ad_controller extends Main_Controller {
             
         public function showAd($adID,$VIN, $userID)
         {
-            
-            
           $dataPass["ad"]  = $this->ad_model->getAd($adID);
           $dataPass["car"] = $this->car_model->getCar($VIN);
           $dataPass["user"] = $this->user_model->getUserByRnc($userID);
@@ -86,7 +86,6 @@ class Ad_controller extends Main_Controller {
           $this->load->view('include/header'); 
           $this->load->view('ad/show_ad_view',$dataPass);  
           $this->load->view('include/footer'); 
-              
         }
             
         public function createAd()
@@ -104,7 +103,6 @@ class Ad_controller extends Main_Controller {
                    
             else 
             {
-                
                  foreach ($obj['troubleCodes'] as $val)
                      array_push($carTroubleCodes, $val['Trouble']);
                          
@@ -171,45 +169,45 @@ class Ad_controller extends Main_Controller {
                   
         }
             
-        function queryAdData($VIN)
-        {
-            // Sacar esta info de VIN Query
-            for ($i = 1; $i<45; $i++)
-                        $piezas[$i] = 3; 
-                            
-             $trouble_codes = array(
-                                    '1' => 'P0001',
-                                    '2' => 'P0003'
-                                   );
-                                       
-            $precio = 150000;
-            $ID_user = 1;
-            $DGII_Status = "GOOD";
-            $vin = 1234;
-            $papers = "OK";
-                
-            $return_Array = array (
-                                    '1'   => $piezas, 
-                                    '2'   => $precio,
-                                    '3'   => $ID_user, 
-                                    '4'   => $trouble_codes,
-                                    '5'   => $vin, 
-                                    '6'   => $papers,
-                    );
-                        
-            return  $return_Array; 
-        }
-            
-            
-        public function generateCarReview($carPartsReview)
+          
+        public function generateCarReview()
         {
             $review = 0; 
                 
             foreach($carPartsReview as $values)
-                $review += $values; 
-                    
-                    
+                $review += $values;        
+            
             return $review/(44);
         }
                     
+        public function instanceAd($adObject)
+        {
+                     
+            $this->Flag             = $adObject->Flag; 
+            $this->Price            = $adObject->Price; 
+            $this->Mileage          = $adObject->Mileage; 
+            $this->Seller_ID        = $adObject->Seller_ID; 
+            $this->Car_Review       = $adObject->Car_Review; 
+            $this->Mechanic_ID      = $adObject->Mechanic_ID; 
+            $this->Publish_Date     = $adObject->Publish_Date;    
+            $this->Paper_status     = $adObject->Paper_status;    
+            $this->Unique_Car_ID    = $adObject->Unique_Car_ID; 
+            $this->Expiration_Date  = $adObject->Expiration_Date;  
+        }
+        
+        function getThisObjectOnly()
+        {
+           $child = (object) array();
+             $i=0; 
+             foreach($this as $property => $propertyValue)
+             {
+                 if($i>24)
+                 {
+                     break;
+                 }
+                 $i++;
+                 $child->$property = $propertyValue;
+             }
+             return $child; 
+        }
 } 

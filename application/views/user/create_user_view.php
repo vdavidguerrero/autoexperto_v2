@@ -19,7 +19,7 @@
             <div class="form-group ">
                 <label  class="col-sm-1 control-label ">Contraseña</label>
                 <div class="col-sm-3 ">
-                    <input type="password" class="form-control  "  name="password" >
+                    <input type="password" class="form-control  "  name="password" id="passwordCreate" >
                 </div>	  	
                 <div class="text-danger"><?php echo form_error('password'); ?></div>
             </div>
@@ -31,9 +31,9 @@
             <div class="form-group ">
                 <label  class="col-sm-1 control-label">RNC O Cédula</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"  name="cedula_rnc" value="<?php echo set_value('cedula_rnc');?>" >
+                    <input type="text" class="form-control"  name="cedula_rnc" id="rnc" value="<?php echo set_value('cedula_rnc');?>" >
                 </div>	  
-                 <div class="text-danger"><?php echo form_error('cedula_rnc'); ?></div>
+                 <div class="text-danger" id="rncError"><?php echo form_error('cedula_rnc'); ?></div>
             </div>
                
                     

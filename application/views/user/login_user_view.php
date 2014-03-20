@@ -1,3 +1,4 @@
+
     
 <div class="container">
     
@@ -11,10 +12,9 @@
                 <div class="form-group " >
                     <label  class="col-sm-1 control-label">{{label.fieldName}}</label>
                     <div class="col-sm-3">
-                        <input type="{{label.field}}" class="form-control"  name="{{label.name}}" >
+                        <input type="{{label.field}}" class="form-control" ng-model="nombre" name="{{label.name}}" >
                     </div>	  	
-                </div>
-                    
+                </div>  
             </div>
         </div>
             

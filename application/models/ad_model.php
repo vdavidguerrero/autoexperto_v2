@@ -8,6 +8,7 @@ class Ad_model extends CI_Model {
     {
     	parent::__construct();
 	$this->load->database(); 
+        $this->load->model("car_model");
        
     }
     
@@ -39,15 +40,29 @@ class Ad_model extends CI_Model {
      
     ************************************************************************/
        
-    public function getPendingAdByVIN($carVIN)
+    public function getAdByVin($carVIN, $flag)
     {
-        $this->db->select('car_ads.ID');
+        $this->db->select('*, car_ads.ID as adID, users.ID as userID',false);
         $this->db->from('car_ads');
-        $this->db->join('unique_cars', 'car_ads.Unique_Car_ID = unique_cars.ID','inner');
+        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID'                 ,'inner');
+        $this->db->join('unique_models'               , 'unique_cars.Unique_Model = unique_models.ID'            ,'inner');
+        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'             ,'inner');
+        $this->db->join('car_brands'                  , 'car_models.Brand_ID = car_brands.ID'                    ,'inner');
+        $this->db->join('users'                       , 'car_ads.Seller_ID = users.ID'                           ,'inner');
+        $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID'        ,'inner');
+        $this->db->join('trouble_codes_N_ad'          , 'trouble_codes_N_ad.Car_Ad_ID = car_ads.ID'              ,'inner');              
+        $this->db->join('trouble_codes'               , 'trouble_codes_N_ad.Trouble_Code_ID = trouble_codes.ID'  ,'inner');
+        $this->db->join('car_part_review'             , 'car_part_review.Car_Ad_ID = car_ads.ID'                 ,'inner');
+        $this->db->join('car_parts'                   , 'car_part_review.Car_Part_ID = Car_Parts.ID'             ,'inner');
         $this->db->where('unique_cars.VIN'    ,$carVIN);
-        $this->db->where('car_ads.Flag', 0);
+        $this->db->where('car_ads.Flag', $flag);
         $query = $this->db->get();
         return $query->row();   
+    }
+    
+    public function getAdsBySearchArray($userID, $flag)
+    {
+        
     }
     
     public function insertCarAd($newCarAdData)
@@ -91,13 +106,30 @@ class Ad_model extends CI_Model {
        return $query->row();
     }
     
-    public function getAdBySeller($selleID)
+    public function getAdBySeller($sellerID)
     {
         
     }
    
-    public function getAdsBySearch($searchData)
+    public function getAdsBySearch($city,$brand,$model,$type, $lowYear, $HighYear,$lowPrice, $highPrice)
     {
+        
+        $searchData = array (
+                                 'dominican_republic_cities.City'   => $this->input->post('city'), 
+                                 'car_brands.Brand'                 => $this->input->post('brands'),
+                                 'car_models.Model'                 => $this->input->post('model'),
+                                 'unique_models.Body_Style'         => $this->input->post('type'),
+                                 'unique_models.Year <='            => $this->input->post('highYear'),
+                                 'unique_models.Year >='            => $this->input->post('lowYear'),
+                                 'car_ads.Price <= '                => $this->input->post('highPrice'),
+                                 'car_ads.Price >= '                => $this->input->post('lowPrice')  
+                               );
+                                   
+          foreach ($searchData as $k => $data)
+              if(strlen($data) == 0)
+                  unset($searchData[$k]);
+        
+        
         $this->db->select('*, car_ads.ID as adID, users.ID as userID',false);
         $this->db->from('car_ads');
         $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID'         ,'inner');

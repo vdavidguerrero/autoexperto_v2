@@ -3,11 +3,8 @@
 
 class user_controller extends Main_Controller {
 
-    
-    //Falta buscar la forma de llamar a ad_controller->index() desde aquí.;
         public function __construct()
         {
-            
             parent::__construct();
             $this->load->model("user_model");
             $this->load->model("ad_model");
@@ -15,10 +12,7 @@ class user_controller extends Main_Controller {
             $this->load->library('form_validation');
             $this->load->helper('form');
             $this->load->library('session');
-            $this->load->helper('url');
-            //Arreglar esto con el redirect...
-            
-            
+            $this->load->helper('url');  
         }  
         function index ()
 	{
@@ -27,7 +21,6 @@ class user_controller extends Main_Controller {
 
         public function showUserForm()
         {
-           //if $flag == 0, we're creating an Taller. if it's 1 then is a dealer
             $dataPass["cities"] = $this->user_model->getUserCities();
             $dataPass["var"] = " ";
             $this->load->view('include/header'); 

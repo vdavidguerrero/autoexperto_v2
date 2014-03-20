@@ -9,10 +9,7 @@
             
             
             <div class="col-sm-7 col-sm-offset-1 "> 
-                
-                
-                
-                
+               
                 <h2 class="pepito"> Anuncio</h2><b> 
                     
                     <div class="col-sm-2 ">
@@ -124,9 +121,9 @@
                     for($i=0; $i<5; $i++)
                     {
                         if($i < $carrito->Seller_Review)
-                           echo " <span class='fa fa-star yellow icon-2x '></span>" ;
+                           echo " <span class='fa fa-star yellow fa-2x '></span>" ;
                         else 
-                           echo " <span class='fa fa-star-o icon-2x'></span>" ;
+                           echo " <span class='fa fa-star-o fa-2x'></span>" ;
                                
                     }
                     echo "</td>";
@@ -134,9 +131,9 @@
                      for($i=0; $i<5; $i++)
                     {
                        if($i < $carrito->Seller_Review-1)
-                           echo " <span class='fa fa-star  yellow icon-2x'></span>" ;
+                           echo " <span class='fa fa-star  yellow fa-2x'></span>" ;
                         else 
-                           echo " <span class='fa fa-star-o icon-2x'></span>" ;
+                           echo " <span class='fa fa-star-o fa-2x'></span>" ;
                                
                     }
                     echo "</td>";

@@ -32,7 +32,7 @@ class CI_DB_result {
 	var $result_id				= NULL;
 	var $result_array			= array();
 	var $result_object			= array();
-	var $custom_result_object	= array();
+	var $custom_result_object               = array();
 	var $current_row			= 0;
 	var $num_rows				= 0;
 	var $row_data				= NULL;
