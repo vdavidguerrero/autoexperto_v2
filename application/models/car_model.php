@@ -11,15 +11,15 @@ class car_model extends CI_Model {
       * Get a car by its VIN
       * 
       * @param integer $carVIN - VIN of the the car/
-      * @return a car Objetc from the database - Array with all the found rows
+      * @return a car Objetc from the database 
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
       * @todo - Check 
       * @see getCarByValues
       */
           
-     public function getCar($carVIN)
+     public function getCarByVIN($carVIN)
      {
-        $this->db->select('*, Country as Manufacturer_Country');
+        $this->db->select('*');
         $this->db->from('unique_models');
         $this->db->join('unique_cars', 'unique_models.ID = unique_cars.Unique_Model','inner');
         $this->db->join('car_models', 'unique_models.Car_Model_ID = car_models.ID' );
@@ -27,7 +27,48 @@ class car_model extends CI_Model {
         $this->db->join('manufacturer_countries', 'unique_cars.Manufacturer_Country_ID = manufacturer_countries.ID');
         $this->db->where('unique_cars.VIN'    ,$carVIN);
         $query = $this->db->get();
-        return $query->row();   
+        
+       
+        $carObject =  $query->row();
+         unset($carObject->ID);
+         unset($carObject->Brand_ID);
+         unset($carObject->Manufacturer_Country_ID);
+         unset($carObject->Car_Model_ID);
+         unset($carObject->Unique_Model);
+         unset($carObject->Date);
+         
+         return $carObject;
+     }
+     
+       /**
+      * Get a car by its ID
+      * 
+      * @param integer $carVIN - VIN of the the car/
+      * @return a car Objetc from the database 
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Check the select
+      * @see getCarByValues
+      */
+          
+     public function getCar($carID)
+     {
+        $this->db->select('*');
+        $this->db->from('unique_cars');
+        $this->db->join('unique_models', 'unique_models.ID = unique_cars.Unique_Model','inner');
+        $this->db->join('car_models', 'unique_models.Car_Model_ID = car_models.ID' );
+        $this->db->join('car_brands','car_models.Brand_ID = car_brands.ID' );
+        $this->db->join('manufacturer_countries', 'unique_cars.Manufacturer_Country_ID = manufacturer_countries.ID');
+        $this->db->where('unique_cars.ID'    ,$carID);
+        $query = $this->db->get();
+       
+        $carObject =  $query->row();
+         unset($carObject->ID);
+         unset($carObject->Brand_ID);
+         unset($carObject->Manufacturer_Country_ID);
+         unset($carObject->Unique_Model);
+         unset($carObject->Car_Model_ID);
+         unset($carObject->Date);
+         return $carObject;
      }
          
      /**

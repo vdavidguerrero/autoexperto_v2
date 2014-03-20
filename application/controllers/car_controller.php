@@ -58,7 +58,7 @@ class car_controller extends Main_Controller {
              
              if(strlen($this->VIN) === 17)
              {
-                $thisCarData = $this->car_model->getCar($this->VIN);
+                $thisCarData = $this->car_model->getCarByVIN($this->VIN);
                 if(!$thisCarData)
                 { 
                        $thisCarData = $this->queryCarData($this->VIN); 
@@ -107,7 +107,7 @@ class car_controller extends Main_Controller {
                                         'Convertible_Top'       => 'NO',
                                         'Front_Side_Airbag'     => 'NO',
                                         'Fuel_Economy_City'     => '25',
-                                        'Manufacturer_Country'  => 'USA',
+                                        'Contry'  => 'USA',
                                         'Fuel_Economy_Highway'  => '27',
                                            
                                     );
@@ -140,7 +140,7 @@ class car_controller extends Main_Controller {
             $this->Convertible_Top          = $thisCarObject->Convertible_Top;   
             $this->Front_Side_AirBag        = $thisCarObject->Front_Side_Airbag;     
             $this->Fuel_Economy_City        = $thisCarObject->Fuel_Economy_City; 
-            $this->Manufacturer_Country     = $thisCarObject->Manufacturer_Country;
+            $this->Manufacturer_Country     = $thisCarObject->Country;
             $this->Fuel_Economy_Highway     = $thisCarObject->Fuel_Economy_Highway;   
         }
       

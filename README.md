@@ -1,7 +1,11 @@
-Puyar Bootstrap..
 
- -- Acabar la parte de los mecanicos. 
- -- Configurar las fotos
+
+- Vista muestra los datos del Objeto del controlador
+- Las propiedades del controlador estan en camelCase.
+- 
+Arreglo - Muchos campos de una tabla
+objeto - Un objeto con una o mas tabals. 
+Propiedades - propiedades del objeto de la clase. 
 
 
 

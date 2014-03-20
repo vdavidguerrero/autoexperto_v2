@@ -3,19 +3,28 @@
 
 class Ad_controller extends Main_Controller {
     
-         var $Seller_ID;
-         var $Mechanic_ID;
+    
+        //Ad Properties
+         var $adID;
+         var $Flag; 
+         var $Price;  
+         var $Mileage;
+         var $Car_Review; 
+         var $Paper_Status;
+         var $Publish_Date; 
          var $Expiration_Date; 
-         var $Publish_Date;     
-         var $Price;           
-         var $Flag;                    
-         var $Paper_status;     
-         var $Car_Review;        
-         var $Mileage;         
-         var $Unique_Car_ID;
+        
+         // Arrays
+         var $Car_Part_Reviews;
          var $Trouble_Codes;
-         var $Part_Reviews;
          
+         // Ad Objects
+         var $Car;
+         var $Seller;
+      // var $Mechanic;
+        
+         
+       
          
         public function __construct()
         {  
@@ -26,7 +35,7 @@ class Ad_controller extends Main_Controller {
             $this->load->library('form_validation');
             $this->load->helper('form');
             $this->load->library('session');
-            $this->load->helper('url');  
+            $this->load->helper('url'); 
         }  
             
         function index ()
@@ -34,16 +43,31 @@ class Ad_controller extends Main_Controller {
           $this->showAdForm();
         }
             
-        public function showAdForm()
+        
+         /**
+        * load the Show_ad_view. 
+        * 
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        */
+        public function showAdForm($key="var",$val="1")
         {
            $dataPass["brands"] = $this->car_model->getCarBrands();
            $dataPass["cities"] = $this->user_model->getUserCities();  
            $dataPass["years"]  = $this->car_model->getCarYears();
+           $dataPass[$key] = $val;
            $this->load->view('include/header'); 
            $this->load->view('ad/search_ad_view',$dataPass);  
            $this->load->view('include/footer');  
         }
-            
+        
+         /**
+         * Echos a list of all the models from a brand
+         * 
+         * @param string Brand]
+         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+         * @todo - Check 
+         */
         public function showAdModels($brand)
         {
             $models = $this->car_model->getModelsByBrand($brand); 
@@ -52,45 +76,36 @@ class Ad_controller extends Main_Controller {
         }
             
         public function showSearchResults()
-        {
-            
-           $searchData = array (
-                                 'dominican_republic_cities.City'   => $this->input->post('city'), 
-                                 'car_brands.Brand'                 => $this->input->post('brands'),
-                                 'car_models.Model'                 => $this->input->post('model'),
-                                 'unique_models.Body_Style'         => $this->input->post('type'),
-                                 'unique_models.Year <='            => $this->input->post('highYear'),
-                                 'unique_models.Year >='            => $this->input->post('lowYear'),
-                                 'car_ads.Price <= '                => $this->input->post('highPrice'),
-                                 'car_ads.Price >= '                => $this->input->post('lowPrice')  
-                               );
-                                   
-          foreach ($searchData as $k => $data)
-              if(strlen($data) == 0)
-                  unset($searchData[$k]);
-                      
-           $dataPass["adsPreviewData"]    = $this->ad_model->getAdsBySearch($searchData);
-           
-               
-           $this->load->view('include/header'); 
-           $this->load->view('ad/search_ad_view',$dataPass);  
-           $this->load->view('include/footer');  
+        {  
+         $inputArray = $this->input->post();
+         $adObjects = $this->ad_model->getAdsBySearch($inputArray,0);    
+         $this->showAdForm("ads", $adObjects);
         }
-            
-        public function showAd($adID,$VIN, $userID)
-        {
-          $dataPass["ad"]  = $this->ad_model->getAd($adID);
-          $dataPass["car"] = $this->car_model->getCar($VIN);
-          $dataPass["user"] = $this->user_model->getUserByRnc($userID);
-          $dataPass["parts"] = $this->ad_model->getCarPartsReviewByAd($adID);
+           
+        /**
+        * Shows an actvie Ad by its ID.
+        * 
+        * @param int Adid
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        */
+        public function showAd($adId)
+        {  
+          $dataPass["ad"] = $this->ad_model->getActiveAd($adId);
           $this->load->view('include/header'); 
           $this->load->view('ad/show_ad_view',$dataPass);  
           $this->load->view('include/footer'); 
+          
         }
             
+        /**
+        * Creates an Ad from a JSON.
+        * 
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        */
         public function createAd()
         {
-            
              $json = file_get_contents('php://input');
              $obj = json_decode($json,true);
              $VIN = $obj["VIN"];
@@ -172,36 +187,39 @@ class Ad_controller extends Main_Controller {
           
         public function generateCarReview()
         {
-            $review = 0; 
-                
-            foreach($carPartsReview as $values)
-                $review += $values;        
-            
-            return $review/(44);
+            return 3;
         }
                     
         public function instanceAd($adObject)
-        {
-                     
-            $this->Flag             = $adObject->Flag; 
-            $this->Price            = $adObject->Price; 
-            $this->Mileage          = $adObject->Mileage; 
-            $this->Seller_ID        = $adObject->Seller_ID; 
-            $this->Car_Review       = $adObject->Car_Review; 
-            $this->Mechanic_ID      = $adObject->Mechanic_ID; 
-            $this->Publish_Date     = $adObject->Publish_Date;    
-            $this->Paper_status     = $adObject->Paper_status;    
-            $this->Unique_Car_ID    = $adObject->Unique_Car_ID; 
-            $this->Expiration_Date  = $adObject->Expiration_Date;  
-        }
+        {      
         
+        //Ad Properties
+         $this->adID             = $adObject->adID;
+         $this->Flag             = $adObject->Flag;
+         $this->Price            = $adObject->Price; 
+         $this->Mileage          = $adObject->Mileage;
+         $this->Car_Review       = $adObject->Car_Review; 
+         $this->Paper_Status     = $adObject->Paper_Status;
+         $this->Publish_Date     = $adObject->Publish_Date; 
+         $this->Expiration_Date  = $adObject->Expiration_Date; 
+        
+         // Ad Arrays
+         $this->Car_Part_Reviews = $adObject->Car_Part_Reviews;
+         $this->Trouble_Codes    = $adObject->Trouble_Codes;
+         
+         // Ad Objects
+         $this->Car              = $adObject->Car;
+         $this->Seller           = $adObject->Seller;
+        // $this->mechanic = $adObject->Mechanic;
+        
+        }
         function getThisObjectOnly()
         {
            $child = (object) array();
              $i=0; 
              foreach($this as $property => $propertyValue)
              {
-                 if($i>24)
+                 if($i>11)
                  {
                      break;
                  }

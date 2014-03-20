@@ -167,7 +167,7 @@
     
     <div class="col-sm-6 col-sm-offset-1">
    <?php
-            if(isset($var))
+            if(isset($ads))
             {
                 echo "       
 
@@ -185,20 +185,19 @@
                         </tr>
                     </thead>
                     <tbody>"    ;
-                        foreach ($adsPreviewData as $adPreviewData)
+                        foreach ($ads as $ad)
                             { 
                                echo "
                             <tr class='active'>
-                                <td> <a href='/ad_controller/showAd/".$adPreviewData->adID."/".$adPreviewData->VIN."/".$adPreviewData->userID."'>".$adPreviewData->Brand." </a></td>
-                                <td>".$adPreviewData->Model." ".$adPreviewData->Body_Style." ".$adPreviewData->Trim. "</td>
-                                <td>".$adPreviewData->Year."</td>
-                                <td>".number_format($adPreviewData->Price)."</td>
-                                <td>".number_format($adPreviewData->Mileage)."</td>
-                                <td>".$adPreviewData->City."</td>    
+                                <td> <a href='/ad_controller/showAd/".$ad->adID."'>".$ad->Car->Brand." </a></td>
+                                <td>".$ad->Car->Model." ".$ad->Car->Body_Style." ".$ad->Car->Trim. "</td>
+                                <td>".$ad->Car->Year."</td>
+                                <td>".number_format($ad->Price)."</td>
+                                <td>".number_format($ad->Mileage)."</td>
+                                <td>".$ad->Seller->City."</td>    
                             </tr>
 
-                             ";
-                              
+                             "; 
                             }  
                              echo "</tbody> </table></div>   ";
              }

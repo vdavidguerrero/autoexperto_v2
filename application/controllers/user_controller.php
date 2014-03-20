@@ -108,8 +108,6 @@ class user_controller extends Main_Controller {
         public function userLogin()
 
         {    
-          
-            
             $this->form_validation->set_rules('cedula_rnc'  , 'ID'      , 'required|exact_length[11]|integer');
             $this->form_validation->set_rules('password'  , 'Password'      , 'required');
             $this->form_validation->set_message('exact_length', 'Introduzca un RNC o Cedula Valida. EX 00119045615');
@@ -143,9 +141,7 @@ class user_controller extends Main_Controller {
                     $this->load->view('user/login_user_view',$dataPass);  
                     $this->load->view('include/footer'); 
                 }
-                
               }
-            
         }
         
         public function userLogOff()
