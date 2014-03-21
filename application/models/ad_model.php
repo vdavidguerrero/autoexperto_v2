@@ -21,9 +21,18 @@ class Ad_model extends CI_Model {
       * @todo - Check 
       */
           
-    public function relateAdAndTroubleCode($relationshipData)
+    public function relateAdAndTroubleCode($troubleCodes, $adObject)
     {
-         $this->db->insert('trouble_code_N_ad',$relationshipData);     
+        
+         foreach ($troubleCodes as $k => $troubleCode)
+                {
+                   $troubleCodeObject =  $this->ad_model->getTroubleCode($troubleCode);
+                   $insertArray  = array(
+                                            'Car_Ad_ID'         => $adObject->adID,
+                                            'Trouble_Code_ID'   => $troubleCodeObject->ID
+                                        );
+                    $this->db->insert('trouble_code_N_ad',$insertArray);
+                }
     }
         
     /**
@@ -52,12 +61,12 @@ class Ad_model extends CI_Model {
       * @todo - Check 
       */
           
-    public function getTroubleCodeByAd($adID)
+    public function getTroubleCodeByAd($ID)
     {
         $this->db->select('*');
         $this->db->from('trouble_codes');
         $this->db->join("trouble_code_N_ad", "trouble_code_N_ad.Trouble_Code_ID = trouble_codes.ID");
-        $this->db->where('trouble_code_N_ad.Car_Ad_ID' ,$adID);
+        $this->db->where('trouble_code_N_ad.Car_Ad_ID' ,$ID);
         $query = $this->db->get();
         return $query->result();  
     }
@@ -72,12 +81,13 @@ class Ad_model extends CI_Model {
       * @todo - Check 
       * @see getAdsBySearch
       */
-    public function getActiveAd($adID)
+    public function getActiveAdByVIN($VIN)
     {
-        $this->db->select('*,ID as adID',false);
+        
+        $this->db->select('car_ads.*',false);
         $this->db->from('car_ads');
-        $this->db->where('ID',$adID);
-        $this->db->where('ID',$adID);
+        $this->db->join('unique_cars','unique_cars.ID = car_ads.Unique_Car_ID');
+        $this->db->where('unique_cars.VIN',$VIN);
         $this->db->where('Flag',0);
         $query = $this->db->get();
             
@@ -85,8 +95,8 @@ class Ad_model extends CI_Model {
         $adObject = $query->row();  
             
         // Ad Arrays
-        $adObject->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->adID);
-        $adObject->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->adID);
+        $adObject->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
+        $adObject->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->ID);
             
         // Ad Objects
         $adObject->Car              = $this->car_model->getCar($adObject->Unique_Car_ID);
@@ -95,6 +105,37 @@ class Ad_model extends CI_Model {
             
         return $adObject;
     }
+      /**
+      * 
+      * 
+      * @param 
+      * @return 
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Check performance when adObject get the last insert
+      */
+    
+    
+     public function insertAd($adObject)
+     {  
+                $Trouble_Codes           = $adObject->Trouble_Codes;
+                $Car_Part_Review         = $adObject->Car_Part_Review;
+                
+                $adObject->Seller_ID     = $adObject->Seller->ID;
+                $adObject->Unique_Car_ID = $adObject->Car->ID;
+                
+                
+                unset($adObject->Car);
+                unset($adObject->Seller);
+                unset($adObject->Trouble_Codes);
+                unset($adObject->Car_Part_Review);
+                
+                 
+                $this->db->insert('car_ads',$adObject);   
+                
+//                $adObject = $this->getActiveAdByVIN($adObject->Unique_Car_ID);   
+//                $this->insertCarPartReview($Car_Part_Review,$adObject);
+//                $this->relateAdAndTroubleCode($Trouble_Codes, $adObject);         
+     }
         
      /**
       * Get all the add by its Specefic Search.
@@ -127,7 +168,7 @@ class Ad_model extends CI_Model {
             } 
           }
     
-        $this->db->select('car_ads.*,car_ads.ID as adID',false);
+        $this->db->select('car_ads.*',false);
         $this->db->from('car_ads');
         $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID'         ,'inner');
         $this->db->join('unique_models'               , 'unique_cars.Unique_Model = unique_models.ID'    ,'inner');
@@ -139,13 +180,11 @@ class Ad_model extends CI_Model {
         $query = $this->db->get();    
         $adObjects = $query->result();
         
-
-        
         foreach($adObjects as $k => $adObject)    
         {
             // Ad Arrays
-            $adObjects[$k]->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->adID);
-            $adObjects[$k]->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->adID);
+            $adObjects[$k]->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
+            $adObjects[$k]->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->ID);
 
             // Ad Objects
             $adObjects[$k]->Car              = $this->car_model->getCar($adObject->Unique_Car_ID);
@@ -157,8 +196,6 @@ class Ad_model extends CI_Model {
             unset($adObjects[$k]->Mechanic_ID);
             unset($adObjects[$k]->Unique_Car_ID);
         }
-        
-        
         return $adObjects;
     }
     
@@ -170,11 +207,20 @@ class Ad_model extends CI_Model {
       * @param 
       * @return 
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-      * @todo - Check 
+      * @todo - Check Performance 
       */
-    public function insertCarPartReview($carPartReviewData)
+    public function insertCarPartReview($carPartsReviewData, $adObject)
     {
-         $this->db->insert('car_part_review',$carPartReviewData); 
+          foreach ($carPartsReviewData as $k => $carPartReview)
+           {
+                    $carPartReviewData = array(
+                                                'Car_Ad_ID'     => $adObject->ID,
+                                                'Car_Part_ID'   => $k+1,
+                                                'Seller_Review' => $carPartReview,
+                                                'Seller_Date'   => $adObject->Date
+                                              );
+                     $this->db->insert('car_part_review',$carPartReviewData); 
+           }       
     }
     /**
       * 
@@ -184,43 +230,15 @@ class Ad_model extends CI_Model {
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
       * @todo - Check 
       */
-    public function getCarPartsReviewByAd($adID)
+    public function getCarPartsReviewByAd($ID)
     {
         $this->db->select('car_part_review.Seller_Review, car_parts.Part ');
         $this->db->from('car_part_review');
         $this->db->join('car_parts', 'car_part_review.Car_Part_ID = car_parts.ID','inner');
-        $this->db->where('car_part_review.Car_Ad_ID'    ,$adID); 
+        $this->db->where('car_part_review.Car_Ad_ID'    ,$ID); 
         $query = $this->db->get();
         return $query->result();   
-    }
-        
-/**
-      * 
-      * 
-      * @param 
-      * @return 
-      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-      * @todo - Check 
-      */
-    public function getActiveAdByVIN($carVIN)
-    {
-        $this->db->select('*');
-        $this->db->from('car_ads');
-        $this->db->join('unique_cars', 'car_ads.Unique_Car_ID = unique_cars.ID','inner');
-        $this->db->where('unique_cars.VIN'    ,$carVIN);
-        $this->db->where('car_ads.Flag', 1);
-        $query = $this->db->get();
-        return $query->row();   
-    }
-        
-    /**
-      * 
-      * 
-      * @param 
-      * @return 
-      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-      * @todo - Check 
-      */
-   
-        
+    } 
+    
+    
 }

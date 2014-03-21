@@ -189,7 +189,7 @@
                             { 
                                echo "
                             <tr class='active'>
-                                <td> <a href='/ad_controller/showAd/".$ad->adID."'>".$ad->Car->Brand." </a></td>
+                                <td> <a href='/ad_controller/showAd/".$ad->Car->VIN."'>".$ad->Car->Brand." </a></td>
                                 <td>".$ad->Car->Model." ".$ad->Car->Body_Style." ".$ad->Car->Trim. "</td>
                                 <td>".$ad->Car->Year."</td>
                                 <td>".number_format($ad->Price)."</td>

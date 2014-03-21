@@ -7,179 +7,188 @@ class car_model extends CI_Model {
     	parent::__construct();
 	$this->load->database(); 
     }
+    
      /**
       * Get a car by its VIN
       * 
       * @param integer $carVIN - VIN of the the car/
       * @return a car Objetc from the database 
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-      * @todo - Check 
-      * @see getCarByValues
-      */
-          
-     public function getCarByVIN($carVIN)
+      * @todo  Ready 
+      * @see getCar
+      */  
+     public function getCar($carVIN)
      {
-        $this->db->select('*');
-        $this->db->from('unique_models');
-        $this->db->join('unique_cars', 'unique_models.ID = unique_cars.Unique_Model','inner');
-        $this->db->join('car_models', 'unique_models.Car_Model_ID = car_models.ID' );
-        $this->db->join('car_brands','car_models.Brand_ID = car_brands.ID' );
-        $this->db->join('manufacturer_countries', 'unique_cars.Manufacturer_Country_ID = manufacturer_countries.ID');
-        $this->db->where('unique_cars.VIN'    ,$carVIN);
-        $query = $this->db->get();
-        
-       
-        $carObject =  $query->row();
-         unset($carObject->ID);
-         unset($carObject->Brand_ID);
-         unset($carObject->Manufacturer_Country_ID);
-         unset($carObject->Car_Model_ID);
-         unset($carObject->Unique_Model);
-         unset($carObject->Date);
-         
-         return $carObject;
+        $uniqueCarObject = $this->getUniqueCar($carVIN);
+        return $uniqueCarObject;
      }
-     
-       /**
+
+      /**
       * Get a car by its ID
       * 
-      * @param integer $carVIN - VIN of the the car/
+      * @param integer Unique Car ID - VIN of the the car/
       * @return a car Objetc from the database 
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-      * @todo - Check the select
-      * @see getCarByValues
-      */
-          
-     public function getCar($carID)
-     {
-        $this->db->select('*');
-        $this->db->from('unique_cars');
-        $this->db->join('unique_models', 'unique_models.ID = unique_cars.Unique_Model','inner');
-        $this->db->join('car_models', 'unique_models.Car_Model_ID = car_models.ID' );
-        $this->db->join('car_brands','car_models.Brand_ID = car_brands.ID' );
-        $this->db->join('manufacturer_countries', 'unique_cars.Manufacturer_Country_ID = manufacturer_countries.ID');
-        $this->db->where('unique_cars.ID'    ,$carID);
-        $query = $this->db->get();
-       
-        $carObject =  $query->row();
-         unset($carObject->ID);
-         unset($carObject->Brand_ID);
-         unset($carObject->Manufacturer_Country_ID);
-         unset($carObject->Unique_Model);
-         unset($carObject->Car_Model_ID);
-         unset($carObject->Date);
-         return $carObject;
-     }
-         
-     /**
-      * insert an entire car to the data base.
-      * 
-      * @param CarObject from car_controller class.
-      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-      * @todo - Check.
-      */
-          
+      * @todo  Ready
+      * @see getCarByVIN
+      */  
      public function insertCar($carObject)
      {
-         $VIN = $carObject->VIN; 
-         $manufacturerCountry = $carObject->Manufacturer_Country;
-             
-          if(!$this->getUniqueModel($carObject->Trim, $carObject->Model,$carObject->Year))
-            {
-                 if(!$this->getModel($carObject->Model))
-                 {
-                     if(!$this->getBrand($carObject->Brand))
-                     {
-                         $this->instertCarBrand($carObject->Brand); 
-                     }
-                    $this->instertCarModel($carObject->Model, $carObject->Brand);
-                 }  
-                unset($carObject->Brand);
-                unset($carObject->Manufacturer_Country);
-                unset($carObject->Model);        
-                unset($carObject->VIN);  
-                $this->insertUniqueModel($carObject);             
-            }
-            if(!$this->getManufacturerCountry($carObject->Manufacturer_Country))
-            {
-                $this->car_model->insertManufacturerCountry($carObject->Manufacturer_Country); 
-            }
-            $this->insertUniqueCar($VIN,$manufacturerCountry,$carObject->Trim, $carObject->Year, $carObject->Model); 
-     }
-         
-    /**
-      * Get a unique car object.
+        return  $this->insertUniqueCar($carObject); 
+     }  
+     
+     /**
+      * Get a unique car object by Its VIN.
       * 
       * @param integer - unique car VIN.
-      * @return rowObject -  with al the car information 
+      * @return UniqueCarObject -  with al the car information 
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-      * @todo - change de select * for select (car_controller->objects).
+      * @todo  Ready.
+      * @see  getUniqueCar 
       */
-         
-    public function getUniqueCar($carVIN)
+     public function getUniqueCar($carVIN)
     {
-        $this->db->select('*');
+          
+        $this->db->select('unique_cars.*, manufacturer_countries.Manufacturer_Country',false);
         $this->db->from('unique_cars');
-        $this->db->where('VIN',$carVIN);
-        $query = $this->db->get();
-        return $query->row();   
+        $this->db->join('manufacturer_countries', 'unique_cars.Manufacturer_Country_ID = manufacturer_countries.ID');
+        $this->db->where('unique_cars.VIN'    ,$carVIN);
+        $query           =  $this->db->get();
+        $uniqueCarObject =  $query->row();
+        if($uniqueCarObject)
+        {
+           
+           $uniqueCarObject->Unique_Model = $this->getUniqueModel($uniqueCarObject->Unique_Model_ID);
+           unset($uniqueCarObject->Manufacturer_Country_ID);
+        }
+        return $uniqueCarObject;
     }
-        
-     public function insertUniqueCar($VIN, $Manufacturer_Country, $trim, $year, $model)
+    
+    /**
+      * Insert an UniqueCar to the data base.
+      * 
+      * @param int  unique car VIN.
+      * @param String  Manufacturer Country.
+      * @param Unique_Model  Unique Model Object 
+      * @return UniqueModel Object 
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */
+     public function insertUniqueCar($uniqueCarObject)
     {
-        $manufacturerCountryRow = $this->getManufacturerCountry($Manufacturer_Country);
-        $uniqueModelRow = $this->getUniqueModel($trim, $model,$year);
+         
+        $manufacturerCountryObject = $this->getManufacturerCountry($uniqueCarObject->Manufacturer_Country);
+        if(!$manufacturerCountryObject)
+        {   
+           $manufacturerCountryObject =new stdClass();
+           $manufacturerCountryObject->ID =  $this->car_model->insertManufacturerCountry($uniqueCarObject->Manufacturer_Country); 
+        }
+        
+        
+        $uniqueModelObject = $this->getUniqueModelTrimModelYear($uniqueCarObject->Unique_Model->Trim, $uniqueCarObject->Unique_Model->Model,$uniqueCarObject->Unique_Model->Year);
+        if(!$uniqueModelObject)
+        {
+              $uniqueModelObject = new stdClass();
+              $uniqueModelObject->ID =  $this->insertUniqueModel($uniqueCarObject->Unique_Model);
+              
+        }
+       
         $insertObject = (object) array(
-                                'VIN'                       => $VIN,
-                                'Manufacturer_Country_ID'   => $manufacturerCountryRow->ID,
+                                'VIN'                       => $uniqueCarObject->VIN,
+                                'Manufacturer_Country_ID'   => $manufacturerCountryObject->ID,
                                 'Date'                      => date("Y-m-d H:i:s"),
-                                'Unique_Model'              => $uniqueModelRow->ID
+                                'Unique_Model_ID'           => $uniqueModelObject->ID
                             );
         $this->db->insert('unique_cars',$insertObject);
+        return $this->db->insert_id();
     }
-        
-    /************************************************************************
-        
-     * Unique_Model; Represents an Unique Model by its Year,Model and Trim 
-         
-     ************************************************************************/
-         
-         
-     public function getUniqueModel($trim, $model,  $year)
+ 
+     /**
+      * Get a unique Model by its ID.
+      * 
+      * @param int - Unique Model Trim. 
+      * @return UniqueModel -  with al the car information 
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo  Ready.
+      * @see getUniqueModel
+      */
+    public function getUniqueModel($ID)
     {
-        $this->db->select('*');
-        $this->db->from('car_models');
-        $this->db->join('unique_models', 'unique_models.Car_Model_ID = car_models.ID','inner');  
+        
+        $this->db->select("unique_models.*, car_brands.Brand, car_models.Model",false);
+        $this->db->from("unique_models");
+        $this->db->join('car_models', 'unique_models.Car_Model_ID = car_models.ID' );
+        $this->db->join('car_brands', 'unique_models.Car_Brand_ID = car_brands.ID' );
+        $this->db->where("unique_models.ID", $ID);
+        $query = $this->db->get();
+        $uniqueModelObject = $query->row();
+        unset($uniqueModelObject->Car_Model_ID);
+        unset($uniqueModelObject->Car_Brand_ID);
+        return $uniqueModelObject;
+    }
+       /**
+      * Get a unique Model by its Trim, Model and Year.
+      * 
+      * @param String - Unique Model Trim.
+      * @param String - Unique Model Model.
+      * @param String - Unique Model Year.  
+      * @return UniqueModel -  with al the car information 
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo  Ready.
+      * @see getUniqueModel
+      */
+    
+     public function getUniqueModelTrimModelYear($trim, $model,  $year)
+    {
+        $this->db->select("unique_models.*, car_brands.Brand, car_models.Model",false);
+        $this->db->from("unique_models");
+        $this->db->join('car_models', 'unique_models.Car_Model_ID = car_models.ID' );
+        $this->db->join('car_brands', 'unique_models.Car_Brand_ID = car_brands.ID' );
         $this->db->where('unique_models.Year'    ,$year);
         $this->db->where('unique_models.Trim'    ,$trim);
         $this->db->where('car_models.Model'      ,$model);
-            
         $query = $this->db->get();
-        return $query->row();   
+        $uniqueModelObject = $query->row();
+        unset($uniqueModelObject->Car_Model_ID);
+        unset($uniqueModelObject->Car_Brand_ID);
+        return $uniqueModelObject;
     }
-        
+    
+     /**
+      * Insert an Unique Model to the data base.
+      * 
+      * @param uniqueModelObject  unique car VIN.
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */
     public function insertUniqueModel($uniqueModelObject)
     { 
-        $modelObject =  $this->getModelByModelName($uniqueModelObject->Model);
+        if(!$this->getModel($uniqueModelObject->Model))
+        {
+           $this->instertModel($uniqueModelObject->Model);
+        }
+        if(!$this->getBrand($uniqueModelObject->Brand))
+        {
+           $this->instertBrand($uniqueModelObject->Brand);
+        }
+        $modelObject =  $this->getModel($uniqueModelObject->Model);
+        $brandObject =  $this->getBrand($uniqueModelObject->Brand);
         $uniqueModelObject->Car_Model_ID = $modelObject->ID;
+        $uniqueModelObject->Car_Brand_ID = $brandObject->ID;
+        unset($uniqueModelObject->Model);
+        unset($uniqueModelObject->Brand);
         $this->db->insert('unique_models',$uniqueModelObject); 
+        return $this->db->insert_id();
     }
-        
-        
-        
-        
-    /************************************************************************
-        
-     * Car_Brand; Represents 1 of all the registred car brands.
-         
-     ************************************************************************/    
-         
-    public function getCarBrands() 
-    {  
-      $query = $this->db->get("car_brands");
-      return $query->result();
-    }
-        
+   
+     /**
+      * Return the brand object by its ID
+      * 
+      * @param  string Brand Name
+      * @return brandObject Accesible vía $object->Brand
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */
      public function getBrand($brandName)
     {
         $searchObject =  array("Brand" =>$brandName);
@@ -189,77 +198,114 @@ class car_model extends CI_Model {
         $query = $this->db->get();
         return $query->row();
     }
-        
-     public function instertCarBrand($brand)
-    {
-        $this->db->insert('car_brands',$brand); 
+    
+     /**
+      * Get all the brands available
+      * 
+      * @return brandObject Array Accesible vía $object->Brand
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */
+    public function getBrands() 
+    {  
+      $query = $this->db->get("car_brands");
+      return $query->result();
     }
         
-    /************************************************************************
+     /**
+      * Insert a single brand into the data base;
+      * 
+      * @param  string Brand Name
+      * @return int the added row
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */
+    public function instertBrand($brand)
+    {
         
-     * Car_Model; Represents 1 of all the registred car models. Every Model must hava a brand
-         
-     ************************************************************************/
-         
-         
-     public function getModelsByBrand($brand)
+        $instertObject = (object) array("Brand" => $brand);
+        $this->db->insert('car_brands',$instertObject); 
+        return $this->db->insert_id();
+    }
+       
+     /**
+      * Return the Model object by its ID
+      * 
+      * @param  string Model Name
+      * @return brandObject Accesible vía $object->Model
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */    
+    public function getModel($model)
     {
         $this->db->select('*');
         $this->db->from('car_models');
-        $this->db->join('car_brands', "car_models.Brand_ID = car_brands.ID");
+        $this->db->where('Model',$model);
+        $query = $this->db->get();
+        return $query->row();   
+    }
+    
+     /**
+      * Get all the models from a particular brand;
+      * 
+      * @param  string Brand Name
+      * @return modelObject array with all the models
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */
+    public function getModelsByBrand($brand)
+    {
+        $this->db->select('*');
+        $this->db->from('unique_models');
+        $this->db->join('car_models', 'unique_models.Car_Model_ID = car_models.ID' );
+        $this->db->join('car_brands', 'unique_models.Car_Brand_ID = car_brands.ID' );
         $this->db->where('car_brands.Brand',$brand);
         $query = $this->db->get();
         return $query->result();
     }
+     
         
-    public function getModel($modelName)
+      /**
+      * Insert a model to the data base
+      * 
+      * @param  string Model Name
+      * @return int added row
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */  
+      public function instertModel($Model)
     {
-        $this->db->select('*');
-        $this->db->from('car_models');
-        $this->db->where('Model',$modelName);
-        $query = $this->db->get();
-        return $query->row();   
-    }
-        
-      public function instertCarModel($Model, $brand)
-    {
-        $BrandRow =  $this->getBrand($brand);  
-        $instertObject = (object) array(
-                                "Model"    => $Model, 
-                                "Brand_ID" => $BrandRow->ID
-                         );
-                             
+        $instertObject = (object) array("Model"    => $Model, );            
         $this->db->insert('car_models',$instertObject); 
+        return $this->db->insert_id();
     }
         
-    /************************************************************************
-        
-     * Car_Part; Represents 1 of many parts that a car has. 
-         
-     ************************************************************************/
-         
-    public function instertCarPart($carPartData)
-    {
-        $this->db->insert('car_parts',$carPartData); 
-    }
-        
-    /***********************************************************************
-     *     
-     * Car_manufacturer_Country; Represents 1 of many country where cars has been built. 
-     * 
-     ***********************************************************************/
-         
-         
+      /**
+      * Insert a Manufacturer Country  to the data base
+      * 
+      * @param  string Manufacturer Country 
+      * @return int added row
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */ 
     public function insertManufacturerCountry($manufacturerCountry)
     {
-        $instertObject = (object) array("Country" => $manufacturerCountry);
-            
+        $instertObject = (object) array("Manufacturer_Country" => $manufacturerCountry);    
         $this->db->insert('manufacturer_countries',$instertObject);
-            
+        return $this->db->insert_id();
     }
+   
+      /**
+      * Return the Manufacturer Country object by its ID
+      * 
+      * @param  string Manufacturer Country
+      * @return manufacturerCountrybject Accesible vía $object->Manufacturer Country
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */  
     public function getManufacturerCountry($manufacturerCountry)
     {
-        $searchArray = array("Country" => $manufacturerCountry);
+        $searchArray = array("Manufacturer_Country" => $manufacturerCountry);
             
         $this->db->select('*');
         $this->db->from('manufacturer_countries');
@@ -268,12 +314,13 @@ class car_model extends CI_Model {
         return $query->row();
     }
         
-    /************************************************************************
-        
-     * Car_Years; Has all the aavailable 
-         
-     ************************************************************************/
-         
+    /**
+      * Return All the years until the date
+      *
+      * @return int array
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Ready.
+      */  
     public function getCarYears()
     {
         for ($i = 1990; $i<= date("Y"); $i++)
@@ -281,9 +328,5 @@ class car_model extends CI_Model {
             $years[$i] = $i; 
         }
             return $years;
-    }
-        
-        
-        
-        
+    }    
 }

@@ -5,7 +5,7 @@ class Ad_controller extends Main_Controller {
     
     
         //Ad Properties
-         var $adID;
+         var $ID;
          var $Flag; 
          var $Price;  
          var $Mileage;
@@ -21,7 +21,7 @@ class Ad_controller extends Main_Controller {
          // Ad Objects
          var $Car;
          var $Seller;
-      // var $Mechanic;
+         var $Mechanic;
         
          
        
@@ -48,11 +48,11 @@ class Ad_controller extends Main_Controller {
         * load the Show_ad_view. 
         * 
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-        * @todo - Check 
+        * @todo - Ready 
         */
         public function showAdForm($key="var",$val="1")
         {
-           $dataPass["brands"] = $this->car_model->getCarBrands();
+           $dataPass["brands"] = $this->car_model->getBrands();
            $dataPass["cities"] = $this->user_model->getUserCities();  
            $dataPass["years"]  = $this->car_model->getCarYears();
            $dataPass[$key] = $val;
@@ -66,7 +66,7 @@ class Ad_controller extends Main_Controller {
          * 
          * @param string Brand]
          * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-         * @todo - Check 
+         * @todo - Ready 
          */
         public function showAdModels($brand)
         {
@@ -76,7 +76,7 @@ class Ad_controller extends Main_Controller {
         }
             
         public function showSearchResults()
-        {  
+         {  
          $inputArray = $this->input->post();
          $adObjects = $this->ad_model->getAdsBySearch($inputArray,0);    
          $this->showAdForm("ads", $adObjects);
@@ -89,9 +89,9 @@ class Ad_controller extends Main_Controller {
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
         * @todo - Check 
         */
-        public function showAd($adId)
+        public function showAd($VIN)
         {  
-          $dataPass["ad"] = $this->ad_model->getActiveAd($adId);
+          $dataPass["ad"] = $this->ad_model->getActiveAdByVIN($VIN);
           $this->load->view('include/header'); 
           $this->load->view('ad/show_ad_view',$dataPass);  
           $this->load->view('include/footer'); 
@@ -107,95 +107,61 @@ class Ad_controller extends Main_Controller {
         public function createAd()
         {
              $json = file_get_contents('php://input');
-             $obj = json_decode($json,true);
-             $VIN = $obj["VIN"];
-             $carPartsReview = array();
-             $carPartsID = array(); 
-             $carTroubleCodes = array();
-                 
-            if($this->ad_model->getPendingAdByVIN($VIN)) // se debe cambiar a activo.          
-               echo "Ya existe un anuncio para este Vehículo.";
-                   
+             $adObject = json_decode($json);
+             
+            if($this->ad_model->getActiveAdByVIN($adObject->VIN)) // se debe cambiar a activo.          
+            {
+                echo "Ya existe un anuncio para este Vehículo.";
+            }
             else 
             {
-                 foreach ($obj['troubleCodes'] as $val)
-                     array_push($carTroubleCodes, $val['Trouble']);
-                         
-                         
-                 foreach ($obj['carParts'] as $val)
-                 {
-                     array_push($carPartsReview, $val['Review']);
-                     array_push($carPartsID, $val['ID']);
-                 }
-                     
-                $carMileage = $obj["mileage"];
-                $carPaperStatus = $obj["papers"];
-                $adPrice = $obj["adPrice"];
-                $userID = $obj["userID"];
-                $carReview = $this->generateCarReview($carPartsReview);
-                $flag = 0;
-                $adPublishDate = date("Y-m-d H:i:s");
-                $adExpirationDate = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")."+45 days"));
-                $uniqueCarObject = $this->car_model->getUniqueCar($VIN);
-                $uniqueCarID = $uniqueCarObject->ID;
-                    
-                 $newCarAdData = array(
-                                        'Seller_ID'         => $userID,
-                                        'Expiration_Date'   => $adExpirationDate,
-                                        'Publish_Date'      => $adPublishDate,
-                                        'Price'             => $adPrice,
-                                        'Flag'              => $flag,         
-                                        'Paper_status'      => $carPaperStatus,
-                                        'Car_Review'        => $carReview,
-                                        'Mileage'           => $carMileage,
-                                        'Unique_Car_ID'     => $uniqueCarID  
-                                     );
-                $this->ad_model->insertCarAd($newCarAdData);
-                    
-                $carAdObject = $this->ad_model->getPendingAdByVIN($VIN);
-                $carAdID = $carAdObject->ID;
-                    
-                    
-                    
-                 foreach ($carPartsReview as $k => $carPartReview)
-                {
-                    $carPartReviewData = array(
-                                                'Car_Ad_ID'     => $carAdID,
-                                                'Car_Part_ID'   => $carPartsID[$k],
-                                                'Seller_Review' => $carPartReview,
-                                                'Seller_Date'   => $adPublishDate
-                                             );
-                    $this->ad_model->insertCarPartReview($carPartReviewData);
-                }
-                    
-                foreach ($carTroubleCodes as $k => $carTroubleCode)
-                {
-                   $troubleCodeObject =  $this->ad_model->getTroubleCode($carTroubleCode);
-                   $troubleCodeID = $troubleCodeObject->ID; 
-                   $troubleCodeNAdData  = array(
-                                                    'Car_Ad_ID'         => $carAdID,
-                                                    'Trouble_Code_ID'   => $troubleCodeID
-                                               );
-                  $this->ad_model->relateAdAndTroubleCode($troubleCodeNAdData);
-                      
-                }
-                    
-              }
-                  
+                
+                $adObject->Seller = $this->user_model->getUserByRnc($adObject->Seller_ID);
+                $adObject->Car    = $this->car_model->getCarByVIN($adObject->VIN);
+                $adObject->ID   = NULL;
+                $adObject->Publish_Date     = date("Y-m-d H:i:s"); 
+                $adObject->Expiration_Date  = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")."+45 days"));
+                $adObject->Car_Review = "3";//$this->generateCarReview();
+                unset($adObject->Seller_ID);
+                unset($adObject->VIN);
+                $this->instanceAd($adObject);
+                $this->ad_model->insertAd($this);
+                
+                header('Content-type: application/json');
+                echo json_encode($this->getThisObjectOnly());
+                
+              }      
         }
             
           
         public function generateCarReview()
         {
-            return 3;
+           $overallReview = 0;
+           $counter = 0;
+           foreach($this->Car_Part_Reviews as $review)
+           {
+               $counter++;
+               $overallReview =+ $review;
+           }
+           return $overallReview/$counter;
         }
-                    
+       
+        /**
+        * Create a instance of the Ad
+        * 
+        * @param $adObject an object with all the require to create an AD
+        * @return 
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        * @see getAdsBySearch
+        */           
         public function instanceAd($adObject)
         {      
         
         //Ad Properties
-         $this->adID             = $adObject->adID;
-         $this->Flag             = $adObject->Flag;
+        
+         $this->ID               = $adObject->ID; 
+         $this->Flag             = $adObject->Flag;  
          $this->Price            = $adObject->Price; 
          $this->Mileage          = $adObject->Mileage;
          $this->Car_Review       = $adObject->Car_Review; 
@@ -204,12 +170,14 @@ class Ad_controller extends Main_Controller {
          $this->Expiration_Date  = $adObject->Expiration_Date; 
         
          // Ad Arrays
-         $this->Car_Part_Reviews = $adObject->Car_Part_Reviews;
-         $this->Trouble_Codes    = $adObject->Trouble_Codes;
+         $this->Car_Part_Reviews  = $adObject->Car_Part_Reviews;
+         $this->Trouble_Codes     = $adObject->Trouble_Codes;
          
-         // Ad Objects
+         // Ad Abjects
          $this->Car              = $adObject->Car;
-         $this->Seller           = $adObject->Seller;
+         $this->Seller           = $adObject->Seller;  
+         
+         
         // $this->mechanic = $adObject->Mechanic;
         
         }
@@ -219,7 +187,7 @@ class Ad_controller extends Main_Controller {
              $i=0; 
              foreach($this as $property => $propertyValue)
              {
-                 if($i>11)
+                 if($i==12)
                  {
                      break;
                  }

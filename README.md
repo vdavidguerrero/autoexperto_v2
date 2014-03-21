@@ -7,8 +7,11 @@ Arreglo - Muchos campos de una tabla
 objeto - Un objeto con una o mas tabals. 
 Propiedades - propiedades del objeto de la clase. 
 
+Se utilizan unset ilogico solo mantener la coherencia de que la vista toma los datos, la clase los conviernte
+en un $this, y la base de dato ingresa en la misma un this de la clase. Cuando se llama el model se
+obtiene un $this de la base de datos, con los unset() de igual forma. 
 
-
+Instanciar luego de la base de datos asi se elimina el unset
     Documentación
 
 -----Descripción del Código------------------------------------------------------------

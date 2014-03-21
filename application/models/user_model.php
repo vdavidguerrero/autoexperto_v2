@@ -28,15 +28,18 @@ class user_model extends CI_Model {
     public function getUserByRnc($RNC)
     {
         //returns the 
-        $this->db->select("*");
+        $this->db->select("users.*,dominican_republic_cities.City ",false);
         $this->db->from("users");
         $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID','inner');
         $this->db->where('users.ID',$RNC );
         $query = $this->db->get();
+        $userObject = $query->row();
         
         if ($query->num_rows() > 0)
-               return $query->row();
-       
+        {
+           
+             return $userObject;
+        }
         else return false;
         
     }

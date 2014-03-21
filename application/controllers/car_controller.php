@@ -6,32 +6,16 @@ class car_controller extends Main_Controller {
     
       
     
-    
-        var $AC;     
-        var $VIN;         
-        var $Year;  
-        var $Trim;  
-        var $Model;
-        var $Brand; 
-        var $Radio; 
-        var $Wheels; 
-        var $Gallons;
-        var $Seating;  
-        var $CD_Player;           
-        var $Subwoofer;   
-        var $ABS_Brake;   
-        var $Body_Style; 
-        var $Engine_Type; 
-        var $Leather_Seats;         
-        var $Power_Windows; 
-        var $Driver_Airbag;
-        var $Cruise_Control;      
-        var $Convertible_Top;  
-        var $Front_Side_AirBag;  
-        var $Fuel_Economy_City; 
+        // Unique Car Object Propeties
+        
+      
+        var $VIN;
+        var $Date;
         var $Manufacturer_Country; 
-        var $Fuel_Economy_Highway;  
-           
+        
+        //object
+        var $Unique_Model;
+       
 
         public function __construct()
         {
@@ -52,105 +36,111 @@ class car_controller extends Main_Controller {
              
         public function carQuery()
         { 
+            
              $json = file_get_contents('php://input');
              $jsonObject = json_decode($json,true);
+             header('Content-type: application/json');
              $this->VIN  =  $jsonObject['VIN'];
-             
+              
              if(strlen($this->VIN) === 17)
-             {
-                $thisCarData = $this->car_model->getCarByVIN($this->VIN);
+             {  
+                $thisCarData = $this->car_model->getCar($this->VIN);
                 if(!$thisCarData)
                 { 
-                       $thisCarData = $this->queryCarData($this->VIN); 
-                       $this->instanceCar($thisCarData);
-                       $this->car_model->insertCar($this);
+                   
+                    $thisCarData = $this->queryCarData($this->VIN); 
+                    $this->instanceCar($thisCarData);
+                    $this->car_model->insertCar($this);
+                    $this->instanceCar($this->car_model->getCar($this->VIN));    
                 }
-                else
+                else  
                 {
-                    $this->instanceCar($thisCarData); 
-                }   
-                header('Content-type: application/json');
+                    $this->instanceCar($thisCarData);
+                } 
                 echo json_encode($this->getThisObjectOnly());
-             }
-             else 
-             {
-                header('Content-type: application/json');
-                echo json_encode("Vin Invalido");
                 return;
-             }
+            }
+            echo json_encode("VIN INVALIDO");
         }
         
-        function queryCarData()
+        
+       /**
+        * Query the data for an unknow car. $this->vin
+        * 
+        * @param int 17length car VIN( Vehiculo identifer Number)
+        * @return a car Objetc.
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - implemente vinquery handler 
+        */
+        function queryCarData($VIN)
         {
-           // Need to be done.
-           $carData = (object) array(   
-                                        'VIN'                   => $this->VIN,   
-                                        'AC'                    => 'YES',
-                                        'Year'                  => '2007', 
-                                        'Trim'                  => 'EX',
-                                        'Brand'                 => 'Honda',
-                                        'Model'                 => 'Accord',
-                                        'Radio'                 => 'YES',
-                                        'Wheels'                => 'ALLOY',
-                                        'Seating'               => 'Lether', 
-                                        'Gallons'               => '12',
-                                        'ABS_Brake'             => 'Yes',
-                                        'CD_Player'             => 'DVD',
-                                        'Subwoofer'             => 'YES 18',
-                                        'Body_Style'            => 'Sedan',
-                                        'Engine_Type'           => '1.7 DOHC',
-                                        'Transmission'          => 'Secuencial', 
-                                        'Power_Windows'         => 'YES',
-                                        'Leather_Seats'         => 'NO',
-                                        'Driver_Airbag'         => 'Yes',
-                                        'Cruise_Control'        => 'YES',
-                                        'Convertible_Top'       => 'NO',
-                                        'Front_Side_Airbag'     => 'NO',
-                                        'Fuel_Economy_City'     => '25',
-                                        'Contry'  => 'USA',
-                                        'Fuel_Economy_Highway'  => '27',
-                                           
-                                    );
-           return $carData;
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'USA';  
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(  
+                                                                        'AC'                    => 'YES',
+                                                                        'Year'                  => '2009', 
+                                                                        'Trim'                  => 'Sencillo',
+                                                                        'Brand'                 => 'Mazda',
+                                                                        'Model'                 => '4Runner',
+                                                                        'Radio'                 => 'YES',
+                                                                        'Wheels'                => 'ALLOY',
+                                                                        'Seating'               => 'Lether', 
+                                                                        'Gallons'               => '14',
+                                                                        'ABS_Brake'             => 'Yes',
+                                                                        'CD_Player'             => 'DVD',
+                                                                        'Subwoofer'             => 'YES 18',
+                                                                        'Body_Style'            => 'Sedan',
+                                                                        'Engine_Type'           => '1.7 DOHC',
+                                                                        'Transmission'          => 'Secuencial', 
+                                                                        'Power_Windows'         => 'YES',
+                                                                        'Leather_Seats'         => 'NO',
+                                                                        'Driver_Airbag'         => 'Yes',
+                                                                        'Cruise_Control'        => 'YES',
+                                                                        'Convertible_Top'       => 'NO',
+                                                                        'Front_Side_Airbag'     => 'NO',
+                                                                        'Fuel_Economy_City'     => '25',
+                                                                        'Fuel_Economy_Highway'  => '27'
+                                                        
+                                                                         );
+           return $uniqueCarObject;
             
         }
         
-        function instanceCar($thisCarObject)
+        /**
+        * Create an instace for this object.
+        * 
+        * @param carObject car object from car_model->getCar($VIN) or from car_controller->queryCarData
+        * @return a car Object.
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - implemente vinquery handler 
+        */
+        function instanceCar($uniqueCarObject)
         {
-            $this->AC                       = $thisCarObject->AC;
-            $this->VIN                      = $thisCarObject->VIN;
-            $this->Year                     = $thisCarObject->Year;    
-            $this->Trim                     = $thisCarObject->Trim ;        
-            $this->Brand                    = $thisCarObject->Brand;
-            $this->Radio                    = $thisCarObject->Radio; 
-            $this->Model                    = $thisCarObject->Model;        
-            $this->Wheels                   = $thisCarObject->Wheels; 
-            $this->Seating                  = $thisCarObject->Seating;  
-            $this->Gallons                  = $thisCarObject->Gallons;  
-            $this->ABS_Brake                = $thisCarObject->ABS_Brake;  
-            $this->CD_Player                = $thisCarObject->CD_Player;           
-            $this->Subwoofer                = $thisCarObject->Subwoofer;
-            $this->Body_Style               = $thisCarObject->Body_Style;         
-            $this->Engine_Type              = $thisCarObject->Engine_Type;        
-            $this->Transmission             = $thisCarObject->Transmission;  
-            $this->Leather_Seats            = $thisCarObject->Leather_Seats;         
-            $this->Power_Windows            = $thisCarObject->Power_Windows;   
-            $this->Driver_Airbag            = $thisCarObject->Driver_Airbag;   
-            $this->Cruise_Control           = $thisCarObject->Cruise_Control;      
-            $this->Convertible_Top          = $thisCarObject->Convertible_Top;   
-            $this->Front_Side_AirBag        = $thisCarObject->Front_Side_Airbag;     
-            $this->Fuel_Economy_City        = $thisCarObject->Fuel_Economy_City; 
-            $this->Manufacturer_Country     = $thisCarObject->Country;
-            $this->Fuel_Economy_Highway     = $thisCarObject->Fuel_Economy_Highway;   
+            
+            $this->Manufacturer_Country    = $uniqueCarObject->Manufacturer_Country;
+            $this->VIN                     = $uniqueCarObject->VIN;
+            $this->Date                    = $uniqueCarObject->Date;
+            //Object
+            $this->Unique_Model            = $uniqueCarObject->Unique_Model; 
+              
         }
       
+        /**
+        * Eliminites the partent properties.
+        * 
+        * @return this child .
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - implemente vinquery handler 
+        */
         function getThisObjectOnly()
         {
            $child = (object) array();
              $i=0; 
              foreach($this as $property => $propertyValue)
              {
-                 if($i==24)
+                 if($i==4)
                  {
                      break;
                  }
