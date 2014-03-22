@@ -10,19 +10,14 @@ class user_model extends CI_Model {
 
     public function insertUser($userData)
     {
-        //Insert one user in the DataBase
+        
         $this->db->insert('users',$userData); 
     }
     
     public function deleteUser($RNC)
     {
-        // delete a user from the daba base bu its RNC or Cedula.
-        $this->db->delete('users', array('ID' => $RNC)); 
-    }
-    
-    public function editUser($data)
-    {
         
+        $this->db->delete('users', array('ID' => $RNC)); 
     }
     
     public function getUserByRnc($RNC)
@@ -41,6 +36,26 @@ class user_model extends CI_Model {
              return $userObject;
         }
         else return false;
+    }
+    
+     public function getUser($RNC)
+    {
+        //returns the 
+        $this->db->select("users.*,dominican_republic_cities.Dominican_Republic_City ",false);
+        $this->db->from("users");
+        $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID','inner');
+        $this->db->where('users.ID',$RNC );
+        $query = $this->db->get();
+        $userObject = $query->row();
+        
+        if ($query->num_rows() > 0)
+        {
+             return $userObject;
+        }
+        else 
+        {
+            return false;
+        }
         
     }
     
@@ -51,7 +66,7 @@ class user_model extends CI_Model {
          return $query->row();
     }
     
-    public function getUserCities() 
+    public function getDominicanRepublicCities() 
     {  
       $query = $this->db->get("dominican_republic_cities");
       return $query->result();

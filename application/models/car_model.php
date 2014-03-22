@@ -47,8 +47,7 @@ class car_model extends CI_Model {
       * @see  getUniqueCar 
       */
      public function getUniqueCar($carVIN)
-    {
-          
+    { 
         $this->db->select('unique_cars.*, manufacturer_countries.Manufacturer_Country',false);
         $this->db->from('unique_cars');
         $this->db->join('manufacturer_countries', 'unique_cars.Manufacturer_Country_ID = manufacturer_countries.ID');
@@ -57,7 +56,6 @@ class car_model extends CI_Model {
         $uniqueCarObject =  $query->row();
         if($uniqueCarObject)
         {
-           
            $uniqueCarObject->Unique_Model = $this->getUniqueModel($uniqueCarObject->Unique_Model_ID);
            unset($uniqueCarObject->Manufacturer_Country_ID);
         }
@@ -321,7 +319,7 @@ class car_model extends CI_Model {
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
       * @todo - Ready.
       */  
-    public function getCarYears()
+    public function getYears()
     {
         for ($i = 1990; $i<= date("Y"); $i++)
         {

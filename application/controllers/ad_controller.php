@@ -17,9 +17,10 @@ class Ad_controller extends Main_Controller {
          // Arrays
          var $Car_Part_Reviews;
          var $Trouble_Codes;
+         var $Pictures;
          
          // Ad Objects
-         var $Car;
+         var $Unique_Car;
          var $Seller;
          var $Mechanic;
         
@@ -53,8 +54,8 @@ class Ad_controller extends Main_Controller {
         public function showAdForm($key="var",$val="1")
         {
            $dataPass["brands"] = $this->car_model->getBrands();
-           $dataPass["cities"] = $this->user_model->getUserCities();  
-           $dataPass["years"]  = $this->car_model->getCarYears();
+           $dataPass["cities"] = $this->user_model->getDominicanRepublicCities();  
+           $dataPass["years"]  = $this->car_model->getYears();
            $dataPass[$key] = $val;
            $this->load->view('include/header'); 
            $this->load->view('ad/search_ad_view',$dataPass);  
@@ -104,7 +105,7 @@ class Ad_controller extends Main_Controller {
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
         * @todo - Check 
         */
-        public function createAd()
+        public function createPendingAd()
         {
              $json = file_get_contents('php://input');
              $adObject = json_decode($json);
@@ -115,35 +116,30 @@ class Ad_controller extends Main_Controller {
             }
             else 
             {
-                
-                $adObject->Seller = $this->user_model->getUserByRnc($adObject->Seller_ID);
-                $adObject->Car    = $this->car_model->getCarByVIN($adObject->VIN);
+                $adObject->Seller = $this->user_model->getUser($adObject->Seller_ID);
+                $adObject->Car    = $this->car_model->getCar($adObject->VIN);
                 $adObject->ID   = NULL;
                 $adObject->Publish_Date     = date("Y-m-d H:i:s"); 
                 $adObject->Expiration_Date  = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")."+45 days"));
-                $adObject->Car_Review = "3";//$this->generateCarReview();
-                unset($adObject->Seller_ID);
-                unset($adObject->VIN);
                 $this->instanceAd($adObject);
-                $this->ad_model->insertAd($this);
+              // $this->ad_model->insertAd($this);
                 
                 header('Content-type: application/json');
                 echo json_encode($this->getThisObjectOnly());
-                
               }      
         }
-            
-          
+   
         public function generateCarReview()
         {
-           $overallReview = 0;
-           $counter = 0;
-           foreach($this->Car_Part_Reviews as $review)
-           {
-               $counter++;
-               $overallReview =+ $review;
-           }
-           return $overallReview/$counter;
+//           $overallReview = 0;
+//           $counter = 0;
+//           foreach($this->Car_Part_Reviews as $review)
+//           {
+//               $counter++;
+//               $overallReview =+ $review;
+//           }
+//           return $overallReview/$counter;
+            return 3;
         }
        
         /**
@@ -172,6 +168,7 @@ class Ad_controller extends Main_Controller {
          // Ad Arrays
          $this->Car_Part_Reviews  = $adObject->Car_Part_Reviews;
          $this->Trouble_Codes     = $adObject->Trouble_Codes;
+         $this->Pictures          = $adObject->Pictures;
          
          // Ad Abjects
          $this->Car              = $adObject->Car;
@@ -187,7 +184,7 @@ class Ad_controller extends Main_Controller {
              $i=0; 
              foreach($this as $property => $propertyValue)
              {
-                 if($i==12)
+                 if($i==14)
                  {
                      break;
                  }
