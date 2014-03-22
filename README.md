@@ -1,18 +1,7 @@
+Funcion Request_ad(); 
 
 
-- Vista muestra los datos del Objeto del controlador
-- Las propiedades del controlador estan en camelCase.
-- 
-Arreglo - Muchos campos de una tabla
-objeto - Un objeto con una o mas tabals. 
-Propiedades - propiedades del objeto de la clase. 
 
-Se utilizan unset ilogico solo mantener la coherencia de que la vista toma los datos, la clase los conviernte
-en un $this, y la base de dato ingresa en la misma un this de la clase. Cuando se llama el model se
-obtiene un $this de la base de datos, con los unset() de igual forma. 
-
-Instanciar luego de la base de datos asi se elimina el unset
-    Documentación
 
 -----Descripción del Código------------------------------------------------------------
 
@@ -28,8 +17,6 @@ Los metodos de los modelos están de la siguiente manera:
   - getBrands()                      obitienes los carros sin paramatres.
   - getBrand($PK)                    obitene un carro por su PK. EX "getBrand($BrandID)"
   - getBrandByParamater($parameter)  obtiene un carro por un paramatro cualquiera. EX "getCarByParameter($brandName)
-
-
 
 
 Hay que hacer la conexión con VinQuery para esto. 

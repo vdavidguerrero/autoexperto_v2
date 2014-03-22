@@ -110,22 +110,27 @@ class Ad_controller extends Main_Controller {
              $json = file_get_contents('php://input');
              $adObject = json_decode($json);
              
-            if($this->ad_model->getActiveAdByVIN($adObject->VIN)) // se debe cambiar a activo.          
+             
+             
+            if($this->ad_model->getPendingAdByVIN($adObject->VIN)) // se debe cambiar a activo.          
             {
+                 header('Content-type: application/json');
                 echo "Ya existe un anuncio para este Vehículo.";
             }
             else 
             {
                 $adObject->Seller = $this->user_model->getUser($adObject->Seller_ID);
-                $adObject->Car    = $this->car_model->getCar($adObject->VIN);
+                $adObject->Unique_Car    = $this->car_model->getCar($adObject->VIN);
+                
                 $adObject->ID   = NULL;
                 $adObject->Publish_Date     = date("Y-m-d H:i:s"); 
                 $adObject->Expiration_Date  = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")."+45 days"));
+                $adObject->Car_Review       = $this->generateCarReview();
                 $this->instanceAd($adObject);
-              // $this->ad_model->insertAd($this);
+                $this->ad_model->insertAd($this);
                 
                 header('Content-type: application/json');
-                echo json_encode($this->getThisObjectOnly());
+                echo json_encode("Anuncio Creado");
               }      
         }
    
@@ -171,7 +176,7 @@ class Ad_controller extends Main_Controller {
          $this->Pictures          = $adObject->Pictures;
          
          // Ad Abjects
-         $this->Car              = $adObject->Car;
+         $this->Unique_Car       = $adObject->Unique_Car;
          $this->Seller           = $adObject->Seller;  
          
          

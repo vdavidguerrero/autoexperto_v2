@@ -25,26 +25,26 @@ class Ad_model extends CI_Model {
         
         $this->db->select('car_ads.*',false);
         $this->db->from('car_ads');
-        $this->db->join('unique_cars','unique_cars.ID = car_ads.Unique_Car_ID');
+        $this->db->join('unique_cars','unique_cars.VIN = car_ads.Unique_Car_ID');
         $this->db->where('unique_cars.VIN',$VIN);
         $this->db->where('Flag',0);
         $query = $this->db->get();
-            
-        // Ad Propeties
-        $adObject = $query->row();  
+    
         
+        $adObject = $query->row();  
         if($adObject)
         {
-             // Ad Arrays
             $adObject->Pictures         = $this->getPicturesByAd($adObject->ID);
             $adObject->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->ID);
             $adObject->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
-          
+
 
             // Ad Objects
-            $adObject->Car              = $this->car_model->getCar($adObject->Unique_Car_ID);
+            $adObject->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
             $adObject->Seller           = $this->user_model->getUserByRnc($adObject->Seller_ID);
-        }   
+            unset($adObject->Unique_Car_ID);
+            unset($adObject->Seller_ID);  
+        }  
         return $adObject;
     }
       
@@ -59,7 +59,7 @@ class Ad_model extends CI_Model {
       * @todo - Check 
       * @see 
       */
-    public function getAds($VIN,$flag)
+    public function getAdsBySeller($VIN,$flag)
     {
         $searchArray = array(
                                 'unique_cars.VIN' =>$VIN,
@@ -71,7 +71,8 @@ class Ad_model extends CI_Model {
         }
         $this->db->select('car_ads.*',false);
         $this->db->from('car_ads');
-        $this->db->join('unique_cars','unique_cars.ID = car_ads.Unique_Car_ID');
+         $this->db->join('users','car_ads.Seller_ID = users.ID');
+        
         $this->db->where($searchArray);
         $query = $this->db->get();
         
@@ -145,22 +146,27 @@ class Ad_model extends CI_Model {
      {  
                 // get the array
                 $troubleCodes           = $adObject->Trouble_Codes;
-                $carPartReview          = $adObject->Car_Part_Review;
+                $carPartReview          = $adObject->Car_Part_Reviews;
                 $pictures               = $adObject->Pictures;
                 
                 // get the objects
                 $adObject->Seller_ID     = $adObject->Seller->ID;
-                $adObject->Unique_Car_ID = $adObject->Car->ID;
+                $adObject->Unique_Car_ID = $adObject->Unique_Car->VIN;
                 
                 // unset the un useless values;
+                unset($adObject->ID);
+                unset($adObject->Mechanic);
+                
                 unset($adObject->Car);
                 unset($adObject->Seller);
                 unset($adObject->Pictures);
                 unset($adObject->Trouble_Codes);
                 unset($adObject->Car_Part_Review);
                 
+                
                 //insert an relate values;
-                $adObject = $this->db->insert('car_ads',$adObject);   
+                 $this->db->insert('car_ads',$adObject);   
+                $adObject->ID = $this->db->insert_id();
                 $this->insertCarPartReview($carPartReview,$adObject);
                 $this->relateAdAndTroubleCode($troubleCodes, $adObject);
                 $this->insertPictures($pictures, $adObject);
@@ -184,7 +190,7 @@ class Ad_model extends CI_Model {
                 {
                    $troubleCodeObject =  $this->ad_model->getTroubleCode($troubleCode);
                    $insertArray  = array(
-                                            'Car_Ad_ID'         => $adObject->adID,
+                                            'Car_Ad_ID'         => $adObject->ID,
                                             'Trouble_Code_ID'   => $troubleCodeObject->ID
                                         );
                     $this->db->insert('trouble_code_N_ad',$insertArray);
@@ -244,8 +250,9 @@ class Ad_model extends CI_Model {
                                                 'Car_Ad_ID'      => $adObject->ID,
                                                 'Picture_Path'   => $picture
                                               );
-                     $this->db->insert('car_part_review',$carPartReviewData); 
+                     $this->db->insert('pictures',$carPartReviewData); 
            }   
+           return $this->db->insert_id();
      }
      
      /**
@@ -281,10 +288,11 @@ class Ad_model extends CI_Model {
                                                 'Car_Ad_ID'     => $adObject->ID,
                                                 'Car_Part_ID'   => $k+1,
                                                 'Seller_Review' => $carPartReview,
-                                                'Seller_Date'   => $adObject->Date
+                                                'Seller_Date'   => $adObject->Publish_Date
                                               );
                      $this->db->insert('car_part_review',$carPartReviewData); 
-           }       
+           }  
+           return $this->db->insert_id();
     }
     
     /** Get all the parts from an AD
@@ -326,9 +334,12 @@ class Ad_model extends CI_Model {
 
 
                 // Ad Objects
-                $adObjects[$k]->Car              = $this->car_model->getCar($adObject->Unique_Car_ID);
+                $adObjects[$k]->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
                 $adObjects[$k]->Seller           = $this->user_model->getUserByRnc($adObject->Seller_ID);
-            }
+                unset($adObject->Unique_Car_ID);
+                unset($adObject->Seller_ID);
+             }
+
         return $adObjects;
     }
 

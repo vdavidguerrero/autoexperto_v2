@@ -2,7 +2,7 @@ var http = require('http');
 
 var ad = {
   Seller_ID: 119045622,
-  VIN: 12345678912341111,
+  VIN: 52140228212341050,
   Price: "320000",
   Mileage: "7500",
   Paper_Status: "OK",
@@ -29,7 +29,7 @@ Pictures:
 };
 
 var car = {
-  VIN: 52140228312341051
+  VIN: 52140228212341050
   };
 
 var userString = JSON.stringify(ad);
