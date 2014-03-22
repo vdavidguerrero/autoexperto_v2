@@ -12,22 +12,23 @@ class Ad_model extends CI_Model {
         
     }
       /**
-      * Get an pending by its ID. there's only 1 ad by car.
+      * Get an its VIN. there's only 1 ad by car.
       * 
-      * @param int Car VIn
+      * @param int Car VIn 
+      * @param int Flag 0= pending, 1= active, 2= no active
       * @return adObject the ad of the car
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
       * @todo - Check 
       * @see getAdsBySearch
       */
-    public function getPendingAdByVIN($VIN)
+    public function getAdByVIN($VIN,$flag)
     {
         
         $this->db->select('car_ads.*',false);
         $this->db->from('car_ads');
         $this->db->join('unique_cars','unique_cars.VIN = car_ads.Unique_Car_ID');
         $this->db->where('unique_cars.VIN',$VIN);
-        $this->db->where('Flag',0);
+        $this->db->where('Flag',$flag);
         $query = $this->db->get();
     
         
@@ -47,6 +48,7 @@ class Ad_model extends CI_Model {
         }  
         return $adObject;
     }
+
       
     
      /**
@@ -97,7 +99,7 @@ class Ad_model extends CI_Model {
     public function getAdsBySearch($searchParamaters, $flag)
     {
           $searchArray = array (
-                                 'dominican_republic_cities.City'   => $searchParamaters['city'], 
+                                 'dominican_republic_cities.Dominican_Republic_City'   => $searchParamaters['city'], 
                                  'car_brands.Brand'                 => $searchParamaters['brands'],
                                  'car_models.Model'                 => $searchParamaters['model'],
                                  'unique_models.Body_Style'         => $searchParamaters['type'],
@@ -118,7 +120,7 @@ class Ad_model extends CI_Model {
         $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.VIN'         ,'inner');
         $this->db->join('unique_models'               , 'unique_cars.Unique_Model_ID = unique_models.ID'    ,'inner');
         $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'     ,'inner');
-        $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'            ,'inner');
+        $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'      ,'inner');
         $this->db->join('users'                       , 'car_ads.Seller_ID = users.ID'                   ,'inner');
         $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID','inner');
         $this->db->where($searchArray);

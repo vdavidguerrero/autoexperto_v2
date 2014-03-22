@@ -21,7 +21,7 @@
                            <?php
                             foreach ($cities as $city)
                            {
-                             echo "<li ><a>".$city->City."</a></li>";
+                             echo "<li ><a>".$city->Dominican_Republic_City."</a></li>";
                            }
                            ?>
                         </ul>
@@ -189,12 +189,12 @@
                             { 
                                echo "
                             <tr class='active'>
-                                <td> <a href='/ad_controller/showAd/".$ad->Car->VIN."'>".$ad->Car->Brand." </a></td>
-                                <td>".$ad->Car->Model." ".$ad->Car->Body_Style." ".$ad->Car->Trim. "</td>
-                                <td>".$ad->Car->Year."</td>
+                                <td> <a href='/ad_controller/showAd/".$ad->Unique_Car->VIN."'>".$ad->Unique_Car->Unique_Model->Brand." </a></td>
+                                <td>".$ad->Unique_Car->Unique_Model->Model." ".$ad->Unique_Car->Unique_Model->Body_Style." ".$ad->Unique_Car->Unique_Model->Trim. "</td>
+                                <td>".$ad->Unique_Car->Unique_Model->Year."</td>
                                 <td>".number_format($ad->Price)."</td>
                                 <td>".number_format($ad->Mileage)."</td>
-                                <td>".$ad->Seller->City."</td>    
+                                <td>".$ad->Seller->Dominican_Republic_City."</td>    
                             </tr>
 
                              "; 

@@ -1,56 +1,62 @@
 var http = require('http');
+var http2 = require('http');
 
 var ad = {
-  Seller_ID: 119045622,
-  VIN: 52140228212341050,
-  Price: "320000",
-  Mileage: "7500",
-  Paper_Status: "OK",
-  Flag   : "0",
-  Car_Part_Reviews: 
-        [
-    
-            1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
-            1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
-            1,2,3,4,5,1,2,3,4,5,1,2,3,4
-       ],
+    Seller_ID: 119045622,
+    VIN: 79941778880999050,
+    Price: "320000",
+    Mileage: "7500",
+    Paper_Status: "OK",
+    Flag   : "0",
+    Car_Part_Reviews:[
+                        1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
+                        1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
+                        1,2,3,4,5,1,2,3,4,5,1,2,3,4
+     ],
 
  
-Trouble_Codes: 
-         [
-          "P0001","P0007","P0002"
-         ],
-Pictures:
-         [
-          "Path1", "Path2"
-         ]
+    Trouble_Codes:   ["P0001","P0007","P0002"],
+    Pictures:        ["Path1", "Path2"       ]
   
 
 };
 
-var car = {
-  VIN: 52140228212341050
-  };
+var car = {VIN: ad.VIN};
 
-var userString = JSON.stringify(ad);
+
+
+var carJson = JSON.stringify(car);
+var adJson = JSON.stringify(ad);
+
+// No we prepare the packge
 
 var headers = {
   'Content-Type': 'application/json',
-  'Content-Length': userString.length
+  'Content-Length': carJson.length
+};
+
+var headers2 = {
+  'Content-Type': 'application/json',
+  'Content-Length': adJson.length
 };
 
   
 var options = {
   host: 'localhost',
   port: 80,
-  path: '/index.php/ad_controller/createPendingAd',
-  //path: '/index.php?/car_controller/carQuery',
+  path: '/index.php?/car_controller/carQuery',
   method: 'POST',
   headers: headers
 };
 
-// Setup the request.  The options parameter is
-// the object we defined above.
+  
+var options2 = {
+  host: 'localhost',
+  port: 80,
+  path: '/index.php/ad_controller/createPendingAd',
+  method: 'POST',
+  headers: headers2
+};
 
 
 var req = http.request(options, function(res) {
@@ -68,10 +74,31 @@ var req = http.request(options, function(res) {
 });
 
 req.on('error', function(e) {
-  // TODO: handle error.
+  console.log("Manito, error :'( ");
 });
 
-req.write(userString);
+req.write(carJson);
 req.end();
 
+callBack = function(res) {
+  res.setEncoding('utf-8');
 
+  var responseString = '';
+
+  res.on('data', function(data) {
+    responseString += data;
+  });
+
+  res.on('end', function() {
+    console.log(responseString);
+  });
+};
+
+assigned = function() {
+     req2 = http2.request(options2,callBack);
+     req2.write(adJson);
+     req2.end();
+};
+
+setTimeout(assigned, 8000);
+ 

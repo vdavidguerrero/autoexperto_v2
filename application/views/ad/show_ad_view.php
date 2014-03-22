@@ -25,7 +25,7 @@
                    <ul class='list-group list-unstyled'>
                        <li class='list-group-item list-group-item-default'>".$ad->Seller->Name."</li>
                        <li class='list-group-item list-group-item-default'>".$ad->Seller->Phone."</li>
-                       <li class='list-group-item list-group-item-default'>".$ad->Seller->Address.", ".$ad->Seller->City."</li>
+                       <li class='list-group-item list-group-item-default'>".$ad->Seller->Address.", ".$ad->Seller->Dominican_Republic_City."</li>
                        <li class='list-group-item list-group-item-default'>".number_format($ad->Price)."</li>
                        <li class='list-group-item list-group-item-default'>".$ad->Car_Review."</li>
                        <li class='list-group-item list-group-item-default'>".number_format($ad->Mileage)."</li>
@@ -52,24 +52,24 @@
                      "
                         <tr class='active'>
                         <td>Marca</td>
-                        <td>".$ad->Car->Brand."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Brand."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Modelo</td>
-                        <td>".$ad->Car->Model." ".$ad->Car->Trim."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Model." ".$ad->Unique_Car->Unique_Model->Trim."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Estilo</td>
-                        <td>".$ad->Car->Body_Style."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Body_Style."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Año</td>
-                        <td>".$ad->Car->Year."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Year."</td>   
                         </tr>
                         </tr>
                          <tr class='active'>
                         <td>Frabricado en</td>
-                        <td>".$ad->Car->Country."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Country."</td>   
                         </tr>
                     ";
             ?>
@@ -120,73 +120,73 @@
                 
               echo "  <tr class='active'>
                         <td>Chasis</td>
-                        <td>".$ad->Car->VIN."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->VIN."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Motor</td>
-                        <td>".$ad->Car->Engine_Type."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Engine_Type."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Transmision</td>
-                        <td>".$ad->Car->Transmission."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Transmission."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Tamaño del tanque</td>
-                        <td>".$ad->Car->Gallons." Galones</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Gallons." Galones</td>   
                         </tr>
                         </tr>
                          <tr class='active'>
                         <td>Consumo en Ciudad</td>
-                        <td>".$ad->Car->Fuel_Economy_City." Galones</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Fuel_Economy_City." Galones</td>   
                         </tr>
                         <tr class='active'>
                         <td>Consumo en Carretera</td>
-                        <td>".$ad->Car->Fuel_Economy_Highway." Galones</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Fuel_Economy_Highway." Galones</td>   
                         </tr>
                          <tr class='active'>
                         <td>Asientos</td>
-                        <td>".$ad->Car->Seating."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Seating."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Frenos ABS</td>
-                        <td>".$ad->Car->ABS_Brake."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->ABS_Brake."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Bolsa de Aire Conductor</td>
-                        <td>".$ad->Car->Driver_Airbag."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Driver_Airbag."</td>   
                         </tr>
                         </tr>
                          <tr class='active'>
                         <td>Bolsa de Aire Copiloto</td>
-                        <td>".$ad->Car->Front_Side_Airbag."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Front_Side_Airbag."</td>   
                         </tr>
                         <td>Aire Acondicionado</td>
-                        <td>".$ad->Car->AC."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->AC."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Radio</td>
-                        <td>".$ad->Car->Radio."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Radio."</td>   
                         </tr>
                          <tr class='active'>
                         <td>CD_Player</td>
-                        <td>".$ad->Car->CD_Player."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->CD_Player."</td>   
                         </tr>
                          <tr class='active'>
                         <td>SubWoofer</td>
-                        <td>".$ad->Car->Subwoofer."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Subwoofer."</td>   
                         </tr>
                         </tr>
                          <tr class='active'>
                         <td>Asientos en Piel</td>
-                        <td>".$ad->Car->Leather_Seats."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Leather_Seats."</td>   
                         </tr>
                         <tr class='active'>
                         <td>Ventanas Electricos</td>
-                        <td>".$ad->Car->Power_Windows."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Power_Windows."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Aros</td>
-                        <td>".$ad->Car->Wheels."</td>   
+                        <td>".$ad->Unique_Car->Unique_Model->Wheels."</td>   
                         </tr>
                             
                 ";
@@ -215,7 +215,7 @@
                 <tbody>
                     
             <?php
-              foreach($ad->Car_Part_Reviews as $carrito)
+              foreach($ad->Unique_Car->Unique_Model->Car_Part_Reviews as $carrito)
               {
                   echo "
                     <tr class='active'>

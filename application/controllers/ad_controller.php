@@ -92,7 +92,7 @@ class Ad_controller extends Main_Controller {
         */
         public function showAd($VIN)
         {  
-          $dataPass["ad"] = $this->ad_model->getActiveAdByVIN($VIN);
+          $dataPass["ad"] = $this->ad_model->getAd($VIN,0);
           $this->load->view('include/header'); 
           $this->load->view('ad/show_ad_view',$dataPass);  
           $this->load->view('include/footer'); 
@@ -112,7 +112,7 @@ class Ad_controller extends Main_Controller {
              
              
              
-            if($this->ad_model->getPendingAdByVIN($adObject->VIN)) // se debe cambiar a activo.          
+            if($this->ad_model->getAdByVIN($adObject->VIN,0)) // se debe cambiar a activo.          
             {
                  header('Content-type: application/json');
                 echo "Ya existe un anuncio para este Vehículo.";

@@ -75,15 +75,15 @@ class car_controller extends Main_Controller {
         function queryCarData($VIN)
         {
             $uniqueCarObject                          = new stdClass();
-            $uniqueCarObject->Manufacturer_Country   = 'USA';  
+            $uniqueCarObject->Manufacturer_Country   = 'Japon';  
             $uniqueCarObject->VIN                    = $VIN;
             $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
             $uniqueCarObject->Unique_Model           = (object) array(  
                                                                         'AC'                    => 'YES',
-                                                                        'Year'                  => '2009', 
-                                                                        'Trim'                  => 'Sencillo',
-                                                                        'Brand'                 => 'Mazda',
-                                                                        'Model'                 => '4Runner',
+                                                                        'Year'                  => '2003', 
+                                                                        'Trim'                  => 'Sencilla',
+                                                                        'Brand'                 => 'Nissan',
+                                                                        'Model'                 => 'Murano',
                                                                         'Radio'                 => 'YES',
                                                                         'Wheels'                => 'ALLOY',
                                                                         'Seating'               => 'Lether', 
@@ -92,7 +92,7 @@ class car_controller extends Main_Controller {
                                                                         'CD_Player'             => 'DVD',
                                                                         'Subwoofer'             => 'YES 18',
                                                                         'Body_Style'            => 'Sedan',
-                                                                        'Engine_Type'           => '1.7 DOHC',
+                                                                        'Engine_Type'           => '3.8 SOHC',
                                                                         'Transmission'          => 'Secuencial', 
                                                                         'Power_Windows'         => 'YES',
                                                                         'Leather_Seats'         => 'NO',
