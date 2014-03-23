@@ -24,7 +24,6 @@ class user_model extends CI_Model {
         $userObject->Dominican_Republic_Cities_ID = $dominicanRepublicCityObject->ID;
         unset($userObject->Dominican_Republic_City);
         $this->db->insert("users",$userObject);
-        return $this->db->insert_id();  
     }
     
     /**
@@ -67,11 +66,24 @@ class user_model extends CI_Model {
      * @todo - Check 
      * @see 
      */
-    public function checkUserLogin($rnc_cedula,$password)
+    public function checkUserLogin($RNC,$password)
     {
+         $this->db->select("users.*,dominican_republic_cities.Dominican_Republic_City ",false);
+        $this->db->from("users");
+        $this->db->join('dominican_republic_cities'   , 'users.Dominican_Republic_Cities_ID = dominican_republic_cities.ID','inner');
+        $this->db->where('users.ID',$RNC);
+        $this->db->where('users.Password',$password );
+        $query = $this->db->get();
+        $userObject = $query->row();
         
-         $query = $this->db->get_where('users', array('ID'=> $rnc_cedula,'password' => $password));
-         return $query->row();
+        if ($query->num_rows() > 0)
+        {
+             return $userObject;
+        }
+        else 
+        {
+            return false;
+        }
     }
     
     /**

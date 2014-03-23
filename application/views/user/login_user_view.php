@@ -28,7 +28,7 @@
     </form> 
     <div class="col-sm-offset-2 text-danger">
 	  	 <?php
-                    echo "<b>".$var."</b>";   
+                    echo "<b>".$message."</b>";   
                      echo form_error('cedula_rnc'); 
                 ?>
     </div>

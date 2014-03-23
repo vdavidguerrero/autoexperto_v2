@@ -46,10 +46,10 @@
                     <select class="form-control"  name="Dominican_Republic_City">   
                         <option selected disabled>Seleccione Una Ciudad</option>
                            <?php
-                           echo $thisFile; 
+                          
                             foreach ($cities as $city)
                            {
-                             echo "<option value=".$city->Dominican_Republic_City.">".$city->Dominican_Republic_City."</option>";
+                             echo "<option value='".$city->Dominican_Republic_City."'>".$city->Dominican_Republic_City."</option>";
                            }
                            ?>
                     </select>  

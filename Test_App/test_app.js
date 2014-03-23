@@ -2,8 +2,8 @@ var http = require('http');
 var http2 = require('http');
 
 var ad = {
-    Seller_ID: 119045622,
-    VIN: 79941778880999050,
+    Seller_ID: 00119045775,
+    VIN: 79941778880996650,
     Price: "320000",
     Mileage: "7500",
     Paper_Status: "OK",

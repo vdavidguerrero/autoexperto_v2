@@ -1,8 +1,8 @@
 <?php if (!defined('BASEPATH')) die();
-
-
+    
+    
 class user_controller extends Main_Controller {
-
+    
          var $ID; 
          var $Name;  
          var $Flag; 
@@ -12,7 +12,7 @@ class user_controller extends Main_Controller {
          var $Address;
          var $Password; 
          var $Dominican_Republic_City;
-        
+             
         public function __construct()
         {
             parent::__construct();
@@ -28,7 +28,7 @@ class user_controller extends Main_Controller {
 	{
           $this->showUserForm();
 	}
-        
+            
        /**
         * Shoe the create user from
         * 
@@ -46,7 +46,7 @@ class user_controller extends Main_Controller {
             $this->load->view('user/create_user_view',$dataPass);  
             $this->load->view('include/footer'); 
         }
-        
+            
          /**
         * Create a user from a form. Valitades the form too.
         * 
@@ -69,17 +69,17 @@ class user_controller extends Main_Controller {
             $this->form_validation->set_message('min_length'                , 'La contraseña debe tener al menos 6 Caracteres.');
             $this->form_validation->set_message('required'                  , ' ');
             $this->form_validation->set_message('valid_email'               , 'Digite un correo Valido.');
-
+                
             if($this->form_validation->run() === FALSE) 
             {
                 $this->showUserForm("message","Existe Un Problema En El Formulario");
             }
-            
+                
             else if($this->user_model->getUser($this->input->post('cedula_rnc')))
             {
                 $this->showUserForm("message","El RNC o Cedula Ya Existe");
             }
-            
+                
             else  
             {
                $userObject = new stdClass();
@@ -88,25 +88,17 @@ class user_controller extends Main_Controller {
                    $userObject->$k = $formFields;
                }
                $userObject->Date     = $now = date("Y-m-d H:i:s");
-               $userObject->Password = MD5($this->input->post('password'));
-             
+               $userObject->Password = MD5($this->input->post('Password'));
                $this->instanceUser($userObject);
-                 foreach ($this->getThisObjectOnly() as $k=> $user)
-               {
-                   echo $k;
-                   echo " --- ";
-                   echo $user;
-                   echo "<br>";   
-               }
-              $this->ID = $this->user_model->insertUser($this->getThisObjectOnly());
-                 
-              $sess_array = array( 'id'    => $this->ID, 'flag' => $this->Flag);
-              $this->session->set_userdata('logged_in', $sess_array);  
-              redirect("/ad_controller");
+               $this->user_model->insertUser($this->getThisObjectOnly());
+                    
+               $sess_array = array( 'id'    => $this->ID, 'flag' => $this->Flag);
+               $this->session->set_userdata('logged_in', $sess_array);  
+               redirect("/ad_controller");
             }
-               
+                
 	}
-         
+            
        /**
         * She the seller view.
         * 
@@ -118,15 +110,34 @@ class user_controller extends Main_Controller {
         public function showSeller($ID)
         {
             $dataPass["user"]       = $this->user_model->getUser($ID);
-            $dataPass["pendingAds"] =  $this->ad_model->getAdsByUser($ID,0);
-            $dataPass["activeAds"]  =  $this->ad_model->getAdsByUser($ID,0);
-       //     $dataPass["oldAds"]     =  $this->ad_model->getAdsByUser($ID,2);
+            $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
+            $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($ID,1);
+            $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($ID,2);
            
             $this->load->view('include/header'); 
-            $this->load->view('user/user_information_view',$dataPass);  
+            $this->load->view('user/seller_information_view',$dataPass);  
             $this->load->view('include/footer');    
         }
+            
+         /**
+        * Show the Mechanic's View.
+        * 
+        * @param $ID user ID
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        * @see 
+        */ 
+        public function showMechanic($ID)
+        {
         
+            $dataPass["user"]       = $this->user_model->getUser($ID);
+            $dataPass["pendingAds"] =  $this->ad_model->getAdsByMechanic($ID,0);
+           
+            $this->load->view('include/header'); 
+            $this->load->view('user/mechanic_information_view',$dataPass);  
+            $this->load->view('include/footer');    
+        }
+            
         /**
         * check the user name and password then initialize the session. Via Post
         * 
@@ -140,8 +151,8 @@ class user_controller extends Main_Controller {
             $this->form_validation->set_rules('password'        , 'Password'      , 'required');
             $this->form_validation->set_message('exact_length'  , 'Introduzca un RNC o Cedula Valida. EX 00119045615');
             $this->form_validation->set_message('required'      , 'Todos Los Campos Son requeridos');
-           
-            
+                
+                
             if($this->form_validation->run() === FALSE)
             {
                 $dataPass["message"] = " ";
@@ -151,6 +162,7 @@ class user_controller extends Main_Controller {
             }
             else 
             {
+                
                 $cedula_rnc = $this->input->post("cedula_rnc");
                 $password = MD5($this->input->post("password"));
                 $userObject =  $this->user_model->checkUserLogin($cedula_rnc,$password);
@@ -170,7 +182,7 @@ class user_controller extends Main_Controller {
                 }
              }
         }
-        
+            
         /**
         * kill the user session
         * 
@@ -183,7 +195,7 @@ class user_controller extends Main_Controller {
             $this->session->sess_destroy();  
             redirect("/ad_controller");
         }
-        
+            
        /**
         * Check the user and pass via JSON
         * 
@@ -198,10 +210,10 @@ class user_controller extends Main_Controller {
             $obj = json_decode($json,true);
             $userID  =  $obj['userID'];
             $password  =  MD5($obj['password']);
-            
+                
             $check =  $this->user_model->checkUserLogin($userID,$password);
-   
-            
+                
+                
             if($check)
                 $response = array("Response" => "OK");
             else
@@ -211,7 +223,7 @@ class user_controller extends Main_Controller {
              echo json_encode($response);        
                  
         }
-        
+            
        /**
         * Initialize this object by a object from the DB
         * 
@@ -233,7 +245,7 @@ class user_controller extends Main_Controller {
          $this->Password                 = $userObject->Password; 
          $this->Dominican_Republic_City  = $userObject->Dominican_Republic_City; 
         }
-        
+            
         /**
         * Get this object wothout the parent
         * 
@@ -242,19 +254,19 @@ class user_controller extends Main_Controller {
         * @todo - Check 
         * @see 
         */
-         function getThisObjectOnly()
+        function getThisObjectOnly()
         {
            $child = (object) array();
-             $i=0; 
-             foreach($this as $property => $propertyValue)
-             {
+            $i=0; 
+            foreach($this as $property => $propertyValue)
+            {
                  if($i==9)
                  {
                      break;
                  }
                  $i++;
                  $child->$property = $propertyValue;
-             }
+            }
              return $child; 
         }
 } 

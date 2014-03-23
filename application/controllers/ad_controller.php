@@ -117,8 +117,9 @@ class Ad_controller extends Main_Controller {
             }
             else 
             {
-                $adObject->Seller = $this->user_model->getUser($adObject->Seller_ID);
-                $adObject->Unique_Car    = $this->car_model->getCar($adObject->VIN);
+                $adObject->Seller           = $this->user_model->getUser($adObject->Seller_ID);
+                $adObject->Mechanic         = $this->user_model->getUser(12345678912);
+                $adObject->Unique_Car       = $this->car_model->getCar($adObject->VIN);
                 
                 $adObject->ID   = NULL;
                 $adObject->Publish_Date     = date("Y-m-d H:i:s"); 
@@ -182,7 +183,7 @@ class Ad_controller extends Main_Controller {
          // Ad Abjects
          $this->Unique_Car       = $adObject->Unique_Car;
          $this->Seller           = $adObject->Seller;  
-        // $this->mechanic = $adObject->Mechanic;
+         $this->mechanic         = $adObject->Mechanic;
         
         }
         function getThisObjectOnly()

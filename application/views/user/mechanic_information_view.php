@@ -34,9 +34,8 @@
             </div>   
                 
     </div>
-    
          <div class="col-sm-10"> 
-        <h2>Anuncios Activos</h2>
+        <h2>Anuncios Pendientes</h2>
         <table class="table table-striped">
             <thead>
                 <tr class='info'>
@@ -75,44 +74,6 @@
         </table>
         </div>
         
-        <div class="col-sm-10"> 
-        <h2>Anuncios Pasado</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr class='warning'>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Ano</th>
-                    <th>Precio</th>
-                    <th>Millaje</th>
-                    <th>Ciudad</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            
-            <?php
-                
-                
-              foreach ($activeAds as $activeAd)
-              { 
-                  echo "
-                      
-                    <tr class='active'>
-                        <td> <a href='/ad_controller/showAd/".$activeAd->Unique_Car->VIN."'>".$activeAd->Unique_Car->Unique_Model->Brand." </a></td>
-                        <td>".$activeAd->Unique_Car->Unique_Model->Model." ".$activeAd->Unique_Car->Unique_Model->Body_Style." ".$activeAd->Unique_Car->Unique_Model->Trim. "</td>
-                        <td>".$activeAd->Unique_Car->Unique_Model->Year."</td>
-                        <td>".number_format($activeAd->Price)."</td>
-                        <td>".number_format($activeAd->Mileage)."</td>
-                        <td>".$user->Dominican_Republic_City."</td>   
-                    </tr>
-                        
-                     ";
-              }  
-            ?>
-                
-            </tbody>
-        </table>
-        </div>
+        
     </div>
 </div>

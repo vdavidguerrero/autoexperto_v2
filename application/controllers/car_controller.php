@@ -80,10 +80,10 @@ class car_controller extends Main_Controller {
             $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
             $uniqueCarObject->Unique_Model           = (object) array(  
                                                                         'AC'                    => 'YES',
-                                                                        'Year'                  => '2003', 
-                                                                        'Trim'                  => 'Sencilla',
+                                                                        'Year'                  => '2009', 
+                                                                        'Trim'                  => 'Full',
                                                                         'Brand'                 => 'Nissan',
-                                                                        'Model'                 => 'Murano',
+                                                                        'Model'                 => 'Infinity',
                                                                         'Radio'                 => 'YES',
                                                                         'Wheels'                => 'ALLOY',
                                                                         'Seating'               => 'Lether', 

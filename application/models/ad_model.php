@@ -52,16 +52,16 @@ class Ad_model extends CI_Model {
       
     
      /**
-      * Get all the ads from a user.
+      * Get all the ads from a Seller.
       * 
       * @param int car's VIN.
       * @param int flag, 0= pending, 1= active, 2= no active, 3 = all;
       * @return 
       * @author Vincent Guerrero <v.davidguerrero@gmail.com>
       * @todo - Check 
-      * @see 
+      * @see getAdsByMechanic
       */
-    public function getAdsByUser($ID,$flag)
+    public function getAdsBySeller($ID,$flag)
     {
         $searchArray = array(
                                 'users.ID' =>$ID,
@@ -86,6 +86,42 @@ class Ad_model extends CI_Model {
         }  
         return $adObjects;
     }
+    
+     /**
+      * Get all the ads from a user.
+      * 
+      * @param int car's VIN.
+      * @param int flag, 0= pending, 1= active, 2= no active, 3 = all;
+      * @return 
+      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+      * @todo - Check 
+      * @see getAdsBySeller
+      */
+    public function getAdsByMechanic($ID,$flag)
+    {
+        $searchArray = array(
+                                'users.ID' =>$ID,
+                                'car_ads.Flag'            =>$flag,           
+        );
+        if($flag == 3)
+        {
+            unset($searchArray["Flag"]);
+        }
+        $this->db->select('car_ads.*',false);
+        $this->db->from('car_ads');
+        $this->db->join('users','car_ads.Mechanic_ID = users.ID');
+        $this->db->where($searchArray);
+        $query = $this->db->get();
+        
+        $adObjects = $query->result();
+        
+        if($adObjects)
+        {
+            $adObjects = $this->buildAdObject($adObjects);
+        }  
+        return $adObjects;
+    }
+    
     
     /**
       * Get all the add by its Specefic Search.
