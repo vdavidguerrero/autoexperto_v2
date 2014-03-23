@@ -69,7 +69,7 @@
                         </tr>
                          <tr class='active'>
                         <td>Frabricado en</td>
-                        <td>".$ad->Unique_Car->Unique_Model->Country."</td>   
+                        <td>".$ad->Unique_Car->Manufacturer_Country."</td>   
                         </tr>
                     ";
             ?>
@@ -115,12 +115,9 @@
                 </thead>
                 <tbody>
             <?php
-                
-                
-                
               echo "  <tr class='active'>
                         <td>Chasis</td>
-                        <td>".$ad->Unique_Car->Unique_Model->VIN."</td>   
+                        <td>".$ad->Unique_Car->VIN."</td>   
                         </tr>
                          <tr class='active'>
                         <td>Motor</td>
@@ -187,8 +184,7 @@
                          <tr class='active'>
                         <td>Aros</td>
                         <td>".$ad->Unique_Car->Unique_Model->Wheels."</td>   
-                        </tr>
-                            
+                        </tr> 
                 ";
             ?>
                 
@@ -199,23 +195,24 @@
         
         
     <div class="row">
-        <div class="col-sm-6">
-            <h2> Review Del Carro</h2>
+        <div class="col-sm-4">
+            <h2> Review - Carroceria</h2>
                 
                 
             <table class="table table-striped">
                 <thead>
                     <tr class="info">
                         <th>Pieza</th>
-                        <th>Review del Vendedor</th>
-                        <th>Review del Mecanico</th>
+                        <th>Review </th>
+                       
                             
                     </tr>
                 </thead>
                 <tbody>
                     
             <?php
-              foreach($ad->Unique_Car->Unique_Model->Car_Part_Reviews as $carrito)
+               $counter = 0;   
+              foreach($ad->Car_Part_Reviews as $carrito)
               {
                   echo "
                     <tr class='active'>
@@ -223,27 +220,105 @@
                     echo "<td>";
                     for($i=0; $i<5; $i++)
                     {
-                        if($i < $carrito->Seller_Review)
+                        if($i < $carrito->Review)
                            echo " <span class='fa fa-star yellow fa-2x '></span>" ;
                         else 
                            echo " <span class='fa fa-star-o fa-2x'></span>" ;   
                     }
                     echo "</td>";
-                    echo  "<td>";
-                     for($i=0; $i<5; $i++)
+                    echo "</tr>";          
+                 }     
+                 
+                   
+              ?>
+                     
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="col-sm-4">
+            <h2> Review - Interior</h2>
+                
+                
+            <table class="table table-striped">
+                <thead>
+                    <tr class="info">
+                        <th>Pieza</th>
+                        <th>Review </th>
+                       
+                            
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <?php
+                  
+              foreach($ad->Car_Part_Reviews as $carrito)
+              {
+                  echo "
+                    <tr class='active'>
+                        <td>".$carrito->Part."</td>" ;   
+                    echo "<td>";
+                    for($i=0; $i<5; $i++)
                     {
-                       if($i < $carrito->Seller_Review-1)
-                           echo " <span class='fa fa-star  yellow fa-2x'></span>" ;
+                        if($i < $carrito->Review)
+                           echo " <span class='fa fa-star yellow fa-2x '></span>" ;
                         else 
-                           echo " <span class='fa fa-star-o fa-2x'></span>" ;       
+                           echo " <span class='fa fa-star-o fa-2x'></span>" ;   
                     }
                     echo "</td>";
                     echo "</tr>";          
                  }        
-            ?>
+                   
+              ?>
+                     
                 </tbody>
             </table>
         </div>
+        
+        <div class="col-sm-4">
+            <h2> Review - Motor</h2>
+                
+                
+            <table class="table table-striped">
+                <thead>
+                    <tr class="info">
+                        <th>Pieza</th>
+                        <th>Review </th>
+                       
+                            
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <?php
+                  
+              foreach($ad->Car_Part_Reviews as $carrito)
+              {
+                  echo "
+                    <tr class='active'>
+                        <td>".$carrito->Part."</td>" ;   
+                    echo "<td>";
+                    for($i=0; $i<5; $i++)
+                    {
+                        if($i < $carrito->Review)
+                           echo " <span class='fa fa-star yellow fa-2x '></span>" ;
+                        else 
+                           echo " <span class='fa fa-star-o fa-2x'></span>" ;   
+                    }
+                    echo "</td>";
+                    echo "</tr>";          
+                 }        
+                   
+              ?>
+                     
+                </tbody>
+            </table>
+        </div>
+    
+    
+    
+    
     </div>
 </div>
     

@@ -33,7 +33,6 @@ class Ad_controller extends Main_Controller {
             $this->load->model("ad_model");
             $this->load->model("car_model");
             $this->load->model("user_model");
-            $this->load->library('form_validation');
             $this->load->helper('form');
             $this->load->library('session');
             $this->load->helper('url'); 
@@ -79,7 +78,7 @@ class Ad_controller extends Main_Controller {
         public function showSearchResults()
          {  
          $inputArray = $this->input->post();
-         $adObjects = $this->ad_model->getAdsBySearch($inputArray,0);    
+         $adObjects = $this->ad_model->getAdsBySearch($inputArray,1);    
          $this->showAdForm("ads", $adObjects);
         }
            
@@ -92,7 +91,8 @@ class Ad_controller extends Main_Controller {
         */
         public function showAd($VIN)
         {  
-          $dataPass["ad"] = $this->ad_model->getAd($VIN,0);
+          $this->instanceAd($this->ad_model->getAdByVIN($VIN,0));
+          $dataPass["ad"] = $this->getThisObjectOnly();
           $this->load->view('include/header'); 
           $this->load->view('ad/show_ad_view',$dataPass);  
           $this->load->view('include/footer'); 
@@ -107,11 +107,9 @@ class Ad_controller extends Main_Controller {
         */
         public function createPendingAd()
         {
-             $json = file_get_contents('php://input');
-             $adObject = json_decode($json);
-             
-             
-             
+            $json = file_get_contents('php://input');
+            $adObject = json_decode($json);
+
             if($this->ad_model->getAdByVIN($adObject->VIN,0)) // se debe cambiar a activo.          
             {
                  header('Content-type: application/json');
@@ -134,6 +132,12 @@ class Ad_controller extends Main_Controller {
               }      
         }
    
+        /**
+        * Generates a Car Review from all its values.
+        * 
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        */
         public function generateCarReview()
         {
 //           $overallReview = 0;
@@ -178,8 +182,6 @@ class Ad_controller extends Main_Controller {
          // Ad Abjects
          $this->Unique_Car       = $adObject->Unique_Car;
          $this->Seller           = $adObject->Seller;  
-         
-         
         // $this->mechanic = $adObject->Mechanic;
         
         }

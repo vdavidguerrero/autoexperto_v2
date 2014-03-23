@@ -24,7 +24,7 @@
                        <li>".$user->Name."</li>
                        <li>".$user->Email."</li>   
                        <li>".$user->Phone."</li>
-                       <li>".$user->Address.", ".$user->City."</li>
+                       <li>".$user->Address.", ".$user->Dominican_Republic_City."</li>
                        <li>".$user->Date."</li>
                            
                     </ul>"
@@ -54,17 +54,17 @@
             <?php
                 
                 
-              foreach ($var as $var2)
+              foreach ($pendingAds as $pendingAd)
               { 
                   echo "
                       
                     <tr class='active'>
-                        <td> <a href='/ad_controller/showAd/".$var2->adID."/".$var2->VIN."/".$var2->userID."'>".$var2->Brand." </a></td>
-                        <td>".$var2->Model." ".$var2->Body_Style." ".$var2->Trim. "</td>
-                        <td>".$var2->Year."</td>
-                        <td>".number_format($var2->Price)."</td>
-                        <td>".number_format($var2->Mileage)."</td>
-                        <td>".$var2->City."</td>   
+                        <td> <a href='/ad_controller/showAd/".$pendingAd->Unique_Car->VIN."'>".$pendingAd->Unique_Car->Unique_Model->Brand." </a></td>
+                        <td>".$pendingAd->Unique_Car->Unique_Model->Model." ".$pendingAd->Unique_Car->Unique_Model->Body_Style." ".$pendingAd->Unique_Car->Unique_Model->Trim. "</td>
+                        <td>".$pendingAd->Unique_Car->Unique_Model->Year."</td>
+                        <td>".number_format($pendingAd->Price)."</td>
+                        <td>".number_format($pendingAd->Mileage)."</td>
+                        <td>".$user->Dominican_Republic_City."</td>   
                     </tr>
                         
                      ";
@@ -94,17 +94,17 @@
             <?php
                 
                 
-              foreach ($var as $var2)
+              foreach ($activeAds as $activeAd)
               { 
                   echo "
                       
                     <tr class='active'>
-                        <td> <a href='/ad_controller/showAd/".$var2->adID."/".$var2->VIN."/".$var2->userID."'>".$var2->Brand." </a></td>
-                        <td>".$var2->Model." ".$var2->Body_Style." ".$var2->Trim. "</td>
-                        <td>".$var2->Year."</td>
-                        <td>".number_format($var2->Price)."</td>
-                        <td>".number_format($var2->Mileage)."</td>
-                        <td>".$var2->City."</td>   
+                        <td> <a href='/ad_controller/showAd/".$activeAd->Unique_Car->VIN."'>".$activeAd->Unique_Car->Unique_Model->Brand." </a></td>
+                        <td>".$activeAd->Unique_Car->Unique_Model->Model." ".$activeAd->Unique_Car->Unique_Model->Body_Style." ".$activeAd->Unique_Car->Unique_Model->Trim. "</td>
+                        <td>".$activeAd->Unique_Car->Unique_Model->Year."</td>
+                        <td>".number_format($activeAd->Price)."</td>
+                        <td>".number_format($activeAd->Mileage)."</td>
+                        <td>".$user->Dominican_Republic_City."</td>   
                     </tr>
                         
                      ";

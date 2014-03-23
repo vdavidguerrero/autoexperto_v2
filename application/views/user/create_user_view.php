@@ -12,48 +12,44 @@
             <div class="form-group ">
                 <label  class="col-sm-1 control-label">Nombre</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"  name="name" value="<?php echo set_value('name');?>"  >
+                    <input type="text" class="form-control"  name="Name" value="<?php echo set_value('name');?>"  >
                 </div>	  	
             </div>
                     
             <div class="form-group ">
                 <label  class="col-sm-1 control-label ">Contraseña</label>
                 <div class="col-sm-3 ">
-                    <input type="password" class="form-control  "  name="password" id="passwordCreate" >
+                    <input type="password" class="form-control  "  name="Password" id="passwordCreate" >
                 </div>	  	
-                <div class="text-danger"><?php echo form_error('password'); ?></div>
+                <div class="text-danger"><?php echo form_error('Password'); ?></div>
             </div>
-                
-
-
-            
-                    
+         
             <div class="form-group ">
                 <label  class="col-sm-1 control-label">RNC O Cédula</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"  name="cedula_rnc" id="rnc" value="<?php echo set_value('cedula_rnc');?>" >
+                    <input type="text" class="form-control"  name="ID" id="rnc" value="<?php echo set_value('cedula_rnc');?>" >
                 </div>	  
-                 <div class="text-danger" id="rncError"><?php echo form_error('cedula_rnc'); ?></div>
+                 <div class="text-danger" id="rncError"><?php echo form_error('ID'); ?></div>
             </div>
                
                     
             <div class="form-group ">
                 <label class="col-sm-1 control-label">Dirección</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"  name="address" value="<?php echo set_value('address');?>" >
+                    <input type="text" class="form-control"  name="Address" value="<?php echo set_value('address');?>" >
                 </div>	  	
             </div>
                     
             <div class="form-group ">
                 <label  class="col-sm-1 control-label">Ciudad</label>
                 <div class="col-sm-3">
-                    <select class="form-control"  name="city">   
+                    <select class="form-control"  name="Dominican_Republic_City">   
                         <option selected disabled>Seleccione Una Ciudad</option>
                            <?php
                            echo $thisFile; 
                             foreach ($cities as $city)
                            {
-                             echo "<option value='.$city->ID.'>".$city->City."</option>";
+                             echo "<option value=".$city->Dominican_Republic_City.">".$city->Dominican_Republic_City."</option>";
                            }
                            ?>
                     </select>  
@@ -63,23 +59,23 @@
             <div class="form-group ">
                 <label class="col-sm-1 control-label">Télefono</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"  name="phone" value="<?php echo set_value('phone');?>" >
+                    <input type="text" class="form-control"  name="Phone" value="<?php echo set_value('phone');?>" >
                 </div>	  	
             </div>
                     
             <div class="form-group ">
                 <label  class="col-sm-1 control-label">Correo</label>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control"  name="email" value="<?php echo set_value('email');?>" >
+                    <input type="text" class="form-control"  name="Email" value="<?php echo set_value('email');?>" >
                 </div>	  	
-               <div class="text-danger"><?php echo form_error('email'); ?></div>
+               <div class="text-danger"><?php echo form_error('Email'); ?></div>
             </div>
                 
                     
             <div class="form-group ">
                 <label  class="col-sm-1 control-label">Tipo</label>
                 <div class="col-sm-3">
-                    <select class="form-control"  name="flag">   
+                    <select class="form-control"  name="Flag">   
                         <option selected disabled>Seleccione un tipo</option>
                            <option value=0>Vendedor</option>
                            <option value=1>Mecanico</option>;
@@ -99,7 +95,7 @@
                 
                 <div class="col-sm-offset-2 text-danger">
 	  	 <?php
-                    echo "<b>".$var."</b>";               
+                    echo "<b>".$message."</b>";               
                 ?>
                     </div>
     </div>

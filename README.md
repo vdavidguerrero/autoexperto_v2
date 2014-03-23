@@ -1,4 +1,8 @@
-Funcion Request_ad(); 
+cuando se creé un anucio se le asiganara un mecanico ramdom. De esta.
+
+Crear la vista del usuario mecanico con los anuncios pendientes, mas los hechos. 
+
+
 
 
 

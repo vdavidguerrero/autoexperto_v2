@@ -38,11 +38,11 @@ class Ad_model extends CI_Model {
             $adObject->Pictures         = $this->getPicturesByAd($adObject->ID);
             $adObject->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->ID);
             $adObject->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
-
+            
 
             // Ad Objects
             $adObject->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
-            $adObject->Seller           = $this->user_model->getUserByRnc($adObject->Seller_ID);
+            $adObject->Seller           = $this->user_model->getUser($adObject->Seller_ID);
             unset($adObject->Unique_Car_ID);
             unset($adObject->Seller_ID);  
         }  
@@ -61,11 +61,11 @@ class Ad_model extends CI_Model {
       * @todo - Check 
       * @see 
       */
-    public function getAdsBySeller($VIN,$flag)
+    public function getAdsByUser($ID,$flag)
     {
         $searchArray = array(
-                                'unique_cars.VIN' =>$VIN,
-                                'Flag'            =>$flag,           
+                                'users.ID' =>$ID,
+                                'car_ads.Flag'            =>$flag,           
         );
         if($flag == 3)
         {
@@ -73,12 +73,13 @@ class Ad_model extends CI_Model {
         }
         $this->db->select('car_ads.*',false);
         $this->db->from('car_ads');
-         $this->db->join('users','car_ads.Seller_ID = users.ID');
+        $this->db->join('users','car_ads.Seller_ID = users.ID');
         
         $this->db->where($searchArray);
         $query = $this->db->get();
         
-        $adObjects = $query->row();  
+        $adObjects = $query->result();
+        
         if($adObjects)
         {
             $adObjects = $this->buildAdObject($adObjects);
@@ -106,7 +107,8 @@ class Ad_model extends CI_Model {
                                  'unique_models.Year <='            => $searchParamaters['highYear'],
                                  'unique_models.Year >='            => $searchParamaters['lowYear'],
                                  'car_ads.Price  <='                => $searchParamaters['highPrice'],
-                                 'car_ads.Price  >='                => $searchParamaters['lowPrice']
+                                 'car_ads.Price  >='                => $searchParamaters['lowPrice'],
+                                 'car_ads.Flag   = '                => $flag
                                );                  
         foreach ($searchArray as $k => $data)
         {
@@ -122,7 +124,7 @@ class Ad_model extends CI_Model {
         $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'     ,'inner');
         $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'      ,'inner');
         $this->db->join('users'                       , 'car_ads.Seller_ID = users.ID'                   ,'inner');
-        $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID','inner');
+        $this->db->join('dominican_republic_cities'   , 'users.Dominican_Republic_Cities_ID = dominican_republic_cities.ID','inner');
         $this->db->where($searchArray);
         $query = $this->db->get();    
         $adObjects = $query->result();
@@ -172,8 +174,7 @@ class Ad_model extends CI_Model {
                 $this->insertCarPartReview($carPartReview,$adObject);
                 $this->relateAdAndTroubleCode($troubleCodes, $adObject);
                 $this->insertPictures($pictures, $adObject);
-                return $this->db->insert_id();
-                
+                return $this->db->insert_id();        
      } 
     
         
@@ -289,8 +290,8 @@ class Ad_model extends CI_Model {
                     $carPartReviewData = array(
                                                 'Car_Ad_ID'     => $adObject->ID,
                                                 'Car_Part_ID'   => $k+1,
-                                                'Seller_Review' => $carPartReview,
-                                                'Seller_Date'   => $adObject->Publish_Date
+                                                'Review'        => $carPartReview,
+                                                'Date'          => $adObject->Publish_Date
                                               );
                      $this->db->insert('car_part_review',$carPartReviewData); 
            }  
@@ -307,12 +308,13 @@ class Ad_model extends CI_Model {
       */
     public function getCarPartsReviewByAd($ID)
     {
-        $this->db->select('car_part_review.Seller_Review, car_parts.Part ');
+        $this->db->select('*');
         $this->db->from('car_part_review');
         $this->db->join('car_parts', 'car_part_review.Car_Part_ID = car_parts.ID','inner');
         $this->db->where('car_part_review.Car_Ad_ID'    ,$ID); 
         $query = $this->db->get();
-        return $query->result();   
+        $result =  $query->result();   
+        return $result;
     } 
     
      
@@ -337,7 +339,7 @@ class Ad_model extends CI_Model {
 
                 // Ad Objects
                 $adObjects[$k]->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
-                $adObjects[$k]->Seller           = $this->user_model->getUserByRnc($adObject->Seller_ID);
+                $adObjects[$k]->Seller           = $this->user_model->getUser($adObject->Seller_ID);
                 unset($adObject->Unique_Car_ID);
                 unset($adObject->Seller_ID);
              }

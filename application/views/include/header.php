@@ -37,15 +37,21 @@
              echo base_url();
            echo "'>  Auto Experto ";       
                
-                         if($flagValue)
-                           echo " - Vendedor";
+                       if($flagValue)
+                         {
+                             echo " - Vendedor";
+                             $path = "/showSeller/".$id;
+                         }
                        else
-                           echo " - Mecanico";
+                        {
+                            echo " - Mecanico";
+                            $path = "/showMechanic/".$id;
+                        }
                                
                     echo " </a></div>
                         
                     <ul class='nav navbar-nav navbar-right' > 
-                        <li><a href='/user_controller/showUser/$id'>Mi Panel</a></li>
+                        <li><a href='/user_controller".$path."'>Mi Panel</a></li>
                         <li><a href='/user_controller/userLogOff'>Salir de sesión</a></li>
                         <li> <span> -- </span></li>
                     </ul>";  
