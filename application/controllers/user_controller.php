@@ -100,30 +100,39 @@ class user_controller extends Main_Controller {
 	}
             
        /**
-        * She the seller view.
+        * She the user information view from the logged user.
         * 
-        * @param $ID user ID
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
         * @todo - Check 
         * @see 
         */ 
-        public function showSeller($ID)
+        public function showUser()
         {
             $sessionInfo = $this->session->userdata('logged_in');
-            $id = $sessionInfo['id'];
-            if($id ===  $ID)
+            $id     = $sessionInfo['id'];
+            $flag   = $sessionInfo['flag'];
+            if($id)
             {
-                
-                    {
-                        $dataPass["user"]       =  $this->user_model->getUser($ID);
-                        $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
-                        $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($ID,1);
-                        $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($ID,2);  
-                        $this->load->view('include/header');
-                        $this->load->view('user/seller_information_view',$dataPass);  
-                        $this->load->view('include/footer');    
-                    } 
-             }
+                if($flag===0)
+                {
+                    
+                    $dataPass["user"]       =  $this->user_model->getUser($id);
+                    $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($id,0);
+                    $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($id,1);
+                    $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($id,2);  
+                    $view = "user/seller_information_view";   
+                } 
+                else
+                {
+                    $dataPass["user"]       =  $this->user_model->getUser($id);
+                    $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
+                    $view = "user/seller_information_view";
+                   
+                }
+                $this->load->view('include/header');
+                $this->load->view($view,$dataPass);  
+                $this->load->view('include/footer');
+            }
              else 
              {
                 $dataPass["message"] = "Debe Iniciar Sesion Primero";
@@ -133,41 +142,7 @@ class user_controller extends Main_Controller {
              }
         }
             
-         /**
-        * Show the Mechanic's View.
-        * 
-        * @param $ID user ID
-        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-        * @todo - Check 
-        * @see 
-        */ 
-        public function showMechanic($ID)
-        {
-            
-          $sessionInfo = $this->session->userdata('logged_in');
-            $id = $sessionInfo['id'];
-            if($id ===  $ID)
-            {
-                
-                    {
-                        $dataPass["user"]       =  $this->user_model->getUser($ID);
-                        $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
-                        $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($ID,1);
-                        $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($ID,2);  
-                        $this->load->view('include/header');
-                        $this->load->view('user/mechanic_information_view',$dataPass);  
-                        $this->load->view('include/footer');    
-                    } 
-             }
-             else 
-             {
-                $dataPass["message"] = "Debe Iniciar Sesion Primero";
-                $this->load->view('include/header');
-                $this->load->view('user/login_user_view',$dataPass);  
-                $this->load->view('include/footer');    
-             }
-            
-        }
+       
             
         /**
         * check the user name and password then initialize the session. Via Post
