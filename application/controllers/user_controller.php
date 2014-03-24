@@ -109,18 +109,20 @@ class user_controller extends Main_Controller {
         */ 
         public function showSeller($ID)
         {
-            if($this->session->userdata('logged_in'))
+            $sessionInfo = $this->session->userdata('logged_in');
+            $id = $sessionInfo['id'];
+            if($id ===  $ID)
             {
-//                 $sessionInfo = $this->session->userdata('logged_in');
-//            $id = $sessionInfo['id'];
-                $dataPass["user"]       =  $this->user_model->getUser($ID);
-                $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
-                $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($ID,1);
-                $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($ID,2);  
-                $this->load->view('include/header');
-                $this->load->view('user/seller_information_view',$dataPass);  
-                $this->load->view('include/footer');    
                 
+                    {
+                        $dataPass["user"]       =  $this->user_model->getUser($ID);
+                        $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
+                        $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($ID,1);
+                        $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($ID,2);  
+                        $this->load->view('include/header');
+                        $this->load->view('user/seller_information_view',$dataPass);  
+                        $this->load->view('include/footer');    
+                    } 
              }
              else 
              {
@@ -129,9 +131,6 @@ class user_controller extends Main_Controller {
                 $this->load->view('error',$dataPass);  
                 $this->load->view('include/footer');    
              }
-            
-            
-         
         }
             
          /**
@@ -145,21 +144,26 @@ class user_controller extends Main_Controller {
         public function showMechanic($ID)
         {
             
-             if($this->session->userdata('logged_in'))
+          $sessionInfo = $this->session->userdata('logged_in');
+            $id = $sessionInfo['id'];
+            if($id ===  $ID)
             {
-                $dataPass["user"]       = $this->user_model->getUser($ID);
-                $dataPass["pendingAds"] =  $this->ad_model->getAdsByMechanic($ID,0);
-
-                $this->load->view('include/header'); 
-                $this->load->view('error',$dataPass);  
-                $this->load->view('include/footer');   
-            
+                
+                    {
+                        $dataPass["user"]       =  $this->user_model->getUser($ID);
+                        $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
+                        $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($ID,1);
+                        $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($ID,2);  
+                        $this->load->view('include/header');
+                        $this->load->view('user/mechanic_information_view',$dataPass);  
+                        $this->load->view('include/footer');    
+                    } 
              }
              else 
              {
                 $dataPass["message"] = "Debe Iniciar Sesion Primero";
                 $this->load->view('include/header');
-                $this->load->view('user/seller_information_view',$dataPass);  
+                $this->load->view('error',$dataPass);  
                 $this->load->view('include/footer');    
              }
             
