@@ -109,12 +109,14 @@ class user_controller extends Main_Controller {
         */ 
         public function showSeller($ID)
         {
-            $dataPass["user"]       = $this->user_model->getUser($ID);
+            $dataPass["user"]       =  $this->user_model->getUser($ID);
             $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
             $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($ID,1);
             $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($ID,2);
+            
            
-            $this->load->view('include/header'); 
+           
+            $this->load->view('include/header');
             $this->load->view('user/seller_information_view',$dataPass);  
             $this->load->view('include/footer');    
         }

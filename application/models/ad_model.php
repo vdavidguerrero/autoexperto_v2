@@ -65,10 +65,10 @@ class Ad_model extends CI_Model {
     public function getAdsBySeller($ID,$flag)
     {
         $searchArray = array(
-                                'users.ID' =>$ID,
-                                'car_ads.Flag'            =>$flag,           
+                                'users.ID'        =>$ID,
+                                'car_ads.Flag'    =>$flag,           
         );
-        if($flag == 3)
+        if($flag === 3)
         {
             unset($searchArray["Flag"]);
         }
@@ -81,10 +81,12 @@ class Ad_model extends CI_Model {
         
         $adObjects = $query->result();
         
+       
         if($adObjects)
         {
             $adObjects = $this->buildAdObject($adObjects);
-        }  
+        }
+        
         return $adObjects;
     }
     
@@ -370,6 +372,7 @@ class Ad_model extends CI_Model {
     {
          foreach($adObjects as $k => $adObject)
             {
+               
                 // Ad Arrays
                 $adObjects[$k]->Pictures         = $this->getPicturesByAd($adObject->ID);
                 $adObjects[$k]->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->ID);

@@ -58,7 +58,7 @@
                   echo "
                       
                     <tr class='active'>
-                        <td> <a href='/ad_controller/showAd/".$activeAd->Unique_Car->VIN."/0'>".$activeAd->Unique_Car->Unique_Model->Brand." </a></td>
+                        <td> <a href='/ad_controller/showAd/".$activeAd->Unique_Car->VIN."/".$activeAd->Flag."'>".$activeAd->Unique_Car->Unique_Model->Brand." </a></td>
                         <td>".$activeAd->Unique_Car->Unique_Model->Model." ".$activeAd->Unique_Car->Unique_Model->Body_Style." ".$activeAd->Unique_Car->Unique_Model->Trim. "</td>
                         <td>".$activeAd->Unique_Car->Unique_Model->Year."</td>
                         <td>".number_format($activeAd->Price)."</td>
@@ -98,7 +98,7 @@
                   echo "
                       
                     <tr class='active'>
-                        <td> <a href='/ad_controller/showAd/".$pendingAd->Unique_Car->VIN."/1'>".$pendingAd->Unique_Car->Unique_Model->Brand." </a></td>
+                        <td> <a href='/ad_controller/showAd/".$pendingAd->Unique_Car->VIN."/".$pendingAd->Flag."'>".$pendingAd->Unique_Car->Unique_Model->Brand." </a></td>
                         <td>".$pendingAd->Unique_Car->Unique_Model->Model." ".$pendingAd->Unique_Car->Unique_Model->Body_Style." ".$pendingAd->Unique_Car->Unique_Model->Trim. "</td>
                         <td>".$pendingAd->Unique_Car->Unique_Model->Year."</td>
                         <td>".number_format($pendingAd->Price)."</td>
@@ -138,7 +138,7 @@
                   echo "
                       
                     <tr class='active'>
-                        <td> <a href='/ad_controller/showAd/".$oldAd->Unique_Car->VIN."/2'>".$oldAd->Unique_Car->Unique_Model->Brand." </a></td>
+                        <td> <a href='/ad_controller/showAd/".$oldAd->Unique_Car->VIN."/".$oldAd->Flag."'>".$oldAd->Unique_Car->Unique_Model->Brand." </a></td>
                         <td>".$oldAd->Unique_Car->Unique_Model->Model." ".$oldAd->Unique_Car->Unique_Model->Body_Style." ".$oldAd->Unique_Car->Unique_Model->Trim. "</td>
                         <td>".$oldAd->Unique_Car->Unique_Model->Year."</td>
                         <td>".number_format($oldAd->Price)."</td>
