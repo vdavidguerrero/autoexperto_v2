@@ -128,7 +128,7 @@ class user_controller extends Main_Controller {
              {
                 $dataPass["message"] = "Debe Iniciar Sesion Primero";
                 $this->load->view('include/header');
-                $this->load->view('error',$dataPass);  
+                $this->load->view('user/login_user_view',$dataPass);  
                 $this->load->view('include/footer');    
              }
         }
@@ -163,7 +163,7 @@ class user_controller extends Main_Controller {
              {
                 $dataPass["message"] = "Debe Iniciar Sesion Primero";
                 $this->load->view('include/header');
-                $this->load->view('error',$dataPass);  
+                $this->load->view('user/login_user_view',$dataPass);  
                 $this->load->view('include/footer');    
              }
             
