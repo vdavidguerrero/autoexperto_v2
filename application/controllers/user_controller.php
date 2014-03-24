@@ -114,7 +114,7 @@ class user_controller extends Main_Controller {
             if($id)
             {
                 $dataPass["user"]       =  $this->user_model->getUser($id);
-                if($flag===0)
+                if(!$flag)
                 {
                     $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($id,0);
                     $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($id,1);
