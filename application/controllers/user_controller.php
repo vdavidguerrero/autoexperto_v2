@@ -211,12 +211,11 @@ class user_controller extends Main_Controller {
         {    
             $json = file_get_contents('php://input');
             $obj = json_decode($json,true);
-            $userID  =  $obj['userID'];
+            $userID    =  $obj['userID'];
             $password  =  MD5($obj['password']);
                 
             $check =  $this->user_model->checkUserLogin($userID,$password);
-                
-                
+  
             if($check)
                 $response = array("Response" => "OK");
             else
