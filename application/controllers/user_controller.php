@@ -125,7 +125,7 @@ class user_controller extends Main_Controller {
                 else
                 {
                     $dataPass["user"]       =  $this->user_model->getUser($id);
-                    $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($ID,0);
+                    $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($id,0);
                     $view = "user/seller_information_view";
                    
                 }
