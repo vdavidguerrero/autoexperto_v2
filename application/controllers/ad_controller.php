@@ -89,9 +89,9 @@ class Ad_controller extends Main_Controller {
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
         * @todo - Check 
         */
-        public function showAd($VIN)
-        {  
-          $this->instanceAd($this->ad_model->getAdByVIN($VIN,1));
+        public function showAd($VIN,$flag)
+        {
+          $this->instanceAd($this->ad_model->getAdByVIN($VIN,$flag));
           $dataPass["ad"] = $this->getThisObjectOnly();
           $this->load->view('include/header'); 
           $this->load->view('ad/show_ad_view',$dataPass);  
