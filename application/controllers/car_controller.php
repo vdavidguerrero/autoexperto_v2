@@ -81,9 +81,9 @@ class car_controller extends Main_Controller {
             $uniqueCarObject->Unique_Model           = (object) array(  
                                                                         'AC'                    => 'YES',
                                                                         'Year'                  => '2009', 
-                                                                        'Trim'                  => 'Full',
-                                                                        'Brand'                 => 'Nissan',
-                                                                        'Model'                 => 'Infinity',
+                                                                        'Trim'                  => 'Sencillo',
+                                                                        'Brand'                 => 'Toyota',
+                                                                        'Model'                 => 'Hilux',
                                                                         'Radio'                 => 'YES',
                                                                         'Wheels'                => 'ALLOY',
                                                                         'Seating'               => 'Lether', 

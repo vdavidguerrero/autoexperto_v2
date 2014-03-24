@@ -98,6 +98,25 @@ class Ad_controller extends Main_Controller {
           $this->load->view('include/footer'); 
           
         }
+        
+       /**
+        * echos a JSON with all the ad ID.
+        * 
+        * @param int mechanich ID
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        */
+        public function mechanichAds()
+        {  
+          $json = file_get_contents('php://input');
+          $adID = json_decode($json);
+          
+          $adObject2 = $this->ad_model->getAdsByMechanic($adID->ID,0);
+          
+          header('Content-type: application/json');
+          echo json_encode($adObject2);
+          
+        }
             
         /**
         * Creates an Ad from a JSON.
@@ -110,9 +129,9 @@ class Ad_controller extends Main_Controller {
             $json = file_get_contents('php://input');
             $adObject = json_decode($json);
 
-            if($this->ad_model->getAdByVIN($adObject->VIN,0)) // se debe cambiar a activo.          
+            if($this->ad_model->getAdByVIN($adObject->VIN,0) || $this->ad_model->getAdByVIN($adObject->VIN,1)) // se debe cambiar a activo.          
             {
-                 header('Content-type: application/json');
+                header('Content-type: application/json');
                 echo "Ya existe un anuncio para este Vehículo.";
             }
             else 
@@ -183,9 +202,17 @@ class Ad_controller extends Main_Controller {
          // Ad Abjects
          $this->Unique_Car       = $adObject->Unique_Car;
          $this->Seller           = $adObject->Seller;  
-         $this->mechanic         = $adObject->Mechanic;
+         $this->Mechanic         = $adObject->Mechanic;
         
         }
+        
+          /**
+        * Get the child from its father
+        * 
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        * @see getAdsBySearch
+        */           
         function getThisObjectOnly()
         {
            $child = (object) array();

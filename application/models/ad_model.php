@@ -43,6 +43,7 @@ class Ad_model extends CI_Model {
             // Ad Objects
             $adObject->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
             $adObject->Seller           = $this->user_model->getUser($adObject->Seller_ID);
+            $adObject->Mechanic           = $this->user_model->getUser($adObject->Mechanic_ID);
             unset($adObject->Unique_Car_ID);
             unset($adObject->Seller_ID);  
         }  
@@ -192,6 +193,7 @@ class Ad_model extends CI_Model {
                 // get the objects
                 $adObject->Seller_ID     = $adObject->Seller->ID;
                 $adObject->Unique_Car_ID = $adObject->Unique_Car->VIN;
+                $adObject->Mechanic_ID   = $adObject->Mechanic->ID;
                 
                 // unset the un useless values;
                 unset($adObject->ID);
@@ -199,6 +201,7 @@ class Ad_model extends CI_Model {
                 
                 unset($adObject->Car);
                 unset($adObject->Seller);
+                unset($adObject->Mechanic);
                 unset($adObject->Pictures);
                 unset($adObject->Trouble_Codes);
                 unset($adObject->Car_Part_Review);
@@ -376,7 +379,9 @@ class Ad_model extends CI_Model {
                 // Ad Objects
                 $adObjects[$k]->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
                 $adObjects[$k]->Seller           = $this->user_model->getUser($adObject->Seller_ID);
+                $adObjects[$k]->Mechanic           = $this->user_model->getUser($adObject->Mechanic_ID);
                 unset($adObject->Unique_Car_ID);
+                unset($adObject->Mechanic_ID);
                 unset($adObject->Seller_ID);
              }
 
