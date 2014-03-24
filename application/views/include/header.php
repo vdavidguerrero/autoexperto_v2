@@ -40,17 +40,16 @@
                        if($flagValue)
                          {
                              echo " - Vendedor";
-                            
                          }
                        else
-                        {
+                         {
                             echo " - Mecanico";
-                        }
+                         }
                                
                     echo " </a></div>
                         
                     <ul class='nav navbar-nav navbar-right' > 
-                        <li><a href='/user_controller/showUser/".$id."'>Mi Panel</a></li>
+                        <li><a href='/user_controller/showUser/'>Mi Panel</a></li>
                         <li><a href='/user_controller/userLogOff'>Salir de sesión</a></li>
                         <li> <span> -- </span></li>
                     </ul>";  
