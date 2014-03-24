@@ -37,7 +37,7 @@
              echo base_url();
            echo "'>  Auto Experto ";       
                
-                       if($flagValue)
+                       if(!$flagValue)
                          {
                              echo " - Vendedor";
                          }

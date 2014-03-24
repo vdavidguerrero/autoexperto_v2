@@ -100,7 +100,7 @@ class user_controller extends Main_Controller {
 	}
             
        /**
-        * She the user information view from the logged user.
+        * shows the user information view from the logged user.
         * 
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
         * @todo - Check 
@@ -113,10 +113,9 @@ class user_controller extends Main_Controller {
             $flag   = $sessionInfo['flag'];
             if($id)
             {
+                $dataPass["user"]       =  $this->user_model->getUser($id);
                 if($flag===0)
                 {
-                    
-                    $dataPass["user"]       =  $this->user_model->getUser($id);
                     $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($id,0);
                     $dataPass["activeAds"]  =  $this->ad_model->getAdsBySeller($id,1);
                     $dataPass["oldAds"]     =  $this->ad_model->getAdsBySeller($id,2);  
@@ -124,8 +123,7 @@ class user_controller extends Main_Controller {
                 } 
                 else
                 {
-                    $dataPass["user"]       =  $this->user_model->getUser($id);
-                    $dataPass["pendingAds"] =  $this->ad_model->getAdsBySeller($id,0);
+                    $dataPass["pendingAds"] =  $this->ad_model->getAdsByMechanic($id,0);
                     $view = "user/mechanic_information_view";
                    
                 }
@@ -140,8 +138,7 @@ class user_controller extends Main_Controller {
                 $this->load->view('user/login_user_view',$dataPass);  
                 $this->load->view('include/footer');    
              }
-        }
-            
+        }     
        
             
         /**
