@@ -140,7 +140,7 @@ class car_controller extends Main_Controller {
              $i=0; 
              foreach($this as $property => $propertyValue)
              {
-                 if($i==3)
+                 if($i==4)
                  {
                      break;
                  }
