@@ -144,6 +144,7 @@ class Ad_controller extends Main_Controller {
                 $adObject->Publish_Date     = date("Y-m-d H:i:s"); 
                 $adObject->Expiration_Date  = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")."+45 days"));
                 $adObject->Car_Review       = $this->generateCarReview();
+                $adObject->Car_Part_Reviews = NULL;
                 $this->instanceAd($adObject);
                 $this->ad_model->insertAd($this);
                 

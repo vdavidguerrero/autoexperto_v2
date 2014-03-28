@@ -37,13 +37,19 @@ class Ad_model extends CI_Model {
         {
             $adObject->Pictures         = $this->getPicturesByAd($adObject->ID);
             $adObject->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->ID);
-            $adObject->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
-            
+            if($flag != 0)
+            {
+                $adObject->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
+            }
+             else
+            {
+                $adObjects[$k]->Car_Part_Reviews = NULL;
+            }
 
             // Ad Objects
             $adObject->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
             $adObject->Seller           = $this->user_model->getUser($adObject->Seller_ID);
-            $adObject->Mechanic           = $this->user_model->getUser($adObject->Mechanic_ID);
+            $adObject->Mechanic         = $this->user_model->getUser($adObject->Mechanic_ID);
             unset($adObject->Unique_Car_ID);
             unset($adObject->Seller_ID);  
         }  
@@ -84,7 +90,7 @@ class Ad_model extends CI_Model {
        
         if($adObjects)
         {
-            $adObjects = $this->buildAdObject($adObjects);
+            $adObjects = $this->buildAdObject($adObjects,$flag);
         }
         
         return $adObjects;
@@ -120,7 +126,7 @@ class Ad_model extends CI_Model {
         
         if($adObjects)
         {
-            $adObjects = $this->buildAdObject($adObjects);
+            $adObjects = $this->buildAdObject($adObjects,$flag);
         }  
         return $adObjects;
     }
@@ -170,7 +176,7 @@ class Ad_model extends CI_Model {
         
         if($adObjects)
         {
-            $adObjects = $this->buildAdObject($adObjects);
+            $adObjects = $this->buildAdObject($adObjects,$flag);
         }
         
         return $adObjects;
@@ -189,7 +195,7 @@ class Ad_model extends CI_Model {
      {  
                 // get the array
                 $troubleCodes           = $adObject->Trouble_Codes;
-                $carPartReview          = $adObject->Car_Part_Reviews;
+               // $carPartReview          = $adObject->Car_Part_Reviews;
                 $pictures               = $adObject->Pictures;
                 
                 // get the objects
@@ -212,7 +218,7 @@ class Ad_model extends CI_Model {
                 //insert an relate values;
                  $this->db->insert('car_ads',$adObject);   
                 $adObject->ID = $this->db->insert_id();
-                $this->insertCarPartReview($carPartReview,$adObject);
+              //  $this->insertCarPartReview($carPartReview,$adObject);
                 $this->relateAdAndTroubleCode($troubleCodes, $adObject);
                 $this->insertPictures($pictures, $adObject);
                 return $this->db->insert_id();        
@@ -368,7 +374,7 @@ class Ad_model extends CI_Model {
       * @todo - Check 
       * @see 
       */
-    public function buildAdObject($adObjects)
+    public function buildAdObject($adObjects, $flag)
     {
          foreach($adObjects as $k => $adObject)
             {
@@ -376,9 +382,14 @@ class Ad_model extends CI_Model {
                 // Ad Arrays
                 $adObjects[$k]->Pictures         = $this->getPicturesByAd($adObject->ID);
                 $adObjects[$k]->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->ID);
-                $adObjects[$k]->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
-
-
+                if($flag != 0)
+                {
+                    $adObjects[$k]->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
+                }
+                else
+                {
+                    $adObjects[$k]->Car_Part_Reviews = NULL;
+                }
                 // Ad Objects
                 $adObjects[$k]->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
                 $adObjects[$k]->Seller           = $this->user_model->getUser($adObject->Seller_ID);

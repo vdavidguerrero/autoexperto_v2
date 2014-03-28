@@ -8,17 +8,20 @@ var ad = {
     Mileage: "7500",
     Paper_Status: "OK",
     Flag   : 0,
-    Car_Part_Reviews:[
-                        1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
-                        1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
-                        1,2,3,4,5,1,2,3,4,5,1,2,3,4
-     ],
+   
     Trouble_Codes:   ["P0001","P0007","P0002"],
     Pictures:        ["Path1", "Path2"       ]
 };
 
-//var car = {VIN: ad.VIN};
-var car = {ID: 12345678912};
+ // Car_Part_Reviews:[
+ //                        1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
+ //                        1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
+ //                        1,2,3,4,5,1,2,3,4,5,1,2,3,4
+ //     ],
+
+
+var car = {VIN: ad.VIN};
+//var car = {ID: 12345678912};
 
 
 var carJson = JSON.stringify(car);
@@ -40,7 +43,7 @@ var headers2 = {
 var options = {
   host: 'localhost',
   port: 80,
-  path: '/index.php?/ad_controller/mechanichAds',
+  path: '/index.php?/car_controller/carQuery',
   method: 'POST',
   headers: headers
 };
