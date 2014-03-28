@@ -34,6 +34,47 @@
                 </div>   
                     
         </div>
+        
+         <div class="col-sm-10"> 
+            <h2>Anuncios Pendientes</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr class='info'>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Ano</th>
+                        <th>Precio</th>
+                        <th>Millaje</th>
+                        <th>Ciudad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    
+            <?php
+                
+                
+              foreach ($pendingAds as $pendingAd)
+              { 
+                  echo "
+                      
+                    <tr class='active'>
+                        <td>" .$pendingAd->Unique_Car->Unique_Model->Brand." </a></td>
+                        <td>".$pendingAd->Unique_Car->Unique_Model->Model." ".$pendingAd->Unique_Car->Unique_Model->Body_Style." ".$pendingAd->Unique_Car->Unique_Model->Trim. "</td>
+                        <td>".$pendingAd->Unique_Car->Unique_Model->Year."</td>
+                        <td>".number_format($pendingAd->Price)."</td>
+                        <td>".number_format($pendingAd->Mileage)."</td>
+                        <td>".$user->Dominican_Republic_City."</td>   
+                    </tr>
+                        
+                     ";
+              }  
+            ?>
+                
+                </tbody>
+            </table>
+        </div>
+        
         <div class="col-sm-10"> 
             <h2>Anuncios Activos</h2>
             <table class="table table-striped">
@@ -74,45 +115,7 @@
             </table>
         </div>
             
-        <div class="col-sm-10"> 
-            <h2>Anuncios Pendientes</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr class='info'>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Ano</th>
-                        <th>Precio</th>
-                        <th>Millaje</th>
-                        <th>Ciudad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    
-            <?php
-                
-                
-              foreach ($pendingAds as $pendingAd)
-              { 
-                  echo "
-                      
-                    <tr class='active'>
-                        <td>" .$pendingAd->Unique_Car->Unique_Model->Brand." </a></td>
-                        <td>".$pendingAd->Unique_Car->Unique_Model->Model." ".$pendingAd->Unique_Car->Unique_Model->Body_Style." ".$pendingAd->Unique_Car->Unique_Model->Trim. "</td>
-                        <td>".$pendingAd->Unique_Car->Unique_Model->Year."</td>
-                        <td>".number_format($pendingAd->Price)."</td>
-                        <td>".number_format($pendingAd->Mileage)."</td>
-                        <td>".$user->Dominican_Republic_City."</td>   
-                    </tr>
-                        
-                     ";
-              }  
-            ?>
-                
-                </tbody>
-            </table>
-        </div>
+       
             
         <div class="col-sm-10"> 
             <h2>Anuncios Antiguos</h2>

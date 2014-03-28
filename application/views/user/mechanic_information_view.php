@@ -58,7 +58,7 @@
                   echo "
                       
                     <tr class='active'>
-                        <td> <a href='/ad_controller/showAd/".$pendingAd->Unique_Car->VIN."/0'>".$pendingAd->Unique_Car->Unique_Model->Brand." </a></td>
+                        <td> <a'>".$pendingAd->Unique_Car->Unique_Model->Brand." </a></td>
                         <td>".$pendingAd->Unique_Car->Unique_Model->Model." ".$pendingAd->Unique_Car->Unique_Model->Body_Style." ".$pendingAd->Unique_Car->Unique_Model->Trim. "</td>
                         <td>".$pendingAd->Unique_Car->Unique_Model->Year."</td>
                         <td>".number_format($pendingAd->Price)."</td>
