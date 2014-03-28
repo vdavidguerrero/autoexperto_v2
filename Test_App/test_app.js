@@ -3,25 +3,19 @@ var http2 = require('http');
 
 var ad = {
     Seller_ID: 00119045775,
-    VIN: 12345678914896549,
+    VIN: "79941778880999060",
     Price: "320000",
     Mileage: "7500",
     Paper_Status: "OK",
     Flag   : 0,
    
-    Trouble_Codes:   ["P0001","P0007","P0002"],
-    Pictures:        ["Path1", "Path2"       ]
+    Trouble_Codes:   ["P0001","P0009","P0004"],
+    Pictures:        ["Path3", "Path5"       ]
 };
-
- // Car_Part_Reviews:[
- //                        1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
- //                        1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,
- //                        1,2,3,4,5,1,2,3,4,5,1,2,3,4
- //     ],
 
 
 var car = {VIN: ad.VIN};
-//var car = {ID: 12345678912};
+
 
 
 var carJson = JSON.stringify(car);
@@ -79,25 +73,25 @@ req.on('error', function(e) {
 req.write(carJson);
 req.end();
 
-//callBack = function(res) {
-//  res.setEncoding('utf-8');
-//
-//  var responseString = '';
-//
-//  res.on('data', function(data) {
-//    responseString += data;
-//  });
-//
-//  res.on('end', function() {
-//    console.log(responseString);
-//  });
-//};
+callBack = function(res) {
+  res.setEncoding('utf-8');
 
-//assigned = function() {
-//     req2 = http2.request(options2,callBack);
-//     req2.write(adJson);
-//     req2.end();
-//};
-//
-//setTimeout(assigned, 8000);
-// 
+  var responseString = '';
+
+  res.on('data', function(data) {
+    responseString += data;
+  });
+
+  res.on('end', function() {
+    console.log(responseString);
+  });
+};
+
+assigned = function() {
+     req2 = http2.request(options2,callBack);
+     req2.write(adJson);
+     req2.end();
+};
+
+setTimeout(assigned, 8000);
+ 

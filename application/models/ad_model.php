@@ -195,7 +195,7 @@ class Ad_model extends CI_Model {
      {  
                 // get the array
                 $troubleCodes           = $adObject->Trouble_Codes;
-               // $carPartReview          = $adObject->Car_Part_Reviews;
+                $carPartReview          = $adObject->Car_Part_Reviews;
                 $pictures               = $adObject->Pictures;
                 
                 // get the objects
@@ -212,11 +212,11 @@ class Ad_model extends CI_Model {
                 unset($adObject->Mechanic);
                 unset($adObject->Pictures);
                 unset($adObject->Trouble_Codes);
-                unset($adObject->Car_Part_Review);
+                unset($adObject->Car_Part_Reviews);
                 
                 
                 //insert an relate values;
-                 $this->db->insert('car_ads',$adObject);   
+                $this->db->insert('car_ads',$adObject);   
                 $adObject->ID = $this->db->insert_id();
               //  $this->insertCarPartReview($carPartReview,$adObject);
                 $this->relateAdAndTroubleCode($troubleCodes, $adObject);
