@@ -217,9 +217,9 @@ class user_controller extends Main_Controller {
             $check =  $this->user_model->checkUserLogin($userID,$password);
   
             if($check)
-                $response = array("Response" => "OK");
+                $response = (object) array("Response" => "OK");
             else
-                $response = array("Response" => "NO");
+                $response = (object) array("Response" => "NO");
                     
              header('Content-type: application/json');
              echo json_encode($response);        

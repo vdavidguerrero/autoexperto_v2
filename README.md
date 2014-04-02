@@ -1,7 +1,36 @@
-cuando se creé un anucio se le asiganara un mecanico ramdom. De esta.
 
-Crear la vista del usuario mecanico con los anuncios pendientes, mas los hechos. 
+------Pendiente Documentación-----------------------------------------------------------------------
 
+ - Arreglar el documento de VISIO, de la base de datos.
+ - Describir los tres algoritmos. 
+ - Explicar los cambios: 
+    - Porque solo mostrar los datos del mecánico.
+    - hacer que el mecánico sea propio, de nuestra compañía. 
+    - Especificar que la data del API será simulada. 
+
+ - Estadisticas de compra de vehículos, cantidad de vehículos, etc...
+ 
+
+
+
+
+
+-----Agoritmos a tomar en cuenta------
+
+Obtención del Review: 
+  
+   se calcula el cociente de MaxReview / ActualReviw y se multiplica por 5. 
+
+   donde MaxReview es  =  Σ[(Review * Weigth)]/Σ [(ReviewMax * Weigth)]  * 5 ; i = 1, n= Npiezas
+        ---Tomar en cuenta la opciones de (n1*w1)+ (nn*wn) / sum(wn)
+
+    
+Cálculo del precio aproximado del vehículo: 
+
+    
+
+
+Cálculo de los días aproximados para la venta: 
 
 
 
@@ -30,10 +59,6 @@ Hay que hacer la conexión con VinQuery para esto.
 Proxima Función a trabajar: ad_controller->showad()
                             ad_controller->createAd()
                             ad_controller->showSearchResults()
-
-------Pendiente-----------------------------------------------------------------------
-
-Arreglar el documento de VISIO, de la base de datos. 
 
 
 
