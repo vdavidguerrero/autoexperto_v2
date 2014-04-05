@@ -64,8 +64,7 @@
                         <td>".number_format($pendingAd->Price)."</td>
                         <td>".number_format($pendingAd->Mileage)."</td>
                         <td>".$user->Dominican_Republic_City."</td>   
-                    </tr>
-                        
+                    </tr>      
                      ";
               }  
             ?>
