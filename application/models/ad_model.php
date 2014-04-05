@@ -43,7 +43,7 @@ class Ad_model extends CI_Model {
             }
              else
             {
-                $adObjects[$k]->Car_Part_Reviews = NULL;
+                $adObjects->Car_Part_Reviews = NULL;
             }
 
             // Ad Objects
