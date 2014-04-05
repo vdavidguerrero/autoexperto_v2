@@ -129,28 +129,41 @@ class Ad_controller extends Main_Controller {
             $json = file_get_contents('php://input');
             $adObject = json_decode($json);
 
-            if($this->ad_model->getAdByVIN($adObject->VIN,0) || $this->ad_model->getAdByVIN($adObject->VIN,1)) // se debe cambiar a activo.          
-            {
-                header('Content-type: application/json');
-                echo "Ya existe un anuncio para este Vehículo.";
-            }
-            else 
-            {
-                $adObject->Seller           = $this->user_model->getUser($adObject->Seller_ID);
-                $adObject->Mechanic         = $this->user_model->getUser(12345678912);
-                $adObject->Unique_Car       = $this->car_model->getCar($adObject->VIN);
-                
-                $adObject->ID   = NULL;
-                $adObject->Publish_Date     = date("Y-m-d H:i:s"); 
-                $adObject->Expiration_Date  = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")."+45 days"));
-                $adObject->Car_Review       = 0;
-                $adObject->Car_Part_Reviews = NULL;
-                $this->instanceAd($adObject);
-                $this->ad_model->insertAd($this);
-                
-                header('Content-type: application/json');
-                echo json_encode("Anuncio Creado");
-              }      
+		if($adObject)
+		{
+			
+	            if($this->ad_model->getAdByVIN($adObject->VIN,0) || $this->ad_model->getAdByVIN($adObject->VIN,1)) // se debe cambiar a activo.          
+	            {
+	                header('Content-type: application/json');
+	                $response = (object) array("Response" => "Ya Existe Un Anuncio");
+	                echo json_encode($response);
+	            }
+	            else 
+	            {
+	                $adObject->Seller           = $this->user_model->getUser($adObject->Seller_ID);
+	                $adObject->Mechanic         = $this->user_model->getUser(12345678912);
+	                $adObject->Unique_Car       = $this->car_model->getCar($adObject->VIN);
+	                
+	                $adObject->ID   = NULL;
+	                $adObject->Publish_Date     = date("Y-m-d H:i:s"); 
+	                $adObject->Expiration_Date  = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")."+45 days"));
+	                $adObject->Car_Review       = 0;
+	                $adObject->Car_Part_Reviews = NULL;
+	                $this->instanceAd($adObject);
+	                $this->ad_model->insertAd($this);
+	                
+	                header('Content-type: application/json');
+	                $response = (object) array("Response" => "Anuncio Creado");
+	                echo json_encode($response);
+	              }  	
+		}
+		else
+		{
+			 header('Content-type: application/json');
+	                $response = (object) array("Response" => "l VIN no fue enviado");
+	                echo json_encode($response);
+		}
+	    
         }
    
         /**
