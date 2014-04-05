@@ -135,7 +135,7 @@ class Ad_controller extends Main_Controller {
 	            if($this->ad_model->getAdByVIN($adObject->VIN,0) || $this->ad_model->getAdByVIN($adObject->VIN,1)) // se debe cambiar a activo.          
 	            {
 	                header('Content-type: application/json');
-	                $response = (object) array("Response" => "Ya Existe Un Anuncio");
+	                $response = (object) array("Response" => 0);
 	                echo json_encode($response);
 	            }
 	            else 
@@ -153,14 +153,14 @@ class Ad_controller extends Main_Controller {
 	                $this->ad_model->insertAd($this);
 	                
 	                header('Content-type: application/json');
-	                $response = (object) array("Response" => "Anuncio Creado");
+	                $response = (object) array("Response" => 1);
 	                echo json_encode($response);
 	              }  	
 		}
 		else
 		{
 			 header('Content-type: application/json');
-	                $response = (object) array("Response" => "l VIN no fue enviado");
+	                $response = (object) array("Response" => 2);
 	                echo json_encode($response);
 		}
 	    
