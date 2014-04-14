@@ -1,4 +1,3 @@
-
 ------Pendiente Documentación-----------------------------------------------------------------------
 
  - Arreglar el documento de VISIO, de la base de datos.
@@ -10,6 +9,15 @@
 
  - Estadisticas de compra de vehículos, cantidad de vehículos, etc...
  
+
+
+--- Bibliografia : 
+
+http://www.biddle.com/documents/bcg_comp_chapter4.pdf
+
+Probabilidad y Estadistícca para ingenieros y ciencas ; septima edicion. J L Devowre.
+
+
 
 
 
@@ -364,3 +372,30 @@ Response tendrá uno de los siguientes valores:
     P0123 Throttle Position Sensor/Switch A Circuit High Input 
     P0124 Throttle Position Sensor/Switch A Circuit Intermittent
 
+<<<<<<< HEAD
+=======
+
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID'                 ,'inner');
+        $this->db->join('unique_models'               , 'unique_cars.Unique_Model = unique_models.ID'            ,'inner');
+        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'             ,'inner');
+        $this->db->join('car_brands'                  , 'car_models.Brand_ID = car_brands.ID'                    ,'inner');
+        $this->db->join('users'                       , 'car_ads.Seller_ID = users.ID'                           ,'inner');
+        $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID'        ,'inner');
+        this->db->where('unique_cars.VIN'    ,$carVIN);
+        $this->db->where('car_ads.Flag', $flag);
+        $query = $this->db->get();
+        return $query->row();   
+
+
+
+SELECT *
+FROM car_ads
+INNER JOIN unique_cars  ON car_ads.Unique_Car_ID = unique_cars.ID;
+INNER JOIN trouble_codes_N_ad      on trouble_codes_N_ad.Car_Ad_ID = car_ads.ID
+INNER JOIN trouble_codes              on trouble_codes_N_ad.Trouble_Code_ID = trouble_codes.ID
+INNER JOIN car_part_review            on car_part_review.Car_Ad_ID = car_ads.ID
+INNER JOIN car_parts                   on car_part_review.Car_Part_ID = Car_Parts.ID   
+
+        
+>>>>>>> 3ffe1a3f8a83fd1412309c7a608fbb9a72a2acb2
