@@ -1,4 +1,3 @@
-
 ------Pendiente Documentación-----------------------------------------------------------------------
 
  - Arreglar el documento de VISIO, de la base de datos.
@@ -10,6 +9,15 @@
 
  - Estadisticas de compra de vehículos, cantidad de vehículos, etc...
  
+
+
+--- Bibliografia : 
+
+http://www.biddle.com/documents/bcg_comp_chapter4.pdf
+
+Probabilidad y Estadistícca para ingenieros y ciencas ; septima edicion. J L Devowre.
+
+
 
 
 
