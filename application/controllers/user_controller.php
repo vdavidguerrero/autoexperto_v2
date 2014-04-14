@@ -271,4 +271,41 @@ class user_controller extends Main_Controller {
             }
              return $child; 
         }
+        
+        
+         /**
+        * Create a user from a form. Valitades the form too.
+        * 
+        * 
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        * @see 
+        */ 
+        public function createUserRemote()
+	{ 
+            $json = file_get_contents('php://input');
+            $obj = json_decode($json,true);
+            
+               $userObject = new stdClass();
+               foreach($obj as $k => $formFields)
+               {
+                   $userObject->$k = $formFields;
+               }
+               $userObject->Date     = $now = date("Y-m-d H:i:s");
+               $userObject->Password = MD5($obj->Password);
+               $this->instanceUser($userObject);
+               if($this->user_model->insertUser($this->getThisObjectOnly()))
+               {
+               if($this->Flag == 0)
+                $response = (object) array("Response" => 0);
+                else if($this->Flag == 1)
+                $response = (object) array("Response" => 1);
+               }
+               else
+               {
+                   $response = (object) array("Response" => -1);
+               }    
+               header('Content-type: application/json');
+               echo json_encode($response);          
+	}
 } 

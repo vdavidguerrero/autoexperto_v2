@@ -15,7 +15,7 @@
 
 
 
------Agoritmos a tomar en cuenta------
+-----Agoritmos a tomar en cuenta----------------------------------------------------------
 
 Obtención del Review: 
   
@@ -24,19 +24,21 @@ Obtención del Review:
    donde MaxReview es  =  Σ[(Review * Weigth)]/Σ [(ReviewMax * Weigth)]  * 5 ; i = 1, n= Npiezas
         ---Tomar en cuenta la opciones de (n1*w1)+ (nn*wn) / sum(wn)
 
-    
+*******************************************************************************************
 Cálculo del precio aproximado del vehículo: 
 
+ y = B0 + B1x + B2x = e;
+
     
 
-
+*******************************************************************************************
 Cálculo de los días aproximados para la venta: 
 
 
 
 
 
------Descripción del Código------------------------------------------------------------
+-----Descripción del Código----------------------------------------------------------------
 
 Los nombres de las tablas, vista, modelos y controladores estan escritos en Plural y minuscula. EX "trouble_codes".
 
@@ -64,60 +66,82 @@ Proxima Función a trabajar: ad_controller->showad()
 
 ------WebService-----------------------------------------------------------------------
 
+Obtener Crear un cuenta Remora: http://54.200.195.186/user_controller/createUserRemoto
+
+Recibe el  siguiente JSON: 
+
+JSON = {Name:
+        Password:
+        ID:
+        Address:
+        Phone:
+        Dominican_Replic_City:
+        Flag:
+        Email:
+        }
+Retorna un JSON con lo siguiente: 
+
+JSON = {Response};
+
+Response tendrá uno de los siguientes valores:
+
+  0 ; representa que es un vendedor
+  1 ; representa que es un mécanico
+  -1; represente que no es existe el usuarios/contraseña enviado. 
+
+*******************************************************************************************
 Obtener información del carro: http://54.200.195.186/index.php/car_controller/carQuery
 
 Recibe un JSON con un campo VIN y busca el VIN en la base de datos, si no existe pero es un VIN valido lo busca en 
 la base de dato del suplidor, lo creo y lo retorna. Si ya existe simplemente lo 
-retorna en JSON. 
+retorna en JSON.
 
+Recibe un JSON con lo siguiente:
+JSON = {VIN:};
+
+Retorna un JSON con lo siguiente: 
+
+JSON = {----};
+ 
+
+********************************************************************************************
 
 Crear un anuncio: http://54.200.195.186/index.php/ad_controller/createAd
 
 Recibe un JSON con lo siguiente:
 JSON = {
-            userID: 119045622,
-            VIN: "12345678912345678",
-            adPrice: "5000",
-            mileage: "135000",
-            papers: "OK",
-            carParts: 
-                  [
-                    {Review:"1",ID:1} ,{Review:"4",ID:2} ,{Review:"2",ID:3} ,{Review:"3",ID:4} ,
-                    {Review:"2",ID:5} ,{Review:"5",ID:6} ,{Review:"3",ID:7} ,{Review:"1",ID:8} ,
-                    {Review:"3",ID:9} ,{Review:"2",ID:10},{Review:"5",ID:11},{Review:"2",ID:12},
-                    {Review:"4",ID:13},{Review:"1",ID:14},{Review:"1",ID:15},{Review:"3",ID:16},
-                    {Review:"5",ID:17},{Review:"3",ID:18},{Review:"2",ID:19},{Review:"4",ID:20},
-                    {Review:"2",ID:21},{Review:"2",ID:22},{Review:"4",ID:23},{Review:"2",ID:24},
-                    {Review:"1",ID:25},{Review:"4",ID:26},{Review:"2",ID:27},{Review:"3",ID:28},
-                    {Review:"4",ID:29},{Review:"2",ID:30},{Review:"1",ID:31},{Review:"1",ID:32},
-                    {Review:"2",ID:33},{Review:"3",ID:34},{Review:"4",ID:35},{Review:"4",ID:36},
-                    {Review:"3",ID:37},{Review:"6",ID:38},{Review:"3",ID:39},{Review:"2",ID:40},
-                    {Review:"4",ID:41},{Review:"2",ID:42},{Review:"1",ID:43},{Review:"2",ID:44}
-                 ],
-
-            troubleCodes:[{Trouble:"P0001"},{Trouble:"P0002"},{Trouble:"P0003"},{Trouble:"P0004"}]
+            VIN:
+            Flag:
+            Price:  
+            Mileage:    
+            Pictures: 
+            Seller_ID:   
+            Trouble_Codes:
+            Papers_Status:  
         };
 
 Como se puede ver este tiene valores por defecto. Esto creara un anuncio siempre y cuando se asuma 
 que el VIN es carro que fue solicitado por el metodo anterior; existe en la base de datos. 
  
-
+*******************************************************************************************
 Login remoto: http://54.200.195.186/user_controller/remoteUserLogin
 
 Recibe un JSON con lo siguiente:
 JSON = {    
-            userID: 119045622,
-            password: "porche"
+            userID:,
+            password: 
        };
 
 Retorna un JSON con lo siguiente: 
 
-JSON = {
-            Response:OK ; si está bien
-            Response:NO ; si no está bien
-       };
+JSON = {Response};
 
-De esta manera se puede validar la sesión en el aplicación movil. 
+
+Response tendrá uno de los siguientes valores:
+
+  0 ; representa que es un vendedor
+  1 ; representa que es un mécanico
+  -1; represente que no es existe el usuarios/contraseña enviado. 
 
 
 ------Flujo de la aplicación------------------------------------------------------------
@@ -340,27 +364,3 @@ De esta manera se puede validar la sesión en el aplicación movil.
     P0123 Throttle Position Sensor/Switch A Circuit High Input 
     P0124 Throttle Position Sensor/Switch A Circuit Intermittent
 
-
-        $this->db->from('car_ads');
-        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.ID'                 ,'inner');
-        $this->db->join('unique_models'               , 'unique_cars.Unique_Model = unique_models.ID'            ,'inner');
-        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'             ,'inner');
-        $this->db->join('car_brands'                  , 'car_models.Brand_ID = car_brands.ID'                    ,'inner');
-        $this->db->join('users'                       , 'car_ads.Seller_ID = users.ID'                           ,'inner');
-        $this->db->join('dominican_republic_cities'   , 'users.DR_City_ID = dominican_republic_cities.ID'        ,'inner');
-        this->db->where('unique_cars.VIN'    ,$carVIN);
-        $this->db->where('car_ads.Flag', $flag);
-        $query = $this->db->get();
-        return $query->row();   
-
-
-
-SELECT *
-FROM car_ads
-INNER JOIN unique_cars  ON car_ads.Unique_Car_ID = unique_cars.ID;
-INNER JOIN trouble_codes_N_ad      on trouble_codes_N_ad.Car_Ad_ID = car_ads.ID
-INNER JOIN trouble_codes              on trouble_codes_N_ad.Trouble_Code_ID = trouble_codes.ID
-INNER JOIN car_part_review            on car_part_review.Car_Ad_ID = car_ads.ID
-INNER JOIN car_parts                   on car_part_review.Car_Part_ID = Car_Parts.ID   
-
-        

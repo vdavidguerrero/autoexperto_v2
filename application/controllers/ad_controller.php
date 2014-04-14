@@ -172,17 +172,34 @@ class Ad_controller extends Main_Controller {
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
         * @todo - Check 
         */
-        public function generateCarReview()
+        public function checkAd()
         {
-//           $maxReview 
-//           $counter = 0;
+//           $overallReview = 0;
 //           foreach($this->Car_Part_Reviews as $review)
 //           {
-//               $counter++;
 //               $overallReview =+ $review;
 //           }
-//           return $overallReview/$counter;
-//            return 3;
+//           return $overallReview/(sizeof($this->Car_Part_Reviews)-1);
+        }
+        
+        
+        
+        
+        
+        /**
+        * Generates a Car Review from all its values.
+        * 
+        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+        * @todo - Check 
+        */
+        public function generateCarReview()
+        {
+//           $overallReview = 0;
+//           foreach($this->Car_Part_Reviews as $review)
+//           {
+//               $overallReview =+ $review;
+//           }
+//           return $overallReview/(sizeof($this->Car_Part_Reviews)-1);
         }
        
         /**
