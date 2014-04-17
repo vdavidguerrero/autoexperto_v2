@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+    </script>
+    <script>
+        var count = 1;
+        $(document).ready(function(){
+            $("button").click(function(){
+
+// http://www.w3schools.com/TAGS/ref_httpmethods.asp  - > Entra ahí :)
+// POST
+                $.ajax({
+                    type: "POST",
+                    url: "http://192.168.7.2:8080/text.html #b",
+                    success: function(result)
+                    {
+                        $("#w").html(result);
+                    }
+                });
+// GET
+                $.ajax({
+                    type: "GET",
+                    url: "http://192.168.7.2:8080/text.html #b",
+                    success: function(result)
+                    {
+                        $("#y").html(result);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button>Send an HTTP GET request to a page and get the result back</button>
+<div id = "w"></div>
+<div id = "x">Test</div>
+<div id = "y"></div>
+<div id = "z"></div>
+<div id = "num"></div>
+</body>
+</html>

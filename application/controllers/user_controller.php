@@ -62,7 +62,7 @@ class user_controller extends Main_Controller {
             $this->form_validation->set_rules('ID'                          , 'ID.'      , 'required|exact_length[11]|integer');
             $this->form_validation->set_rules('Address'                     , 'Address.' , 'required');
             $this->form_validation->set_rules('Phone'                       , 'Phone.'   , 'required');
-            $this->form_validation->set_rules('Dominican_Republic_City'   , 'City.'    , 'required');
+            $this->form_validation->set_rules('Dominican_Republic_City'     , 'City.'    , 'required');
             $this->form_validation->set_rules('Flag'                        , 'Flag.'    , 'required');
             $this->form_validation->set_rules('Email'                       , 'Email.'   , 'required|valid_email');
             $this->form_validation->set_message('exact_length'              , 'Introduzca una Cedula o RNC Valido.EX 00119045615');
@@ -235,8 +235,7 @@ class user_controller extends Main_Controller {
         * @see 
         */
         public function instanceUser($userObject)
-        {    
-            
+        {
          $this->ID                       = $userObject->ID; 
          $this->Name                     = $userObject->Name;  
          $this->Flag                     = $userObject->Flag; 
@@ -245,7 +244,7 @@ class user_controller extends Main_Controller {
          $this->Email                    = $userObject->Email;
          $this->Address                  = $userObject->Address;
          $this->Password                 = $userObject->Password; 
-         $this->Dominican_Republic_City  = $userObject->Dominican_Republic_City; 
+         $this->Dominican_Republic_City  = $userObject->Dominican_Republic_City;
         }
             
         /**
@@ -274,7 +273,7 @@ class user_controller extends Main_Controller {
         
         
          /**
-        * Create a user from a form. Valitades the form too.
+        * Create a user from a JSON.
         * 
         * 
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
@@ -282,30 +281,34 @@ class user_controller extends Main_Controller {
         * @see 
         */ 
         public function createUserRemote()
-	{ 
+	    {
             $json = file_get_contents('php://input');
-            $obj = json_decode($json,true);
-            
-               $userObject = new stdClass();
-               foreach($obj as $k => $formFields)
-               {
-                   $userObject->$k = $formFields;
-               }
-               $userObject->Date     = $now = date("Y-m-d H:i:s");
-               $userObject->Password = MD5($obj->Password);
-               $this->instanceUser($userObject);
-               if($this->user_model->insertUser($this->getThisObjectOnly()))
-               {
-               if($this->Flag == 0)
+            $userObject = json_decode($json);
+            if($userObject)
+            {
+                $userObject->Date     =  date("Y-m-d H:i:s");
+                $userObject->Password = MD5($userObject->Password);
+                $this->instanceUser($userObject);
+
+            if($this->user_model->insertUser($this->getThisObjectOnly()))
+            {
+            if($this->Flag == 0)
                 $response = (object) array("Response" => 0);
-                else if($this->Flag == 1)
-                $response = (object) array("Response" => 1);
-               }
-               else
-               {
-                   $response = (object) array("Response" => -1);
-               }    
-               header('Content-type: application/json');
-               echo json_encode($response);          
-	}
+            else if($this->Flag == 1)
+                    $response = (object) array("Response" => 1);
+            }
+            else
+                {
+                    $response = (object) array("Response" => -1);
+                }
+                header('Content-type: application/json');
+                echo json_encode($response);
+            }
+        else
+            {
+                header('Content-type: application/json');
+                $response = (object) array("Response" => -2);
+                echo json_encode($response);
+            }
+	    }
 } 

@@ -5,7 +5,7 @@ class user_model extends CI_Model {
     public function __construct()
     {
     	parent::__construct();
-	$this->load->database(); 
+	    $this->load->database();
     }   
 
     
@@ -20,12 +20,34 @@ class user_model extends CI_Model {
      */
     public function insertUser($userObject)
     {
-        $dominicanRepublicCityObject = $this->getDominicanRepublicCity($userObject->Dominican_Republic_City);
-        $userObject->Dominican_Republic_Cities_ID = $dominicanRepublicCityObject->ID;
+        $userObject->Dominican_Republic_Cities_ID = $this->getDominicanRepublicCity($userObject->Dominican_Republic_City)->ID;
+        if(!$userObject->Dominican_Republic_Cities_ID)
+        {
+            $userObject->Dominican_Republic_Cities_ID =  $this->insertCity($userObject->Dominican_Republic_City);
+        }
         unset($userObject->Dominican_Republic_City);
-        $this->db->insert("users",$userObject);
+        return  $this->db->insert("users",$userObject);
     }
-    
+
+
+
+    /**
+     * Insert an Dominican Republic City.
+     *
+     * @param City the user we want to insert
+     * @return int added row
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     * @see
+     */
+    public function insertCity($city)
+    {
+        echo $city;
+        $cityObject = (object) array("Dominican_Republic_City" => $city);
+        $this->db->insert("dominican_republic_cities",$cityObject);
+        return $this->db->insert_id();
+    }
+
     /**
      * Get an user object by its RNC or Cedula.
      * 

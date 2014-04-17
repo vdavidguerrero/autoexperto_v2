@@ -43,7 +43,7 @@ class Ad_model extends CI_Model {
             }
              else
             {
-                $adObjects->Car_Part_Reviews = NULL;
+                $adObject->Car_Part_Reviews = NULL;
             }
 
             // Ad Objects
@@ -56,9 +56,55 @@ class Ad_model extends CI_Model {
         return $adObject;
     }
 
-      
-    
-     /**
+    /**
+     * Get an its ID. there's only 1 ad by car.
+     *
+     * @param int Car VIn
+     * @param int Flag 0= pending, 1= active, 2= no active
+     * @return adObject the ad of the car
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     * @see getAdsBySearch
+     */
+    public function getAdByID ($adID,$flag)
+    {
+
+        $this->db->select('car_ads.*',false);
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars','unique_cars.VIN = car_ads.Unique_Car_ID');
+        $this->db->where('car_ads.ID',$adID);
+        $this->db->where('Flag',$flag);
+        $query = $this->db->get();
+
+
+        $adObject = $query->row();
+        if($adObject)
+        {
+            $adObject->Pictures         = $this->getPicturesByAd($adObject->ID);
+            $adObject->Trouble_Codes    = $this->getTroubleCodeByAd($adObject->ID);
+            if($flag != 0)
+            {
+                $adObject->Car_Part_Reviews = $this->getCarPartsReviewByAd($adObject->ID);
+            }
+            else
+            {
+                $adObject->Car_Part_Reviews = NULL;
+            }
+
+            // Ad Objects
+            $adObject->Unique_Car       = $this->car_model->getCar($adObject->Unique_Car_ID);
+            $adObject->Seller           = $this->user_model->getUser($adObject->Seller_ID);
+            $adObject->Mechanic         = $this->user_model->getUser($adObject->Mechanic_ID);
+            unset($adObject->Unique_Car_ID);
+            unset($adObject->Seller_ID);
+        }
+        return $adObject;
+    }
+
+
+
+
+    /**
       * Get all the ads from a Seller.
       * 
       * @param int car's VIN.
@@ -323,22 +369,23 @@ class Ad_model extends CI_Model {
      }
         
     /**
-      * 
-      * 
-      * @param 
-      * @return 
-      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-      * @todo - Check Performance 
-      */
-    public function insertCarPartReview($carPartsReviewData, $adObject)
+    * relate and review all the parts from an ad
+    *
+    * @param
+    * @return
+    * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+    * @todo - Check Performance
+    */
+    public function insertCarPartReview($carPartsReviewData, $adID)
     {
+          $now = date("Y-m-d H:i:s");
           foreach ($carPartsReviewData as $k => $carPartReview)
            {
                     $carPartReviewData = array(
-                                                'Car_Ad_ID'     => $adObject->ID,
+                                                'Car_Ad_ID'     => $adID,
                                                 'Car_Part_ID'   => $k+1,
                                                 'Review'        => $carPartReview,
-                                                'Date'          => $adObject->Publish_Date
+                                                'Date'          => $now
                                               );
                      $this->db->insert('car_part_review',$carPartReviewData); 
            }  
@@ -402,6 +449,25 @@ class Ad_model extends CI_Model {
         return $adObjects;
     }
 
-    
-    
+
+    /**
+     * Change the ad status
+     *
+     * @param int flag which could be 0= pending, 1 = active, 2= sold
+     * @return
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check Performance
+     */
+    public function setFlag($flag, $adID)
+    {
+       $sendingQuery = "
+       UPDATE car_ads
+       SET
+       Flag = $flag
+
+       WHERE ID = $adID ";
+
+       $this->db->query($sendingQuery);
+    }
+
 }

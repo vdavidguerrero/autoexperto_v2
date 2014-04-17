@@ -29,7 +29,7 @@
           ciudad.text(selecion);
         $("#laCiudad").attr('value', selecion);
         });
-        
+
         
         var marca = $("#marca");
         $("#listaMarca li ").on("click", function () {

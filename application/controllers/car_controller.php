@@ -35,8 +35,7 @@ class car_controller extends Main_Controller {
         */
              
         public function carQuery()
-        { 
-            
+        {
              $json = file_get_contents('php://input');
              $jsonObject = json_decode($json,true);
              header('Content-type: application/json');
@@ -46,8 +45,7 @@ class car_controller extends Main_Controller {
              {  
                 $thisCarData = $this->car_model->getCar($this->VIN);
                 if(!$thisCarData)
-                { 
-                   
+                {
                     $thisCarData = $this->queryCarData($this->VIN); 
                     $this->instanceCar($thisCarData);
                     $this->car_model->insertCar($this);
@@ -75,33 +73,33 @@ class car_controller extends Main_Controller {
         function queryCarData($VIN)
         {
             $uniqueCarObject                          = new stdClass();
-            $uniqueCarObject->Manufacturer_Country   = 'Japon';  
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
             $uniqueCarObject->VIN                    = $VIN;
             $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
             $uniqueCarObject->Unique_Model           = (object) array(  
-                                                                        'AC'                    => 'YES',
-                                                                        'Year'                  => '2009', 
-                                                                        'Trim'                  => 'Sencillo',
-                                                                        'Brand'                 => 'Toyota',
-                                                                        'Model'                 => 'Hilux',
-                                                                        'Radio'                 => 'YES',
-                                                                        'Wheels'                => 'ALLOY',
-                                                                        'Seating'               => 'Lether', 
-                                                                        'Gallons'               => '14',
-                                                                        'ABS_Brake'             => 'Yes',
-                                                                        'CD_Player'             => 'DVD',
-                                                                        'Subwoofer'             => 'YES 18',
-                                                                        'Body_Style'            => 'Sedan',
-                                                                        'Engine_Type'           => '3.8 SOHC',
-                                                                        'Transmission'          => 'Secuencial', 
-                                                                        'Power_Windows'         => 'YES',
-                                                                        'Leather_Seats'         => 'NO',
-                                                                        'Driver_Airbag'         => 'Yes',
-                                                                        'Cruise_Control'        => 'YES',
-                                                                        'Convertible_Top'       => 'NO',
-                                                                        'Front_Side_Airbag'     => 'NO',
-                                                                        'Fuel_Economy_City'     => '25',
-                                                                        'Fuel_Economy_Highway'  => '27'
+                                                                        'AC'                    => 'Prueba1',
+                                                                        'Year'                  => '2000',
+                                                                        'Trim'                  => 'Prueba1',
+                                                                        'Brand'                 => 'Prueba1',
+                                                                        'Model'                 => 'Prueba1',
+                                                                        'Radio'                 => 'Prueba1',
+                                                                        'Wheels'                => 'Prueba1',
+                                                                        'Seating'               => 'Prueba1',
+                                                                        'Gallons'               => '20',
+                                                                        'ABS_Brake'             => 'Prueba1',
+                                                                        'CD_Player'             => 'Prueba1',
+                                                                        'Subwoofer'             => 'Prueba1',
+                                                                        'Body_Style'            => 'Prueba1',
+                                                                        'Engine_Type'           => 'Prueba1',
+                                                                        'Transmission'          => 'Prueba1',
+                                                                        'Power_Windows'         => 'Prueba1',
+                                                                        'Leather_Seats'         => 'Prueba1',
+                                                                        'Driver_Airbag'         => 'Prueba1',
+                                                                        'Cruise_Control'        => 'Prueba1',
+                                                                        'Convertible_Top'       => 'Prueba1',
+                                                                        'Front_Side_Airbag'     => 'Prueba1',
+                                                                        'Fuel_Economy_City'     => 'Prueba1',
+                                                                        'Fuel_Economy_Highway'  => 'Prueba1'
                                                         
                                                                          );
            return $uniqueCarObject;
