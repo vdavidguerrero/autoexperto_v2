@@ -24,9 +24,7 @@ class Ad_controller extends Main_Controller {
          var $Seller;
          var $Mechanic;
         
-         
-       
-         
+
         public function __construct()
         {  
             parent::__construct();
@@ -115,12 +113,11 @@ class Ad_controller extends Main_Controller {
         public function getMechanicAds()
         {  
           $json = file_get_contents('php://input');
-          $adID = json_decode($json);
+          $mechanicID = json_decode($json);
           
-          $adObject2 = $this->ad_model->getAdsByMechanic($adID->ID,0);
-          
+          $adsObject = $this->ad_model->getAdsByMechanic($mechanicID->ID,0);
           header('Content-type: application/json');
-          echo json_encode($adObject2);
+          echo json_encode($adsObject);
           
         }
 

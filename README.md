@@ -225,11 +225,28 @@ Response tendrá uno de los siguientes valores:
   -1 ; Este anuncio ya está activo, o es un carro vendido
   -2 ; El json es invalido
 
+*******************************************************************************************
+
+Obtener tods los carros de un Mecanico: http://54.200.195.186/index.php/ad_controller/getMechanicAds
+
+Recibe un JSON con un campo ID y busca el VIN en la base de datos, si no existe pero es un VIN valido lo busca en
+la base de dato del suplidor, lo creo y lo retorna. Si ya existe simplemente lo
+retorna en JSON.
+
+Recibe un JSON con lo siguiente:
+Mechanic ={
+             ID:prueba || int
+          }
+
+Retorna un JSON con lo siguiente:
+
+Array de anuncios...
+
 ------Flujo de la aplicación------------------------------------------------------------
 
-  - Se toma el VIN y los Trouble Codes del vehículos a través del OBD II Reader en la aplicación Android.
-  - Se envía un Request al WebService con el VIN del vehículo.
-  - El webservice retorna un objeto tipo carro con los siguientes datos:
+  Se toma el VIN y los Trouble Codes del vehículos a través del OBD II Reader en la aplicación Android.
+  Se envía un Request al WebService con el VIN del vehículo.
+  El webservice retorna un objeto tipo carro con los siguientes datos:
 
     Modelo
 
@@ -257,64 +274,77 @@ Response tendrá uno de los siguientes valores:
         Power_Windows
         Wheels
 
-  - La aplicación móvil mostrará los datos recibidos al vendedor de forma informativa.
-  - La aplicación movil desplegará un formulario a ser llenado con lo siguiente:
+  La aplicación móvil mostrará los datos recibidos al vendedor de forma informativa.
+  La aplicación movil desplegará un formulario a ser llenado con lo siguiente:
 
     Precio
     Estado_Papeles_DGII
 
-    Carrocería ID: 1-16
+    Carrocería ID: 0-16
 
-        Bonnet
+
+        Bonnette
         Bumper
-        Grille
-        Door_FR
-        Door_FL
-        Door_RR
-        Door_RL
-        Head_Lights
-        Tail_Lights
-        Brake_Lights
-        Reverse_Lights
-        Fog_Lights
-        Tail_Gate
-        Mirror
-        Side_Panel
-        Guard
+        Parrila
+        Puerta Delantera Izquierda
+        Puerta Delantera Derecha
+        Puerta Trasera Izquierda
+        Puerta Trasera Derecha
+        Luces Delanteras
+        Luces Traseras
+        Luces De Freno
+        Luces De Reversa
+        Alogenos
+        Baul
+        Retrovisor
+        Guarda Lodo Delantero
+        Guarda Lodo Trasero
+
+
+
+
 
     Interior ID: 17-31
 
-        Door_FR_Panel
-        Door_FL_Panel
-        Door_RR_Panel
-        Door_RL_Panel
-        Steering_Wheel
-        Driver_Seat
-        Passanger_Seat
-        Air_Bag
-        Dashboard
-        Dimmer
-        emergency_Brake
-        Gear_Stick
-        Glove_Comparmet
-        Rear_View_Mirror
-        Trunk
+        Panel Puerta Delantera Izquierda
+        Panel Puerta Delantera Derecha
+        Panel Puerta Trasera Izquierda
+        Panel Puerta Trasera Derecha
+        Guia
+        Asiento Conductor
+        Asiento Pasajero
+        Bolsa De Aire
+        Tablero
+        Luces Interior
+        Freno De Emergencia
+        Palanca De cambios
+        Gauntera
+        Retrovisor Interior
+        Baul interior
 
-    Mecánico. ID: 32-44
+
+
+    Mecánico. ID: 32-48
+
 
         Motor
         Transmision
         Bujías
-        Aceite_Motor
-        Aceite_Transmision
-        Aceite_Hidraulico
-        Líquido_Frenos
+        Aceite De Motor
+        Aceite De Transmision
+        Aceite Hidraulico
+        Líquido Frenos
         Tren Delantero
-        Filtro_Gasolina
-        Filtro_Aceite
-        Filtro_Aire
+        Filtro Gasolina
+        Filtro Aceite
+        Filtro Aire
         Radiador
         Frenos
+        Electricidad
+        Alternador
+        Piso
+        Mofleria
+
 
   - La aplicación envía la data recolectada al webService para publicar el anuncio. Aparte de la data
     recolectada se envía los Trouble Codes tomados al principio, el VIN, Millaje y el ID del usuario.
@@ -471,4 +501,5 @@ INNER JOIN car_part_review            on car_part_review.Car_Ad_ID = car_ads.ID
 INNER JOIN car_parts                   on car_part_review.Car_Part_ID = Car_Parts.ID
 
 
->>>>>>> 3ffe1a3f8a83fd1412309c7a608fbb9a72a2acb2
+
+
