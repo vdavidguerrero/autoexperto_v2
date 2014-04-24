@@ -92,14 +92,8 @@ class user_model extends CI_Model {
         $query = $this->db->get();
         $userObject = $query->row();
         
-        if ($query->num_rows() > 0)
-        {
              return $userObject;
-        }
-        else 
-        {
-            return -2;
-        }
+      }
     }
     
     /**
