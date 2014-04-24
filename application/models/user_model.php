@@ -94,7 +94,7 @@ class user_model extends CI_Model {
         
         if ($query->num_rows() > 0)
         {
-             return $userObject->Flag;
+             return $userObject;
         }
         else 
         {
