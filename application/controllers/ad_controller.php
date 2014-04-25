@@ -132,9 +132,10 @@ class Ad_controller extends Main_Controller {
             $json = file_get_contents('php://input');
             $VIN = json_decode($json);
 
-            $adsObject = $this->ad_model->getAdByVIN($VIN->VIN, 0);
+            $response = new stdClass();
+            $response->Response = $this->ad_model->getAdByVIN($VIN->VIN, 0);
             header('Content-type: application/json');
-            echo json_encode($adsObject);
+            echo json_encode($response);
 
         }
 

@@ -1,7 +1,7 @@
 
 var http = require('http');
 
-var VIN = {VIN:12345678912345671};
+var VIN = {VIN:"11111111111111111"};
 
 var VIN = JSON.stringify(VIN);
 var headers = {
