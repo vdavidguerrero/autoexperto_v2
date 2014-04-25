@@ -470,4 +470,18 @@ class Ad_model extends CI_Model {
        $this->db->query($sendingQuery);
     }
 
+    /**
+     * Get Weigth Array
+     *
+     * @param int flag which could be 0= pending, 1 = active, 2= sold
+     * @return
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check Performance
+     */
+    public function getWeigths($flag, $adID)
+    {
+
+    }
+
+
 }

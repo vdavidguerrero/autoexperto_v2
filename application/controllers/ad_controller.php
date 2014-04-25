@@ -214,12 +214,12 @@ class Ad_controller extends Main_Controller {
         */
         public function generateCarReview()
         {
-//           $overallReview = 0;
-//           foreach($this->Car_Part_Reviews as $review)
-//           {
-//               $overallReview =+ $review;
-//           }
-//           return $overallReview/(sizeof($this->Car_Part_Reviews)-1);
+           $overallReview = 0;
+           foreach($this->Car_Part_Reviews as $review)
+           {
+               $overallReview =+ $review;
+           }
+           return $overallReview/(sizeof($this->Car_Part_Reviews)-1);
         }
        
         /**

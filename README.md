@@ -1,76 +1,17 @@
-------Pendiente Documentación-----------------------------------------------------------------------
+------Pendiente Aplicación-----------------------------------------------------------------------
+Agregar los algoritmos y sus concernientes Datas
 
- - Arreglar el documento de VISIO, de la base de datos.
- - Describir los tres algoritmos.
- - Explicar los cambios:
-    - Porque solo mostrar los datos del mecánico.
-    - hacer que el mecánico sea propio, de nuestra compañía.
-    - Especificar que la data del API será simulada.
-- subir fotos
- - Estadisticas de compra de vehículos, cantidad de vehículos, etc...
+Dar de baja a un vehículo
 
 
+--- Revision de la literatura----
 
---- Bibliografia------------------------------------------------------------------------------------
+http://www.kbb.com
 
-http://www.biddle.com/documents/bcg_comp_chapter4.pdf
-
-Probabilidad y Estadistícca para ingenieros y ciencas ; septima edicion. J L Devowre.
-
-
------Agoritmos a tomar en cuenta--------------------------------------------------------------------
-
-Obtención del Review:
-
-   se calcula el cociente de MaxReview / ActualReviw y se multiplica por 5.
-
-   donde MaxReview es  =  Σ[(Review * Weigth)]/Σ [(ReviewMax * Weigth)]  * 5 ; i = 1, n= Npiezas
-        ---Tomar en cuenta la opciones de (n1*w1)+ (nn*wn) / sum(wn)
-
-
-Predicción de los días de venta.
-
-Ver pdf on documentation.
+http://www.truecar.com
 
 
 
-*******************************************************************************************
-Cálculo del precio aproximado del vehículo:
-
- y = B0 + B1x + B2x = e;
-
-
-
-*******************************************************************************************
-Cálculo de los días aproximados para la venta:
-
-
-
-
-
------Descripción del Código-------------------------------------------------------------------------
-
-Los nombres de las tablas, vista, modelos y controladores estan escritos en Plural y minuscula. EX "trouble_codes".
-
-Los campos  de las tablas están escritos en con la primera letra en Mayuscula, y en singular. EX "Trouble_Code"
-
-
-Las variables y metodos estan escritos en camelCase.
-
-Los metodos de los modelos están de la siguiente manera:
-
-  - getBrands()                      obitienes los carros sin paramatres.
-  - getBrand($PK)                    obitene un carro por su PK. EX "getBrand($BrandID)"
-  - getBrandByParamater($parameter)  obtiene un carro por un paramatro cualquiera. EX "getCarByParameter($brandName)
-
-
-Hay que hacer la conexión con VinQuery para esto.
-
-- Hay trabajar el controlador del Anuncion.
-
-Proxima Función a trabajar: ad_controller->showad()
-                            ad_controller->createAd()
-                            ad_controller->showSearchResults()
 
 
 

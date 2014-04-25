@@ -84,16 +84,16 @@ class user_model extends CI_Model {
      */
     public function checkUserLogin($RNC,$password)
     {
-         $this->db->select("users.*,dominican_republic_cities.Dominican_Republic_City ",false);
+
+        $this->db->select("users.*,dominican_republic_cities.Dominican_Republic_City ",false);
         $this->db->from("users");
         $this->db->join('dominican_republic_cities'   , 'users.Dominican_Republic_Cities_ID = dominican_republic_cities.ID','inner');
         $this->db->where('users.ID',$RNC);
         $this->db->where('users.Password',$password );
         $query = $this->db->get();
         $userObject = $query->row();
-        
-             return $userObject;
-      }
+        return $userObject;
+
     }
     
     /**

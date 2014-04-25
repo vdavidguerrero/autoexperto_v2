@@ -215,12 +215,21 @@ class user_controller extends Main_Controller {
             $password  =  MD5($obj['password']);
                 
             $check =  $this->user_model->checkUserLogin($userID,$password);
-  
-            $response = (object) array("Response" => $check->Flag
-            			       "Seller_ID" => $check->ID);
-                    
+
+            if($check)
+            {
+                $response = (object) array("Response"  => $check->Flag,
+                                           "Seller_ID" => $check->ID);
+            }
+            else
+            {
+                $response = (object) array("Response"  => -2,
+                                           "Seller_ID" => -2);
+            }
+
+
             header('Content-type: application/json');
-            echo json_encode($response);        
+            echo json_encode($response);
                  
         }
             
