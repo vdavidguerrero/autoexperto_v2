@@ -120,6 +120,23 @@ class Ad_controller extends Main_Controller {
           echo json_encode($adsObject);
           
         }
+        /**
+         * echos a JSON with all the ads from a mechanich ID.
+         *
+         * @param int mechanich ID
+         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+         * @todo - Check
+         */
+        public function getActiveAdByVin()
+        {
+            $json = file_get_contents('php://input');
+            $VIN = json_decode($json);
+
+            $adsObject = $this->ad_model->getAdByVIN($VIN->VIN, 0);
+            header('Content-type: application/json');
+            echo json_encode($adsObject);
+
+        }
 
         /**
          * turns an Ad from pending to active
