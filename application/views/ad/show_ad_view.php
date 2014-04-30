@@ -303,7 +303,7 @@
                 <tbody>
 
                 <?php
-                if($ad-Flag == 1)
+                if($ad->Flag == 1)
                 {
                     foreach($ad->Car_Part_Reviews as $carrito)
                     {
