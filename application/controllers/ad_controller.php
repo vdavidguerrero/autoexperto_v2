@@ -199,7 +199,7 @@ class Ad_controller extends Main_Controller {
                     else
                     {
                         $adObject->Seller           = $this->user_model->getUser($adObject->Seller_ID);
-                        $adObject->Mechanic         = $this->user_model->getUser(12345678923);
+                        $adObject->Mechanic         = $this->user_model->getUser(40221021963);
                         $adObject->Unique_Car       = $this->car_model->getCar($adObject->VIN);
                         $adObject->ID               = NULL;
                         $adObject->Publish_Date     = date("Y-m-d H:i:s");
