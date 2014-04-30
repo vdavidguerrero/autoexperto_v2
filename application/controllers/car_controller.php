@@ -119,7 +119,7 @@ class car_controller extends Main_Controller {
 
 
 
-        if($VIN = "12222222222222222")
+        if($VIN == "12222222222222222")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
@@ -151,7 +151,7 @@ class car_controller extends Main_Controller {
                 'Fuel_Economy_Highway'  => '22 kmh/g'
             );
         }
-        else if($VIN = "13333333333333333")
+        else if($VIN == "13333333333333333")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
@@ -183,7 +183,7 @@ class car_controller extends Main_Controller {
                 'Fuel_Economy_Highway'  => '35 kmh/g'
             );
         }
-        else if($VIN = "14444444444444444")
+        else if($VIN == "14444444444444444")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
@@ -215,7 +215,7 @@ class car_controller extends Main_Controller {
                 'Fuel_Economy_Highway'  => '25 kmh/g'
             );
         }
-        else if($VIN = "15555555555555555")
+        else if($VIN == "15555555555555555")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
@@ -248,7 +248,7 @@ class car_controller extends Main_Controller {
             );
         }
 
-        else if($VIN = "16666666666666666")
+        else if($VIN == "16666666666666666")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
@@ -281,7 +281,7 @@ class car_controller extends Main_Controller {
             );
         }
 
-        else if($VIN = "17777777777777777")
+        else if($VIN == "17777777777777777")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
@@ -313,7 +313,7 @@ class car_controller extends Main_Controller {
                 'Fuel_Economy_Highway'  => '32 kmh/g'
             );
         }
-        else if($VIN = "18888888888888888")
+        else if($VIN == "18888888888888888")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
@@ -345,7 +345,7 @@ class car_controller extends Main_Controller {
                 'Fuel_Economy_Highway'  => '27 kmh/g'
             );
         }
-        else if($VIN = "19999999999999999")
+        else if($VIN == "19999999999999999")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
