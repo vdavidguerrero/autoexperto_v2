@@ -458,12 +458,12 @@ class Ad_model extends CI_Model {
      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
      * @todo - Check Performance
      */
-    public function setFlag($flag, $adID)
+    public function setFlag($flag, $adID,$review)
     {
        $sendingQuery = "
        UPDATE car_ads
        SET
-       Flag = $flag
+       Flag = $flag, Car_Review = $review
 
        WHERE ID = $adID ";
 

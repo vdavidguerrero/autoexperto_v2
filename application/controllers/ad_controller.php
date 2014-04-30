@@ -153,7 +153,7 @@ class Ad_controller extends Main_Controller {
                 if($this->ad_model->getAdByID($updateObject->adID,0))
                 {
                     $this->ad_model->insertCarPartReview($updateObject->Reviews,$updateObject->adID);
-                    $this->ad_model->setFlag(1,$updateObject->adID);
+                    $this->ad_model->setFlag(1,$updateObject->adID,3);
                     header('Content-type: application/json');
                     $response = (object) array("Response" => 1);
                     echo json_encode($response);
@@ -237,7 +237,7 @@ class Ad_controller extends Main_Controller {
            {
                $overallReview =+ $review;
            }
-           return $overallReview/(sizeof($this->Car_Part_Reviews)-1);
+           return $overallReview/48;
         }
        
         /**
