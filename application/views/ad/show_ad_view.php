@@ -213,7 +213,7 @@
                 <?php
                 foreach($ad->Car_Part_Reviews as $carrito)
                 {
-                    if($carrito->Type == 1)
+                    if($carrito->Type == 1 && $ad->Flag == 1)
                     {
                         echo "
                     <tr class='active'>
@@ -256,7 +256,7 @@
                 <?php
                 foreach($ad->Car_Part_Reviews as $carrito)
                 {
-                    if($carrito->Type == 2)
+                    if($carrito->Type == 2 && $ad->Flag == 1)
                     {
                         echo "
                     <tr class='active'>
@@ -299,7 +299,7 @@
                 <?php
                 foreach($ad->Car_Part_Reviews as $carrito)
                 {
-                    if($carrito->Type == 3)
+                    if($carrito->Type == 3 && $ad->Flag == 1 )
                     {
                         echo "
                     <tr class='active'>
