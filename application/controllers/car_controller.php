@@ -117,40 +117,9 @@ class car_controller extends Main_Controller {
     function queryCarData($VIN)
     {
 
-        if($VIN = "11111111111111111")
-        {
-            $uniqueCarObject                          = new stdClass();
-            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
-            $uniqueCarObject->VIN                    = $VIN;
-            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
-            $uniqueCarObject->Unique_Model           = (object) array(
-                'AC'                    => 'Si',
-                'Year'                  => '2002',
-                'Trim'                  => 'EX',
-                'Brand'                 => 'Honda',
-                'Model'                 => 'Civic',
-                'Radio'                 => 'MP3',
-                'Wheels'                => 'Magnesio',
-                'Seating'               => 'Gamusa',
-                'Gallons'               => '13',
-                'ABS_Brake'             => 'Si',
-                'CD_Player'             => 'No',
-                'Subwoofer'             => 'Si',
-                'Body_Style'            => 'Sedan',
-                'Engine_Type'           => '1.8 Vtec',
-                'Transmission'          => 'Automatica, 4 cambios',
-                'Power_Windows'         => 'Si',
-                'Leather_Seats'         => 'No',
-                'Driver_Airbag'         => 'Si',
-                'Cruise_Control'        => 'Si',
-                'Convertible_Top'       => 'No',
-                'Front_Side_Airbag'     => 'Si',
-                'Fuel_Economy_City'     => '23 kmh/g',
-                'Fuel_Economy_Highway'  => '27 kmh/g'
-            );
-        }
 
-        else if($VIN = "12222222222222222")
+
+        if($VIN = "12222222222222222")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
