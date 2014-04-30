@@ -62,49 +62,7 @@ class car_controller extends Main_Controller {
         }
         
         
-       /**
-        * Query the data for an unknow car. $this->vin
-        * 
-        * @param int 17length car VIN( Vehiculo identifer Number)
-        * @return a car Objetc.
-        * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-        * @todo - implemente vinquery handler 
-        */
-        function queryCarData($VIN)
-        {
-            $uniqueCarObject                          = new stdClass();
-            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
-            $uniqueCarObject->VIN                    = $VIN;
-            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
-            $uniqueCarObject->Unique_Model           = (object) array(  
-                                                                        'AC'                    => 'Prueba1',
-                                                                        'Year'                  => '2000',
-                                                                        'Trim'                  => 'Prueba1',
-                                                                        'Brand'                 => 'Prueba1',
-                                                                        'Model'                 => 'Prueba1',
-                                                                        'Radio'                 => 'Prueba1',
-                                                                        'Wheels'                => 'Prueba1',
-                                                                        'Seating'               => 'Prueba1',
-                                                                        'Gallons'               => '20',
-                                                                        'ABS_Brake'             => 'Prueba1',
-                                                                        'CD_Player'             => 'Prueba1',
-                                                                        'Subwoofer'             => 'Prueba1',
-                                                                        'Body_Style'            => 'Prueba1',
-                                                                        'Engine_Type'           => 'Prueba1',
-                                                                        'Transmission'          => 'Prueba1',
-                                                                        'Power_Windows'         => 'Prueba1',
-                                                                        'Leather_Seats'         => 'Prueba1',
-                                                                        'Driver_Airbag'         => 'Prueba1',
-                                                                        'Cruise_Control'        => 'Prueba1',
-                                                                        'Convertible_Top'       => 'Prueba1',
-                                                                        'Front_Side_Airbag'     => 'Prueba1',
-                                                                        'Fuel_Economy_City'     => 'Prueba1',
-                                                                        'Fuel_Economy_Highway'  => 'Prueba1'
-                                                        
-                                                                         );
-           return $uniqueCarObject;
-            
-        }
+
         
         /**
         * Create an instace for this object.
@@ -146,8 +104,321 @@ class car_controller extends Main_Controller {
                  $child->$property = $propertyValue;
              }
              return $child; 
-        }   
+        }
+
+    /**
+     * Query the data for an unknow car. $this->vin
+     *
+     * @param int 17length car VIN( Vehiculo identifer Number)
+     * @return a car Objetc.
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - implemente vinquery handler
+     */
+    function queryCarData($VIN)
+    {
+
+        if($VIN = "11111111111111111")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2002',
+                'Trim'                  => 'EX',
+                'Brand'                 => 'Honda',
+                'Model'                 => 'Civic',
+                'Radio'                 => 'MP3',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Gamusa',
+                'Gallons'               => '13',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '1.8 Vtec',
+                'Transmission'          => 'Automatica, 4 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '23 kmh/g',
+                'Fuel_Economy_Highway'  => '27 kmh/g'
+            );
+        }
+
+        else if($VIN = "12222222222222222")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2012',
+                'Trim'                  => 'EX',
+                'Brand'                 => 'Honda',
+                'Model'                 => 'Accord',
+                'Radio'                 => 'DVD',
+                'Wheels'                => 'Aluminio',
+                'Seating'               => 'Piel',
+                'Gallons'               => '19',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '3.2 Vtec, V6',
+                'Transmission'          => 'Automatica, 5 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'Si',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '18 kmh/g',
+                'Fuel_Economy_Highway'  => '22 kmh/g'
+            );
+        }
+        else if($VIN = "13333333333333333")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '1999',
+                'Trim'                  => 'Sencillo',
+                'Brand'                 => 'Skoda',
+                'Model'                 => 'Felicia',
+                'Radio'                 => 'MP3',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Gamusa',
+                'Gallons'               => '13',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Extension',
+                'Engine_Type'           => '1.3 ',
+                'Transmission'          => 'Mecanico, 4 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '32 kmh/g',
+                'Fuel_Economy_Highway'  => '35 kmh/g'
+            );
+        }
+        else if($VIN = "14444444444444444")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '1997',
+                'Trim'                  => 'LE',
+                'Brand'                 => 'Nissan',
+                'Model'                 => 'Sentra',
+                'Radio'                 => 'CD',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Pana',
+                'Gallons'               => '11',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '2.0, I4',
+                'Transmission'          => 'Secuencial, 5 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '20 kmh/g',
+                'Fuel_Economy_Highway'  => '25 kmh/g'
+            );
+        }
+        else if($VIN = "15555555555555555")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2009',
+                'Trim'                  => 'Land Cruiser',
+                'Brand'                 => 'Totota',
+                'Model'                 => 'Prado',
+                'Radio'                 => 'MP3',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Gamusa',
+                'Gallons'               => '13',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '3.6 Vtec, disel',
+                'Transmission'          => 'Automatica, 5 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '23 kmh/g',
+                'Fuel_Economy_Highway'  => '27 kmh/g'
+            );
+        }
+
+        else if($VIN = "16666666666666666")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '1996',
+                'Trim'                  => 'EX',
+                'Brand'                 => 'Toyota',
+                'Model'                 => 'Corolla',
+                'Radio'                 => 'MP3',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Gamusa',
+                'Gallons'               => '13',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '1.8 Vtec',
+                'Transmission'          => 'Automatica, 4 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '33 kmh/g',
+                'Fuel_Economy_Highway'  => '37 kmh/g'
+            );
+        }
+
+        else if($VIN = "17777777777777777")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2004',
+                'Trim'                  => 'EX',
+                'Brand'                 => 'Hyudai',
+                'Model'                 => 'Tucson',
+                'Radio'                 => 'MP3',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Lether',
+                'Gallons'               => '13',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Jeep',
+                'Engine_Type'           => '2.3 Vtec',
+                'Transmission'          => 'Automatica, 4 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '28 kmh/g',
+                'Fuel_Economy_Highway'  => '32 kmh/g'
+            );
+        }
+        else if($VIN = "18888888888888888")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2002',
+                'Trim'                  => 'EX',
+                'Brand'                 => 'BMW',
+                'Model'                 => 'M3',
+                'Radio'                 => 'MP3',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Lether',
+                'Gallons'               => '13',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '3.2 ',
+                'Transmission'          => 'Tictronic, 6 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '23 kmh/g',
+                'Fuel_Economy_Highway'  => '27 kmh/g'
+            );
+        }
+        else if($VIN = "19999999999999999")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2002',
+                'Trim'                  => 'Full',
+                'Brand'                 => 'Audi',
+                'Model'                 => 'A4',
+                'Radio'                 => 'MP3',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Gamusa',
+                'Gallons'               => '13',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '2.7 V6',
+                'Transmission'          => 'Automatica, 5 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '23 kmh/g',
+                'Fuel_Economy_Highway'  => '27 kmh/g'
+            );
+        }
+
+        return $uniqueCarObject;
+
+    }
+
+
+
 }
+
+
+
 
 
 
