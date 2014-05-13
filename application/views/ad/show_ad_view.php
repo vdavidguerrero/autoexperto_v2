@@ -251,7 +251,7 @@
                     <tr class="info">
                         <th>Pieza</th>
                         <th>Review </th>
-                       
+                      
                             
                     </tr>
                 </thead>
