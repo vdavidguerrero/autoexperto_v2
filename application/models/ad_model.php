@@ -227,6 +227,34 @@ class Ad_model extends CI_Model {
         
         return $adObjects;
     }
+
+    /**
+     * Get all the add by its Specefic Search.
+     *
+     * @param Array order by : city, brands, model, type, highYear, lowYear,
+     *         highPrice, lowPrice. The array must have at least all this keys.
+     * @param flag 0= active ads, 1= pending ads, 2= no active ad
+     * @return AdObject all the Ads Objects available
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     */
+    public function getSumByModel($sumValue, $year,$trim,$model)
+    {
+
+        $this->db->select('car_ads.*',false);
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.VIN'         ,'inner');
+        $this->db->join('unique_models'               , 'unique_cars.Unique_Model_ID = unique_models.ID'    ,'inner');
+        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'     ,'inner');
+        $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'      ,'inner');
+        $this->db->where('unique_models.Year'    ,$year);
+        $this->db->where('unique_models.Trim'    ,$trim);
+        $this->db->where('car_models.Model'      ,$model);
+        $query = $this->db->get();
+        $priceTotal = $query->result();
+
+        return $priceTotal;
+    }
     
      /**
       * Insert an entire ad to the database. As usual iit recive an entire

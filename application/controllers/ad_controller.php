@@ -37,7 +37,12 @@ class Ad_controller extends Main_Controller {
             
         function index ()
 	    {
-          $this->showAdForm();
+         // $this->showAdForm();
+            $pepe = $this->ad_model->getSumByModel(" ", "1997", "LE", "Sentra");
+            foreach ($pepe as $juan)
+            {
+                echo $juan->Price;
+            }
         }
             
 

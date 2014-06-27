@@ -7,8 +7,7 @@ class car_controller extends Main_Controller {
       
     
         // Unique Car Object Propeties
-        
-      
+
         var $VIN;
         var $Date;
         var $Manufacturer_Country; 
@@ -183,38 +182,7 @@ class car_controller extends Main_Controller {
                 'Fuel_Economy_Highway'  => '35 kmh/g'
             );
         }
-        else if($VIN == "14444444444444444")
-        {
-            $uniqueCarObject                          = new stdClass();
-            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
-            $uniqueCarObject->VIN                    = $VIN;
-            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
-            $uniqueCarObject->Unique_Model           = (object) array(
-                'AC'                    => 'Si',
-                'Year'                  => '1997',
-                'Trim'                  => 'LE',
-                'Brand'                 => 'Nissan',
-                'Model'                 => 'Sentra',
-                'Radio'                 => 'CD',
-                'Wheels'                => 'Magnesio',
-                'Seating'               => 'Pana',
-                'Gallons'               => '11',
-                'ABS_Brake'             => 'Si',
-                'CD_Player'             => 'No',
-                'Subwoofer'             => 'Si',
-                'Body_Style'            => 'Sedan',
-                'Engine_Type'           => '2.0, I4',
-                'Transmission'          => 'Secuencial, 5 cambios',
-                'Power_Windows'         => 'Si',
-                'Leather_Seats'         => 'No',
-                'Driver_Airbag'         => 'Si',
-                'Cruise_Control'        => 'Si',
-                'Convertible_Top'       => 'No',
-                'Front_Side_Airbag'     => 'Si',
-                'Fuel_Economy_City'     => '20 kmh/g',
-                'Fuel_Economy_Highway'  => '25 kmh/g'
-            );
-        }
+
         else if($VIN == "15555555555555555")
         {
             $uniqueCarObject                          = new stdClass();
@@ -407,6 +375,38 @@ class car_controller extends Main_Controller {
                 'Front_Side_Airbag'     => 'Si',
                 'Fuel_Economy_City'     => '23 kmh/g',
                 'Fuel_Economy_Highway'  => '27 kmh/g'
+            );
+        }
+        else
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '1997',
+                'Trim'                  => 'LE',
+                'Brand'                 => 'Nissan',
+                'Model'                 => 'Sentra',
+                'Radio'                 => 'CD',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Pana',
+                'Gallons'               => '11',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '2.0, I4',
+                'Transmission'          => 'Secuencial, 5 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '20 kmh/g',
+                'Fuel_Economy_Highway'  => '25 kmh/g'
             );
         }
 
