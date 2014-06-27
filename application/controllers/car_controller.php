@@ -377,6 +377,38 @@ class car_controller extends Main_Controller {
                 'Fuel_Economy_Highway'  => '27 kmh/g'
             );
         }
+        else
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2008',
+                'Trim'                  => 'Full',
+                'Brand'                 => 'Prueba',
+                'Model'                 => 'A4',
+                'Radio'                 => 'MP3',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Gamusa',
+                'Gallons'               => '13',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'No',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '2.7 V6',
+                'Transmission'          => 'Automatica, 5 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'No',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '23 kmh/g',
+                'Fuel_Economy_Highway'  => '27 kmh/g'
+            );
+        }
 
         return $uniqueCarObject;
 
