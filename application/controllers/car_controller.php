@@ -377,7 +377,7 @@ class car_controller extends Main_Controller {
                 'Fuel_Economy_Highway'  => '27 kmh/g'
             );
         }
-        else
+        else if ($VIN == "29999999999999999")
         {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
