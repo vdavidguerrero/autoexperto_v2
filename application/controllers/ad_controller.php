@@ -252,7 +252,7 @@ class Ad_controller extends Main_Controller {
         */
         public function generateCarReview($ad)
         {
-            $this->instanceAd($this->ad_model->getAdByID($ad,1));
+            $this->instanceAd($this->ad_model->getAdByID($ad,0));
 
             $this->Car_Review = 0;
             foreach($this->Car_Part_Reviews as $carrito)
