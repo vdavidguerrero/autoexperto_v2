@@ -194,7 +194,7 @@
                 $review1 = 0;
                 $review2 = 0;
                 $review3 = 0;
-                $reviewGeneral = 0;
+              //  $reviewGeneral = 0;
 
                 foreach($ad->Car_Part_Reviews as $carrito)
                 {
@@ -212,19 +212,20 @@
                     }
                 }
 
-                foreach($ad->Car_Part_Reviews as $carrito)
-                {
-                    $reviewGeneral += $carrito->Review * $carrito->Weight;
-                }
+//                foreach($ad->Car_Part_Reviews as $carrito)
+//                {
+//                    $reviewGeneral += $carrito->Review * $carrito->Weight;
+//                }
+            // $reviewGeneral = round(($reviewGeneral/580) * 5);
 
             $review1 = round($review1/16);
 
 
             $review2 = round($review2/16);
 
-                 $review3 = round($review3/16);
+            $review3 = round($review3/16);
 
-                $reviewGeneral = round(($reviewGeneral/580) * 5);
+               // $reviewGeneral = round(($reviewGeneral/580) * 5);
 
                //580 review 3
 

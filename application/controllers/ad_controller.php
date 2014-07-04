@@ -38,13 +38,27 @@ class Ad_controller extends Main_Controller {
         function index ()
 	    {
          // $this->showAdForm();
+            echo $this->generateCarReview(52);
+
+        }
+
+
+
+        /**
+         * Get Days to sell.
+         *
+         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+         * @todo - Ready
+         */
+        public function getDays()
+        {
             $pepe = $this->ad_model->getSumByModel(" ", "1997", "LE", "Sentra");
-            foreach ($pepe as $juan)
+            foreach($pepe as $price)
             {
-                echo $juan->Price;
+                echo $price->Price;
+                echo "<br>";
             }
         }
-            
 
          /**
         * load the Show_ad_view. 
@@ -138,7 +152,6 @@ class Ad_controller extends Main_Controller {
         {
             $json = file_get_contents('php://input');
             $VIN = json_decode($json);
-
             $response = new stdClass();
             $response->Response = $this->ad_model->getAdByVIN($VIN->VIN, 0)->ID;
             header('Content-type: application/json');
@@ -160,7 +173,7 @@ class Ad_controller extends Main_Controller {
                 if($this->ad_model->getAdByID($updateObject->adID,0))
                 {
                     $this->ad_model->insertCarPartReview($updateObject->Reviews,$updateObject->adID);
-                    $this->ad_model->setFlag(1,$updateObject->adID,3);
+                    $this->ad_model->setFlag(1,$updateObject->adID,$this->generateCarReview($updateObject->adID));
                     header('Content-type: application/json');
                     $response = (object) array("Response" => 1);
                     echo json_encode($response);
@@ -237,14 +250,16 @@ class Ad_controller extends Main_Controller {
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
         * @todo - Check 
         */
-        public function generateCarReview()
+        public function generateCarReview($ad)
         {
-           $overallReview = 0;
-           foreach($this->Car_Part_Reviews as $review)
-           {
-               $overallReview =+ $review;
-           }
-           return $overallReview/48;
+            $this->instanceAd($this->ad_model->getAdByID($ad,1));
+
+            $this->Car_Review = 0;
+            foreach($this->Car_Part_Reviews as $carrito)
+                {
+                    $this->Car_Review += $carrito->Review * $carrito->Weight;
+                }
+            return $this->Car_Review = ($this->Car_Review/580) * 5;
         }
        
         /**

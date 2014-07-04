@@ -241,7 +241,7 @@ class Ad_model extends CI_Model {
     public function getSumByModel($sumValue, $year,$trim,$model)
     {
 
-        $this->db->select('car_ads.*',false);
+        $this->db->select('car_ads.Price',false);
         $this->db->from('car_ads');
         $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.VIN'         ,'inner');
         $this->db->join('unique_models'               , 'unique_cars.Unique_Model_ID = unique_models.ID'    ,'inner');
@@ -251,9 +251,13 @@ class Ad_model extends CI_Model {
         $this->db->where('unique_models.Trim'    ,$trim);
         $this->db->where('car_models.Model'      ,$model);
         $query = $this->db->get();
-        $priceTotal = $query->result();
-
-        return $priceTotal;
+        return $query->result();
+//        $precio = 0;
+//        foreach($priceTotal as $price)
+//        {
+//            $precio += $price->Price;
+//        }
+//        return $precio;
     }
     
      /**
@@ -497,6 +501,8 @@ class Ad_model extends CI_Model {
 
        $this->db->query($sendingQuery);
     }
+
+
 
     /**
      * Get Weigth Array
