@@ -38,27 +38,15 @@ class Ad_controller extends Main_Controller {
         function index ()
 	    {
          // $this->showAdForm();
-            $this->instanceAd($this->ad_model->getAdByID(44,1));
-            echo $this->generateCarReview();
+
+            $pepe  = $this->ad_model->getSumByModel("Price", "1997", "LE", "Sentra");
+            $pepe2 = $this->ad_model->getSumByModel("Car_Review", "1997", "LE", "Sentra");
+
+            echo $pepe;
+            echo $pepe2;
 
         }
 
-
-        /**
-         * Get Days to sell.
-         *
-         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-         * @todo - Ready
-         */
-        public function getDays()
-        {
-            $pepe = $this->ad_model->getSumByModel(" ", "1997", "LE", "Sentra");
-            foreach($pepe as $price)
-            {
-                echo $price->Price;
-                echo "<br>";
-            }
-        }
 
          /**
         * load the Show_ad_view. 
@@ -173,7 +161,7 @@ class Ad_controller extends Main_Controller {
                 if($this->ad_model->getAdByID($updateObject->adID,0))
                 {
 
-                  //  $this->instanceAd($this->ad_model->getAdByID($updateObject->adID,0));
+                    $this->instanceAd($this->ad_model->getAdByID($updateObject->adID,0));
                     $this->ad_model->insertCarPartReview($updateObject->Reviews,$updateObject->adID);
                     $this->ad_model->setFlag(1,$updateObject->adID,2);
                     header('Content-type: application/json');
@@ -186,7 +174,6 @@ class Ad_controller extends Main_Controller {
                     $response = (object) array("Response" => -1);
                     echo json_encode($response);
                 }
-
             }
             else
             {
@@ -194,7 +181,6 @@ class Ad_controller extends Main_Controller {
                 $response = (object) array("Response" => -2);
                 echo json_encode($response);
             }
-
         }
 
 
