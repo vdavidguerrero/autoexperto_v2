@@ -164,10 +164,10 @@ class Ad_controller extends Main_Controller {
                     $this->instanceAd($this->ad_model->getAdByID($updateObject->adID,0));
                     $this->ad_model->insertCarPartReview($updateObject->Reviews,$updateObject->adID);
 
-                  //$this->generateCarReview()
+                    $this->generateCarReview();
                     $this->ad_model->setFlag(1,$updateObject->adID,2);
                     header('Content-type: application/json');
-                    $response = (object) array("Response" => 1);
+                    $response = (object) array("Response" => $this->ID);
                     echo json_encode($response);
                 }
                 else
