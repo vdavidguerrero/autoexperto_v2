@@ -38,10 +38,10 @@ class Ad_controller extends Main_Controller {
         function index ()
 	    {
          // $this->showAdForm();
-            echo $this->generateCarReview(52);
+            $this->instanceAd($this->ad_model->getAdByID(44,1));
+            echo $this->generateCarReview();
 
         }
-
 
 
         /**
@@ -173,9 +173,9 @@ class Ad_controller extends Main_Controller {
                 if($this->ad_model->getAdByID($updateObject->adID,0))
                 {
 
-                    $this->instanceAd($this->ad_model->getAdByID($updateObject->adID,0));
+                  //  $this->instanceAd($this->ad_model->getAdByID($updateObject->adID,0));
                     $this->ad_model->insertCarPartReview($updateObject->Reviews,$updateObject->adID);
-                    $this->ad_model->setFlag(1,$updateObject->adID,$this->generateCarReview($updateObject->adID));
+                    $this->ad_model->setFlag(1,$updateObject->adID,2);
                     header('Content-type: application/json');
                     $response = (object) array("Response" => 1);
                     echo json_encode($response);
