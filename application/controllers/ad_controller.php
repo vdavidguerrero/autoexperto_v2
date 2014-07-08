@@ -172,6 +172,8 @@ class Ad_controller extends Main_Controller {
             {
                 if($this->ad_model->getAdByID($updateObject->adID,0))
                 {
+
+                    $this->instanceAd($this->ad_model->getAdByID($updateObject->adID,0));
                     $this->ad_model->insertCarPartReview($updateObject->Reviews,$updateObject->adID);
                     $this->ad_model->setFlag(1,$updateObject->adID,$this->generateCarReview($updateObject->adID));
                     header('Content-type: application/json');
@@ -250,16 +252,15 @@ class Ad_controller extends Main_Controller {
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
         * @todo - Check 
         */
-        public function generateCarReview($ad)
+        public function generateCarReview()
         {
-            $this->instanceAd($this->ad_model->getAdByID($ad,0));
 
             $this->Car_Review = 0;
             foreach($this->Car_Part_Reviews as $carrito)
                 {
                     $this->Car_Review += $carrito->Review * $carrito->Weight;
                 }
-            return $this->Car_Review = ($this->Car_Review/580) * 5;
+            return $this->Car_Review = round(($this->Car_Review/580) * 5);
         }
        
         /**
