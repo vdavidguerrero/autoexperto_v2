@@ -4,7 +4,7 @@
 var http = require('http');
 
 var ad = {
-            VIN             : 12345678912345672,
+            VIN             : 18888888888888422,
             Flag            : 0,
             Price           : "200000",
             Mileage         : "20000",

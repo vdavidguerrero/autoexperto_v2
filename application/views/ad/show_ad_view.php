@@ -216,14 +216,14 @@
                 {
                     $reviewGeneral += $carrito->Review * $carrito->Weight;
                 }
-            echo ($reviewGeneral/580) * 5;
-            $reviewGeneral = round(($reviewGeneral/580) * 5);
-
+            echo $ad->Car_Review;
+//            $reviewGeneral = round(($reviewGeneral/580) * 5);
+//
             $review1 = round($review1/16);
-
-
+//
+//
             $review2 = round($review2/16);
-
+//
             $review3 = round($review3/16);
 
                //580 review 3
@@ -316,7 +316,7 @@
 
                         for($i=0; $i<5; $i++)
                         {
-                            if($i < $reviewGeneral)
+                            if($i <  $ad->Car_Review)
                                 echo " <span class='fa fa-star yellow fa-2x '></span>" ;
                             else
                                 echo " <span class='fa fa-star-o fa-2x'></span>" ;

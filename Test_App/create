@@ -1,0 +1,5 @@
+#!/bin/bash
+
+node queryCar.js
+node createAd.js
+#node publishAd.js
