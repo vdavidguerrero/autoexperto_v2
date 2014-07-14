@@ -59,10 +59,6 @@ class car_controller extends Main_Controller {
             }
             echo json_encode("VIN INVALIDO");
         }
-        
-        
-
-        
         /**
         * Create an instace for this object.
         * 

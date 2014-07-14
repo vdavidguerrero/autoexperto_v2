@@ -37,13 +37,80 @@ class Ad_controller extends Main_Controller {
             
         function index ()
 	    {
-         // $this->showAdForm();
+         $this->showAdForm();
 
-            $pepe  = $this->ad_model->getSumByModel("Price", "1997", "LE", "Sentra");
-            $pepe2 = $this->ad_model->getSumByModel("Car_Review", "1997", "LE", "Sentra");
 
-            echo $pepe;
-            echo $pepe2;
+//            $pepe1  = $this->ad_model->getSum("Car_Review", "1997", "LE", "Sentra",0);
+//            $pepe2  = $this->ad_model->getSum("Sold_Time", "1997", "LE", "Sentra",0);
+//            $pepe3  = $this->ad_model->getSum("Price", "1997", "LE", "Sentra",0);
+//
+//            $pepe4 = $this->ad_model->getSumBysum("Price","Car_Review", "1997", "LE", "Sentra");
+//            $pepe5 = $this->ad_model->getSumBysum("Price","Sold_Time", "1997", "LE", "Sentra");
+//
+//            $pepe6 = $this->ad_model->calculateS("Price","Car_Review", "1997", "LE", "Sentra",0);
+//            $pepe7 = $this->ad_model->calculateS("Price","Sold_Time", "1997", "LE", "Sentra",0);
+//
+//            $pepe8 = $this->ad_model->calculateR("Price","Sold_Time" , "1997", "LE", "Sentra",0);
+//            $pepe9 = $this->ad_model->calculateR("Price","Car_Review", "1997", "LE", "Sentra",0);
+//
+//
+//
+//
+//            echo "Sumatoria Reviews: ";
+//            echo $pepe1;
+//            echo "<br>";
+//
+//            echo "Sumatoria de Dias: ";
+//            echo $pepe2;
+//            echo "<br>";
+//
+//            echo "Sumatoria de precios: ";
+//            echo $pepe3;
+//            echo "<br>";
+//
+//
+//
+//            echo "Sumatoria del producto de  Price review: ";
+//            echo $pepe4;
+//            echo "<br>";
+//
+//            echo "Sumatoria del producto de Price  dias: ";
+//            echo $pepe5;
+//            echo "<br>";
+//
+//
+//            echo "SprecioReview ";
+//            echo $pepe6;
+//            echo "<br>";
+//
+//
+//            echo "SprecioDias ";
+//            echo $pepe7;
+//            echo "<br>";
+//
+//            echo "RprecioDias ";
+//            echo $pepe8;
+//            echo "<br>";
+//
+//            echo "RprecioReview ";
+//            echo $pepe9;
+//            echo "<br>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
 
@@ -305,5 +372,25 @@ class Ad_controller extends Main_Controller {
                  $child->$property = $propertyValue;
              }
              return $child; 
+        }
+
+        /**
+         * Change the state to sold
+         *
+         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+         * @todo - Check
+         * @see getAdsBySearch
+         */
+        function sellCar($adID)
+        {
+            $fecha = $this->ad_model->getAdByID($adID,1)->Publish_Date;
+            $hoy = date("Y-m-d H:i:s");
+            $fechaS =  strtotime($fecha);
+            $hoyS = strtotime($hoy);
+            $ahjaS = $hoyS - $fechaS  ;
+
+            $days =  round((($ahjaS/60)/60)/24);
+            $this->ad_model->setFlag2(2,$adID,$days);
+            redirect("/user_controller/showUser/");
         }
 } 

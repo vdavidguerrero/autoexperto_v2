@@ -62,11 +62,10 @@
                         <td>" .$pendingAd->Unique_Car->Unique_Model->Brand." </a></td>
                         <td>".$pendingAd->Unique_Car->Unique_Model->Model." ".$pendingAd->Unique_Car->Unique_Model->Body_Style." ".$pendingAd->Unique_Car->Unique_Model->Trim. "</td>
                         <td>".$pendingAd->Unique_Car->Unique_Model->Year."</td>
-                        <td>".number_format($pendingAd->Price)."</td>
-                        <td>".number_format($pendingAd->Mileage)."</td>
+                        <td>".number_format((float)$pendingAd->Price)."</td>
+                        <td>".number_format((float)$pendingAd->Mileage)."</td>
                         <td>".$user->Dominican_Republic_City."</td>   
                     </tr>
-                        
                      ";
               }  
             ?>
@@ -86,6 +85,7 @@
                         <th>Precio</th>
                         <th>Millaje</th>
                         <th>Ciudad</th>
+                        <th>Vendido?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,14 +97,15 @@
               foreach ($activeAds as $activeAd)
               { 
                   echo "
-                      
                     <tr class='active'>
                         <td> <a href='/ad_controller/showAd/".$activeAd->Unique_Car->VIN."/".$activeAd->Flag."'>".$activeAd->Unique_Car->Unique_Model->Brand." </a></td>
                         <td>".$activeAd->Unique_Car->Unique_Model->Model." ".$activeAd->Unique_Car->Unique_Model->Body_Style." ".$activeAd->Unique_Car->Unique_Model->Trim. "</td>
                         <td>".$activeAd->Unique_Car->Unique_Model->Year."</td>
-                        <td>".number_format($activeAd->Price)."</td>
-                        <td>".number_format($activeAd->Mileage)."</td>
-                        <td>".$user->Dominican_Republic_City."</td>   
+                        <td>".number_format((float)$activeAd->Price)."</td>
+                        <td>".number_format((float)$activeAd->Mileage)."</td>
+                        <td>".$user->Dominican_Republic_City."</td>
+                       <td> <a href='/ad_controller/sellCar/".$activeAd->ID."'>Vendido</a></td>
+
                     </tr>
                         
                      ";
@@ -152,7 +153,6 @@
                      ";
               }  
             ?>
-                
                 </tbody>
             </table>
         </div>

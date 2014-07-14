@@ -228,37 +228,7 @@ class Ad_model extends CI_Model {
         return $adObjects;
     }
 
-    /**
-     * Get all the add by its Specefic Search.
-     *
-     * @param Array order by : city, brands, model, type, highYear, lowYear,
-     *         highPrice, lowPrice. The array must have at least all this keys.
-     * @param flag 0= active ads, 1= pending ads, 2= no active ad
-     * @return AdObject all the Ads Objects available
-     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-     * @todo - Check
-     */
-    public function getSumByModel($sumValue, $year,$trim,$model)
-    {
 
-        $this->db->select('car_ads.'.$sumValue,false);
-        $this->db->from('car_ads');
-        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.VIN'         ,'inner');
-        $this->db->join('unique_models'               , 'unique_cars.Unique_Model_ID = unique_models.ID'    ,'inner');
-        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'     ,'inner');
-        $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'      ,'inner');
-        $this->db->where('unique_models.Year'    ,$year);
-        $this->db->where('unique_models.Trim'    ,$trim);
-        $this->db->where('car_models.Model'      ,$model);
-        $query = $this->db->get();
-        $priceTotal =  $query->result();
-        $precio = 0;
-        foreach($priceTotal as $price)
-        {
-            $precio += $price->$sumValue;
-        }
-        return $precio;
-    }
     
      /**
       * Insert an entire ad to the database. As usual iit recive an entire
@@ -502,20 +472,181 @@ class Ad_model extends CI_Model {
        $this->db->query($sendingQuery);
     }
 
-
-
     /**
-     * Get Weigth Array
+     * Change the ad status
      *
      * @param int flag which could be 0= pending, 1 = active, 2= sold
      * @return
      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
      * @todo - Check Performance
      */
-    public function getWeigths($flag, $adID)
+    public function setFlag2($flag, $adID,$time)
+    {
+        $sendingQuery = "
+       UPDATE car_ads
+       SET
+       Flag = $flag, Sold_Time = $time
+
+       WHERE ID = $adID ";
+
+        $this->db->query($sendingQuery);
+    }
+
+    /**
+     * Get all the add by its Specefic Search.
+     *
+     * @param Array order by : city, brands, model, type, highYear, lowYear,
+     *         highPrice, lowPrice. The array must have at least all this keys.
+     * @param flag 0= active ads, 1= pending ads, 2= no active ad
+     * @return AdObject all the Ads Objects available
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     */
+    public function getSum($sumValue, $year,$trim,$model,$flag)
     {
 
+        $this->db->select('car_ads.'.$sumValue,false);
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.VIN'         ,'inner');
+        $this->db->join('unique_models'               , 'unique_cars.Unique_Model_ID = unique_models.ID'    ,'inner');
+        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'     ,'inner');
+        $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'      ,'inner');
+        $this->db->where('unique_models.Year'    ,$year);
+        $this->db->where('unique_models.Trim'    ,$trim);
+        $this->db->where('car_models.Model'      ,$model);
+        $this->db->where('car_ads.Flag'      ,2);
+        $query = $this->db->get();
+        $priceTotal =  $query->result();
+        $precio = 0;
+        $counter = 0;
+        foreach($priceTotal as $price)
+        {
+            $precio += $price->$sumValue;
+            $counter += 1;
+
+        }
+
+        if($flag == 0)
+        {
+            //retorna la sumatoria.
+            return $precio;
+        }
+        else if($flag == 1 )
+        {
+            //retorna el promedio
+            return $precio/$counter;
+        }
+        else if($flag ==2)
+        {
+            //retorna la  derivación estandar
+            $promedio =  $precio/$counter;
+            $precio =0;
+            foreach($priceTotal as $price)
+            {
+
+                $precio  += (($price->$sumValue - $promedio)*($price->$sumValue - $promedio)) ;
+
+            }
+            return sqrt($precio/$counter);
+
+        }
+
+        else if($flag ==3)
+        {
+            // retorna la cantidad de resultados.
+            return  $counter;
+        }
+
+
+
     }
+
+    /**
+ * Get all the add by its Specefic Search.
+ *
+ * @param Array order by : city, brands, model, type, highYear, lowYear,
+ *         highPrice, lowPrice. The array must have at least all this keys.
+ * @param flag 0= active ads, 1= pending ads, 2= no active ad
+ * @return AdObject all the Ads Objects available
+ * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+ * @todo - Check
+ */
+    public function getSumBysum($sumValue,$sumValue2, $year,$trim,$model)
+    {
+
+        $this->db->select('car_ads.'.$sumValue.",car_ads.".$sumValue2,false);
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.VIN'         ,'inner');
+        $this->db->join('unique_models'               , 'unique_cars.Unique_Model_ID = unique_models.ID'    ,'inner');
+        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'     ,'inner');
+        $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'      ,'inner');
+        $this->db->where('unique_models.Year'    ,$year);
+        $this->db->where('unique_models.Trim'    ,$trim);
+        $this->db->where('car_models.Model'      ,$model);
+        $this->db->where('car_ads.Flag'      ,2);
+        $query = $this->db->get();
+        $priceTotal =  $query->result();
+
+
+        $precio = 0;
+        foreach($priceTotal as $price)
+        {
+            $precio += $price->$sumValue * $price->$sumValue2;
+
+        }
+        return $precio;
+    }
+
+    /**
+     * Get all the add by its Specefic Search.
+     *
+     * @param Array order by : city, brands, model, type, highYear, lowYear,
+     *         highPrice, lowPrice. The array must have at least all this keys.
+     * @param flag 0= active ads, 1= pending ads, 2= no active ad
+     * @return AdObject all the Ads Objects available
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     */
+    public function calculateS($sumValue,$sumValue2, $year,$trim,$model)
+    {
+
+       $first =  $this->getSumBysum($sumValue,$sumValue2, $year,$trim,$model);
+
+       $second = $this->getSum($sumValue,$year,$trim,$model,0) * $this->getSum($sumValue2,$year,$trim,$model,0);
+
+       $second = $second / $this->getSum($sumValue,$year,$trim,$model,3);
+
+       return $first-$second;
+
+    }
+
+    /**
+     * Get all the add by its Specefic Search.
+     *
+     * @param Array order by : city, brands, model, type, highYear, lowYear,
+     *         highPrice, lowPrice. The array must have at least all this keys.
+     * @param flag 0= active ads, 1= pending ads, 2= no active ad
+     * @return AdObject all the Ads Objects available
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     */
+    public function calculateR($sumValue,$sumValue2, $year,$trim,$model)
+    {
+
+        $first  =  $this->calculateS($sumValue,$sumValue2, $year,$trim,$model);
+
+        $second =  sqrt($this->calculateS($sumValue,$sumValue, $year,$trim,$model));
+
+        $third  =  sqrt($this->calculateS($sumValue2,$sumValue2, $year,$trim,$model));
+
+        $fourth  = ($second*$third);
+
+
+        return $first/$fourth;
+
+    }
+
+
 
 
 }
