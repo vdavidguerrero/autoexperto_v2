@@ -371,7 +371,7 @@ class Ad_controller extends Main_Controller {
         }
         else
         {
-            $temp =   $this->upload->data()['file_name'];
+            $temp =   $this->upload->data();
             $name[1] = $temp['file_name'];
         }
 
