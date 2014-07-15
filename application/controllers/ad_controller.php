@@ -37,67 +37,14 @@ class Ad_controller extends Main_Controller {
             
         function index ()
 	    {
-         $this->showAdForm2();
 
-
-
-//
-//            $pepe1 = $this->ad_model->Estimate(1,3, "1997", "LE", "Sentra");
-//            $pepe2 = $this->ad_model->Estimate(15,3, "1997", "LE", "Sentra");
-//            $pepe3 = $this->ad_model->Estimate(30,3, "1997", "LE", "Sentra");
-//            $pepe4 = $this->ad_model->Estimate(45,3, "1997", "LE", "Sentra");
-//
-//
-//            echo "En 1 Dias ";
-//            echo number_format(round($pepe1));
-//            echo "<br>";
-//
-//            echo "En 15 Dias ";
-//            echo number_format(round($pepe2));
-//            echo "<br>";
-//
-//            echo "En 30 Dias ";
-//            echo number_format(round($pepe3));
-//            echo "<br>";
-//
-//            echo "En 45 Dias ";
-//            echo number_format(round($pepe4));
-//            echo "<br>";
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          $this->showAdForm();
 
         }
 
 
 
-        /**
-         * load the Show_ad_view.
-         *
-         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-         * @todo - Ready
-         */
-        public function showAdForm2($key="var",$val="1")
-        {
-            $this->load->view('include/header');
-            $this->load->view('ad/prueba');
-            $this->load->view('include/footer');
-        }
+
 
          /**
         * load the Show_ad_view. 
@@ -361,23 +308,112 @@ class Ad_controller extends Main_Controller {
              return $child; 
         }
 
-        /**
-         * Change the state to sold
-         *
-         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-         * @todo - Check
-         * @see getAdsBySearch
-         */
-        function sellCar($adID)
-        {
-            $fecha = $this->ad_model->getAdByID($adID,1)->Publish_Date;
-            $hoy = date("Y-m-d H:i:s");
-            $fechaS =  strtotime($fecha);
-            $hoyS = strtotime($hoy);
-            $ahjaS = $hoyS - $fechaS  ;
+       /**
+     * Change the state to sold
+     *
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     * @see getAdsBySearch
+     */
+    function sellCar($adID)
+    {
+        $fecha = $this->ad_model->getAdByID($adID,1)->Publish_Date;
+        $hoy = date("Y-m-d H:i:s");
+        $fechaS =  strtotime($fecha);
+        $hoyS = strtotime($hoy);
+        $ahjaS = $hoyS - $fechaS  ;
 
-            $days =  round((($ahjaS/60)/60)/24);
-            $this->ad_model->setFlag2(2,$adID,$days);
-            redirect("/user_controller/showUser/");
+        $days =  round((($ahjaS/60)/60)/24);
+        $this->ad_model->setFlag2(2,$adID,$days);
+        redirect("/user_controller/showUser/");
+    }
+
+    /**
+     * Change the state to sold
+     *
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     * @see getAdsBySearch
+     */
+    function photoUpload($adID, $vin)
+    {
+        $counter = 0;
+        $this->load->helper(array('form', 'url'));
+
+        $config['upload_path'] = './assets/img';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload())
+        {
+            $error = array('error' => $this->upload->display_errors());
+            foreach ($error as $item => $value)
+            {
+                echo $value;
+                echo "<br>";
+            }
         }
+        else
+        {
+            $name[0] =  $this->upload->data()['file_name'];
+        }
+
+        if (!$this->upload->do_upload("userfile2"))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            foreach ($error as $item => $value)
+            {
+                echo $value;
+                echo "<br>";
+            }
+        }
+        else
+        {
+            $name[1] =  $this->upload->data()['file_name'];
+        }
+
+        $pictures = $this->ad_model->getPicturesByAd($adID);
+        foreach($pictures as $pepe)
+        {
+            $this->ad_model->setPicture($name[$counter],$pepe->ID);
+            $counter =+ 1;
+        }
+        redirect("/ad_controller/showAd/".$vin."/1");
+
+
+    }
+
+    /**
+     * Change the state to sold
+     *
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     * @see getAdsBySearch
+     */
+    function showEditForm($adID, $vin)
+    {
+        $dataPass["id"] = $adID;
+        $dataPass["vin"] = $vin;
+
+
+        $this->instanceAd($this->ad_model->getAdByVIN($vin,1));
+        $dataPass["ad"] = $this->getThisObjectOnly();
+
+        $dataPass["first"] = $this->ad_model->Estimate(1,3,$this->Unique_Car->Unique_Model->Year, $this->Unique_Car->Unique_Model->Trim, $this->Unique_Car->Unique_Model->Model);
+        $dataPass["second"] = $this->ad_model->Estimate(15,3,$this->Unique_Car->Unique_Model->Year, $this->Unique_Car->Unique_Model->Trim, $this->Unique_Car->Unique_Model->Model);
+        $dataPass["third"] = $this->ad_model->Estimate(30,3,$this->Unique_Car->Unique_Model->Year, $this->Unique_Car->Unique_Model->Trim, $this->Unique_Car->Unique_Model->Model);
+        $dataPass["fourth"] = $this->ad_model->Estimate(45,3,$this->Unique_Car->Unique_Model->Year, $this->Unique_Car->Unique_Model->Trim, $this->Unique_Car->Unique_Model->Model);
+
+
+        $this->load->view('include/header');
+        $this->load->view('ad/edit_ad',$dataPass);
+        $this->load->view('include/footer');
+
+    }
+
+
+
+
+
 } 

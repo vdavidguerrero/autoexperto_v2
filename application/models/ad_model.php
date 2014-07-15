@@ -363,7 +363,7 @@ class Ad_model extends CI_Model {
       */
      public function getPicturesByAd($ID)
      {
-        $this->db->select('Picture_Path');
+        $this->db->select('*');
         $this->db->from('pictures');
         $this->db->where('Car_Ad_ID' ,$ID);
         $query = $this->db->get();
@@ -493,6 +493,26 @@ class Ad_model extends CI_Model {
     }
 
     /**
+     * Change the ad status
+     *
+     * @param int flag which could be 0= pending, 1 = active, 2= sold
+     * @return
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check Performance
+     */
+    public function setPicture($name, $id)
+    {
+        $sendingQuery = "
+       UPDATE pictures
+       SET
+       Picture_Path = '$name'
+
+       WHERE ID = $id ";
+
+        $this->db->query($sendingQuery);
+    }
+
+    /**
      * Get all the add by its Specefic Search.
      *
      * @param Array order by : city, brands, model, type, highYear, lowYear,
@@ -548,7 +568,6 @@ class Ad_model extends CI_Model {
 
             }
             return sqrt($precio/$counter);
-
         }
 
         else if($flag ==3)
@@ -635,15 +654,14 @@ class Ad_model extends CI_Model {
 
         $first  =  $this->calculateS($sumValue,$sumValue2, $year,$trim,$model);
 
-        $second =  sqrt($this->calculateS($sumValue,$sumValue, $year,$trim,$model));
+        $second =  $this->calculateS($sumValue,$sumValue, $year,$trim,$model);
 
-        $third  =  sqrt($this->calculateS($sumValue2,$sumValue2, $year,$trim,$model));
+        $third  =  $this->calculateS($sumValue2,$sumValue2, $year,$trim,$model);
 
-        $fourth  = ($second*$third);
+        $fourth  = sqrt(($second*$third));
 
 
         return $first/$fourth;
-
     }
 
     /**
@@ -656,14 +674,9 @@ class Ad_model extends CI_Model {
      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
      * @todo - Check
      */
-    public function calculateB1( $year,$trim,$model)
+    public function calculateB1( $year,$trim,$model, $rPD, $rPR, $rDR)
     {
-
-        $rPD = $this->calculateR("Price","Sold_Time" ,$year,$trim,$model);
-        $rPR = $this->calculateR("Price","Car_Review",$year,$trim,$model);
-        $rDR = $this->calculateR("Sold_Time","Car_Review",$year,$trim,$model);
         $S = $this->getSum("Price",$year,$trim,$model,2) / $this->getSum("Sold_Time",$year,$trim,$model,2);
-
         $b1 = (($rPD - ($rPR * $rDR)) / (1 - ($rDR*$rDR))) * $S;
         return $b1;
 
@@ -679,14 +692,9 @@ class Ad_model extends CI_Model {
      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
      * @todo - Check
      */
-    public function calculateB2( $year,$trim,$model)
+    public function calculateB2( $year,$trim,$model, $rPD, $rPR, $rDR)
     {
-
-        $rPD = $this->calculateR("Price","Sold_Time" ,$year,$trim,$model);
-        $rPR = $this->calculateR("Price","Car_Review",$year,$trim,$model);
-        $rDR = $this->calculateR("Sold_Time","Car_Review",$year,$trim,$model);
         $S = $this->getSum("Price",$year,$trim,$model,2) / $this->getSum("Car_Review",$year,$trim,$model,2);
-
         $b2 = (($rPR - ($rPD * $rDR)) / (1 - ($rDR*$rDR))) * $S;
         return $b2;
 
@@ -702,17 +710,13 @@ class Ad_model extends CI_Model {
      * @author Vincent Guerrero <v.davidguerrero@gmail.com>
      * @todo - Check
      */
-    public function calculateB0($year,$trim,$model)
+    public function calculateB0($year,$trim,$model, $b1, $b2)
     {
 
-        $b1 = $this->calculateB1($year,$trim,$model);
-        $b2 = $this->calculateB2($year,$trim,$model);
         $z  = $this->ad_model->getSum("Car_Review",$year,$trim,$model,1);
         $x  = $this->ad_model->getSum("Sold_Time", $year,$trim,$model,1);
         $y  = $this->ad_model->getSum("Price", $year,$trim,$model,1);
-
-
-        $b0 = $y + ($b1*$x) + ($b2*$z);
+        $b0 = $y - ($b1*$x) - ($b2*$z);
         return $b0;
 
     }
@@ -730,9 +734,13 @@ class Ad_model extends CI_Model {
     public function estimate($dias, $Review, $year,$trim,$model)
     {
 
-        $b1 = $this->calculateB1($year,$trim,$model);
-        $b2 = $this->calculateB2($year,$trim,$model);
-        $b0 = $this->calculateB0($year,$trim,$model);
+        $rPD = $this->calculateR("Price","Sold_Time" ,$year,$trim,$model);
+        $rPR = $this->calculateR("Price","Car_Review",$year,$trim,$model);
+        $rDR = $this->calculateR("Sold_Time","Car_Review",$year,$trim,$model);
+
+        $b1 = $this->calculateB1($year,$trim,$model,$rPD,$rPR,$rDR);
+        $b2 = $this->calculateB2($year,$trim,$model,$rPD,$rPR,$rDR);
+        $b0 = $this->calculateB0($year,$trim,$model,$b1,$b2);
 
         $precio = $b0 + ($b1*$dias) + ($b2*$Review);
 

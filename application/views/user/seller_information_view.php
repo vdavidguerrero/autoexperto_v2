@@ -85,6 +85,7 @@
                         <th>Precio</th>
                         <th>Millaje</th>
                         <th>Ciudad</th>
+                        <th>Editar</th>
                         <th>Vendido?</th>
                     </tr>
                 </thead>
@@ -104,7 +105,8 @@
                         <td>".number_format((float)$activeAd->Price)."</td>
                         <td>".number_format((float)$activeAd->Mileage)."</td>
                         <td>".$user->Dominican_Republic_City."</td>
-                       <td> <a href='/ad_controller/sellCar/".$activeAd->ID."'>Vendido</a></td>
+                        <td> <a href='/ad_controller/showEditForm/".$activeAd->ID."/".$activeAd->Unique_Car->VIN."'>Editar</a></td>
+                        <td> <a href='/ad_controller/sellCar/".$activeAd->ID."'>Vendido</a></td>
 
                     </tr>
                         

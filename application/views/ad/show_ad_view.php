@@ -1,12 +1,18 @@
+
+
 <div class="container">
+
     <div class="col-sm-offset-1">
         <div class="row">
             
             <div class="col-sm-5 thumbnail ">
-                <img class="img-responsive nueva" src="/assets/img/carro1.jpg" alt="">
+                <?php
+                echo "<img class='img-responsive nueva' src='/assets/img/".$ad->Pictures[1]->Picture_Path."' alt=''>";
+                ?>
+
             </div>
                 
-            <div class="col-sm-6  ad_Brief"> 
+            <div class="col-sm-6  ad_Brief">
                 <div class="col-sm-3 ">
                     <ul class='list-group  '>
                         <li class='list-group-item list-group-item-info'><b>Nombre</b></li>
@@ -17,7 +23,7 @@
                         <li class='list-group-item list-group-item-info'><b>Papeles</b></li>
                     </ul>
                 </div>
-                    
+
                 <div class="col-sm-7">
             <?php
                echo "
@@ -31,14 +37,14 @@
 
                        <li class='list-group-item list-group-item-default'>".number_format($ad->Mileage)."</li>
                       <li class='list-group-item list-group-item-default'>".$ad->Paper_Status."</li>
-                    </ul>"         
-            ?> 
-                </div>        
+                    </ul>"
+            ?>
+                </div>
             </div>
-        </div>     
+        </div>
     </div>
-    <div class="row">  
-        
+    <div class="row">
+
         <div class="col-sm-6">
             <table class="table table-striped">
                 <thead>
@@ -77,7 +83,7 @@
                 
                 </tbody>
             </table>
-        </div>   
+        </div>
         <div class="col-sm-6">
             <table class="table table-striped ">
                 <thead>
@@ -87,8 +93,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
-            <?php  
+
+            <?php
               foreach($ad->Trouble_Codes as $k => $trouble)
               {
                   echo "
@@ -96,7 +102,7 @@
                         <td>".$trouble->Trouble_Code."</td>
                         <td>".$trouble->Description."</td>
                     </tr>
-                      ";     
+                      ";
               }
             ?>
                 </tbody>
@@ -216,7 +222,7 @@
                 {
                     $reviewGeneral += $carrito->Review * $carrito->Weight;
                 }
-            echo $ad->Car_Review;
+
 //            $reviewGeneral = round(($reviewGeneral/580) * 5);
 //
             $review1 = round($review1/16);
@@ -323,6 +329,7 @@
                         }
 
 
+
                         ?>
                     </td>
                 </tr>
@@ -334,10 +341,8 @@
         </div>
 
     </div>
-        
-        
 
-    
+
     
     
     </div>
