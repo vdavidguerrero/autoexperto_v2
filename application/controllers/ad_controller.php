@@ -37,64 +37,34 @@ class Ad_controller extends Main_Controller {
             
         function index ()
 	    {
-         $this->showAdForm();
+         $this->showAdForm2();
 
 
-//            $pepe1  = $this->ad_model->getSum("Car_Review", "1997", "LE", "Sentra",0);
-//            $pepe2  = $this->ad_model->getSum("Sold_Time", "1997", "LE", "Sentra",0);
-//            $pepe3  = $this->ad_model->getSum("Price", "1997", "LE", "Sentra",0);
+
 //
-//            $pepe4 = $this->ad_model->getSumBysum("Price","Car_Review", "1997", "LE", "Sentra");
-//            $pepe5 = $this->ad_model->getSumBysum("Price","Sold_Time", "1997", "LE", "Sentra");
-//
-//            $pepe6 = $this->ad_model->calculateS("Price","Car_Review", "1997", "LE", "Sentra",0);
-//            $pepe7 = $this->ad_model->calculateS("Price","Sold_Time", "1997", "LE", "Sentra",0);
-//
-//            $pepe8 = $this->ad_model->calculateR("Price","Sold_Time" , "1997", "LE", "Sentra",0);
-//            $pepe9 = $this->ad_model->calculateR("Price","Car_Review", "1997", "LE", "Sentra",0);
+//            $pepe1 = $this->ad_model->Estimate(1,3, "1997", "LE", "Sentra");
+//            $pepe2 = $this->ad_model->Estimate(15,3, "1997", "LE", "Sentra");
+//            $pepe3 = $this->ad_model->Estimate(30,3, "1997", "LE", "Sentra");
+//            $pepe4 = $this->ad_model->Estimate(45,3, "1997", "LE", "Sentra");
 //
 //
-//
-//
-//            echo "Sumatoria Reviews: ";
-//            echo $pepe1;
+//            echo "En 1 Dias ";
+//            echo number_format(round($pepe1));
 //            echo "<br>";
 //
-//            echo "Sumatoria de Dias: ";
-//            echo $pepe2;
+//            echo "En 15 Dias ";
+//            echo number_format(round($pepe2));
 //            echo "<br>";
 //
-//            echo "Sumatoria de precios: ";
-//            echo $pepe3;
+//            echo "En 30 Dias ";
+//            echo number_format(round($pepe3));
 //            echo "<br>";
 //
-//
-//
-//            echo "Sumatoria del producto de  Price review: ";
-//            echo $pepe4;
+//            echo "En 45 Dias ";
+//            echo number_format(round($pepe4));
 //            echo "<br>";
 //
-//            echo "Sumatoria del producto de Price  dias: ";
-//            echo $pepe5;
-//            echo "<br>";
-//
-//
-//            echo "SprecioReview ";
-//            echo $pepe6;
-//            echo "<br>";
-//
-//
-//            echo "SprecioDias ";
-//            echo $pepe7;
-//            echo "<br>";
-//
-//            echo "RprecioDias ";
-//            echo $pepe8;
-//            echo "<br>";
-//
-//            echo "RprecioReview ";
-//            echo $pepe9;
-//            echo "<br>";
+
 
 
 
@@ -114,6 +84,20 @@ class Ad_controller extends Main_Controller {
 
         }
 
+
+
+        /**
+         * load the Show_ad_view.
+         *
+         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+         * @todo - Ready
+         */
+        public function showAdForm2($key="var",$val="1")
+        {
+            $this->load->view('include/header');
+            $this->load->view('ad/prueba');
+            $this->load->view('include/footer');
+        }
 
          /**
         * load the Show_ad_view. 
@@ -209,6 +193,9 @@ class Ad_controller extends Main_Controller {
             $VIN = json_decode($json);
             $response = new stdClass();
             $response->Response = $this->ad_model->getAdByVIN($VIN->VIN, 0)->ID;
+            if(!$response->Response)
+                $response->Response = -1;
+
             header('Content-type: application/json');
             echo json_encode($response);
 

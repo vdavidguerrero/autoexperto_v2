@@ -646,6 +646,100 @@ class Ad_model extends CI_Model {
 
     }
 
+    /**
+     * Get all the add by its Specefic Search.
+     *
+     * @param Array order by : city, brands, model, type, highYear, lowYear,
+     *         highPrice, lowPrice. The array must have at least all this keys.
+     * @param flag 0= active ads, 1= pending ads, 2= no active ad
+     * @return AdObject all the Ads Objects available
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     */
+    public function calculateB1( $year,$trim,$model)
+    {
+
+        $rPD = $this->calculateR("Price","Sold_Time" ,$year,$trim,$model);
+        $rPR = $this->calculateR("Price","Car_Review",$year,$trim,$model);
+        $rDR = $this->calculateR("Sold_Time","Car_Review",$year,$trim,$model);
+        $S = $this->getSum("Price",$year,$trim,$model,2) / $this->getSum("Sold_Time",$year,$trim,$model,2);
+
+        $b1 = (($rPD - ($rPR * $rDR)) / (1 - ($rDR*$rDR))) * $S;
+        return $b1;
+
+    }
+
+    /**
+     * Get all the add by its Specefic Search.
+     *
+     * @param Array order by : city, brands, model, type, highYear, lowYear,
+     *         highPrice, lowPrice. The array must have at least all this keys.
+     * @param flag 0= active ads, 1= pending ads, 2= no active ad
+     * @return AdObject all the Ads Objects available
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     */
+    public function calculateB2( $year,$trim,$model)
+    {
+
+        $rPD = $this->calculateR("Price","Sold_Time" ,$year,$trim,$model);
+        $rPR = $this->calculateR("Price","Car_Review",$year,$trim,$model);
+        $rDR = $this->calculateR("Sold_Time","Car_Review",$year,$trim,$model);
+        $S = $this->getSum("Price",$year,$trim,$model,2) / $this->getSum("Car_Review",$year,$trim,$model,2);
+
+        $b2 = (($rPR - ($rPD * $rDR)) / (1 - ($rDR*$rDR))) * $S;
+        return $b2;
+
+    }
+
+    /**
+     * Get all the add by its Specefic Search.
+     *
+     * @param Array order by : city, brands, model, type, highYear, lowYear,
+     *         highPrice, lowPrice. The array must have at least all this keys.
+     * @param flag 0= active ads, 1= pending ads, 2= no active ad
+     * @return AdObject all the Ads Objects available
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     */
+    public function calculateB0($year,$trim,$model)
+    {
+
+        $b1 = $this->calculateB1($year,$trim,$model);
+        $b2 = $this->calculateB2($year,$trim,$model);
+        $z  = $this->ad_model->getSum("Car_Review",$year,$trim,$model,1);
+        $x  = $this->ad_model->getSum("Sold_Time", $year,$trim,$model,1);
+        $y  = $this->ad_model->getSum("Price", $year,$trim,$model,1);
+
+
+        $b0 = $y + ($b1*$x) + ($b2*$z);
+        return $b0;
+
+    }
+
+    /**
+     * Get all the add by its Specefic Search.
+     *
+     * @param Array order by : city, brands, model, type, highYear, lowYear,
+     *         highPrice, lowPrice. The array must have at least all this keys.
+     * @param flag 0= active ads, 1= pending ads, 2= no active ad
+     * @return AdObject all the Ads Objects available
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     */
+    public function estimate($dias, $Review, $year,$trim,$model)
+    {
+
+        $b1 = $this->calculateB1($year,$trim,$model);
+        $b2 = $this->calculateB2($year,$trim,$model);
+        $b0 = $this->calculateB0($year,$trim,$model);
+
+        $precio = $b0 + ($b1*$dias) + ($b2*$Review);
+
+        return $precio;
+
+    }
+
 
 
 
