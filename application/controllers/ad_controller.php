@@ -356,7 +356,8 @@ class Ad_controller extends Main_Controller {
         }
         else
         {
-            $name[0] =  $this->upload->data()['file_name'];
+            $temp =  $this->upload->data();
+            $name[0] = $temp['file_name'];
         }
 
         if (!$this->upload->do_upload("userfile2"))
@@ -370,7 +371,8 @@ class Ad_controller extends Main_Controller {
         }
         else
         {
-            $name[1] =  $this->upload->data()['file_name'];
+            $temp =   $this->upload->data()['file_name'];
+            $name[1] = $temp['file_name'];
         }
 
         $pictures = $this->ad_model->getPicturesByAd($adID);
