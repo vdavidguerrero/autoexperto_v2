@@ -280,7 +280,7 @@
                                    echo " <span class='fa fa-star-o fa-2x'></span>" ;
                            }
                        }
-
+                       else
                         echo "No hay datos.";
 
 
@@ -305,7 +305,7 @@
                                     echo " <span class='fa fa-star-o fa-2x'></span>" ;
                             }
                         }
-
+                        else
                         echo "No hay datos.";
 
                         ?>
@@ -329,6 +329,7 @@
                             }
                         }
 
+                        else
                         echo "No hay datos.";
 
                         ?>
@@ -345,13 +346,14 @@
                         {
                             for($i=0; $i<5; $i++)
                             {
-                                if($i < $review1)
+                                if($i < $ad->Car_Review)
                                     echo " <span class='fa fa-star yellow fa-2x '></span>" ;
                                 else
                                     echo " <span class='fa fa-star-o fa-2x'></span>" ;
                             }
                         }
 
+                        else
                         echo "No hay datos.";
 
 
