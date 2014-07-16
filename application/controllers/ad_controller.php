@@ -382,7 +382,7 @@ class Ad_controller extends Main_Controller {
         {
            // $this->ad_model->setPicture($name[$counter],$pepe->ID);
             echo $counter;
-            $counter =+ 1;
+            $counter++;
         }
 
 //        $this->ad_model->setPrice($adID,$this->input->post("price"));
