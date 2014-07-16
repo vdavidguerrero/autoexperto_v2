@@ -198,12 +198,13 @@
 
             <?php
 
-            if($flag = 0)
-            {
+            if($flag = 0){
+                echo "HOOOOOLA!!!";
+            }
                 $review1 = 0;
                 $review2 = 0;
                 $review3 = 0;
-                $reviewGeneral = 0;
+               $reviewGeneral = 0;
 
                 foreach($ad->Car_Part_Reviews as $carrito)
                 {
@@ -228,109 +229,14 @@
 
 //            $reviewGeneral = round(($reviewGeneral/580) * 5);
 //
-                $review1 = round($review1/16);
+            $review1 = round($review1/16);
 //
 //
-                $review2 = round($review2/16);
+            $review2 = round($review2/16);
 //
-                $review3 = round($review3/16);
+            $review3 = round($review3/16);
 
-                //580 review 3
-            }
-
-            echo "
-            <div class='col-sm-6'>
-            <table class='table table-striped'>
-                <thead>
-                    <tr class='info'>
-                        <th>Sección</th>
-                        <th>Review</th>
-                        <th></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                <tr>
-                    <td> Carrocería</td>
-
-                    <td>";
-
-                        for($i=0; $i<5; $i++)
-                            {
-                                if($i < $review1)
-                                    echo "<span class='fa fa-star yellow fa-2x '></span>" ;
-                                else
-                                    echo " <span class='fa fa-star-o fa-2x'></span>" ;
-                            }
-
-
-                   echo
-                    " </td>
-                        </tr>
-                        <tr>
-                            <td> Interior</td>
-
-                            <td>";
-
-
-                        for($i=0; $i<5; $i++)
-                        {
-                            if($i < $review2)
-                                echo " <span class='fa fa-star yellow fa-2x '></span>" ;
-                            else
-                                echo " <span class='fa fa-star-o fa-2x'></span>" ;
-                        }
-
-                echo"
-                    </td>
-                </tr>
-                </tr>
-                    <td> Motor/Mantenimeinto</td>
-
-                    <td>";
-
-
-                        for($i=0; $i<5; $i++)
-                        {
-                            if($i < $review3)
-                                echo " <span class='fa fa-star yellow fa-2x '></span>" ;
-                            else
-                                echo " <span class='fa fa-star-o fa-2x'></span>" ;
-                        }
-
-                echo "
-                    </td>
-                </tr>
-                <tr>
-                    <td> Review General</td>
-
-                    <td>";
-
-
-                        for($i=0; $i<5; $i++)
-                        {
-                            if($i <  $ad->Car_Review)
-                                echo " <span class='fa fa-star yellow fa-2x '></span>" ;
-                            else
-                                echo " <span class='fa fa-star-o fa-2x'></span>" ;
-                        }
-
-
-
-                        echo "
-                    </td>
-                </tr>
-
-
-
-                </tbody>
-            </table>
-        </div>
-
-
-
-            ";
-
+               //580 review 3
 
             ?>
 
@@ -343,7 +249,100 @@
             </table>
         </div>
 
+        <div class="col-sm-6">
+            <table class="table table-striped ">
+                <thead>
+                    <tr class="info">
+                        <th>Sección</th>
+                        <th>Review</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
+                <tbody>
+                <tr>
+                    <td> Carrocería</td>
+
+                    <td>
+                        <?php
+
+
+                        for($i=0; $i<5; $i++)
+                            {
+                                if($i < $review1)
+                                    echo " <span class='fa fa-star yellow fa-2x '></span>" ;
+                                else
+                                    echo " <span class='fa fa-star-o fa-2x'></span>" ;
+                            }
+
+
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Interior</td>
+
+                    <td>
+                        <?php
+
+
+                        for($i=0; $i<5; $i++)
+                        {
+                            if($i < $review2)
+                                echo " <span class='fa fa-star yellow fa-2x '></span>" ;
+                            else
+                                echo " <span class='fa fa-star-o fa-2x'></span>" ;
+                        }
+
+
+                        ?>
+                    </td>
+                </tr>
+                </tr>
+                    <td> Motor/Mantenimeinto</td>
+
+                    <td>
+                        <?php
+
+
+                        for($i=0; $i<5; $i++)
+                        {
+                            if($i < $review3)
+                                echo " <span class='fa fa-star yellow fa-2x '></span>" ;
+                            else
+                                echo " <span class='fa fa-star-o fa-2x'></span>" ;
+                        }
+
+
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Review General</td>
+
+                    <td>
+                        <?php
+
+
+                        for($i=0; $i<5; $i++)
+                        {
+                            if($i <  $ad->Car_Review)
+                                echo " <span class='fa fa-star yellow fa-2x '></span>" ;
+                            else
+                                echo " <span class='fa fa-star-o fa-2x'></span>" ;
+                        }
+
+
+
+                        ?>
+                    </td>
+                </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
 
     </div>
 
