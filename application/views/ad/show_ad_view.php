@@ -198,6 +198,10 @@
 
             <?php
 
+
+            $sessionInfo = $this->session->userdata('logged_in');
+            $flag   = $sessionInfo['flag'];
+
             if($flag == 1){
                 $review1 = 0;
                 $review2 = 0;
