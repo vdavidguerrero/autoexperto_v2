@@ -28,7 +28,7 @@
                     </ul>
                 </div>
 
-                <div class="col-sm-7">
+                <div class="col-sm-9">
             <?php
                echo "
                    <ul class='list-group list-unstyled'>
