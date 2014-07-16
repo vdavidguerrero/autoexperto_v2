@@ -380,15 +380,15 @@ class Ad_controller extends Main_Controller {
 
         foreach($pictures as $pepe)
         {
-           // $this->ad_model->setPicture($name[$counter],$pepe->ID);
+            $this->ad_model->setPicture($name[$counter],$pepe->ID);
             echo $counter;
             $counter++;
         }
 
-//        $this->ad_model->setPrice($adID,$this->input->post("price"));
-//
-//
-//        redirect("/ad_controller/showAd/".$vin."/1");
+        $this->ad_model->setPrice($adID,$this->input->post("price"));
+
+
+        redirect("/ad_controller/showAd/".$vin."/1");
 
 
     }
