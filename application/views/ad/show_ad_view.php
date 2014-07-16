@@ -8,7 +8,7 @@
             <div class="col-sm-5 thumbnail " >
                 <div id="fade">
                     <?php
-                    foreach($ad->Pictures as $path)
+                    foreach($ad->Pictures as $pictures)
                     {
                         echo "<img  class='img-responsive' src='/assets/img/".$pictures->Picture_Path."' alt=''>";
                     }
