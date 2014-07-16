@@ -10,7 +10,7 @@
                     <?php
                     foreach($ad->Pictures as $path)
                     {
-                        echo "<img  class='img-responsive' src='/assets/img/".$path."' alt=''>";
+                        echo "<img  class='img-responsive' src='/assets/img/".$pictures->Picture_Path."' alt=''>";
                     }
                     ?>
                 </div>
