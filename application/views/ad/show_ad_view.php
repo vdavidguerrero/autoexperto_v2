@@ -7,7 +7,7 @@
             
             <div class="col-sm-5 thumbnail ">
                 <?php
-                echo "<img class='img-responsive nueva' src='/assets/img/".$ad->Pictures[1]->Picture_Path."' alt=''>";
+                echo "<img id='fade' class='img-responsive nueva' src='/assets/img/".$ad->Pictures[1]->Picture_Path."' alt=''>";
                 ?>
 
             </div>
