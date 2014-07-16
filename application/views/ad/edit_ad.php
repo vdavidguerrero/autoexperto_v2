@@ -28,8 +28,12 @@
         echo "En 45 Dias ";
         echo number_format(round($fourth));
         echo "<br>";
+        echo "<h4> Cambiar Precio?</h4><br>";
+        echo "<input type='text' name='price' value='".$ad->Price>"'>";
 
 ?>
+
+
 
     <input type="submit" value="upload" class="col-sm-offset-1" />
         </form>
