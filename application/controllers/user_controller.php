@@ -111,7 +111,7 @@ class user_controller extends Main_Controller {
             $sessionInfo = $this->session->userdata('logged_in');
             $id     = $sessionInfo['id'];
             $flag   = $sessionInfo['flag'];
-            $datapass["flag"] = $flag;
+            $dataPass["flag"] = $flag;
             if($id)
             {
                 $dataPass["user"]       =  $this->user_model->getUser($id);
