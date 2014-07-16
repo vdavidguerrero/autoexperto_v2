@@ -373,7 +373,7 @@ class Ad_controller extends Main_Controller {
         else
         {
             $temp =   $this->upload->data();
-            echo $temp['file_name'];
+            $name[2] =  $temp['file_name'];
         }
 
         $pictures = $this->ad_model->getPicturesByAd($adID);
@@ -381,7 +381,7 @@ class Ad_controller extends Main_Controller {
         foreach($pictures as $pepe)
         {
            // $this->ad_model->setPicture($name[$counter],$pepe->ID);
-            echo $name[$counter];
+            echo $counter;
             $counter =+ 1;
         }
 
