@@ -341,13 +341,18 @@
                         <?php
 
 
-                        for($i=0; $i<5; $i++)
+                        if($flag ==0)
                         {
-                            if($i <  $ad->Car_Review)
-                                echo " <span class='fa fa-star yellow fa-2x '></span>" ;
-                            else
-                                echo " <span class='fa fa-star-o fa-2x'></span>" ;
+                            for($i=0; $i<5; $i++)
+                            {
+                                if($i < $review1)
+                                    echo " <span class='fa fa-star yellow fa-2x '></span>" ;
+                                else
+                                    echo " <span class='fa fa-star-o fa-2x'></span>" ;
+                            }
                         }
+
+                        echo "No hay datos.";
 
 
 
