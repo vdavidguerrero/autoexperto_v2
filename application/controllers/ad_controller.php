@@ -408,7 +408,7 @@ class Ad_controller extends Main_Controller {
         }
         else
         {
-            $dataPass["statitics"] = 0;
+            $dataPass["statitics"] = 1;
             $dataPass["first"] = $this->ad_model->Estimate(1,3,$this->Unique_Car->Unique_Model->Year, $this->Unique_Car->Unique_Model->Trim, $this->Unique_Car->Unique_Model->Model);
             $dataPass["second"] = $this->ad_model->Estimate(15,3,$this->Unique_Car->Unique_Model->Year, $this->Unique_Car->Unique_Model->Trim, $this->Unique_Car->Unique_Model->Model);
             $dataPass["third"] = $this->ad_model->Estimate(30,3,$this->Unique_Car->Unique_Model->Year, $this->Unique_Car->Unique_Model->Trim, $this->Unique_Car->Unique_Model->Model);
