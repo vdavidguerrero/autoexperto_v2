@@ -12,15 +12,12 @@
 
 
 
-    $(window).on('load')
-    {
-        $('#fade').cycle();
-    }
+
 
     $(document).ready(function()
     {
 
-
+        $('#fade').cycle();
 
         $("#rnc").change(function() {
            if($("#rnc").val().length < 9){
