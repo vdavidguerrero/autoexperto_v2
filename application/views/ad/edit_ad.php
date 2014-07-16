@@ -6,14 +6,14 @@
             <h4> Foto 1</h4><br>
             <input type="file" name="userfile"  />
 
-            <br /><br />
+            <br />
             <h4> Foto 2</h4><br>
             <input type="file" name="userfile2"  />
 
 
-            <br /><br />
-            <h4> Foto 2</h4><br>
-            <input type="file" name="userfile3"  />
+            <br />
+            <h4> Foto 3</h4><br>
+            <input type="file" name="nombre"  />
 
 <?php
     if($statitics == 1){

@@ -366,13 +366,13 @@ class Ad_controller extends Main_Controller {
             $name[1] = $temp['file_name'];
         }
 
-        if (!$this->upload->do_upload("userfile3"))
+        if (!$this->upload->do_upload("nombre"))
         {
             $name[2] = "prueba3.jpg";
         }
         else
         {
-            $temp =   $this->upload->data("userfile3");
+            $temp =   $this->upload->data();
             $name[2] = $temp['file_name'];
         }
 
