@@ -238,22 +238,11 @@
                 //580 review 3
             }
 
-
-            ?>
-
-
-
-
-
-                
-                </tbody>
-            </table>
-        </div>
-
-        <div class="col-sm-6">
-            <table class="table table-striped ">
+            echo "
+            <div class='col-sm-6'>
+            <table class='table table-striped'>
                 <thead>
-                    <tr class="info">
+                    <tr class='info'>
                         <th>Sección</th>
                         <th>Review</th>
                         <th></th>
@@ -264,27 +253,24 @@
                 <tr>
                     <td> Carrocería</td>
 
-                    <td>
-                        <?php
-
+                    <td>";
 
                         for($i=0; $i<5; $i++)
                             {
                                 if($i < $review1)
-                                    echo " <span class='fa fa-star yellow fa-2x '></span>" ;
+                                    echo "<span class='fa fa-star yellow fa-2x '></span>" ;
                                 else
                                     echo " <span class='fa fa-star-o fa-2x'></span>" ;
                             }
 
 
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td> Interior</td>
+                   echo
+                    " </td>
+                        </tr>
+                        <tr>
+                            <td> Interior</td>
 
-                    <td>
-                        <?php
+                            <td>";
 
 
                         for($i=0; $i<5; $i++)
@@ -295,15 +281,13 @@
                                 echo " <span class='fa fa-star-o fa-2x'></span>" ;
                         }
 
-
-                        ?>
+                echo"
                     </td>
                 </tr>
                 </tr>
                     <td> Motor/Mantenimeinto</td>
 
-                    <td>
-                        <?php
+                    <td>";
 
 
                         for($i=0; $i<5; $i++)
@@ -314,15 +298,13 @@
                                 echo " <span class='fa fa-star-o fa-2x'></span>" ;
                         }
 
-
-                        ?>
+                echo "
                     </td>
                 </tr>
                 <tr>
                     <td> Review General</td>
 
-                    <td>
-                        <?php
+                    <td>";
 
 
                         for($i=0; $i<5; $i++)
@@ -335,7 +317,7 @@
 
 
 
-                        ?>
+                        echo "
                     </td>
                 </tr>
 
@@ -344,6 +326,24 @@
                 </tbody>
             </table>
         </div>
+
+
+
+            ";
+
+
+            ?>
+
+
+
+
+
+                
+                </tbody>
+            </table>
+        </div>
+
+
 
     </div>
 
