@@ -14,6 +14,9 @@
  
     $(document).ready(function()
     {
+
+        $('#fade').cycle();
+
         $("#rnc").change(function() {
            if($("#rnc").val().length < 9){
                $("#rncError").text("Minimo 9 digitos") ;
