@@ -11,7 +11,7 @@
             <input type="file" name="userfile2"  />
 
 <?php
-    if($tatitics == 1){
+    if($statitics == 1){
         echo "<h4>Precios sugerido para que el vehículo se venda </h2><br>";
         echo "En 1 Dia ";
         echo number_format(round($first));
