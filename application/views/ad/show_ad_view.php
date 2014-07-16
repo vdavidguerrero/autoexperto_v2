@@ -31,11 +31,11 @@
                        <li class='list-group-item list-group-item-default'>".$ad->Seller->Name."</li>
                        <li class='list-group-item list-group-item-default'>".$ad->Seller->Phone."</li>
                        <li class='list-group-item list-group-item-default'>".$ad->Seller->Address.", ".$ad->Seller->Dominican_Republic_City."</li>
-                       <li class='list-group-item list-group-item-default'>".number_format($ad->Price)."</li>
+                       <li class='list-group-item list-group-item-default'>".number_format((float)$ad->Price)."</li>
 
 
 
-                       <li class='list-group-item list-group-item-default'>".number_format($ad->Mileage)."</li>
+                       <li class='list-group-item list-group-item-default'>".number_format((float)$ad->Mileage)."</li>
                       <li class='list-group-item list-group-item-default'>".$ad->Paper_Status."</li>
                     </ul>"
             ?>
