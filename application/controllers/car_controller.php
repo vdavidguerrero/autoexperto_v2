@@ -376,7 +376,7 @@ class car_controller extends Main_Controller {
         else
         {
             $uniqueCarObject                          = new stdClass();
-            $uniqueCarObject->Manufacturer_Country   = 'Prueba1';
+            $uniqueCarObject->Manufacturer_Country   = 'Japon';
             $uniqueCarObject->VIN                    = $VIN;
             $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
             $uniqueCarObject->Unique_Model           = (object) array(
