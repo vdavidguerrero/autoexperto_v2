@@ -513,6 +513,29 @@ class Ad_model extends CI_Model {
     }
 
     /**
+     * Change the ad status
+     *
+     * @param int flag which could be 0= pending, 1 = active, 2= sold
+     * @return
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check Performance
+     */
+    public function setPrice( $adID,$price)
+    {
+        $sendingQuery = "
+       UPDATE car_ads
+       SET
+       Price = $price
+
+       WHERE ID = $adID ";
+
+        $this->db->query($sendingQuery);
+    }
+
+
+
+
+    /**
      * Get all the add by its Specefic Search.
      *
      * @param Array order by : city, brands, model, type, highYear, lowYear,

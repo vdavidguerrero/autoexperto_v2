@@ -29,12 +29,13 @@
         echo number_format(round($fourth));
         echo "<br>";
         echo "<h4> Cambiar Precio?</h4><br>";
-        echo "<input type='text' name='price' value='".$ad->Price>"'>";
+        echo "<input type='text' name='price' value='".$ad->Price."'><br>";
 
     }
     else
     {
-        echo "<h4>No hay suficientes datos para estimar un precio</h4><br>";
+        echo "<h4>No hay suficientes datos para estimar un precio</h4>
+        <br>";
 
         echo "<br>";
     }
@@ -44,9 +45,7 @@
 
 ?>
 
-    <input type="text" name="price">
-
-    <input type="submit" value="upload" class="col-sm-offset-1" />
+    <input type="submit" value="Editar" class="col-sm-offset-1" />
         </form>
 
 </div>
