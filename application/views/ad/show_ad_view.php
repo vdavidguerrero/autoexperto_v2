@@ -2,10 +2,10 @@
 
 <div class="container">
 
-    <div class="col-sm-offset-1" id="fade">
+    <div class="col-sm-offset-1" >
         <div class="row">
             
-            <div class="col-sm-5 thumbnail ">
+            <div class="col-sm-5 thumbnail " id="fade">
                 <?php
                 echo "<img id='fade' class='img-responsive nueva' src='/assets/img/".$ad->Pictures[1]->Picture_Path."' alt=''>";
                 ?>
