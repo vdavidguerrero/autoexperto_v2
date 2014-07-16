@@ -38,7 +38,7 @@
     }
     else
     {
-        echo "<h4>No hay suficientes datos para estimar un precio</h4>
+        echo "<h4 class='text-danger'>No hay suficientes datos para estimar un precio</h4>
         <br>";
 
         echo "<br>";
