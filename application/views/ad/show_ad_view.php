@@ -7,9 +7,9 @@
             
             <div class="col-sm-5 thumbnail " id="fade">
                 <?php
-                echo "<img id='fade' class='img-responsive nueva' src='/assets/img/".$ad->Pictures[0]->Picture_Path."' alt=''>";
-                echo "<img id='fade' class='img-responsive nueva' src='/assets/img/".$ad->Pictures[1]->Picture_Path."' alt=''>";
-                echo "<img id='fade' class='img-responsive nueva' src='/assets/img/".$ad->Pictures[1]->Picture_Path."' alt=''>";
+                echo "<img class='img-responsive nueva' src='/assets/img/".$ad->Pictures[0]->Picture_Path."' alt=''>";
+                echo "<img  class='img-responsive nueva' src='/assets/img/".$ad->Pictures[1]->Picture_Path."' alt=''>";
+                echo "<img  class='img-responsive nueva' src='/assets/img/".$ad->Pictures[1]->Picture_Path."' alt=''>";
 
 
                 ?>
