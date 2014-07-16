@@ -347,12 +347,7 @@ class Ad_controller extends Main_Controller {
 
         if (!$this->upload->do_upload())
         {
-            $error = array('error' => $this->upload->display_errors());
-            foreach ($error as $item => $value)
-            {
-                echo $value;
-                echo "<br>";
-            }
+            $name[0] = "prueba3.jpg";
         }
         else
         {
@@ -362,12 +357,7 @@ class Ad_controller extends Main_Controller {
 
         if (!$this->upload->do_upload("userfile2"))
         {
-            $error = array('error' => $this->upload->display_errors());
-            foreach ($error as $item => $value)
-            {
-                echo $value;
-                echo "<br>";
-            }
+            $name[1] = "prueba3.jpg";
         }
         else
         {
@@ -377,12 +367,7 @@ class Ad_controller extends Main_Controller {
 
         if (!$this->upload->do_upload("userfile3"))
         {
-            $error = array('error' => $this->upload->display_errors());
-            foreach ($error as $item => $value)
-            {
-                echo $value;
-                echo "<br>";
-            }
+            $name[2] = "prueba3.jpg";
         }
         else
         {
