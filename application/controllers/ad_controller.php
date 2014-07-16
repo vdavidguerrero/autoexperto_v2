@@ -399,7 +399,7 @@ class Ad_controller extends Main_Controller {
         $dataPass["vin"] = $vin;
 
 
-        $this->instanceAd($this->ad_model->getAdByVIN($vin,1));
+        $this->instanceAd($this->ad_model->getAdByVIN($vin,2));
         $dataPass["ad"] = $this->getThisObjectOnly();
 
         if($this->ad_model->getSum("Car_Review",$this->Unique_Car->Unique_Model->Year, $this->Unique_Car->Unique_Model->Trim, $this->Unique_Car->Unique_Model->Model,3) < 5)
