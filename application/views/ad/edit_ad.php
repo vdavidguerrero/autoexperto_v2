@@ -3,16 +3,16 @@
     <?php echo "
             <form class='form-horizontal col-sm-offset-4' role='form' method='post' action='/ad_controller/photoUpload/".$id."/".$vin."' enctype='multipart/form-data'>"; ?>
 
-            <h4> Foto 1</h4><br>
+            <h4> Foto 1</h4>
             <input type="file" name="userfile"  />
 
             <br />
-            <h4> Foto 2</h4><br>
+            <h4> Foto 2</h4>
             <input type="file" name="userfile2"  />
 
 
             <br />
-            <h4> Foto 3</h4><br>
+            <h4> Foto 3</h4>
             <input type="file" name="nombre"  />
 
 <?php
