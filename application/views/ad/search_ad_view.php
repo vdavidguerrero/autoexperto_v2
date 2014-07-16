@@ -192,8 +192,8 @@
                                 <td> <a href='/ad_controller/showAd/".$ad->Unique_Car->VIN."/1'>".$ad->Unique_Car->Unique_Model->Brand." </a></td>
                                 <td>".$ad->Unique_Car->Unique_Model->Model." ".$ad->Unique_Car->Unique_Model->Body_Style." ".$ad->Unique_Car->Unique_Model->Trim. "</td>
                                 <td>".$ad->Unique_Car->Unique_Model->Year."</td>
-                                <td>".number_format($ad->Price)."</td>
-                                <td>".number_format($ad->Mileage)."</td>
+                                <td>".number_format((float)$ad->Price)."</td>
+                                <td>".number_format((float)$ad->Mileage)."</td>
                                 <td>".$ad->Seller->Dominican_Republic_City."</td>    
                             </tr>
 
