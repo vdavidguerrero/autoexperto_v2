@@ -342,6 +342,7 @@ class Ad_controller extends Main_Controller {
 
         $config['upload_path'] = './assets/img';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['overwrite']      = TRUE;
 
         $this->load->library('upload', $config);
 
@@ -371,11 +372,9 @@ class Ad_controller extends Main_Controller {
         }
         else
         {
-            $temp =   $this->upload->data();
+            $temp =   $this->upload->data("userfile3");
             $name[2] = $temp['file_name'];
         }
-
-
 
         $pictures = $this->ad_model->getPicturesByAd($adID);
 
