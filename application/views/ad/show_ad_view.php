@@ -198,13 +198,11 @@
 
             <?php
 
-            if($flag = 1){
-                echo "HOOOOOLA!!!";
-            }
+            if($flag == 1){
                 $review1 = 0;
                 $review2 = 0;
                 $review3 = 0;
-               $reviewGeneral = 0;
+                $reviewGeneral = 0;
 
                 foreach($ad->Car_Part_Reviews as $carrito)
                 {
@@ -229,14 +227,16 @@
 
 //            $reviewGeneral = round(($reviewGeneral/580) * 5);
 //
-            $review1 = round($review1/16);
+                $review1 = round($review1/16);
 //
 //
-            $review2 = round($review2/16);
+                $review2 = round($review2/16);
 //
-            $review3 = round($review3/16);
+                $review3 = round($review3/16);
 
-               //580 review 3
+                //580 review 3
+            }
+
 
             ?>
 
