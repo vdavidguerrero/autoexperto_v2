@@ -13,27 +13,27 @@
 
             <br />
             <h4> Foto 3</h4>
-            <input type="file" name="nombre"  />
+            <input type="file" name="nombre"  /><br>
 
 <?php
     if($statitics == 1){
-        echo "<h4><b>Precios sugerido para que el vehículo se venda</b> </h2><br>";
-        echo "<b>En 1 Dia</b> ";
+        echo "<h4><b>Precios sugerido para que el vehículo se venda en:</b> </h2><br>";
+        echo "<b>1 Dia</b> ";
         echo number_format(round($first));
         echo "<br>";
 
-        echo "<b>En 15 Dias</b> ";
+        echo "<b>15 Dias</b> ";
         echo number_format(round($second));
         echo "<br>";
 
-        echo "<b>En 30 Dias</b> ";
+        echo "<b>30 Dias</b> ";
         echo number_format(round($third));
         echo "<br>";
 
-        echo "<b>En 45 Dias</b> ";
+        echo "<b>45 Dias</b> ";
         echo number_format(round($fourth));
         echo "<br>";
-        echo "<h4><b> Cambiar Precio?</b></h4><br>";
+        echo "<h4><b> Desea Cambiar El Precio?</b></h4>";
         echo "<input type='text' name='price' value='".$ad->Price."'><br>";
 
     }
@@ -50,7 +50,7 @@
 
 ?>
 
-    <input type="submit" value="Editar" class="col-sm-offset-1" />
+    <br><input type="submit" value="Editar" class="col-sm-offset-1" />
         </form>
 
 </div>
