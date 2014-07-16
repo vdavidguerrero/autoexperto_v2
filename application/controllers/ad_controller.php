@@ -375,6 +375,23 @@ class Ad_controller extends Main_Controller {
             $name[1] = $temp['file_name'];
         }
 
+        if (!$this->upload->do_upload("userfile3"))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            foreach ($error as $item => $value)
+            {
+                echo $value;
+                echo "<br>";
+            }
+        }
+        else
+        {
+            $temp =   $this->upload->data();
+            $name[2] = $temp['file_name'];
+        }
+
+
+
         $pictures = $this->ad_model->getPicturesByAd($adID);
         foreach($pictures as $pepe)
         {

@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <div class="col-sm-offset-1">
+    <div class="col-sm-offset-1" id="fade">
         <div class="row">
             
             <div class="col-sm-5 thumbnail ">

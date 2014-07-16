@@ -10,6 +10,10 @@
             <h4> Foto 2</h4><br>
             <input type="file" name="userfile2"  />
 
+            <br /><br />
+            <h4> Foto 3</h4><br>
+            <input type="file" name="userfile3"  />
+
 <?php
     if($statitics == 1){
         echo "<h4>Precios sugerido para que el vehículo se venda </h2><br>";
