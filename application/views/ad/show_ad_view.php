@@ -198,7 +198,7 @@
 
             <?php
 
-            if($flag = 0){
+            if($flag = 1){
                 echo "HOOOOOLA!!!";
             }
                 $review1 = 0;
