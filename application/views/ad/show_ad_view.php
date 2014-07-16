@@ -202,7 +202,7 @@
             $sessionInfo = $this->session->userdata('logged_in');
             $flag   = $sessionInfo['flag'];
 
-            if($flag == 1){
+            if($flag == 0){
                 $review1 = 0;
                 $review2 = 0;
                 $review3 = 0;
