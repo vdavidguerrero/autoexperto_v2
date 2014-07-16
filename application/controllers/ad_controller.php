@@ -373,7 +373,7 @@ class Ad_controller extends Main_Controller {
         else
         {
             $temp =   $this->upload->data();
-            $name[2] = $temp['file_name'];
+            echo $temp['file_name'];
         }
 
         $pictures = $this->ad_model->getPicturesByAd($adID);
