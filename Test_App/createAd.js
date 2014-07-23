@@ -4,13 +4,13 @@
 var http = require('http');
 
 var ad = {
-            VIN             : 28888888888888422,
+            VIN             : "A234C12345432DC12",
             Flag            : 0,
             Price           : "200000",
             Mileage         : "20000",
-            Pictures        : ["prueba1", "prueba1"],
-            Seller_ID       : 12345678912,
-            Paper_Status    : "prueba1",
+            Pictures        : ["prueba3.jpg", "prueba3.jpg"],
+            Seller_ID       : 00119045615,
+            Paper_Status    : "OK",
             Trouble_Codes   : ["P0001","P0009","P0004"]
 };
 

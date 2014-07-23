@@ -43,9 +43,6 @@ class Ad_controller extends Main_Controller {
         }
 
 
-
-
-
          /**
         * load the Show_ad_view. 
         * 
