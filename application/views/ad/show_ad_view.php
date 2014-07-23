@@ -22,7 +22,7 @@
                         <li class='list-group-item list-group-item-info'><b>Nombre</b></li>
                         <li class='list-group-item list-group-item-info'><b>Telefono</b></li>
                         <li class='list-group-item list-group-item-info'><b>Dirección</b></li>
-                        <li class='list-group-item list-group-item-info'><b>Review</b></li>
+                        <li class='list-group-item list-group-item-info'><b>Precio</b></li>
                         <li class='list-group-item list-group-item-info'><b>Mileage</b></li>
                         <li class='list-group-item list-group-item-info'><b>Papeles</b></li>
                     </ul>
