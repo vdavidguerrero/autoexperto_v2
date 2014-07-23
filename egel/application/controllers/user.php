@@ -15,7 +15,19 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-        $this->loadView('user/search');
+        $sessionData = $this->session->userdata("sessionInfo");
+
+
+        if($sessionData)
+        {
+            //$this->loadView('user/userIndex');
+            echo "no estas logeado";
+        }
+        else
+        {
+            $this->loadView('user/userCedulaForm');
+        }
+
 	}
 
 	public function showUserInfractions()
@@ -27,7 +39,6 @@ class User extends CI_Controller {
 		$infractions = $this->user_model->getUserInfractions($cedula);
 		$dataPass["infractions"] = $infractions;
 		$this->loadView('userInfractions',$datapass);
-
 	}
 
 	public function loadView($view, $dataPass = "pepe")
@@ -36,5 +47,7 @@ class User extends CI_Controller {
 		$this->load->view($view,$dataPass);
 		$this->load->view('include/footer');
 	}
+
+
 
 }
