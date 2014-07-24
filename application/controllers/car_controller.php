@@ -111,38 +111,180 @@ class car_controller extends Main_Controller {
      */
     function queryCarData($VIN)
     {
+        if($VIN = "JN8AZ08T93W106333")
+        {
             $uniqueCarObject                          = new stdClass();
             $uniqueCarObject->Manufacturer_Country   = 'Americano';
             $uniqueCarObject->VIN                    = $VIN;
             $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
             $uniqueCarObject->Unique_Model           = (object) array(
                 'AC'                    => 'Si',
-                'Year'                  => '2014',
-                'Trim'                  => 'Sencilla',
-                'Brand'                 => 'Mitsubishi',
-                'Model'                 => 'L 300',
-                'Radio'                 => 'CD, Ipod',
+                'Year'                  => '2005',
+                'Trim'                  => '234 vc',
+                'Brand'                 => 'Nissan',
+                'Model'                 => 'Murano',
+                'Radio'                 => 'CD',
                 'Wheels'                => 'Magnesio',
-                'Seating'               => 'Pana',
-                'Gallons'               => '11',
+                'Seating'               => 'Leather',
+                'Gallons'               => '21',
                 'ABS_Brake'             => 'Si',
-                'CD_Player'             => 'No',
+                'CD_Player'             => 'Si',
                 'Subwoofer'             => 'Si',
-                'Body_Style'            => 'Coupe',
-                'Engine_Type'           => '2.5,  4Cilindros',
+                'Body_Style'            => 'Jeep',
+                'Engine_Type'           => '3.5,  6Cilindros',
                 'Transmission'          => 'Automatico, 5 cambios',
                 'Power_Windows'         => 'Si',
-                'Leather_Seats'         => 'No',
+                'Leather_Seats'         => 'Si',
                 'Driver_Airbag'         => 'Si',
                 'Cruise_Control'        => 'Si',
                 'Convertible_Top'       => 'No',
                 'Front_Side_Airbag'     => 'Si',
-                'Fuel_Economy_City'     => '22 kmh/g',
-                'Fuel_Economy_Highway'  => '25 kmh/g',
-                'Color'                 => 'Rojo'
+                'Fuel_Economy_City'     => '17.2 kmh/g',
+                'Fuel_Economy_Highway'  => '8.5 kmh/g',
+                'Color'                 => 'Blanco'
             );
 
+        }
 
+        else if($VIN = "3VWTL71K19M296957")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Americano';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2009',
+                'Trim'                  => '1.6i 16V',
+                'Brand'                 => 'Volkswagen',
+                'Model'                 => 'Jetta',
+                'Radio'                 => 'CD',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Leather',
+                'Gallons'               => '21',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'Si',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '1.6i 16v,  4Cilindros',
+                'Transmission'          => 'Mecanico, 5 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'Si',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '5.6 l/ km',
+                'Fuel_Economy_Highway'  => '6.6 l/ km',
+                'Color'                 => 'Azul'
+            );
+
+        }
+
+        else if($VIN = "1GTDS146X48207440")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Americano';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2002',
+                'Trim'                  => 'EX',
+                'Brand'                 => 'Honda',
+                'Model'                 => 'Civic',
+                'Radio'                 => 'CD',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Leather',
+                'Gallons'               => '21',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'Si',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '1.8i Vtec,  I4',
+                'Transmission'          => 'Automatico, 5 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'Si',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '5.6 l/ km',
+                'Fuel_Economy_Highway'  => '6.6 l/ km',
+                'Color'                 => 'Negro'
+            );
+
+        }
+
+        else if($VIN = "2FTRF17L43C864717")
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Americano';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2004',
+                'Trim'                  => 'LE',
+                'Brand'                 => 'Nissan',
+                'Model'                 => 'Sentra',
+                'Radio'                 => 'CD',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Leather',
+                'Gallons'               => '21',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'Si',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '2.0 ,  4Cilindros',
+                'Transmission'          => 'Automatico, 6 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'Si',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '5.6 l/ km',
+                'Fuel_Economy_Highway'  => '6.6 l/ km',
+                'Color'                 => 'Azul'
+            );
+
+        }
+
+        else
+        {
+            $uniqueCarObject                          = new stdClass();
+            $uniqueCarObject->Manufacturer_Country   = 'Americano';
+            $uniqueCarObject->VIN                    = $VIN;
+            $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
+            $uniqueCarObject->Unique_Model           = (object) array(
+                'AC'                    => 'Si',
+                'Year'                  => '2009',
+                'Trim'                  => 'LE',
+                'Brand'                 => 'Nissan',
+                'Model'                 => 'Pathfinder',
+                'Radio'                 => 'CD',
+                'Wheels'                => 'Magnesio',
+                'Seating'               => 'Leather',
+                'Gallons'               => '21',
+                'ABS_Brake'             => 'Si',
+                'CD_Player'             => 'Si',
+                'Subwoofer'             => 'Si',
+                'Body_Style'            => 'Sedan',
+                'Engine_Type'           => '2.0 ,  4Cilindros',
+                'Transmission'          => 'Automatico, 6 cambios',
+                'Power_Windows'         => 'Si',
+                'Leather_Seats'         => 'Si',
+                'Driver_Airbag'         => 'Si',
+                'Cruise_Control'        => 'Si',
+                'Convertible_Top'       => 'No',
+                'Front_Side_Airbag'     => 'Si',
+                'Fuel_Economy_City'     => '5.6 l/ km',
+                'Fuel_Economy_Highway'  => '6.6 l/ km',
+                'Color'                 => 'Negra'
+            );
+
+        }
         return $uniqueCarObject;
 
     }
