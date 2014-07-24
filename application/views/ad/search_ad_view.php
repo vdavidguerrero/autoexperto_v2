@@ -63,7 +63,7 @@
                         {
                             echo"
                                 <div class='slide active'>
-                                <a href='#'><img src='/assets/img/".$adR->Pictures[0]->Picture_Path."' alt='#'></a>
+                                <a href='#'><img src='/assets/img/".$adR->Pictures[1]->Picture_Path."' alt='#'></a>
                                 <div class='color-overlay'></div><!-- /.color-overlay -->
                                 </div><!-- /.slide -->
                             ";
