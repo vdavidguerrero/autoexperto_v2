@@ -463,9 +463,12 @@ class Ad_controller extends Main_Controller {
         $json = file_get_contents('php://input');
 
 
-        $klk = $this->ad_model->getLastTempAd($userID);
+        $adObject = $this->ad_model->getLastTempAd($userID);
 
-        echo $klk->ID;
+        header('Content-type: application/json');
+        $response = (object) array("VIN" => $adObject->VIN,
+                                    "Mileage" => $adObject->Mileage);
+        echo json_encode($response);
     }
 
 

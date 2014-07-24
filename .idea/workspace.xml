@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/ad_controller.php" afterPath="$PROJECT_DIR$/application/controllers/ad_controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/ad_model.php" afterPath="$PROJECT_DIR$/application/models/ad_model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Documents.iws" />
@@ -30,7 +29,7 @@
       <file leaf-file-name="ad_controller.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="434" column="52" selection-start="14177" selection-end="14177" vertical-scroll-proportion="0.16129032" vertical-offset="6435" max-vertical-offset="7215">
+            <state line="438" column="37" selection-start="14333" selection-end="14336" vertical-scroll-proportion="0.19354838" vertical-offset="6480" max-vertical-offset="7260">
               <folding />
             </state>
           </provider>
@@ -442,7 +441,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="434" column="52" selection-start="14177" selection-end="14177" vertical-scroll-proportion="0.16129032" vertical-offset="6435" max-vertical-offset="7215">
+        <state line="438" column="37" selection-start="14333" selection-end="14336" vertical-scroll-proportion="0.19354838" vertical-offset="6480" max-vertical-offset="7260">
           <folding />
         </state>
       </provider>
