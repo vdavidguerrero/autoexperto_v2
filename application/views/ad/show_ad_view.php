@@ -47,7 +47,7 @@
                                                         ?>
                                                         <div class="slide active">
                                                             <div class="picture-wrapper">
-                                                                <img src="/assets/img/<?php echo $p->Picture_Path; ?>" alt="#">
+                                                                <img src="/assets/img/<?php echo $p->Pictures->Picture_Path[0]; ?>" alt="#">
                                                             </div>
                                                         </div>
                                                         <?php

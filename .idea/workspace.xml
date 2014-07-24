@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/ad_controller.php" afterPath="$PROJECT_DIR$/application/controllers/ad_controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/ad_model.php" afterPath="$PROJECT_DIR$/application/models/ad_model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/ad/search_ad_view.php" afterPath="$PROJECT_DIR$/application/views/ad/search_ad_view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/ad/show_ad_view.php" afterPath="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Documents.iws" />
@@ -72,7 +71,7 @@
       <file leaf-file-name="ad_controller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="29" selection-start="1446" selection-end="1453" vertical-scroll-proportion="-13.125" vertical-offset="540" max-vertical-offset="7275">
+            <state line="276" column="24" selection-start="9407" selection-end="9415" vertical-scroll-proportion="-11.708333" vertical-offset="3859" max-vertical-offset="7275">
               <folding />
             </state>
           </provider>
@@ -81,7 +80,7 @@
       <file leaf-file-name="ad_model.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="799" column="32" selection-start="27473" selection-end="27473" vertical-scroll-proportion="-3.5833333" vertical-offset="11899" max-vertical-offset="12510">
+            <state line="425" column="28" selection-start="15173" selection-end="15181" vertical-scroll-proportion="-0.3" vertical-offset="6360" max-vertical-offset="12510">
               <folding>
                 <marker date="1406181475000" expanded="true" signature="16635:16727" placeholder="UPDATE car_a..." />
                 <marker date="1406181475000" expanded="true" signature="17096:17185" placeholder="UPDATE car_a..." />
@@ -92,19 +91,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show_ad_view.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show_ad_view.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="53" selection-start="2643" selection-end="2643" vertical-scroll-proportion="-4.4" vertical-offset="575" max-vertical-offset="5565">
+            <state line="49" column="125" selection-start="2395" selection-end="2395" vertical-scroll-proportion="0.114583336" vertical-offset="680" max-vertical-offset="5565">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_ad_view.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="search_ad_view.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/ad/search_ad_view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="496" column="93" selection-start="30637" selection-end="30637" vertical-scroll-proportion="0.43897638" vertical-offset="7217" max-vertical-offset="13710">
+            <state line="492" column="94" selection-start="30289" selection-end="30289" vertical-scroll-proportion="-11.166667" vertical-offset="7112" max-vertical-offset="13710">
               <folding>
                 <marker date="1406182265000" expanded="true" signature="29680:33559" placeholder="..." />
                 <marker date="1406182265000" expanded="true" signature="29680:32304" placeholder="..." />
@@ -198,7 +197,6 @@
         <option value="$PROJECT_DIR$/application/views/user/seller_information_view.php" />
         <option value="$PROJECT_DIR$/application/views/user/mechanic_information_view.php" />
         <option value="$PROJECT_DIR$/assets/js/plugin.js" />
-        <option value="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
         <option value="$PROJECT_DIR$/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/assets/js/custom.js" />
         <option value="$PROJECT_DIR$/application/views/ad/edit_ad.php" />
@@ -223,6 +221,7 @@
         <option value="$PROJECT_DIR$/application/models/ad_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
         <option value="$PROJECT_DIR$/application/views/ad/search_ad_view.php" />
+        <option value="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
       </list>
     </option>
   </component>
@@ -427,7 +426,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28819877" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29068324" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -826,35 +825,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="799" column="32" selection-start="27473" selection-end="27473" vertical-scroll-proportion="-3.5833333" vertical-offset="11899" max-vertical-offset="12510">
-          <folding>
-            <marker date="1406181475000" expanded="true" signature="16635:16727" placeholder="UPDATE car_a..." />
-            <marker date="1406181475000" expanded="true" signature="17096:17185" placeholder="UPDATE car_a..." />
-            <marker date="1406181475000" expanded="true" signature="17549:17628" placeholder="UPDATE pictu..." />
-            <marker date="1406181475000" expanded="true" signature="17993:18065" placeholder="UPDATE car_a..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="29" selection-start="1446" selection-end="1453" vertical-scroll-proportion="-13.125" vertical-offset="540" max-vertical-offset="7275">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="53" selection-start="2643" selection-end="2643" vertical-scroll-proportion="-4.4" vertical-offset="575" max-vertical-offset="5565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/ad/search_ad_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="496" column="93" selection-start="30637" selection-end="30637" vertical-scroll-proportion="0.43897638" vertical-offset="7217" max-vertical-offset="13710">
+        <state line="492" column="94" selection-start="30289" selection-end="30289" vertical-scroll-proportion="-11.166667" vertical-offset="7112" max-vertical-offset="13710">
           <folding>
             <marker date="1406182265000" expanded="true" signature="29680:33559" placeholder="..." />
             <marker date="1406182265000" expanded="true" signature="29680:32304" placeholder="..." />
@@ -915,6 +888,32 @@
             <marker date="1406182265000" expanded="true" signature="34489:34652" placeholder="..." />
             <marker date="1406182265000" expanded="true" signature="34489:34652" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="276" column="24" selection-start="9407" selection-end="9415" vertical-scroll-proportion="-11.708333" vertical-offset="3859" max-vertical-offset="7275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="425" column="28" selection-start="15173" selection-end="15181" vertical-scroll-proportion="-0.3" vertical-offset="6360" max-vertical-offset="12510">
+          <folding>
+            <marker date="1406181475000" expanded="true" signature="16635:16727" placeholder="UPDATE car_a..." />
+            <marker date="1406181475000" expanded="true" signature="17096:17185" placeholder="UPDATE car_a..." />
+            <marker date="1406181475000" expanded="true" signature="17549:17628" placeholder="UPDATE pictu..." />
+            <marker date="1406181475000" expanded="true" signature="17993:18065" placeholder="UPDATE car_a..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="125" selection-start="2395" selection-end="2395" vertical-scroll-proportion="0.114583336" vertical-offset="680" max-vertical-offset="5565">
+          <folding />
         </state>
       </provider>
     </entry>
