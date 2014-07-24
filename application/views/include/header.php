@@ -91,7 +91,7 @@
                                             }
                                             else
                                             { ?>
-                                                <li><a href="/index.html">Auto Experto</a></li>
+                                                <li><a href="<?php echo base_url(); ?>">Auto Experto</a></li>
                                                 <li><a href='/user_controller/userLogin'>Iniciar Sesión</a></li>
                                                 <li><a href='/user_controller'>Crear Cuenta</a></li>
                                             <?php }

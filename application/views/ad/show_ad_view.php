@@ -237,9 +237,8 @@
                                                         <table class="table">
                                                             <tr>
 
-                                                                    <td>Review Carrocería</td>
-                                                                <div class="col-md-1">
-                                                                <td>
+                                                            <td style=" float: left;">Review Carrocería</td>
+                                                                <td style="padding-right: 250px; float: right;">
                                                                     <?php
                                                                     if ($flag == 0) {
                                                                         for ($i = 0; $i < 5; $i++) {
@@ -253,12 +252,11 @@
                                                                         echo "No hay datos.";
                                                                     ?>
                                                                 </td>
-                                                                    </div>
                                                             </tr>
                                                             <tr>
-                                                                <td>Review Interior</td>
+                                                                <td style=" float: left;">Review Interior</td>
 
-                                                                <td>
+                                                                <td style="padding-right: 250px; float: right;">
                                                                     <?php
                                                                     if ($flag == 0) {
                                                                         for ($i = 0; $i < 5; $i++) {
@@ -273,9 +271,9 @@
                                                                     ?>
                                                                 </td>
                                                             </tr>
-                                                            <td> Review  Motor</td>
+                                                            <td style=" float: left;"> Review  Motor</td>
 
-                                                            <td>
+                                                            <td style="padding-right: 250px; float: right;">
                                                                 <?php
                                                                 if ($flag == 0) {
                                                                     for ($i = 0; $i < 5; $i++) {
@@ -292,9 +290,9 @@
                                                             </td>
                                                             <tr>
 
-                                                                <td> Review General</h4></td>
+                                                                <td style=" float: left;"> Review General</h4></td>
 
-                                                                <td>
+                                                                <td style="padding-right: 250px; float: right;">
                                                                     <?php
                                                                     if ($flag == 0) {
                                                                         for ($i = 0; $i < 5; $i++) {
