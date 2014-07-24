@@ -139,12 +139,12 @@ class Ad_controller extends Main_Controller {
             $json = file_get_contents('php://input');
             $VIN = json_decode($json);
             $response = new stdClass();
-            $response->Response = $this->ad_model->getAdByVIN($VIN->VIN, 0)->ID;
+            $response->Response = $this->ad_model->getAdByVIN($VIN->VIN, 0);
             if(!$response->Response)
                 $response->Response = -1;
 
             header('Content-type: application/json');
-            echo json_encode($response);
+            echo json_encode($response->ID);
 
         }
 
