@@ -490,7 +490,7 @@ if (isset($ads)) {
                                                             <div class='picture'>
                                                                 <div class='image-slider'>
                                                                     <a href='detail.html' class='slide'>
-                                                                        <img src='assets/img/content/".$ad->Picture_Path[0]."' alt=''#'>
+                                                                        <img src='assets/img/content/".$ad->Pictures->Picture_Path[0]."' alt=''#'>
                                                                     </a><!-- /.slide -->
 
                                                                     <div class='cycle-pager'></div><!-- /.cycle-pager -->
