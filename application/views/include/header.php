@@ -35,13 +35,13 @@
                 <div>
                     <div class="social">
                         <div class="inner">
-                                <ul class="social-links">
-                                    <li class="social-icon google-plus"><a href="#">Google+</a></li>
-                                    <li class="social-icon youtube"><a href="#">YouTube</a></li>
-                                    <li class="social-icon twitter"><a href="#">Twitter</a></li>
-                                    <li class="social-icon pinterest"><a href="#">Pinterest</a></li>
-                                    <li class="social-icon facebook"><a href="#">Facebook</a></li>
-                                </ul><!-- /.social-links -->
+<!--                                <ul class="social-links">-->
+<!--                                    <li class="social-icon google-plus"><a href="#">Google+</a></li>-->
+<!--                                    <li class="social-icon youtube"><a href="#">YouTube</a></li>-->
+<!--                                    <li class="social-icon twitter"><a href="#">Twitter</a></li>-->
+<!--                                    <li class="social-icon pinterest"><a href="#">Pinterest</a></li>-->
+<!--                                    <li class="social-icon facebook"><a href="#">Facebook</a></li>-->
+<!--                                </ul><!-- /.social-links -->
                         </div><!-- /.inner -->
                     </div><!-- /.social -->
 
