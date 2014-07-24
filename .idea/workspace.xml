@@ -30,7 +30,7 @@
       <file leaf-file-name="ad_controller.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="41" selection-start="4393" selection-end="4393" vertical-scroll-proportion="0.5882353" vertical-offset="1845" max-vertical-offset="7290">
+            <state line="141" column="81" selection-start="4315" selection-end="4315" vertical-scroll-proportion="0.5294118" vertical-offset="1845" max-vertical-offset="7290">
               <folding />
             </state>
           </provider>
@@ -39,12 +39,12 @@
       <file leaf-file-name="ad_model.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="34" selection-start="875" selection-end="875" vertical-scroll-proportion="-5.0" vertical-offset="330" max-vertical-offset="13035">
+            <state line="26" column="56" selection-start="683" selection-end="683" vertical-scroll-proportion="-8.75" vertical-offset="180" max-vertical-offset="13035">
               <folding>
-                <marker date="1406191267000" expanded="true" signature="16643:16735" placeholder="UPDATE car_a..." />
-                <marker date="1406191267000" expanded="true" signature="17104:17193" placeholder="UPDATE car_a..." />
-                <marker date="1406191267000" expanded="true" signature="17557:17636" placeholder="UPDATE pictu..." />
-                <marker date="1406191267000" expanded="true" signature="18001:18073" placeholder="UPDATE car_a..." />
+                <marker date="1406191414000" expanded="true" signature="16663:16755" placeholder="UPDATE car_a..." />
+                <marker date="1406191414000" expanded="true" signature="17124:17213" placeholder="UPDATE car_a..." />
+                <marker date="1406191414000" expanded="true" signature="17577:17656" placeholder="UPDATE pictu..." />
+                <marker date="1406191414000" expanded="true" signature="18021:18093" placeholder="UPDATE car_a..." />
               </folding>
             </state>
           </provider>
@@ -375,19 +375,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="875" selection-end="875" vertical-scroll-proportion="-5.0" vertical-offset="330" max-vertical-offset="13035">
+        <state line="26" column="56" selection-start="683" selection-end="683" vertical-scroll-proportion="-8.75" vertical-offset="180" max-vertical-offset="13035">
           <folding>
-            <marker date="1406191267000" expanded="true" signature="16643:16735" placeholder="UPDATE car_a..." />
-            <marker date="1406191267000" expanded="true" signature="17104:17193" placeholder="UPDATE car_a..." />
-            <marker date="1406191267000" expanded="true" signature="17557:17636" placeholder="UPDATE pictu..." />
-            <marker date="1406191267000" expanded="true" signature="18001:18073" placeholder="UPDATE car_a..." />
+            <marker date="1406191414000" expanded="true" signature="16663:16755" placeholder="UPDATE car_a..." />
+            <marker date="1406191414000" expanded="true" signature="17124:17213" placeholder="UPDATE car_a..." />
+            <marker date="1406191414000" expanded="true" signature="17577:17656" placeholder="UPDATE pictu..." />
+            <marker date="1406191414000" expanded="true" signature="18021:18093" placeholder="UPDATE car_a..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="41" selection-start="4393" selection-end="4393" vertical-scroll-proportion="0.5882353" vertical-offset="1845" max-vertical-offset="7290">
+        <state line="141" column="81" selection-start="4315" selection-end="4315" vertical-scroll-proportion="0.5294118" vertical-offset="1845" max-vertical-offset="7290">
           <folding />
         </state>
       </provider>

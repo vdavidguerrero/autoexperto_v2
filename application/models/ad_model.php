@@ -24,7 +24,7 @@ class Ad_model extends CI_Model {
     public function getAdByVIN($VIN,$flag)
     {
         
-        $this->db->select('car_ads.*',false);
+        $this->db->select('car_ads.*, car_ads.ID as jose',false);
         $this->db->from('car_ads');
         $this->db->join('unique_cars','unique_cars.VIN = car_ads.Unique_Car_ID');
         $this->db->where('unique_cars.VIN',$VIN);
