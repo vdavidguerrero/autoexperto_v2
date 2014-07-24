@@ -4,51 +4,49 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3">
                     <div id="overviews">
-                        <?php echo"
-                            <div class='overview active'>
-                                <div class='overview-table'>
-                                    <div class='item title'>
-                                        <h3>Toyota Yaris</h3>
-                                        <div class='subtitle'>V8, TDi</div>
-                                    </div><!-- /.item -->
+                        <?php
+                        foreach($reviewAds as $adR){
+                            echo"
+                                <div class='overview active'>
+                                    <div class='overview-table'>
+                                        <div class='item title'>
+                                            <h3>".$adR->Unique_Car->Unique_Model->Brand." ".$adR->Unique_Car->Unique_Model->Model."</h3>
+                                            <div class='subtitle'>".$adR->Unique_Car->Unique_Model->Trim."</div>
+                                        </div><!-- /.item -->
 
-                                    <div class='item tags'>
-                                        <div class='price'>$14,986</div>
-                                        <div class='type'>Sale</div>
-                                    </div><!-- /.item -->
+                                        <div class='item tags'>
+                                            <div class='price'>". number_format((float)$adR->Price)."</div>
+                                        </div><!-- /.item -->
 
-                                    <div class='item line'>
-                                        <span class='property'>Year</span>
-                                        <span class='value'>1989</span>
-                                    </div><!-- /.item -->
+                                        <div class='item line'>
+                                            <span class='property'>Año</span>
+                                            <span class='value'>".$adR->Unique_Car->Unique_Model->Year."</span>
+                                        </div><!-- /.item -->
 
-                                    <div class='item line'>
-                                        <span class='property'>Manufacturer</span>
-                                        <span class='value'>Toyota industries</span>
-                                    </div><!-- /.item -->
+                                        <div class='item line'>
+                                            <span class='property'>VIN</span>
+                                            <span class='value'>".$adR->Unique_Car->VIN."</span>
+                                        </div><!-- /.item -->
 
-                                    <div class='item line'>
-                                        <span class='property'>Stock Number</span>
-                                        <span class='value'>7886</span>
-                                    </div><!-- /.item -->
+                                        <div class='item line'>
+                                            <span class='property''>Review</span>
+                                            <span class='value'>".$adR->Car_Review."</span>
+                                        </div><!-- /.item -->
 
-                                    <div class='item line'>
-                                        <span class='property''>Condition</span>
-                                        <span class='value'>Import</span>
-                                    </div><!-- /.item -->
+                                        <div class='item line'>
+                                            <span class='property'>Millaje</span>
+                                            <span class='value'>".number_format((float)$adR->Mileage)."</span>
+                                        </div><!-- /.item -->
 
-                                    <div class='item line'>
-                                        <span class='property'>Kilometres</span>
-                                        <span class='value'>120,000 km</span>
-                                    </div><!-- /.item -->
-
-                                    <div class='item line'>
-                                        <span class='property'>Fuel Type</span>
-                                        <span class='value'>Petrol</span>
-                                    </div><!-- /.item -->
-                                </div><!-- /.overview-table -->
-                            </div><!-- /.overview -->
-                            ";?>
+                                        <div class='item line'>
+                                            <span class='property'>Transmision</span>
+                                            <span class='value'>".$adR->Unique_Car->Unique_Model->Transmission."</span>
+                                        </div><!-- /.item -->
+                                    </div><!-- /.overview-table -->
+                                </div><!-- /.overview -->
+                            ";
+                        }
+                        ?>
 
                         <div id="slider-navigation">
                             <div class="prev"></div><!-- /.prev -->
@@ -60,20 +58,20 @@
 
                 <div class="col-md-7 col-sm-7">
                     <div id="slider">
-                        <div class="slide active">
-                            <a href="#"><img src="/assets/img/slides/toyota.png" alt="#"></a>
-                            <div class="color-overlay"></div><!-- /.color-overlay -->
-                        </div><!-- /.slide -->
+                        <?php
+                        foreach($reviewAds as $adR)
+                        {
+                            echo"
+                                <div class='slide active'>
+                                <a href='#'><img src='/assets/img/".$adR->Pictures[0]->Picture_Path."' alt='#'></a>
+                                <div class='color-overlay'></div><!-- /.color-overlay -->
+                                </div><!-- /.slide -->
+                            ";
 
-                        <div class="slide">
-                            <a href="#"><img src="/assets/img/slides/toyota-1.png" alt="#"></a>
-                            <div class="color-overlay"></div><!-- /.color-overlay -->
-                        </div><!-- /.slide -->
+                        }
 
-                        <div class="slide">
-                            <a href="#"><img src="/assets/img/slides/toyota-2.png" alt="#"></a>
-                            <div class="color-overlay"></div><!-- /.color-overlay -->
-                        </div><!-- /.slide -->
+
+                        ?>
                     </div><!-- /#slider -->
                 </div>
             </div><!-- /.row -->

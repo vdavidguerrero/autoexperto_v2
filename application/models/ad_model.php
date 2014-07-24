@@ -821,6 +821,41 @@ class Ad_model extends CI_Model {
         return $adObjects;
     }
 
+    /**
+     * Get an its ID. there's only 1 ad by car.
+     *
+     * @param int Car VIn
+     * @param int Flag 0= pending, 1= active, 2= no active
+     * @return adObject the ad of the car
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     * @see getAdsBySearch
+     */
+    public function getThree($flag)
+    {
+
+        $this->db->select('car_ads.*',false);
+        $this->db->from('car_ads');
+        $this->db->join('unique_cars'                 , 'car_ads.Unique_Car_ID = unique_cars.VIN'         ,'inner');
+        $this->db->join('unique_models'               , 'unique_cars.Unique_Model_ID = unique_models.ID'    ,'inner');
+        $this->db->join('car_models'                  , 'unique_models.Car_Model_ID = car_models.ID'     ,'inner');
+        $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'      ,'inner');
+        $this->db->join('users'                       , 'car_ads.Seller_ID = users.ID'                   ,'inner');
+        $this->db->join('dominican_republic_cities'   , 'users.Dominican_Republic_Cities_ID = dominican_republic_cities.ID','inner');
+        $this->db->where('car_ads.Flag',$flag);
+        $this->db->order_by('car_ads.Car_Review', 'DESC');
+        $this->db->limit('3');
+        $query = $this->db->get();
+        $adObjects = $query->result();
+        if($adObjects)
+        {
+            $adObjects = $this->buildAdObject($adObjects,$flag);
+        }
+
+        return $adObjects;
+    }
+
+
 
 
 
