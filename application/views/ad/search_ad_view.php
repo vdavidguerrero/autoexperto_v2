@@ -10,7 +10,7 @@
                                 <div class='overview active'>
                                     <div class='overview-table'>
                                         <div class='item title'>
-                                            <h3><a href='/ad_controller/showAd/".$ad->Unique_Car->VIN."/1' class='slide'>".$adR->Unique_Car->Unique_Model->Brand." ".$adR->Unique_Car->Unique_Model->Model."</a></h3>
+                                            <h3><a href='/ad_controller/showAd/".$adR->Unique_Car->VIN."/1' class='slide'>".$adR->Unique_Car->Unique_Model->Brand." ".$adR->Unique_Car->Unique_Model->Model."</a></h3>
                                             <div class='subtitle'>".$adR->Unique_Car->Unique_Model->Trim."</div>
                                         </div><!-- /.item -->
 
