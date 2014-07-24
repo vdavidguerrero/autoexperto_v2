@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/ad_controller.php" afterPath="$PROJECT_DIR$/application/controllers/ad_controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/car_controller.php" afterPath="$PROJECT_DIR$/application/controllers/car_controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test_App/createAd.js" afterPath="$PROJECT_DIR$/Test_App/createAd.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test_App/publishAd.js" afterPath="$PROJECT_DIR$/Test_App/publishAd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/ad/show_ad_view.php" afterPath="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Documents.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +29,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="publishAd.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="publishAd.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test_App/publishAd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="6" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.6855576" vertical-offset="300" max-vertical-offset="1230">
+            <state line="14" column="0" selection-start="816" selection-end="816" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createAd.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_App/createAd.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="35" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1470">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="car_controller.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="198" column="26" selection-start="7656" selection-end="7665" vertical-scroll-proportion="-9.666667" vertical-offset="2738" max-vertical-offset="6435">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_ad_view.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="342" column="88" selection-start="24097" selection-end="24097" vertical-scroll-proportion="0.53512394" vertical-offset="4871" max-vertical-offset="5580">
               <folding />
             </state>
           </provider>
@@ -89,7 +119,6 @@
         <option value="$PROJECT_DIR$/assets/js/custom.js" />
         <option value="$PROJECT_DIR$/application/views/ad/edit_ad.php" />
         <option value="$PROJECT_DIR$/application/config/database.php" />
-        <option value="$PROJECT_DIR$/Test_App/createAd.js" />
         <option value="$PROJECT_DIR$/application/views/user/userIndex.php" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/assets/css/half-slider.css" />
@@ -98,12 +127,10 @@
         <option value="$PROJECT_DIR$/application/views/user/appealForm.php" />
         <option value="$PROJECT_DIR$/application/models/user_model.php" />
         <option value="$PROJECT_DIR$/assets/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/application/controllers/car_controller.php" />
         <option value="$PROJECT_DIR$/Test_App/queryCar.js" />
         <option value="$PROJECT_DIR$/application/controllers/user_controller.php" />
         <option value="$PROJECT_DIR$/application/views/include/header.php" />
         <option value="$PROJECT_DIR$/application/views/include/footer.php" />
-        <option value="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
         <option value="$PROJECT_DIR$/application/views/ad/search_ad_view.php" />
         <option value="$PROJECT_DIR$/application/views/user/infractionMap.php" />
         <option value="$PROJECT_DIR$/application/controllers/user.php" />
@@ -112,14 +139,17 @@
         <option value="$PROJECT_DIR$/application/models/ad_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
         <option value="$PROJECT_DIR$/Test_App/publishAd.js" />
+        <option value="$PROJECT_DIR$/Test_App/createAd.js" />
+        <option value="$PROJECT_DIR$/application/controllers/car_controller.php" />
+        <option value="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="114" />
-    <option name="y" value="44" />
-    <option name="width" value="1437" />
+    <option name="x" value="208" />
+    <option name="y" value="22" />
+    <option name="width" value="1221" />
     <option name="height" value="874" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -177,20 +207,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Test_App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Documents" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Documents" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -209,7 +225,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Documents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Documents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ad" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -294,7 +332,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="114" y="44" width="1437" height="874" extended-state="0" />
+    <frame x="208" y="22" width="1221" height="874" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -302,7 +340,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19067502" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22440623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -436,13 +474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test_App/createAd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="27" selection-start="77" selection-end="77" vertical-scroll-proportion="0.08226691" vertical-offset="0" max-vertical-offset="870">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/getAdId.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="33" selection-start="148" selection-end="148" vertical-scroll-proportion="0.19195612" vertical-offset="0" max-vertical-offset="705">
@@ -471,7 +502,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/publishAd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="6" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.6855576" vertical-offset="300" max-vertical-offset="1230">
+        <state line="14" column="0" selection-start="816" selection-end="816" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_App/createAd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="35" selection-start="957" selection-end="957" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1470">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="198" column="26" selection-start="7656" selection-end="7665" vertical-scroll-proportion="-9.666667" vertical-offset="2738" max-vertical-offset="6435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="342" column="88" selection-start="24097" selection-end="24097" vertical-scroll-proportion="0.53512394" vertical-offset="4871" max-vertical-offset="5580">
           <folding />
         </state>
       </provider>

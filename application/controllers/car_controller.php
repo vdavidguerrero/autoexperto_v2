@@ -208,7 +208,8 @@ class car_controller extends Main_Controller {
                 'Convertible_Top'       => 'No',
                 'Front_Side_Airbag'     => 'Si',
                 'Fuel_Economy_City'     => '23 kmh/g',
-                'Fuel_Economy_Highway'  => '27 kmh/g'
+                'Fuel_Economy_Highway'  => '27 kmh/g',
+                'Color'                 => 'Rojo'
             );
         }
 
@@ -402,7 +403,8 @@ class car_controller extends Main_Controller {
                 'Convertible_Top'       => 'No',
                 'Front_Side_Airbag'     => 'Si',
                 'Fuel_Economy_City'     => '23 kmh/g',
-                'Fuel_Economy_Highway'  => '25 kmh/g'
+                'Fuel_Economy_Highway'  => '25 kmh/g',
+                'Color'                 => 'Rojo'
             );
         }
 

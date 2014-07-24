@@ -336,6 +336,7 @@
                                     <div class="col-sm-4 col-md-4">
                                         <ul class="appliances">
                                             <li><span class="dot"></span>Asientos en <?php echo $ad->Unique_Car->Unique_Model->Seating; ?></li>
+                                            <li><span class="dot"></span>Color <?php echo $ad->Unique_Car->Unique_Model->Color; ?></li>
                                             <li><span class="dot"></span><?php echo ($ad->Unique_Car->Unique_Model->ABS_Brake == 'Si' ? 'Tiene' : 'No Tiene'); ?> frenos ABS</li>
                                             <li><span class="dot"></span><?php echo ($ad->Unique_Car->Unique_Model->Driver_Airbag == 'Si' ? 'Tiene' : 'No Tiene'); ?> bolsa de aire conductor</li>
                                             <li><span class="dot"></span><?php echo ($ad->Unique_Car->Unique_Model->Front_Side_Airbag == 'Si' ? 'Tiene' : 'No Tiene'); ?> bolsa de aire copiloto</li>
