@@ -57,7 +57,7 @@ class Ad_controller extends Main_Controller {
            $dataPass[$key] = $val;
            $dataPass["lastAds"] = $this->ad_model->getLastTenAds(1);
            $dataPass["lastAds"] = $this->ad_model->getLastTenAds(1);
-           $dataPass["reviewAds"] = $this->ad_model->getThree(1);
+           $dataPass["reviewAds"] = $this->ad_model->getThree();
             $this->load->view('include/header');
            $this->load->view('ad/search_ad_view',$dataPass);  
            $this->load->view('include/footer'); 

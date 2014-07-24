@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/ad_controller.php" afterPath="$PROJECT_DIR$/application/controllers/ad_controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/ad_model.php" afterPath="$PROJECT_DIR$/application/models/ad_model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,12 +30,12 @@
       <file leaf-file-name="ad_model.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="837" column="45" selection-start="29070" selection-end="29070" vertical-scroll-proportion="0.3490566" vertical-offset="12370" max-vertical-offset="13125">
+            <state line="844" column="60" selection-start="29403" selection-end="29403" vertical-scroll-proportion="0.5188679" vertical-offset="12385" max-vertical-offset="13110">
               <folding>
-                <marker date="1406242606000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-                <marker date="1406242606000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-                <marker date="1406242606000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-                <marker date="1406242606000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+                <marker date="1406242737000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+                <marker date="1406242737000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+                <marker date="1406242737000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+                <marker date="1406242737000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
               </folding>
             </state>
           </provider>
@@ -43,7 +44,7 @@
       <file leaf-file-name="ad_controller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="24" selection-start="2451" selection-end="2451" vertical-scroll-proportion="-2.9583333" vertical-offset="1189" max-vertical-offset="7305">
+            <state line="59" column="62" selection-start="1624" selection-end="1624" vertical-scroll-proportion="-14.041667" vertical-offset="548" max-vertical-offset="7305">
               <folding />
             </state>
           </provider>
@@ -138,7 +139,6 @@
         <option value="$PROJECT_DIR$/application/controllers/user.php" />
         <option value="$PROJECT_DIR$/Test_App/getAdId.js" />
         <option value="$PROJECT_DIR$/Test_App/create" />
-        <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
         <option value="$PROJECT_DIR$/application/controllers/car_controller.php" />
         <option value="$PROJECT_DIR$/Test_App/queryCar.js" />
         <option value="$PROJECT_DIR$/Test_App/createAd.js" />
@@ -147,6 +147,7 @@
         <option value="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
         <option value="$PROJECT_DIR$/application/views/include/header.php" />
         <option value="$PROJECT_DIR$/application/views/ad/search_ad_view.php" />
+        <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
         <option value="$PROJECT_DIR$/application/models/ad_model.php" />
       </list>
     </option>
@@ -330,10 +331,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27701864" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27701864" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -375,10 +376,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13035">
           <folding>
-            <marker date="1406242606000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-            <marker date="1406242606000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-            <marker date="1406242606000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-            <marker date="1406242606000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406242737000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
           </folding>
         </state>
       </provider>
@@ -414,10 +415,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="36" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="13035">
           <folding>
-            <marker date="1406242606000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-            <marker date="1406242606000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-            <marker date="1406242606000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-            <marker date="1406242606000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406242737000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
           </folding>
         </state>
       </provider>
@@ -528,13 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="52" selection-start="3980" selection-end="3988" vertical-scroll-proportion="-8.333333" vertical-offset="1600" max-vertical-offset="2460">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="194" column="31" selection-start="12816" selection-end="12816" vertical-scroll-proportion="-3.5" vertical-offset="2826" max-vertical-offset="5535">
@@ -575,19 +569,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="24" selection-start="2451" selection-end="2451" vertical-scroll-proportion="-2.9583333" vertical-offset="1189" max-vertical-offset="7305">
+        <state line="59" column="62" selection-start="1624" selection-end="1624" vertical-scroll-proportion="-14.041667" vertical-offset="548" max-vertical-offset="7305">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="52" selection-start="3980" selection-end="3988" vertical-scroll-proportion="-8.333333" vertical-offset="1600" max-vertical-offset="2460">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="837" column="45" selection-start="29070" selection-end="29070" vertical-scroll-proportion="0.3490566" vertical-offset="12370" max-vertical-offset="13125">
+        <state line="844" column="60" selection-start="29403" selection-end="29403" vertical-scroll-proportion="0.5188679" vertical-offset="12385" max-vertical-offset="13110">
           <folding>
-            <marker date="1406242606000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-            <marker date="1406242606000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-            <marker date="1406242606000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-            <marker date="1406242606000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406242737000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406242737000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
           </folding>
         </state>
       </provider>
