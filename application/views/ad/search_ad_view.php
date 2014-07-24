@@ -189,8 +189,8 @@
                                                         <div class="form-group "> 
                                                             <div class="dropdown">
                                                                 <div class="col-md-12">
-                                                                    <div class="btn btn-sm btn-default col-md-10" id="ciudad"  >Seleccione una Ciudad </div>
-                                                                    <button class="btn btn-sm btn-info col-md-2" data-toggle="dropdown" ><span class="caret"></span></button>
+                                                                    <div class="btn btn-sm btn-default col-md-10 col-xs-10" id="ciudad"  >Seleccione una Ciudad </div>
+                                                                    <button class="btn btn-sm btn-info col-md-2 col-xs-2" data-toggle="dropdown" ><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu col-md-12 " id="listaCiudad">
                                                                         <?php
                                                                         foreach ($cities as $city) {
@@ -207,8 +207,8 @@
                                                         <div class="form-group ">
                                                             <div class="dropdown">
                                                                 <div class="col-md-12">
-                                                                    <div class="btn btn-sm btn-default col-md-10" id="marca"  >Seleccione una Marca </div>
-                                                                    <button class="btn btn-sm btn-info col-md-2" data-toggle="dropdown" ><span class="caret"></span></button>
+                                                                    <div class="btn btn-sm btn-default col-md-10 col-xs-10" id="marca"  >Seleccione una Marca </div>
+                                                                    <button class="btn btn-sm btn-info col-md-2 col-xs-2" data-toggle="dropdown" ><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu col-md-12 " id="listaMarca">
                                                                         <?php
                                                                         foreach ($brands as $brand) {
@@ -224,8 +224,8 @@
                                                         <div class="form-group ">
                                                             <div class="dropdown">
                                                                 <div class="col-md-12">
-                                                                    <div class="btn btn-sm btn-default col-md-10" id="modelo"  >Seleccione Un Modelo</div>
-                                                                    <button class="btn btn-sm btn-info col-md-2" data-toggle="dropdown" ><span class="caret"></span></button>
+                                                                    <div class="btn btn-sm btn-default col-md-10  col-xs-10" id="modelo"  >Seleccione Un Modelo</div>
+                                                                    <button class="btn btn-sm btn-info col-md-2  col-xs-2" data-toggle="dropdown" ><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu col-md-12 " id="listaModelo">
 
 
@@ -238,8 +238,8 @@
                                                         <div class="form-group ">
                                                             <div class="dropdown">
                                                                 <div class="col-md-12">
-                                                                    <div class="btn btn-sm btn-default col-md-10" id="tipo"  >Seleccione un Tipo</div>
-                                                                    <button class="btn btn-sm btn-info col-md-2" data-toggle="dropdown" ><span class="caret"></span></button>
+                                                                    <div class="btn btn-sm btn-default col-md-10 col-xs-10" id="tipo"  >Seleccione un Tipo</div>
+                                                                    <button class="btn btn-sm btn-info col-md-2 col-xs-2" data-toggle="dropdown" ><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu col-md-12 " id="listaTipo">
                                                                         <li ><a  >Sedan</a></li>
                                                                         <li ><a >Coupe</a></li>
@@ -253,8 +253,8 @@
                                                         <div class="form-group ">
                                                             <div class="dropdown">
                                                                 <div class="col-md-6" id="pepe">
-                                                                    <div class="btn btn-sm btn-default col-md-9" id="precioDesde"  >Desde </div>
-                                                                    <button class="btn btn-sm btn-info col-md-3" data-toggle="dropdown" ><span class="caret"></span></button>
+                                                                    <div class="btn btn-sm btn-default col-md-9 col-xs-4" id="precioDesde"  >Desde </div>
+                                                                    <button class="btn btn-sm btn-info col-md-3 col-xs-2" data-toggle="dropdown" ><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu col-md-12 " id="listaPrecioDesde">
                                                                         <li><a >100000</a></li>
                                                                         <li><a >200000</a></li>
@@ -267,9 +267,9 @@
                                                             </div>
 
                                                             <div class="col-md-6" >
-                                                                <div class="btn btn-sm btn-default col-md-9" id="precioHasta"  >Hasta</div>
+                                                                <div class="btn btn-sm btn-default col-md-9 col-xs-4" id="precioHasta"  >Hasta</div>
                                                                 <div class="dropdown">
-                                                                    <button class="btn btn-sm btn-info col-md-3" data-toggle="dropdown" ><span class="caret"></span></button>
+                                                                    <button class="btn btn-sm btn-info col-md-3 col-xs-2" data-toggle="dropdown" ><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu col-md-12 " id="listaPrecioHasta">
                                                                         <li><a >100000</a></li>
                                                                         <li><a >200000</a></li>
@@ -286,8 +286,8 @@
                                                         <div class="form-group ">
                                                             <div class="dropdown">
                                                                 <div class="col-md-6" >
-                                                                    <div class="btn btn-sm btn-default col-md-9" id="anoDesde"  >Desde</div>
-                                                                    <button class="btn btn-sm btn-info col-md-3" data-toggle="dropdown" ><span class="caret"></span></button>
+                                                                    <div class="btn btn-sm btn-default col-md-9 col-xs-4" id="anoDesde"  >Desde</div>
+                                                                    <button class="btn btn-sm btn-info col-md-3 col-xs-2" data-toggle="dropdown" ><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu col-md-12 " id="listaAnoDesde">
                                                                         <?php
                                                                         foreach ($years as $year) {
@@ -299,9 +299,9 @@
                                                                 </div>
                                                             </div>  
                                                             <div class="col-md-6" >
-                                                                <div class="btn btn-sm btn-default col-md-9" id="anoHasta"  >Hasta</div>
+                                                                <div class="btn btn-sm btn-default col-md-9 col-xs-4" id="anoHasta"  >Hasta</div>
                                                                 <div class="dropdown">
-                                                                    <button class="btn btn-sm btn-info col-md-3" data-toggle="dropdown" ><span class="caret"></span></button>
+                                                                    <button class="btn btn-sm btn-info col-md-3 col-xs-2" data-toggle="dropdown" ><span class="caret"></span></button>
                                                                     <ul class="dropdown-menu col-md-12 " id="listaAnoHasta">
                                                                         <?php
                                                                         foreach ($years as $year) {
