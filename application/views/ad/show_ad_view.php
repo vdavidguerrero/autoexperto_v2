@@ -245,7 +245,7 @@
                                                                     if ($flag == 0) {
                                                                         for ($i = 0; $i < 5; $i++) {
                                                                             if ($i < $review1)
-                                                                                echo " <span class='fa fa-star yellow fa-2x '></span>";
+                                                                               echo "pepito";// echo " <span class='fa fa-star yellow fa-2x '></span>";
                                                                             else
                                                                                 echo " <span class='fa fa-star-o fa-2x'></span>";
                                                                         }

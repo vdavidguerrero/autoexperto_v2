@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/ad/search_ad_view.php" afterPath="$PROJECT_DIR$/application/views/ad/search_ad_view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/ad/show_ad_view.php" afterPath="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Documents.iws" />
@@ -28,30 +30,43 @@
       <file leaf-file-name="ad_model.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="-18.94" vertical-offset="11113" max-vertical-offset="13035">
+            <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="-39.458332" vertical-offset="11113" max-vertical-offset="13035">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_ad_view.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/ad/search_ad_view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="30" selection-start="2891" selection-end="2891" vertical-scroll-proportion="-20.0" vertical-offset="210" max-vertical-offset="9435">
               <folding>
-                <marker date="1406221830000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-                <marker date="1406221830000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-                <marker date="1406221830000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-                <marker date="1406221830000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+                <marker date="1406225963000" expanded="true" signature="405:592" placeholder="..." />
+                <marker date="1406225963000" expanded="true" signature="405:642" placeholder="..." />
+                <marker date="1406225963000" expanded="true" signature="405:650" placeholder="..." />
+                <marker date="1406225963000" expanded="true" signature="470:592" placeholder="..." />
+                <marker date="1406225963000" expanded="true" signature="535:592" placeholder="..." />
+                <marker date="1406225963000" expanded="true" signature="3312:3536" placeholder="..." />
+                <marker date="1406225963000" expanded="true" signature="3350:3536" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_ad_view.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/ad/search_ad_view.php">
+      <file leaf-file-name="createAd.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_App/createAd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="85" selection-start="622" selection-end="622" vertical-scroll-proportion="0.3488372" vertical-offset="0" max-vertical-offset="9465">
-              <folding>
-                <marker date="1406225646000" expanded="true" signature="405:592" placeholder="..." />
-                <marker date="1406225646000" expanded="true" signature="405:642" placeholder="..." />
-                <marker date="1406225646000" expanded="true" signature="405:650" placeholder="..." />
-                <marker date="1406225646000" expanded="true" signature="470:592" placeholder="..." />
-                <marker date="1406225646000" expanded="true" signature="535:592" placeholder="..." />
-                <marker date="1406225646000" expanded="true" signature="3312:3536" placeholder="..." />
-                <marker date="1406225646000" expanded="true" signature="3350:3536" placeholder="..." />
-              </folding>
+            <state line="21" column="31" selection-start="567" selection-end="567" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_ad_view.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="249" column="75" selection-start="16463" selection-end="16463" vertical-scroll-proportion="0.53578335" vertical-offset="3458" max-vertical-offset="5580">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,19 +118,18 @@
         <option value="$PROJECT_DIR$/Test_App/getAdId.js" />
         <option value="$PROJECT_DIR$/Test_App/create" />
         <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
-        <option value="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
         <option value="$PROJECT_DIR$/application/models/ad_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/car_controller.php" />
         <option value="$PROJECT_DIR$/Test_App/queryCar.js" />
         <option value="$PROJECT_DIR$/Test_App/createAd.js" />
         <option value="$PROJECT_DIR$/Test_App/publishAd.js" />
         <option value="$PROJECT_DIR$/application/views/ad/search_ad_view.php" />
+        <option value="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="66" />
     <option name="y" value="22" />
     <option name="width" value="1440" />
     <option name="height" value="874" />
@@ -314,11 +328,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="66" y="22" width="1440" height="874" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="874" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27826086" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27701864" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -330,11 +344,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -356,6 +370,28 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13035">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/ad/search_ad_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="61" selection-start="926" selection-end="926" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="9435">
+          <folding>
+            <marker date="1406225963000" expanded="true" signature="405:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="405:642" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="405:650" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="470:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="535:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="3312:3536" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="3350:3536" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="141" column="16" selection-start="4277" selection-end="4277" vertical-scroll-proportion="0.0" vertical-offset="1935" max-vertical-offset="7305">
@@ -365,20 +401,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/getAdId.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="33" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="705">
-          <folding />
-        </state>
+        <state line="3" column="33" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="705" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="36" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="13035">
-          <folding>
-            <marker date="1406221830000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-            <marker date="1406221830000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-            <marker date="1406221830000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-            <marker date="1406221830000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -444,58 +473,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/getAdsFromMechanic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/create">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="65" selection-end="65" vertical-scroll-proportion="0.13711151" vertical-offset="0" max-vertical-offset="547">
-          <folding />
-        </state>
+        <state line="5" column="0" selection-start="65" selection-end="65" vertical-scroll-proportion="0.13711151" vertical-offset="0" max-vertical-offset="547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/getAdId.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="33" selection-start="148" selection-end="148" vertical-scroll-proportion="0.19195612" vertical-offset="0" max-vertical-offset="705">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="346" column="67" selection-start="24385" selection-end="24385" vertical-scroll-proportion="0.65909094" vertical-offset="4871" max-vertical-offset="5580">
-          <folding />
-        </state>
+        <state line="7" column="33" selection-start="148" selection-end="148" vertical-scroll-proportion="0.19195612" vertical-offset="0" max-vertical-offset="705" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/createUser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="20" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
-          <folding />
-        </state>
+        <state line="3" column="20" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/queryCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="31" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test_App/createAd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="34" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
-          <folding />
-        </state>
+        <state line="3" column="31" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test_App/publishAd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.10968921" vertical-offset="0" max-vertical-offset="930">
-          <folding />
-        </state>
+        <state line="4" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.10968921" vertical-offset="0" max-vertical-offset="930" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
@@ -505,37 +508,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="13" selection-start="3702" selection-end="3702" vertical-scroll-proportion="3.3269598" vertical-offset="0" max-vertical-offset="2460">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="-18.94" vertical-offset="11113" max-vertical-offset="13035">
-          <folding>
-            <marker date="1406221830000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-            <marker date="1406221830000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-            <marker date="1406221830000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-            <marker date="1406221830000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
-          </folding>
+        <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="-39.458332" vertical-offset="11113" max-vertical-offset="13035">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/ad/search_ad_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="85" selection-start="622" selection-end="622" vertical-scroll-proportion="0.3488372" vertical-offset="0" max-vertical-offset="9465">
+        <state line="46" column="30" selection-start="2891" selection-end="2891" vertical-scroll-proportion="-20.0" vertical-offset="210" max-vertical-offset="9435">
           <folding>
-            <marker date="1406225646000" expanded="true" signature="405:592" placeholder="..." />
-            <marker date="1406225646000" expanded="true" signature="405:642" placeholder="..." />
-            <marker date="1406225646000" expanded="true" signature="405:650" placeholder="..." />
-            <marker date="1406225646000" expanded="true" signature="470:592" placeholder="..." />
-            <marker date="1406225646000" expanded="true" signature="535:592" placeholder="..." />
-            <marker date="1406225646000" expanded="true" signature="3312:3536" placeholder="..." />
-            <marker date="1406225646000" expanded="true" signature="3350:3536" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="405:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="405:642" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="405:650" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="470:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="535:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="3312:3536" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="3350:3536" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="54" selection-start="4154" selection-end="4209" vertical-scroll-proportion="0.3773585" vertical-offset="1660" max-vertical-offset="2460">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_App/createAd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="31" selection-start="567" selection-end="567" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/ad/show_ad_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="249" column="75" selection-start="16463" selection-end="16463" vertical-scroll-proportion="0.53578335" vertical-offset="3458" max-vertical-offset="5580">
+          <folding />
         </state>
       </provider>
     </entry>
