@@ -173,7 +173,7 @@ class Ad_controller extends Main_Controller {
                 else
                 {
                     header('Content-type: application/json');
-                    $response = (object) array("Response" => -1);
+                    $response = (object) array("Response" => $updateObject->adID);
                     echo json_encode($response);
                 }
             }
