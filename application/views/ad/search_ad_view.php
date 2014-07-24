@@ -4,6 +4,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3">
                     <div id="overviews">
+
                         <div class="overview active">
                             <div class="overview-table">
                                 <div class="item title">
@@ -361,14 +362,6 @@
 if (isset($ads)) {
     ?>
 
-
-
-
-
-
-
-
-
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div id="main">
@@ -485,226 +478,59 @@ if (isset($ads)) {
                                 <div class="col-md-12">
                                     <div class="content white">
                                         <div class="inner">
-                                            <div class="row-item">
-                                                <div class="inner">
-                                                    <div class="row">
-                                                        <div class="col-lg-4 col-md-5 col-sm-5">
-                                                            <div class="picture">
-                                                                <div class="image-slider">
-                                                                    <a href="detail.html" class="slide">
-                                                                        <img src="assets/img/content/toyota5.jpg" alt="#">
+                                        <?php
+
+                                        foreach($lastAds as $ad)
+                                        {
+                                            echo "
+                                            <div class='row-item'>
+                                                <div class='inner'>
+                                                    <div class='row'>
+                                                        <div class='col-lg-4 col-md-5 col-sm-5'>
+                                                            <div class='picture'>
+                                                                <div class='image-slider'>
+                                                                    <a href='detail.html' class='slide'>
+                                                                        <img src='assets/img/content/".$ad->Picture_Path[0]."' alt=''#'>
                                                                     </a><!-- /.slide -->
 
-                                                                    <div class="cycle-pager"></div><!-- /.cycle-pager -->
+                                                                    <div class='cycle-pager'></div><!-- /.cycle-pager -->
                                                                 </div><!-- /.image-slider -->
                                                             </div><!-- /.picture -->
                                                         </div><!-- /.col-md-4 -->
 
-                                                        <div class="col-lg-8 col-md-7 col-sm-7">
+                                                        <div class='col-lg-8 col-md-7 col-sm-7'>
 
-                                                            <div class="content-inner">
+                                                            <div class='content-inner'>
                                                                 <h3>
-                                                                    <a href="detail.html">Toyota Verso</a>
+                                                                    <a href='/ad_controller/showAd/".$ad->Unique_Car->VIN."/1'>".$ad->Unique_Car->Unique_Model->Brand." ".$ad->Unique_Car->Unique_Model->Model." </a>
                                                                 </h3>
-                                                                <div class="subtitle">Valvematic Active</div><!-- /.subtitle -->
+                                                                <div class='subtitle'>".$ad->Unique_Car->Unique_Model->Body_Style . " " . $ad->Unique_Car->Unique_Model->Trim." </div><!-- /.subtitle -->
 
-                                                                <div class="price">$16,999</div><!-- /.price -->
+                                                                <div class='price'>".number_format((float) $ad->Price)." </div><!-- /.price -->
 
-                                                                <div class="description">
+                                                                <div class='description'>
                                                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu vulputate neque. Fusce hendrerit fermentum elementum.</p>
                                                                 </div><!-- /.description -->
 
-                                                                <div class="meta">
+                                                                <div class='meta'>
                                                                     <ul>
                                                                         <li>
-                                                                            <i class="icon icon-normal-dashboard"></i> 2013                            </li>
+                                                                            <i class='icon icon-normal-dashboard'></i> ".$ad->Unique_Car->Unique_Model->Year."                           </li>
                                                                         <li>
-                                                                            <i class="icon icon-normal-car-door"></i> Fuel                            </li>
+                                                                            <i class='icon icon-normal-car-door'></i> ".$ad->Seller->Dominican_Republic_City."                            </li>
                                                                         <li>
-                                                                            <i class="icon icon-normal-cog-wheel"></i> 1500                            </li>
+                                                                            <i class='icon icon-normal-cog-wheel'></i> ".number_format((float) $ad->Mileage)."                        </li>
                                                                     </ul>
                                                                 </div><!-- /.meta -->
                                                             </div><!-- /.content-inner -->
                                                         </div><!-- /.col-md-8 -->
                                                     </div><!-- /.row -->
                                                 </div><!-- /.inner -->
-                                            </div><!-- /.row-item -->											<div class="row-item">
-                                                <div class="inner">
-                                                    <div class="row">
-                                                        <div class="col-lg-4 col-md-5 col-sm-5">
-                                                            <div class="picture">
-                                                                <div class="image-slider">
-                                                                    <a href="detail.html" class="slide">
-                                                                        <img src="assets/img/content/toyota1.jpg" alt="#">
-                                                                    </a><!-- /.slide -->
+                                            </div><!-- /.row-item -->";
+                                        }
+                                        ?>
 
-
-                                                                    <div class="cycle-pager"></div><!-- /.cycle-pager -->
-                                                                </div><!-- /.image-slider -->
-                                                            </div><!-- /.picture -->
-                                                        </div><!-- /.col-md-4 -->
-
-                                                        <div class="col-lg-8 col-md-7 col-sm-7">
-
-                                                            <div class="content-inner">
-                                                                <h3>
-                                                                    <a href="detail.html">Toyota Verso</a>
-                                                                </h3>
-                                                                <div class="subtitle">DPF Active</div><!-- /.subtitle -->
-
-                                                                <div class="price">$16,999</div><!-- /.price -->
-
-                                                                <div class="description">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu vulputate neque. Fusce hendrerit fermentum elementum.</p>
-                                                                </div><!-- /.description -->
-
-                                                                <div class="meta">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-dashboard"></i> 2013                            </li>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-car-door"></i> Fuel                            </li>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-cog-wheel"></i> 1500                            </li>
-                                                                    </ul>
-                                                                </div><!-- /.meta -->
-                                                            </div><!-- /.content-inner -->
-                                                        </div><!-- /.col-md-8 -->
-                                                    </div><!-- /.row -->
-                                                </div><!-- /.inner -->
-                                            </div><!-- /.row-item -->											<div class="row-item">
-                                                <div class="inner">
-                                                    <div class="row">
-                                                        <div class="col-lg-4 col-md-5 col-sm-5">
-                                                            <div class="picture">
-                                                                <div class="image-slider">
-                                                                    <a href="detail.html" class="slide">
-                                                                        <img src="assets/img/content/toyota3.jpg" alt="#">
-                                                                    </a><!-- /.slide -->
-
-
-                                                                    <div class="cycle-pager"></div><!-- /.cycle-pager -->
-                                                                </div><!-- /.image-slider -->
-                                                            </div><!-- /.picture -->
-                                                        </div><!-- /.col-md-4 -->
-
-                                                        <div class="col-lg-8 col-md-7 col-sm-7">
-
-                                                            <div class="content-inner">
-                                                                <h3>
-                                                                    <a href="detail.html">Toyota Yaris</a>
-                                                                </h3>
-                                                                <div class="subtitle">Active</div><!-- /.subtitle -->
-
-                                                                <div class="price">$16,999</div><!-- /.price -->
-
-                                                                <div class="description">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu vulputate neque. Fusce hendrerit fermentum elementum.</p>
-                                                                </div><!-- /.description -->
-
-                                                                <div class="meta">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-dashboard"></i> 2010                            </li>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-car-door"></i> Fuel                            </li>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-cog-wheel"></i> 1500                            </li>
-                                                                    </ul>
-                                                                </div><!-- /.meta -->
-                                                            </div><!-- /.content-inner -->
-                                                        </div><!-- /.col-md-8 -->
-                                                    </div><!-- /.row -->
-                                                </div><!-- /.inner -->
-                                            </div><!-- /.row-item -->											<div class="row-item">
-                                                <div class="inner">
-                                                    <div class="row">
-                                                        <div class="col-lg-4 col-md-5 col-sm-5">
-                                                            <div class="picture">
-                                                                <div class="image-slider">
-                                                                    <a href="detail.html" class="slide">
-                                                                        <img src="assets/img/content/toyota7.jpg" alt="#">
-                                                                    </a><!-- /.slide -->
-
-
-                                                                    <div class="cycle-pager"></div><!-- /.cycle-pager -->
-                                                                </div><!-- /.image-slider -->
-                                                            </div><!-- /.picture -->
-                                                        </div><!-- /.col-md-4 -->
-
-                                                        <div class="col-lg-8 col-md-7 col-sm-7">
-
-                                                            <div class="content-inner">
-                                                                <h3>
-                                                                    <a href="detail.html">Toyota Landcruiser</a>
-                                                                </h3>
-                                                                <div class="subtitle">MX 234</div><!-- /.subtitle -->
-
-                                                                <div class="price">$16,999</div><!-- /.price -->
-
-                                                                <div class="description">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu vulputate neque. Fusce hendrerit fermentum elementum.</p>
-                                                                </div><!-- /.description -->
-
-                                                                <div class="meta">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-dashboard"></i> 2011                            </li>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-car-door"></i> Hybrid                            </li>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-cog-wheel"></i> 1500                            </li>
-                                                                    </ul>
-                                                                </div><!-- /.meta -->
-                                                            </div><!-- /.content-inner -->
-                                                        </div><!-- /.col-md-8 -->
-                                                    </div><!-- /.row -->
-                                                </div><!-- /.inner -->
-                                            </div><!-- /.row-item -->											<div class="row-item">
-                                                <div class="inner">
-                                                    <div class="row">
-                                                        <div class="col-lg-4 col-md-5 col-sm-5">
-                                                            <div class="picture">
-                                                                <div class="image-slider">
-                                                                    <a href="detail.html" class="slide">
-                                                                        <img src="assets/img/content/toyota5.jpg" alt="#">
-                                                                    </a><!-- /.slide -->
-
-
-                                                                    <div class="cycle-pager"></div><!-- /.cycle-pager -->
-                                                                </div><!-- /.image-slider -->
-                                                            </div><!-- /.picture -->
-                                                        </div><!-- /.col-md-4 -->
-
-                                                        <div class="col-lg-8 col-md-7 col-sm-7">
-
-                                                            <div class="content-inner">
-                                                                <h3>
-                                                                    <a href="detail.html">Toyota Yaris</a>
-                                                                </h3>
-                                                                <div class="subtitle">Active</div><!-- /.subtitle -->
-
-                                                                <div class="price">$16,999</div><!-- /.price -->
-
-                                                                <div class="description">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu vulputate neque. Fusce hendrerit fermentum elementum.</p>
-                                                                </div><!-- /.description -->
-
-                                                                <div class="meta">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-dashboard"></i> 2010                            </li>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-car-door"></i> Fuel                            </li>
-                                                                        <li>
-                                                                            <i class="icon icon-normal-cog-wheel"></i> 1500                            </li>
-                                                                    </ul>
-                                                                </div><!-- /.meta -->
-                                                            </div><!-- /.content-inner -->
-                                                        </div><!-- /.col-md-8 -->
-                                                    </div><!-- /.row -->
-                                                </div><!-- /.inner -->
-                                            </div><!-- /.row-item -->									</div><!-- /.inner -->
+          								</div><!-- /.inner -->
                                     </div><!-- /.content -->
                                 </div><!-- /.col-md-12 -->
                             </div><!-- /.row -->
@@ -713,7 +539,7 @@ if (isset($ads)) {
 
                 <div class="col-md-3 col-sm-12">
                     <div class="sidebar">
-                        <div id="newsletter" class='block default'>
+                        <div id="newsletter" class='block default'><br>
                             <div class="block-inner">
                                 <div class="block-title">
                                     <h3>Suscribete al boletin</h3>

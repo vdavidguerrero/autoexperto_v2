@@ -55,6 +55,7 @@ class Ad_controller extends Main_Controller {
            $dataPass["cities"] = $this->user_model->getDominicanRepublicCities();  
            $dataPass["years"]  = $this->car_model->getYears();
            $dataPass[$key] = $val;
+           $dataPass["lastAds"] = $this->ad_model->getLastTenAds(1);
            $this->load->view('include/header'); 
            $this->load->view('ad/search_ad_view',$dataPass);  
            $this->load->view('include/footer'); 
