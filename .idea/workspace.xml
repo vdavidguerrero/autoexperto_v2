@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/custom.css" afterPath="$PROJECT_DIR$/assets/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/include/header.php" afterPath="$PROJECT_DIR$/application/views/include/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/ad/show_ad_view.php" afterPath="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/ad_model.php" afterPath="$PROJECT_DIR$/application/models/ad_model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Documents.iws" />
@@ -28,10 +26,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ad_model.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ad_model.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="-39.458332" vertical-offset="11113" max-vertical-offset="13035">
+            <state line="853" column="34" selection-start="30159" selection-end="30159" vertical-scroll-proportion="0.5754717" vertical-offset="12490" max-vertical-offset="13125">
+              <folding>
+                <marker date="1406241792000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+                <marker date="1406241792000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+                <marker date="1406241792000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+                <marker date="1406241792000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ad_controller.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="33" selection-start="1710" selection-end="1710" vertical-scroll-proportion="6.4166665" vertical-offset="1069" max-vertical-offset="7305">
               <folding />
             </state>
           </provider>
@@ -54,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createAd.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test_App/createAd.js">
+      <file leaf-file-name="car_controller.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="31" selection-start="567" selection-end="567" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+            <state line="120" column="52" selection-start="3980" selection-end="3988" vertical-scroll-proportion="-8.333333" vertical-offset="1600" max-vertical-offset="2460">
               <folding />
             </state>
           </provider>
@@ -90,10 +102,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/include/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="87" selection-start="4881" selection-end="4881" vertical-scroll-proportion="0.75435203" vertical-offset="1005" max-vertical-offset="1665">
+            <state line="91" column="48" selection-start="4744" selection-end="4744" vertical-scroll-proportion="-30.291666" vertical-offset="638" max-vertical-offset="1665">
               <folding />
             </state>
           </provider>
@@ -144,7 +156,6 @@
         <option value="$PROJECT_DIR$/Test_App/getAdId.js" />
         <option value="$PROJECT_DIR$/Test_App/create" />
         <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
-        <option value="$PROJECT_DIR$/application/models/ad_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/car_controller.php" />
         <option value="$PROJECT_DIR$/Test_App/queryCar.js" />
         <option value="$PROJECT_DIR$/Test_App/createAd.js" />
@@ -153,6 +164,7 @@
         <option value="$PROJECT_DIR$/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/application/views/ad/show_ad_view.php" />
         <option value="$PROJECT_DIR$/application/views/include/header.php" />
+        <option value="$PROJECT_DIR$/application/models/ad_model.php" />
       </list>
     </option>
   </component>
@@ -249,7 +261,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -267,11 +279,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -383,7 +391,12 @@
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13035">
-          <folding />
+          <folding>
+            <marker date="1406241792000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406241792000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406241792000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406241792000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -417,7 +430,12 @@
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="36" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="13035">
-          <folding />
+          <folding>
+            <marker date="1406241792000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406241792000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406241792000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406241792000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -506,38 +524,16 @@
         <state line="4" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.10968921" vertical-offset="0" max-vertical-offset="930" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
+    <entry file="file://$PROJECT_DIR$/assets/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="65" selection-start="5719" selection-end="5719" vertical-scroll-proportion="0.4117647" vertical-offset="2415" max-vertical-offset="7305">
+        <state line="48" column="0" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="825">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
+    <entry file="file://$PROJECT_DIR$/application/views/include/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="-39.458332" vertical-offset="11113" max-vertical-offset="13035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/ad/search_ad_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="30" selection-start="2891" selection-end="2891" vertical-scroll-proportion="-20.0" vertical-offset="210" max-vertical-offset="9435">
-          <folding>
-            <marker date="1406225963000" expanded="true" signature="405:592" placeholder="..." />
-            <marker date="1406225963000" expanded="true" signature="405:642" placeholder="..." />
-            <marker date="1406225963000" expanded="true" signature="405:650" placeholder="..." />
-            <marker date="1406225963000" expanded="true" signature="470:592" placeholder="..." />
-            <marker date="1406225963000" expanded="true" signature="535:592" placeholder="..." />
-            <marker date="1406225963000" expanded="true" signature="3312:3536" placeholder="..." />
-            <marker date="1406225963000" expanded="true" signature="3350:3536" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="54" selection-start="4154" selection-end="4209" vertical-scroll-proportion="0.3773585" vertical-offset="1660" max-vertical-offset="2460">
+        <state line="91" column="48" selection-start="4744" selection-end="4744" vertical-scroll-proportion="-30.291666" vertical-offset="638" max-vertical-offset="1665">
           <folding />
         </state>
       </provider>
@@ -549,9 +545,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/application/controllers/car_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="825">
+        <state line="120" column="52" selection-start="3980" selection-end="3988" vertical-scroll-proportion="-8.333333" vertical-offset="1600" max-vertical-offset="2460">
           <folding />
         </state>
       </provider>
@@ -572,10 +568,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/include/header.php">
+    <entry file="file://$PROJECT_DIR$/application/views/ad/search_ad_view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="87" selection-start="4881" selection-end="4881" vertical-scroll-proportion="0.75435203" vertical-offset="1005" max-vertical-offset="1665">
+        <state line="46" column="30" selection-start="2891" selection-end="2891" vertical-scroll-proportion="-20.0" vertical-offset="210" max-vertical-offset="9435">
+          <folding>
+            <marker date="1406225963000" expanded="true" signature="405:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="405:642" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="405:650" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="470:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="535:592" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="3312:3536" placeholder="..." />
+            <marker date="1406225963000" expanded="true" signature="3350:3536" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/car_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-8.632495" vertical-offset="4463" max-vertical-offset="5025">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="33" selection-start="1710" selection-end="1710" vertical-scroll-proportion="6.4166665" vertical-offset="1069" max-vertical-offset="7305">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="853" column="34" selection-start="30159" selection-end="30159" vertical-scroll-proportion="0.5754717" vertical-offset="12490" max-vertical-offset="13125">
+          <folding>
+            <marker date="1406241792000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406241792000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406241792000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406241792000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+          </folding>
         </state>
       </provider>
     </entry>

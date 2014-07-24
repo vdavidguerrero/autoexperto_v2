@@ -833,6 +833,12 @@ class Ad_model extends CI_Model {
      */
     public function getThree($flag)
     {
+        $searchArray = array (
+
+            'car_ads.ID  <='                => 146,
+            'car_ads.ID  >='                => 148,
+            'car_ads.Flag   = '             => $flag
+        );
 
         $this->db->select('car_ads.*',false);
         $this->db->from('car_ads');
@@ -842,7 +848,7 @@ class Ad_model extends CI_Model {
         $this->db->join('car_brands'                  , 'unique_models.Car_Brand_ID = car_brands.ID'      ,'inner');
         $this->db->join('users'                       , 'car_ads.Seller_ID = users.ID'                   ,'inner');
         $this->db->join('dominican_republic_cities'   , 'users.Dominican_Republic_Cities_ID = dominican_republic_cities.ID','inner');
-        $this->db->where('car_ads.Flag',$flag);
+        $this->db->where($searchArray);
         $this->db->order_by('car_ads.Car_Review', 'DESC');
         $this->db->limit('3');
         $query = $this->db->get();
