@@ -725,103 +725,7 @@ if (isset($ads)) {
             </div><!-- /.row -->
 
             <div id="content-bottom">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="testimonials-block block">
-                            <div class="page-header center">
-                                <div class="page-header-inner">
-                                    <div class="line">
-                                        <hr/>
-                                    </div>
 
-                                    <div class="heading">
-                                        <h2>Nuestros clientes</h2>
-                                    </div><!-- /.heading -->
-
-                                    <div class="line">
-                                        <hr/>
-                                    </div><!-- /.line -->
-                                </div><!-- /.page-header-inner -->
-                            </div><!-- /.page-header -->
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="testimonial white">
-                                        <div class="inner">
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-4">
-                                                    <div class="picture">
-                                                        <img src="assets/img/testimonials-1.png" alt="#">
-                                                    </div><!-- /.picture -->
-                                                </div><!-- /.col-md-4 -->
-
-                                                <div class="col-sm-9 col-md-8">
-                                                    <div class="description quote">
-                                                        <p>
-                                                            <i>
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ligula ipsum, ornare ac augue
-                                                                in, suscipit pretium purus. Vestibulum turpis felis, gravida ac justo.
-                                                            </i>
-                                                        </p>
-                                                    </div><!-- /.description -->
-
-                                                    <div class="star-rating">
-                                                        <input name="star0" type="radio" class="star icon-normal-star" checked="checked" disabled="disabled">
-                                                        <input name="star0" type="radio" class="star icon-normal-star" checked="checked" disabled="disabled">
-                                                        <input name="star0" type="radio" class="star icon-normal-star" checked="checked" disabled="disabled">
-                                                        <input name="star0" type="radio" class="star icon-normal-star" checked="checked" disabled="disabled">
-                                                        <input name="star0" type="radio" class="star icon-normal-star" checked="checked" disabled="disabled">
-                                                    </div><!-- /.star-rating -->
-
-                                                    <div class="author">
-                                                        <strong>Fanny Harley</strong>
-                                                    </div><!-- /.author -->
-                                                </div><!-- /.col-md-8 -->
-                                            </div><!-- /.row -->
-                                        </div><!-- /.inner -->
-                                    </div><!-- /.testimonial -->
-                                </div><!-- /.col-md-6 -->
-
-
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="testimonial white">
-                                        <div class="inner">
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-4">
-                                                    <div class="picture">
-                                                        <img src="assets/img/testimonials-2.png" alt="#">
-                                                    </div><!-- /.picture -->
-                                                </div><!-- /.col-md-4 -->
-
-                                                <div class="col-sm-9 col-md-8">
-                                                    <div class="description quote">
-                                                        <p>
-                                                            <i>
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ligula ipsum, ornare ac augue
-                                                                in, suscipit pretium purus. Vestibulum turpis felis, gravida ac justo.
-                                                            </i>
-                                                        </p>
-                                                    </div><!-- /.description -->
-
-                                                    <div class="star-rating">
-                                                        <input name="star1" type="radio" class="star icon-normal-star" checked="checked" disabled="disabled">
-                                                        <input name="star1" type="radio" class="star icon-normal-star" checked="checked" disabled="disabled">
-                                                        <input name="star1" type="radio" class="star icon-normal-star" checked="checked" disabled="disabled">
-                                                        <input name="star1" type="radio" class="star icon-normal-star" disabled="disabled">
-                                                        <input name="star1" type="radio" class="star icon-normal-star" disabled="disabled">
-                                                    </div><!-- /.star-rating -->
-
-                                                    <div class="author">
-                                                        <strong>Chavi Ernan√©z</strong>
-                                                    </div><!-- /.author -->
-                                                </div><!-- /.col-md-8 -->
-                                            </div><!-- /.row -->
-                                        </div><!-- /.inner -->
-                                    </div><!-- /.testimonial -->
-                                </div><!-- /.col-md-6 -->
-                            </div><!-- /.row -->
-                        </div><!-- /.testimonials-block -->                    </div><!-- /.col-md-12 -->
-                </div><!-- /.row -->
 
                 <div class="row">
                     <div class="col-md-12">
@@ -866,7 +770,7 @@ if (isset($ads)) {
                                             </div><!-- /.col-md-5 -->
 
                                             <div class="col-xs-12 col-md-7">
-                                                <h3>Gran calidad</h3>
+                                                <h3>Data Veridica</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque dolor, placerat mattis justo id, convallis porta nulla</p>
                                             </div><!-- /.col-md-7 -->
                                         </div><!-- /.row -->
@@ -889,12 +793,12 @@ if (isset($ads)) {
                                             </div><!-- /.col-md-5 -->
 
                                             <div class="col-xs-12 col-md-7">
-                                                <h3>Disponiblidad 24/7</h3>
+                                                <h3>Gran Selección</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque dolor, placerat mattis justo id, convallis porta nulla</p>
                                             </div><!-- /.col-md-7 -->
                                         </div><!-- /.row -->
                                     </div><!-- /.col-md-4 -->
-                                </div><!-- /.feature -->		
+                                </div><!-- /.feature -->
                             </div><!-- /.row -->
                         </div><!-- /.block -->                    </div><!-- /.col-md-12 -->
                 </div><!-- /.row -->
