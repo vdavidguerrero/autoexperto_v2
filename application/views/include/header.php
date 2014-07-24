@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="Pragmatic Mate s.r.o. - http://pragmaticmates.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css" media="screen, projection">
     <link rel="stylesheet" type="text/css" href="/assets/js/chosen/chosen.min.css" media="screen, projection">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/js/pictopro-normal/pictopro-normal.css" media="screen, projection">
     <link rel="stylesheet" type="text/css" href="/assets/js/colorbox/colorbox.css" media="screen, projection">
     <link rel="stylesheet" type="text/css" href="/assets/js/jslider/bin/jquery.slider.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="/assets/css/carat.css" media="screen, projection">
     <link rel="stylesheet" type="text/css" href="/assets/css/carat.css" media="screen, projection">
 
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,400,700,400italic,700italic" rel="stylesheet" type="text/css"  media="screen, projection">

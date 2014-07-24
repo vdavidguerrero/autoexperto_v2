@@ -238,14 +238,14 @@
                                                         ?>
                                                         <table class="table">
                                                             <tr>
-                                                                <td> Carrocería</td>
+                                                                <td>Review Carrocería</td>
 
                                                                 <td>
                                                                     <?php
                                                                     if ($flag == 0) {
                                                                         for ($i = 0; $i < 5; $i++) {
                                                                             if ($i < $review1)
-                                                                               echo "pepito";// echo " <span class='fa fa-star yellow fa-2x '></span>";
+                                                                                echo " <span class='fa fa-star yellow fa-2x '></span>";
                                                                             else
                                                                                 echo " <span class='fa fa-star-o fa-2x'></span>";
                                                                         }
@@ -256,7 +256,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td> Interior</td>
+                                                                <td>Review Interior</td>
 
                                                                 <td>
                                                                     <?php
@@ -273,8 +273,7 @@
                                                                     ?>
                                                                 </td>
                                                             </tr>
-                                                            </tr>
-                                                            <td> Motor/Mantenimeinto</td>
+                                                            <td> Review  Motor</td>
 
                                                             <td>
                                                                 <?php
@@ -291,9 +290,9 @@
                                                                     echo "No hay datos.";
                                                                 ?>
                                                             </td>
-                                                            </tr>
                                                             <tr>
-                                                                <td> Review General</td>
+
+                                                                <td> Review General</h4></td>
 
                                                                 <td>
                                                                     <?php
