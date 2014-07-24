@@ -373,7 +373,7 @@ if (isset($ads)) {
                             <div class="page-header">
                                 <div class="page-header-inner">
                                     <div class="heading">
-                                        <h2>Mejores ofertas</h2>
+                                        <h2>Ultimos Anuncios</h2>
                                     </div><!-- /.heading -->
 
                                     <div class="line">
