@@ -281,12 +281,12 @@ class user_controller extends Main_Controller {
         
          /**
         * Create a user from a JSON.
-        * 
-        * 
+        *
+        *
         * @author Vincent Guerrero <v.davidguerrero@gmail.com>
-        * @todo - Check 
-        * @see 
-        */ 
+        * @todo - Check
+        * @see
+        */
         public function createUserRemote()
 	    {
             $json = file_get_contents('php://input');
@@ -318,4 +318,4 @@ class user_controller extends Main_Controller {
                 echo json_encode($response);
             }
 	    }
-} 
+}

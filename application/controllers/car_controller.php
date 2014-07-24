@@ -376,15 +376,15 @@ class car_controller extends Main_Controller {
         else
         {
             $uniqueCarObject                          = new stdClass();
-            $uniqueCarObject->Manufacturer_Country   = 'Japon';
+            $uniqueCarObject->Manufacturer_Country   = 'Americano';
             $uniqueCarObject->VIN                    = $VIN;
             $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
             $uniqueCarObject->Unique_Model           = (object) array(
                 'AC'                    => 'Si',
-                'Year'                  => '2002',
-                'Trim'                  => 'EX',
-                'Brand'                 => 'Honda',
-                'Model'                 => 'Civic',
+                'Year'                  => '2007',
+                'Trim'                  => 'GT',
+                'Brand'                 => 'Nissan',
+                'Model'                 => 'Maxima',
                 'Radio'                 => 'CD',
                 'Wheels'                => 'Magnesio',
                 'Seating'               => 'Pana',
@@ -394,14 +394,14 @@ class car_controller extends Main_Controller {
                 'Subwoofer'             => 'Si',
                 'Body_Style'            => 'Sedan',
                 'Engine_Type'           => '2.0, I4',
-                'Transmission'          => 'Secuencial, 5 cambios',
+                'Transmission'          => 'Automatica, 5 cambios',
                 'Power_Windows'         => 'Si',
                 'Leather_Seats'         => 'No',
                 'Driver_Airbag'         => 'Si',
                 'Cruise_Control'        => 'Si',
                 'Convertible_Top'       => 'No',
                 'Front_Side_Airbag'     => 'Si',
-                'Fuel_Economy_City'     => '20 kmh/g',
+                'Fuel_Economy_City'     => '23 kmh/g',
                 'Fuel_Economy_Highway'  => '25 kmh/g'
             );
         }

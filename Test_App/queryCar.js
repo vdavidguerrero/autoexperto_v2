@@ -2,7 +2,6 @@
 var http = require('http');
 
   Car = {VIN:"A234C12345432DC12"};
-//Car = {VIN:"11111111198763333"};
 
 
 var Car = JSON.stringify(Car);
