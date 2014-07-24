@@ -4,138 +4,51 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3">
                     <div id="overviews">
+                        <?php echo"
+                            <div class='overview active'>
+                                <div class='overview-table'>
+                                    <div class='item title'>
+                                        <h3>Toyota Yaris</h3>
+                                        <div class='subtitle'>V8, TDi</div>
+                                    </div><!-- /.item -->
 
-                        <div class="overview active">
-                            <div class="overview-table">
-                                <div class="item title">
-                                    <h3>Toyota Yaris</h3>
-                                    <div class="subtitle">V8, TDi</div>
-                                </div><!-- /.item -->
+                                    <div class='item tags'>
+                                        <div class='price'>$14,986</div>
+                                        <div class='type'>Sale</div>
+                                    </div><!-- /.item -->
 
-                                <div class="item tags">
-                                    <div class="price">$14,986</div>
-                                    <div class="type">Sale</div>
-                                </div><!-- /.item -->
+                                    <div class='item line'>
+                                        <span class='property'>Year</span>
+                                        <span class='value'>1989</span>
+                                    </div><!-- /.item -->
 
-                                <div class="item line">
-                                    <span class="property">Year</span>
-                                    <span class="value">1989</span>
-                                </div><!-- /.item -->
+                                    <div class='item line'>
+                                        <span class='property'>Manufacturer</span>
+                                        <span class='value'>Toyota industries</span>
+                                    </div><!-- /.item -->
 
-                                <div class="item line">
-                                    <span class="property">Manufacturer</span>
-                                    <span class="value">Toyota industries</span>
-                                </div><!-- /.item -->
+                                    <div class='item line'>
+                                        <span class='property'>Stock Number</span>
+                                        <span class='value'>7886</span>
+                                    </div><!-- /.item -->
 
-                                <div class="item line">
-                                    <span class="property">Stock Number</span>
-                                    <span class="value">7886</span>
-                                </div><!-- /.item -->
+                                    <div class='item line'>
+                                        <span class='property''>Condition</span>
+                                        <span class='value'>Import</span>
+                                    </div><!-- /.item -->
 
-                                <div class="item line">
-                                    <span class="property">Condition</span>
-                                    <span class="value">Import</span>
-                                </div><!-- /.item -->
+                                    <div class='item line'>
+                                        <span class='property'>Kilometres</span>
+                                        <span class='value'>120,000 km</span>
+                                    </div><!-- /.item -->
 
-                                <div class="item line">
-                                    <span class="property">Kilometres</span>
-                                    <span class="value">120,000 km</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Fuel Type</span>
-                                    <span class="value">Petrol</span>
-                                </div><!-- /.item -->
-                            </div><!-- /.overview-table -->
-                        </div><!-- /.overview -->
-
-                        <div class="overview">
-                            <div class="overview-table">
-                                <div class="item title">
-                                    <h3>Toyota Auris</h3>
-                                    <div class="subtitle">V8, TDi</div>
-                                </div><!-- /.item -->
-
-                                <div class="item tags">
-                                    <div class="price">$7,999</div>
-                                    <div class="type">Sale</div>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Stock Number</span>
-                                    <span class="value">7911</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Condition</span>
-                                    <span class="value">NZ New</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Kilometres</span>
-                                    <span class="value">183,000 km</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Fuel Type</span>
-                                    <span class="value">Petrol</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Engine</span>
-                                    <span class="value">4000</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Transmission</span>
-                                    <span class="value">Automatic</span>
-                                </div><!-- /.item -->
-                            </div><!-- /.overview-table -->
-                        </div><!-- /.overview -->
-
-                        <div class="overview">
-                            <div class="overview-table">
-                                <div class="item title">
-                                    <h3>Toyota RAV4</h3>
-                                    <div class="subtitle">V8, TDi</div>
-                                </div><!-- /.item -->
-
-                                <div class="item tags">
-                                    <div class="price">$8,999</div>
-                                    <div class="type">Sale</div>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Stock Number</span>
-                                    <span class="value">7904</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Condition</span>
-                                    <span class="value">NZ New</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Kilometres</span>
-                                    <span class="value">50,322km</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Fuel Type</span>
-                                    <span class="value">Petrol</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Engine</span>
-                                    <span class="value">1600</span>
-                                </div><!-- /.item -->
-
-                                <div class="item line">
-                                    <span class="property">Transmission</span>
-                                    <span class="value">Automatic</span>
-                                </div><!-- /.item -->
-                            </div><!-- /.overview-table -->
-                        </div><!-- /.overview -->
+                                    <div class='item line'>
+                                        <span class='property'>Fuel Type</span>
+                                        <span class='value'>Petrol</span>
+                                    </div><!-- /.item -->
+                                </div><!-- /.overview-table -->
+                            </div><!-- /.overview -->
+                            ";?>
 
                         <div id="slider-navigation">
                             <div class="prev"></div><!-- /.prev -->
