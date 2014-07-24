@@ -7,9 +7,7 @@
                         <div class="title">
                             <h1><?php echo $ad->Unique_Car->Unique_Model->Brand . ' ' . $ad->Unique_Car->Unique_Model->Model; ?></h1>
                         </div><!-- /.title -->
-                        <div class="subtitle">
-                            Windsor Locks, CT
-                        </div><!-- /.subtitle -->
+
                     </div><!-- /.heading -->
                 </div><!-- /.col-md-8 -->
 
@@ -238,8 +236,9 @@
                                                         ?>
                                                         <table class="table">
                                                             <tr>
-                                                                <td>Review Carrocería</td>
 
+                                                                    <td>Review Carrocería</td>
+                                                                <div class="col-md-1">
                                                                 <td>
                                                                     <?php
                                                                     if ($flag == 0) {
@@ -254,6 +253,7 @@
                                                                         echo "No hay datos.";
                                                                     ?>
                                                                 </td>
+                                                                    </div>
                                                             </tr>
                                                             <tr>
                                                                 <td>Review Interior</td>
