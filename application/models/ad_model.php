@@ -831,7 +831,7 @@ class Ad_model extends CI_Model {
      * @todo - Check
      * @see getAdsBySearch
      */
-    public function getThree($flag)
+    public function getThree()
     {
         $searchArray = array (
 
