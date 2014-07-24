@@ -2,4 +2,4 @@
 
 node queryCar.js
 node createAd.js
-node publishAd.js
+#node publishAd.js

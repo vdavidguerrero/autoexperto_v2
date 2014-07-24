@@ -810,7 +810,7 @@ class Ad_model extends CI_Model {
         $this->db->join('dominican_republic_cities'   , 'users.Dominican_Republic_Cities_ID = dominican_republic_cities.ID','inner');
         $this->db->where('car_ads.Flag',$flag);
         $this->db->order_by('id', 'DESC');
-        $this->db->limit('10');
+        $this->db->limit('7');
         $query = $this->db->get();
         $adObjects = $query->result();
         if($adObjects)
