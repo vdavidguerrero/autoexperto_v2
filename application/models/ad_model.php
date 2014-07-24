@@ -772,6 +772,23 @@ class Ad_model extends CI_Model {
     }
 
 
+    public function insertTempAd($adObject)
+    {
+       return $this->db->insert('car_ads_Temp',$adObject);
+    }
+
+
+    public function getLastTempAd($userID)
+    {
+        $this->db->select('*');
+        $this->db->from('car_ads_Temp');
+        $this->db->where('User_ID' ,$userID);
+        return $query = $this->db->get()->last_row();
+
+    }
+
+
+
 
 
 }

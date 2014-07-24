@@ -425,6 +425,49 @@ class Ad_controller extends Main_Controller {
 
     }
 
+    /**
+     * Change the state to sold
+     *
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     * @see getAdsBySearch
+     */
+    function createAdTemp($vin,$mileage,$troubleCode,$userID = "00119045615")
+    {
+        $json = file_get_contents('php://input');
+       // $tempAd = json_decode($json);
+        $tempAd = (object) array("VIN" => $vin,
+                                   "Mileage" => $mileage,
+                                   "User_ID" => $userID,
+                                   "Trouble_Code" => $troubleCode);
+
+        if($this->ad_model->insertTempAd($tempAd))
+        {
+            echo "1";
+        }
+        else
+        {
+            echo "-1";
+        }
+    }
+
+    /**
+     * Change the state to sold
+     *
+     * @author Vincent Guerrero <v.davidguerrero@gmail.com>
+     * @todo - Check
+     * @see getAdsBySearch
+     */
+    function getLastTempAd($userID = "00119045615")
+    {
+        $json = file_get_contents('php://input');
+
+
+        $klk = $this->ad_model->getLastTempAd($userID);
+
+        echo $klk->ID;
+    }
+
 
 
 
