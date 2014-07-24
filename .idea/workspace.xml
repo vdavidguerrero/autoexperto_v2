@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/ad_model.php" afterPath="$PROJECT_DIR$/application/models/ad_model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/ad_controller.php" afterPath="$PROJECT_DIR$/application/controllers/ad_controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test_App/publishAd.js" afterPath="$PROJECT_DIR$/Test_App/publishAd.js" />
     </list>
     <ignored path="Documents.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="publishAd.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="publishAd.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test_App/publishAd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="5" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
+            <state line="45" column="6" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.6855576" vertical-offset="300" max-vertical-offset="1230">
               <folding />
             </state>
           </provider>
@@ -37,16 +38,16 @@
       <file leaf-file-name="ad_controller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="164" column="70" selection-start="5057" selection-end="5070" vertical-scroll-proportion="-8.75" vertical-offset="2250" max-vertical-offset="7305">
+            <state line="175" column="65" selection-start="5719" selection-end="5719" vertical-scroll-proportion="-20.0" vertical-offset="2145" max-vertical-offset="7305">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ad_model.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ad_model.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="0" selection-start="2507" selection-end="2507" vertical-scroll-proportion="0.48289737" vertical-offset="930" max-vertical-offset="13035">
+            <state line="78" column="0" selection-start="2507" selection-end="2507" vertical-scroll-proportion="-4.8" vertical-offset="930" max-vertical-offset="13035">
               <folding>
                 <marker date="1406215916000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
                 <marker date="1406215916000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
@@ -108,9 +109,9 @@
         <option value="$PROJECT_DIR$/application/controllers/user.php" />
         <option value="$PROJECT_DIR$/Test_App/getAdId.js" />
         <option value="$PROJECT_DIR$/Test_App/create" />
-        <option value="$PROJECT_DIR$/Test_App/publishAd.js" />
-        <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
         <option value="$PROJECT_DIR$/application/models/ad_model.php" />
+        <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
+        <option value="$PROJECT_DIR$/Test_App/publishAd.js" />
       </list>
     </option>
   </component>
@@ -449,29 +450,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test_App/publishAd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="70" selection-start="5057" selection-end="5070" vertical-scroll-proportion="-8.75" vertical-offset="2250" max-vertical-offset="7305">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="2507" selection-end="2507" vertical-scroll-proportion="0.48289737" vertical-offset="930" max-vertical-offset="13035">
+        <state line="78" column="0" selection-start="2507" selection-end="2507" vertical-scroll-proportion="-4.8" vertical-offset="930" max-vertical-offset="13035">
           <folding>
             <marker date="1406215916000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
             <marker date="1406215916000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
             <marker date="1406215916000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
             <marker date="1406215916000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="65" selection-start="5719" selection-end="5719" vertical-scroll-proportion="-20.0" vertical-offset="2145" max-vertical-offset="7305">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_App/publishAd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="6" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.6855576" vertical-offset="300" max-vertical-offset="1230">
+          <folding />
         </state>
       </provider>
     </entry>
