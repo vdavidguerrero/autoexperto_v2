@@ -145,7 +145,7 @@ class Ad_controller extends Main_Controller {
                 $response = (object) array("Response" => $adObject->ID);
 
             header('Content-type: application/json');
-            echo json_encode($VIN);
+            echo json_encode($response);
 
         }
 
