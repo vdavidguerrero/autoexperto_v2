@@ -28,7 +28,7 @@ class Ad_model extends CI_Model {
         $this->db->from('car_ads');
         $this->db->join('unique_cars','unique_cars.VIN = car_ads.Unique_Car_ID');
         $this->db->where('unique_cars.VIN',$VIN);
-        $this->db->where('Flag',$flag);
+        $this->db->where('car_ads.Flag',$flag);
         $query = $this->db->get();
     
         
