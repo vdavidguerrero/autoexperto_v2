@@ -4,6 +4,7 @@
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/ad_controller.php" afterPath="$PROJECT_DIR$/application/controllers/ad_controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/ad_model.php" afterPath="$PROJECT_DIR$/application/models/ad_model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test_App/getAdId.js" afterPath="$PROJECT_DIR$/Test_App/getAdId.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Documents.iws" />
@@ -30,7 +31,16 @@
       <file leaf-file-name="ad_controller.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="81" selection-start="4315" selection-end="4315" vertical-scroll-proportion="0.5294118" vertical-offset="1845" max-vertical-offset="7290">
+            <state line="144" column="0" selection-start="4394" selection-end="4394" vertical-scroll-proportion="0.61764705" vertical-offset="1845" max-vertical-offset="7290">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getAdId.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test_App/getAdId.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="33" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
               <folding />
             </state>
           </provider>
@@ -39,12 +49,12 @@
       <file leaf-file-name="ad_model.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="56" selection-start="683" selection-end="683" vertical-scroll-proportion="-8.75" vertical-offset="180" max-vertical-offset="13035">
+            <state line="26" column="36" selection-start="663" selection-end="663" vertical-scroll-proportion="-8.75" vertical-offset="180" max-vertical-offset="13035">
               <folding>
-                <marker date="1406191414000" expanded="true" signature="16663:16755" placeholder="UPDATE car_a..." />
-                <marker date="1406191414000" expanded="true" signature="17124:17213" placeholder="UPDATE car_a..." />
-                <marker date="1406191414000" expanded="true" signature="17577:17656" placeholder="UPDATE pictu..." />
-                <marker date="1406191414000" expanded="true" signature="18021:18093" placeholder="UPDATE car_a..." />
+                <marker date="1406191529000" expanded="true" signature="16643:16735" placeholder="UPDATE car_a..." />
+                <marker date="1406191529000" expanded="true" signature="17104:17193" placeholder="UPDATE car_a..." />
+                <marker date="1406191529000" expanded="true" signature="17557:17636" placeholder="UPDATE pictu..." />
+                <marker date="1406191529000" expanded="true" signature="18001:18073" placeholder="UPDATE car_a..." />
               </folding>
             </state>
           </provider>
@@ -71,7 +81,6 @@
         <option value="$PROJECT_DIR$/assets/js/js/caz.html" />
         <option value="$PROJECT_DIR$/Test_App/getAdsFromMechanic.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/Test_App/getAdId.js" />
         <option value="$PROJECT_DIR$/Test_App/create" />
         <option value="$PROJECT_DIR$/application/views/ad/prueba2.php" />
         <option value="$PROJECT_DIR$/application/views/ad/prueba.php" />
@@ -102,6 +111,7 @@
         <option value="$PROJECT_DIR$/application/views/ad/search_ad_view.php" />
         <option value="$PROJECT_DIR$/application/views/user/infractionMap.php" />
         <option value="$PROJECT_DIR$/application/controllers/user.php" />
+        <option value="$PROJECT_DIR$/Test_App/getAdId.js" />
         <option value="$PROJECT_DIR$/application/models/ad_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/ad_controller.php" />
       </list>
@@ -154,6 +164,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Documents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Documents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Documents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Test_App" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -373,21 +397,35 @@
         <state line="1" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1650" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Test_App/getAdsFromMechanic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="56" selection-start="683" selection-end="683" vertical-scroll-proportion="-8.75" vertical-offset="180" max-vertical-offset="13035">
+        <state line="26" column="36" selection-start="663" selection-end="663" vertical-scroll-proportion="-8.75" vertical-offset="180" max-vertical-offset="13035">
           <folding>
-            <marker date="1406191414000" expanded="true" signature="16663:16755" placeholder="UPDATE car_a..." />
-            <marker date="1406191414000" expanded="true" signature="17124:17213" placeholder="UPDATE car_a..." />
-            <marker date="1406191414000" expanded="true" signature="17577:17656" placeholder="UPDATE pictu..." />
-            <marker date="1406191414000" expanded="true" signature="18021:18093" placeholder="UPDATE car_a..." />
+            <marker date="1406191529000" expanded="true" signature="16643:16735" placeholder="UPDATE car_a..." />
+            <marker date="1406191529000" expanded="true" signature="17104:17193" placeholder="UPDATE car_a..." />
+            <marker date="1406191529000" expanded="true" signature="17557:17636" placeholder="UPDATE pictu..." />
+            <marker date="1406191529000" expanded="true" signature="18001:18073" placeholder="UPDATE car_a..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test_App/getAdId.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="33" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/ad_controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="81" selection-start="4315" selection-end="4315" vertical-scroll-proportion="0.5294118" vertical-offset="1845" max-vertical-offset="7290">
+        <state line="144" column="0" selection-start="4394" selection-end="4394" vertical-scroll-proportion="0.61764705" vertical-offset="1845" max-vertical-offset="7290">
           <folding />
         </state>
       </provider>
