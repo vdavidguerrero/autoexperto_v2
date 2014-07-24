@@ -835,9 +835,9 @@ class Ad_model extends CI_Model {
     {
         $searchArray = array (
 
-        //    'car_ads.ID  <='                => 146,
-          //  'car_ads.ID  >='                => 148,
-            'car_ads.Flag   ='              => $flag
+            'car_ads.ID    <='                => '146',
+            'car_ads.ID    >='                => '148',
+            'car_ads.Flag   ='                => $flag
         );
 
         $this->db->select('car_ads.*',false);

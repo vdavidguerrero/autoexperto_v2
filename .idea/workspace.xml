@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="342d2c7b-8ce0-4b88-80cf-54d83656cd93" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/ad_model.php" afterPath="$PROJECT_DIR$/application/models/ad_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/ad/search_ad_view.php" afterPath="$PROJECT_DIR$/application/views/ad/search_ad_view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Documents.iws" />
@@ -30,12 +29,12 @@
       <file leaf-file-name="ad_model.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="838" column="12" selection-start="29091" selection-end="29091" vertical-scroll-proportion="0.3207547" vertical-offset="12400" max-vertical-offset="13125">
+            <state line="837" column="45" selection-start="29070" selection-end="29070" vertical-scroll-proportion="0.3490566" vertical-offset="12370" max-vertical-offset="13125">
               <folding>
-                <marker date="1406242225000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-                <marker date="1406242225000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-                <marker date="1406242225000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-                <marker date="1406242225000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+                <marker date="1406242606000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+                <marker date="1406242606000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+                <marker date="1406242606000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+                <marker date="1406242606000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
               </folding>
             </state>
           </provider>
@@ -376,10 +375,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="804" column="43" selection-start="27630" selection-end="27630" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13035">
           <folding>
-            <marker date="1406242225000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-            <marker date="1406242225000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-            <marker date="1406242225000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-            <marker date="1406242225000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406242606000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
           </folding>
         </state>
       </provider>
@@ -415,10 +414,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="36" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="13035">
           <folding>
-            <marker date="1406242225000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-            <marker date="1406242225000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-            <marker date="1406242225000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-            <marker date="1406242225000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406242606000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
           </folding>
         </state>
       </provider>
@@ -583,12 +582,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/ad_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="838" column="12" selection-start="29091" selection-end="29091" vertical-scroll-proportion="0.3207547" vertical-offset="12400" max-vertical-offset="13125">
+        <state line="837" column="45" selection-start="29070" selection-end="29070" vertical-scroll-proportion="0.3490566" vertical-offset="12370" max-vertical-offset="13125">
           <folding>
-            <marker date="1406242225000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
-            <marker date="1406242225000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
-            <marker date="1406242225000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
-            <marker date="1406242225000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="16651:16743" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="17112:17201" placeholder="UPDATE car_a..." />
+            <marker date="1406242606000" expanded="true" signature="17565:17644" placeholder="UPDATE pictu..." />
+            <marker date="1406242606000" expanded="true" signature="18009:18081" placeholder="UPDATE car_a..." />
           </folding>
         </state>
       </provider>
