@@ -117,11 +117,11 @@ class car_controller extends Main_Controller {
             $uniqueCarObject->Date                   = date("Y-m-d H:i:s");
             $uniqueCarObject->Unique_Model           = (object) array(
                 'AC'                    => 'Si',
-                'Year'                  => '2008',
-                'Trim'                  => 'Suzuki',
-                'Brand'                 => 'Reno',
-                'Model'                 => 'Platz',
-                'Radio'                 => 'CD',
+                'Year'                  => '2014',
+                'Trim'                  => 'Sencilla',
+                'Brand'                 => 'Mitsubishi',
+                'Model'                 => 'L 300',
+                'Radio'                 => 'CD, Ipod',
                 'Wheels'                => 'Magnesio',
                 'Seating'               => 'Pana',
                 'Gallons'               => '11',
@@ -129,17 +129,17 @@ class car_controller extends Main_Controller {
                 'CD_Player'             => 'No',
                 'Subwoofer'             => 'Si',
                 'Body_Style'            => 'Coupe',
-                'Engine_Type'           => '1.8 4Cilindros',
-                'Transmission'          => 'Mecanica, 5 cambios',
+                'Engine_Type'           => '2.5,  4Cilindros',
+                'Transmission'          => 'Automatico, 5 cambios',
                 'Power_Windows'         => 'Si',
                 'Leather_Seats'         => 'No',
                 'Driver_Airbag'         => 'Si',
                 'Cruise_Control'        => 'Si',
                 'Convertible_Top'       => 'No',
                 'Front_Side_Airbag'     => 'Si',
-                'Fuel_Economy_City'     => '24 kmh/g',
-                'Fuel_Economy_Highway'  => '29 kmh/g',
-                'Color'                 => 'Amarrillo'
+                'Fuel_Economy_City'     => '22 kmh/g',
+                'Fuel_Economy_Highway'  => '25 kmh/g',
+                'Color'                 => 'Rojo'
             );
 
 

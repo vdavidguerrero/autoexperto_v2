@@ -4,10 +4,10 @@
 var http = require('http');
 
 var ad = {
-            VIN             : "JACCN57X917854460",
+            VIN             : "1GTJ5MFE4B8822515",
             Flag            : 0,
-            Price           : "258000",
-            Mileage         : "12900",
+            Price           : "1100000",
+            Mileage         : "0",
             Pictures        : ["prueba3.jpg", "prueba3.jpg","prueba3.jpg"],
             Seller_ID       : 00119045615,
             Paper_Status    : "OK",
